@@ -1,6 +1,6 @@
 Git is a version control system.
 
-Git is free software.
+Git is free software. under the GPL.
 
 
 Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36
