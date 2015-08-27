@@ -1,0 +1,62 @@
+not good
+<div id='info'>123</div>
+
+<script>
+//http://www.cnblogs.com/longze/archive/2013/06/07/3124354.html
+//http://www.itzhai.com/http-request-user-agent-determines-the-type-of-browser-requests-a-variety-of-ways-web-crawler-marked.html#read-more
+
+function $(s){return document.getElementById(s);}
+//
+function n(s){console.log(s);}
+
+//
+function getBrowserInfo(){
+        var userAgent = navigator.userAgent;
+        
+		  $('info').innerHTML=userAgent+'<hr>';
+		
+        var browserKeyArr = [{
+            name:'搜狗',
+            domKey:'sougou',
+            agentKey:'MetaSr'
+        },{
+            name:'QQ',
+            domKey:'qq',
+            agentKey:'QQBrowser'
+        },
+        {
+            name:'猎豹',
+            domKey:'liebao',
+            agentKey:'LBBROWSER'
+        },{
+            name:'淘宝',
+            domKey:'taobao',
+            agentKey:'TaoBrowser'
+        },{
+            name:'遨游',
+            domKey:'aoyou',
+            agentKey:'Maxthon'
+        },{
+			name:'IE',
+            domKey:'IE',
+            agentKey:'MSIE'
+        },{
+            name:'chrome',
+            domKey:'chrome',
+            agentKey:'Chrome'
+        }
+		];
+        
+      
+        for(var i = 0,length = browserKeyArr.length; i < length ; i++){
+            var pattern = new RegExp(browserKeyArr[i].agentKey,'i');
+            if(pattern.test(userAgent)){
+                $('info').innerHTML += browserKeyArr[i].agentKey;
+				break;
+            }
+        }
+    }
+
+//==========================	
+	getBrowserInfo()	
+</script>
