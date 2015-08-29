@@ -8,7 +8,9 @@ gitLab is similar to gitHub.
 https://about.gitlab.com/gitlab-com/
 
 New line By Dawn. new branch:dev
-new master insertion.
+
+new master insertion.branck feature1;
+
 
 Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36
 
