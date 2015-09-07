@@ -1,13 +1,35 @@
 ---
 
 layout: post  
-title: "Git ³£ÓÃÃüÁî"
+title: "Git å¸¸ç”¨å‘½ä»¤"
 
 ---
-
 #Git is a version control system.
-
 ##Some very good notes are in the folder.
+
+
+â€¦or create a new repository on the command line
+
+
+echo # DawnPHPTools >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin git@github.com:DawnEve/DawnPHPTools.git
+git push -u origin master
+â€¦or push an existing repository from the command line
+
+
+git remote add origin git@github.com:DawnEve/DawnPHPTools.git
+git push -u origin master
+
+
+
+
+
+
+
+
 
 Git is free software. under the GPL.
 stash.
