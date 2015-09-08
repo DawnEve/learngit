@@ -35,6 +35,8 @@ Git is free software. under the GPL.
 stash.
 - URL:http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013752340242354807e192f02a44359908df8a5643103a000
 
+- URL2(Blog):http://firecloudphp.blog.163.com/blog/static/250822070201573072450693/
+
 - gitLab is similar to gitHub.
 https://about.gitlab.com/gitlab-com/
 
