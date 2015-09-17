@@ -4,5 +4,5 @@ echo 'hello ';
 
 //
 function myFn(){
-	
+	return false;
 }
