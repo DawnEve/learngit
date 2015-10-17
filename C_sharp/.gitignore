@@ -9,3 +9,7 @@ deploy_key_rsa
 
 # c#compile file:
 *.exe
+
+#备份文件
+backup
+dustbin

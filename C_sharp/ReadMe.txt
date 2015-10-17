@@ -3,13 +3,67 @@
 
 
 
+=============================================
+微软虚拟学院 — 免费微软技术培训
+http://www.microsoftvirtualacademy.com/
+
+百度的xaml教程（for win8 and msPhone）
+http://wenku.baidu.com/link?url=9vdt5YM6Np_M_ORdvdZLu5nI-I0cAwae_rQ-X9-PzThSIzTtg337M5OWRqHqhvrDIcoGbXJ9d1fk62uMSsaLW1scBD712s-UcjmdWUOBfGW
+=============================================
+excel文件的读写：
+http://blog.csdn.net/testcs_dn/article/details/25509249
+
+
+=============================================
+一个小时快速入门
+
+接下来关于 C# 的讨论主题：
+编程结构      命名空间      变量           数据类型          枚举
+类与结构      属性          修饰符         接口              数组
+索引器        装箱与拆箱    函数参数       运算符与表达式    语句
+委托          继承与多态
+
+以下主题不会进行讨论：
+C++ 与 C# 的共同点       诸如垃圾回收、线程、文件处理等概念
+数据类型转换             异常处理         .NET 库
+
+
+
+
+--------------------------------
+c# books at the library
+01020205400906|二楼北：工程与信息技术书库 27架B面9列6层(2)
+ 
+01020205500102|二楼北：工程与信息技术书库 28架A面1列2层
+ 
+01020205500102|二楼北：工程与信息技术书库 28架A面1列2层
+ 
+01020205400906|二楼北：工程与信息技术书库 27架B面9列6层
+01020205500102|二楼北：工程与信息技术书库 28架A面1列2层
+01020205400906|二楼北：工程与信息技术书库 27架B面9列6层
+ 
+ 
+--------------------------------
+msdn的VB教程
+https://msdn.microsoft.com/zh-cn/library/2x7h1hfk.aspx
+
 --------------------------------
 asp.net的教程
 http://www.runoob.com/aspnet/aspnet-tutorial.html
 
 
 --------------------------------
-环境变量：
+MSDN资源：
+https://msdn.microsoft.com/zh-cn/library/ms180794(v=vs.80).aspx
+
+客户端开发：
+https://msdn.microsoft.com/zh-cn/aa570309#two
+
+windows SDK
+http://www.microsoft.com/en-us/download/details.aspx?id=8279
+
+--------------------------------
+c#(.net framework)环境变量：
 
 C:\Windows\Microsoft.NET\Framework\v4.0.30319>csc
 Microsoft (R) Visual C# Compiler version 4.6.0081.0
