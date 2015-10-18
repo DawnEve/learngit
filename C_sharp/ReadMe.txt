@@ -51,10 +51,14 @@ https://msdn.microsoft.com/zh-cn/library/2x7h1hfk.aspx
 asp.net的教程
 http://www.runoob.com/aspnet/aspnet-tutorial.html
 
-
+1.	3.54    21.8
+2.	3.74	23
 --------------------------------
 MSDN资源：
 https://msdn.microsoft.com/zh-cn/library/ms180794(v=vs.80).aspx
+
+MSDN C#3个例子
+https://msdn.microsoft.com/zh-cn/library/dd492171.aspx
 
 客户端开发：
 https://msdn.microsoft.com/zh-cn/aa570309#two
