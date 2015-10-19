@@ -7,6 +7,11 @@
 微软虚拟学院 — 免费微软技术培训
 http://www.microsoftvirtualacademy.com/
 
+c#视频教程
+https://channel9.msdn.com/series/c-sharp-fundamentals-development-for-absolute-beginners
+
+
+
 百度的xaml教程（for win8 and msPhone）
 http://wenku.baidu.com/link?url=9vdt5YM6Np_M_ORdvdZLu5nI-I0cAwae_rQ-X9-PzThSIzTtg337M5OWRqHqhvrDIcoGbXJ9d1fk62uMSsaLW1scBD712s-UcjmdWUOBfGW
 =============================================
@@ -59,6 +64,8 @@ https://msdn.microsoft.com/zh-cn/library/ms180794(v=vs.80).aspx
 
 MSDN C#3个例子
 https://msdn.microsoft.com/zh-cn/library/dd492171.aspx
+第三个例子
+https://msdn.microsoft.com/zh-cn/library/dd553235.aspx
 
 客户端开发：
 https://msdn.microsoft.com/zh-cn/aa570309#two
