@@ -17,6 +17,14 @@ namespace dgv
             InitializeComponent();
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+
+
+            DgvInit();//初始化dataGridView控件
+        }
+
         //初始化dataGridView的样式
         private void DgvInit(){
             //样式
@@ -92,62 +100,6 @@ namespace dgv
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-
-
-            DgvInit();//初始化dataGridView控件
-        }
-
-
-        //粘贴剪切板的东西到当前dataGridView控件
-        private void pasteToDgv() {
-            //当前单元格是否选择的判断
-            if (dataGridView1.CurrentCell == null)
-                return;
-            int insertRowIndex = dataGridView1.CurrentCell.RowIndex;
-            // 获取剪切板的内容，并按行分割
-            string pasteText = Clipboard.GetText();
-
-            
-
-            if (string.IsNullOrEmpty(pasteText))
-                return;
-            pasteText = pasteText.Replace(" ", " ");
-            pasteText = pasteText.Replace(' ', ' ');
-            pasteText.TrimEnd(new char[] { ' ' });
-            string[] lines = pasteText.Split(' ');
-
-            //this.richTextBox1.Text = pasteText;//debug here
-
-
-            bool isHeader = true;
-            foreach (string line in lines)
-            {
-                // 是否是列头
-                if (isHeader)
-                {
-                    isHeader = false;
-                    continue;
-                }
-                // 按 Tab 分割数据
-                string[] vals = line.Split(' ');
-                // 判断列数是否统一
-                if (vals.Length - 1 != dataGridView1.ColumnCount)
-                    throw new ApplicationException("粘贴的列数不正确。");
-                DataGridViewRow row = dataGridView1.Rows[insertRowIndex];
-                // 行头设定
-                row.HeaderCell.Value = vals[0];
-                // 单元格内容设定
-                for (int i = 0; i < row.Cells.Count; i++)
-                {
-                    row.Cells[i].Value = vals[i + 1];
-                }
-                // DataGridView的行索引+1
-                insertRowIndex++;
-            }
-        }
 
 
 
@@ -157,11 +109,6 @@ namespace dgv
         }
 
 
-
-        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-           
-        }
 
         //控制上下文菜单是否可用
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
@@ -177,63 +124,11 @@ namespace dgv
         }
 
 
+
        
-
-        public void dataGridView1_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.V)
-            {
-                if (sender != null && sender.GetType() == typeof(DataGridView))
-                    // 调用上面的粘贴代码
-                    DataGridViewCopy((DataGridView)sender);
-            }
-        }
-
-        //[复制]从DataGridView控件拷贝数据
-        public void DataGridViewEnableCopy(DataGridView dgv)
-        {
-            Clipboard.SetData(DataFormats.Text, dgv.GetClipboardContent());
-        }
-
-        //向DataGridView控件粘贴数据
-        public void DataGridViewCopy(DataGridView p_Data)
-        {
-            try
-            {
-                // 获取剪切板的内容，并按行分割
-                string pasteText = Clipboard.GetText();
-                if (string.IsNullOrEmpty(pasteText))
-                    return;
-                string[] lines = pasteText.Split(new char[] { ' ', ' ' });
-                foreach (string line in lines)
-                {
-                    if (string.IsNullOrEmpty(line.Trim()))
-                        continue;
-                    // 按 Tab 分割数据
-                    string[] vals = line.Split(' ');
-                    p_Data.Rows.Add(vals);
-                }
-            }
-            catch
-            {
-                // 不处理
-            }
-        }
 
         private void 复制ToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-             //Clipboard.SetDataObject(dataGridView1.GetClipboardContent());
-            //DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
-            //Clipboard.SetData(DataGridView, dataGridView1.GetClipboardContent());
-            //Clipboard.SetDataObject(dataGridView1.GetClipboardContent());
-
-           // MessageBox.Show("this is me");
-
-            //if (sender != null && sender.GetType() == typeof(DataGridView))
-                // 调用上面的粘贴代码
-           //     DataGridViewCopy((DataGridView)sender);
-
-
            // if (dataGridView1.SelectedRows.Count > 0)
            // SendKeys.Send("^C");//可用的方法，发送ctrl+c
 
@@ -243,7 +138,76 @@ namespace dgv
 
         private void 粘贴ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            pasteToDgv();
+            pasteToDataGridView();
+        }
+
+
+        //右键弹出菜单之前，选中右键单击时刻的单元格
+        private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                if (e.Button == System.Windows.Forms.MouseButtons.Right)
+                {
+                    if ( this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Selected != true )
+                    {
+                        //如果右击的位置在选取之外,则清除选区，并选中当前单元格
+                        dataGridView1.ClearSelection();
+                        dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Selected = true;
+                        //设定当前行为右击的单元格
+                        this.dataGridView1.CurrentCell = this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                    }
+                }
+            }
+        }
+
+        //从剪切板粘贴数据到dataGridView控件
+        private void pasteToDataGridView() {
+            if (this.dataGridView1.CurrentCell == null) return;
+            string paste = Clipboard.GetText();
+            paste = paste.ToString().Trim();
+            if (string.IsNullOrEmpty(paste)) return;
+            char[] rowSplitter = { '\r', '\n' };
+            char[] columnSplitter = { '\t' };
+            IDataObject dataInClipboard = Clipboard.GetDataObject();
+            string stringInClipboard = (string)dataInClipboard.GetData(DataFormats.Text);
+            string[] rowsInClipboard = stringInClipboard.Split(rowSplitter, StringSplitOptions.RemoveEmptyEntries);
+            stringInClipboard = stringInClipboard.Replace("?", ""); //刪除转行的行未空格
+            int r = dataGridView1.SelectedCells[0].RowIndex; //获得单元格位置
+            int cc = dataGridView1.SelectedCells[0].ColumnIndex;
+
+            for (int iRow = 0; iRow < rowsInClipboard.Length; iRow++)
+            {
+                string[] valuesInRow = rowsInClipboard[iRow].Split(columnSplitter);
+                for (int iCol = 0; iCol < valuesInRow.Length; iCol++)
+                {
+                    if ((r + iRow) > (dataGridView1.Rows.Count - 1)) //如果拷贝数据超过现有单元格长度,要中止运行,否则会报错
+                    { break; }
+                    else if (dataGridView1.ColumnCount - 1 >= cc + iCol)
+                    {
+                        dataGridView1.Rows[r + iRow].Cells[cc + iCol].Value = valuesInRow[iCol]; //被注释的语句,与此处作用相同
+                    }
+                }
+            }
+        }
+
+        //键盘事件ctrl+c和ctrl+v
+        private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.V)
+            {
+                if (sender != null && sender.GetType() == typeof(DataGridView)) {
+                    MessageBox.Show("Data in right format!!");
+                
+                }
+                // 调用上面的粘贴代码
+                pasteToDataGridView();
+            }
+
+            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.C)
+            {
+                Clipboard.SetDataObject(dataGridView1.GetClipboardContent());
+            }
         }
 
 
