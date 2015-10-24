@@ -44,8 +44,10 @@ namespace dgv
             //dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;//单击单元格选中整行
             //dataGridView1.MultiSelect = false;//不能多选
 
-            //增加右键菜单
-            dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
+            //增加右键菜单.
+            //当增加右键菜单后，不要急着将菜单绑定到DataGridView的ContextMenuStrip属性上，
+            //我们在DataGridView的CellMouseClick事件定义即可.
+            //dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
 
             //添加列标题
             this.dataGridView1.Columns[0].HeaderText = "OrderID";
@@ -68,8 +70,6 @@ namespace dgv
                 this.dataGridView1.Rows.Add();
                 this.dataGridView1.Rows[i].HeaderCell.Value = rowName[i];
                 this.dataGridView1.Rows[i].MinimumHeight = 25;
-                //取消右键菜单
-                this.dataGridView1.Rows[i].HeaderCell.ContextMenuStrip = null;
 
                 //添加测试数据
                 this.dataGridView1.Rows[i].Cells[0].Value = "1";
@@ -83,7 +83,6 @@ namespace dgv
             //循环设置列宽度
             for (int i = 0; i < intColumnCount; i++)
             {
-
                 //不允许排序
                 this.dataGridView1.Columns[i].SortMode = DataGridViewColumnSortMode.Programmatic;
 
@@ -93,10 +92,6 @@ namespace dgv
                 this.dataGridView1.Columns[i].MinimumWidth = (int)(width / 12.5);
                 //自动调整列宽
                 //this.dataGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-
-                //取消右键菜单
-                this.dataGridView1.Columns[i].HeaderCell.ContextMenuStrip = null;
-                //.ContextMenuStrip = null;
             }
         }
 
@@ -142,38 +137,60 @@ namespace dgv
         }
 
 
+
+
+        //上下文菜单在dataGridView1_CellMouseClick事件中，能避免表头响应上下文菜单
         //右键弹出菜单之前，选中右键单击时刻的单元格
         private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            //如果右键，且不在上标题和左标题上，则弹出上下文菜单
+            if (e.Button == MouseButtons.Right && e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
-                if (e.Button == System.Windows.Forms.MouseButtons.Right)
-                {
-                    if ( this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Selected != true )
-                    {
-                        //如果右击的位置在选取之外,则清除选区，并选中当前单元格
-                        dataGridView1.ClearSelection();
-                        dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Selected = true;
-                        //设定当前行为右击的单元格
-                        this.dataGridView1.CurrentCell = this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                    }
-                }
+                this.contextMenuStrip1.Show(MousePosition);
             }
+            else
+            {
+                return;
+            }
+
+            //判断单击的位置
+            if ( this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Selected != true )
+            {
+                //如果右击的位置在选取之外,则清除选区，并选中当前单元格
+                dataGridView1.ClearSelection();
+                dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Selected = true;
+                //设定当前行为右击的单元格
+                this.dataGridView1.CurrentCell = this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            }
+
+            
         }
 
         //从剪切板粘贴数据到dataGridView控件
         private void pasteToDataGridView() {
+            //如果当前没有选中，则直接返回
             if (this.dataGridView1.CurrentCell == null) return;
+
+            //------------从剪切板获得数据字符文本
             string paste = Clipboard.GetText();
+            //剪切板数据转化成字符串，并去除首尾空格
             paste = paste.ToString().Trim();
+            //如果字符串为空，则直接返回
             if (string.IsNullOrEmpty(paste)) return;
+            //---------经过检验不为空
+
+            //设置行和列分隔符
             char[] rowSplitter = { '\r', '\n' };
             char[] columnSplitter = { '\t' };
+
+            //从剪切板获得数据
             IDataObject dataInClipboard = Clipboard.GetDataObject();
             string stringInClipboard = (string)dataInClipboard.GetData(DataFormats.Text);
+            //?
             string[] rowsInClipboard = stringInClipboard.Split(rowSplitter, StringSplitOptions.RemoveEmptyEntries);
             stringInClipboard = stringInClipboard.Replace("?", ""); //刪除转行的行未空格
-            int r = dataGridView1.SelectedCells[0].RowIndex; //获得单元格位置
+            //获得单元格位置
+            int r = dataGridView1.SelectedCells[0].RowIndex; 
             int cc = dataGridView1.SelectedCells[0].ColumnIndex;
 
             for (int iRow = 0; iRow < rowsInClipboard.Length; iRow++)
@@ -189,6 +206,7 @@ namespace dgv
                     }
                 }
             }
+
         }
 
         //键盘事件ctrl+c和ctrl+v
@@ -197,8 +215,8 @@ namespace dgv
             if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.V)
             {
                 if (sender != null && sender.GetType() == typeof(DataGridView)) {
-                    MessageBox.Show("Data in right format!!");
-                
+                    //MessageBox.Show("Data in right format!!");
+                    //格式不一定符合要求。比如从excel复制过来的数据就不符合。
                 }
                 // 调用上面的粘贴代码
                 pasteToDataGridView();
@@ -209,6 +227,9 @@ namespace dgv
                 Clipboard.SetDataObject(dataGridView1.GetClipboardContent());
             }
         }
+
+
+
 
 
     }
