@@ -1,4 +1,34 @@
 ﻿
+day1:
+	aboutMe
+	tabPage
+	mathQuiz: timer
+	pictureViewer
+	ExtendForms
+	MDI_window
+day2:
+	dataGridView:初步使用该控件，鼠标设置和代码设置
+	ExcelFile：继续使用dataGridView控件，尽量代码设置
+		分了类。文件的保存与获取。
+
+
+
+
+
+
+
+
+
+主要内容
+- 按钮
+- 标签
+- 文本框
+- 单选框和复选框
+- 进度条
+
+别人做好的程序：可以参考界面
+D:\安装程序\数据分析\ELISA\mELISA 1.0.1.0
+
 
 
 第1周 绘图及图像
