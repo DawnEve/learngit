@@ -6,10 +6,18 @@ day1:
 	pictureViewer
 	ExtendForms
 	MDI_window
+	
 day2:
+	别人做好的程序：可以参考界面
+	D:\安装程序\数据分析\ELISA\mELISA 1.0.1.0
+	
 	dataGridView:初步使用该控件，鼠标设置和代码设置
-	ExcelFile：继续使用dataGridView控件，尽量代码设置
-		分了类。文件的保存与获取。
+	ExcelFile：
+		继续练习dataGridView控件，尽量代码设置：复制/粘贴/剪切/删除
+		写了一个类：初始化界面。
+		文件的保存与获取。
+	fileReadWrite:
+		.dat文件的解析。对话框选取文件的读写。
 
 
 
@@ -17,8 +25,7 @@ day2:
 
 
 
-
-
+---------------------------
 主要内容
 - 按钮
 - 标签
@@ -26,8 +33,7 @@ day2:
 - 单选框和复选框
 - 进度条
 
-别人做好的程序：可以参考界面
-D:\安装程序\数据分析\ELISA\mELISA 1.0.1.0
+
 
 
 

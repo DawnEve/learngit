@@ -35,14 +35,6 @@ namespace ExcelFile
 
 
 
-        private void btnOpen_Click(object sender, EventArgs e)
-        {
-            
-            //MessageBox.Show(dc.test().ToString());
-
-        }
-
-
         //上下文菜单在dataGridView1_CellMouseClick事件中，能避免表头响应上下文菜单
         //右键弹出菜单之前，选中右键单击时刻的单元格
         private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
@@ -182,6 +174,19 @@ namespace ExcelFile
                 this.dataGridView1.Rows[e.RowIndex].ErrorText = "只能输入数字";
                 return;
             }
+
+        }
+
+
+
+
+        private void btnOpen_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
 
         }
 
