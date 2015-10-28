@@ -20,22 +20,21 @@ namespace fileReadWrite
         private Dictionary<string, string> plate_Info = new Dictionary<string, string>();
         //读取模板 - 设置和返回(位置信息没有实现)
         private Template tpl = new Template();
-
-
-
+        //OD值的存取
+        double[,] od = new double[8,12];
         
-        public Template test()
-        {
-            Info a=new Info(10, 1, 2);
-            tpl.std.Add("01", a);
-            return tpl;
-        }
+
 
         //获取模板信息
         public Template getTpl(){
             return tpl;
         }
 
+        //获取OD读数
+        public double[,] getOd()
+        {
+            return od;
+        }
 
 
 
@@ -151,7 +150,7 @@ namespace fileReadWrite
                             string[] info = txt.Split(':');
                             plate_Info.Add(info[0], info[1]);
                         }
-                        if (txt.Contains("Union"))
+                        if (txt.Contains("Unit"))
                         {
                             string[] info = txt.Split(':');
                             plate_Info.Add(info[0], info[1]);
@@ -166,20 +165,21 @@ namespace fileReadWrite
 
                     //----------------
                     //根据开关进行处理-OD数据
-                    if (flag_Value && false)//先跳过OD data
-                    //if (flag_Value)
+                    //if (flag_Value && false)//先跳过OD data
+                    if (flag_Value)
                     {
                         string[] d_value = txt.Split('\t');
 
                         i++;//i相当于行
                         //j相当于列
-                        string Location = "";
+                        //string Location = "";
                         for (int j = 0; j < 12; j++)
                         {
                             if (d_value[j].Trim() != "")
                             {
-                                Location = (string)(i + "行" + j + "列");
-                                MessageBox.Show(d_value[j], "OD-" + Location);
+                                //Location = (string)(i + "行" + j + "列");
+                                //MessageBox.Show(d_value[j], "OD-" + Location);
+                                od[i,j] = Double.Parse( d_value[j] );
                             }
                         }
                     }
@@ -196,7 +196,7 @@ namespace fileReadWrite
 
                         iM++;//i相当于行
                         //j相当于列
-                        string Location = "";
+                        //string Location = "";
                         string MuBan_info = "";
                         string[] info = new string[2];
                         string[] info2 = new string[2];
