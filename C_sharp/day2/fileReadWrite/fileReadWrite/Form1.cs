@@ -295,7 +295,9 @@ namespace fileReadWrite
             {
                 string fName = openFileDialog1.FileName;
                 //调用类文件读取   
-                plate_info = new DataFormat().read(fName);
+                DataFormat df=new DataFormat();
+                plate_info = df.readDatFile(fName);//获取基本信息
+                Template tpl= df.getTpl();//模板信息
 
 
                 //输出结果todo
@@ -305,15 +307,42 @@ namespace fileReadWrite
                     string info = this.plate_info[item];
                     this.richTextBox1.Text += item + " [:] " + info + "\n";
                 }
+
+                //读取模板信息
+                this.richTextBox1.Text += "===标准品设置===\n";
+                foreach (string item in tpl.std.Keys)
+                {
+                    Info info = tpl.std[item];
+                    this.richTextBox1.Text += item + "(" + info.i +","+info.j+"), conc="+info.conc+ "\n";
+                }
+
+                this.richTextBox1.Text += "===质控品设置===\n";
+                foreach (string item in tpl.ctr.Keys)
+                {
+                    Info info = tpl.ctr[item];
+                    this.richTextBox1.Text += item + "(" + info.i + "," + info.j + "), conc=" + info.conc + "\n";
+                }
+
+                this.richTextBox1.Text += "===样品设置===\n";
+                foreach (string item in tpl.smp.Keys)
+                {
+                    Info info = tpl.smp[item];
+                    this.richTextBox1.Text += item + "(" + info.i + "," + info.j + "), conc=" + info.conc + "\n";
+                }
+
             }  
         }
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-            string txt = "SaveTime:2014-12-13 12:04:37";
-            string[] info = txt.Split(':');
-           // string info2 = info.Join(':');
-            MessageBox.Show(info[1] + ':' + info[2] + ':' + info[3]);
+           // string txt = "SaveTime:2014-12-13 12:04:37";
+           // string[] info = txt.Split(':');
+           //// string info2 = info.Join(':');
+           // MessageBox.Show(info[1] + ':' + info[2] + ':' + info[3]);
+
+            Template t = new Template();
+            t = new DataFormat().test();
+            MessageBox.Show(t.std["01"].i.ToString());
         }
 
 

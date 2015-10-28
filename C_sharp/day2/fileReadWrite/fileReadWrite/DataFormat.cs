@@ -8,16 +8,43 @@ using System.Windows.Forms;
 
 namespace fileReadWrite
 {
+
+    
+
+    //
     class DataFormat
     {
-
         //类字段。字典保存一些板子的基本信息 http://bbs.csdn.net/topics/330090204
+
+        //读取板子的基本信息
         private Dictionary<string, string> plate_Info = new Dictionary<string, string>();
-        private Dictionary<int, double> std = new Dictionary<int, double>();//保存标准品和浓度
+        //读取模板 - 设置和返回(位置信息没有实现)
+        private Template tpl = new Template();
+
+
+
+        
+        public Template test()
+        {
+            Info a=new Info(10, 1, 2);
+            tpl.std.Add("01", a);
+            return tpl;
+        }
+
+        //获取模板信息
+        public Template getTpl(){
+            return tpl;
+        }
+
+
+
+
+
+
 
 
         //读取并解析文件
-        public Dictionary<string, string> read(string fileName) 
+        public Dictionary<string, string> readDatFile(string fileName) 
         {
             //StreamReader sr = new StreamReader(Application.StartupPath + "\\txtreader.txt", false);
 
@@ -182,23 +209,28 @@ namespace fileReadWrite
                                 {
                                     info = d_value[j].Split('#');
                                     info2 = info[0].Split(' ');
-                                    MuBan_info += "标准品" + info2[0] + ", 编号" + info2[1] + "， 浓度" + info[1];
+                                    //tpl.std.Add(info2[1], Convert.ToDouble(info[1]) );
+                                    //MuBan_info += "标准品" + info2[0] + ", 编号" + info2[1] + "， 浓度" + info[1];
+                                    Info wi = new Info( Convert.ToDouble( info[1] ),iM,j);
+                                    tpl.std.Add(info2[1], wi);
                                 }
                                 else if (d_value[j].Contains("ctr"))
                                 {
                                     info = d_value[j].Split('#');
                                     info2 = info[0].Split(' ');
-                                    MuBan_info += "质控品" + info2[0] + ", 编号" + info2[1] + "， 浓度" + info[1];
-
+                                    //tpl.ctr.Add(info2[1], Convert.ToDouble(info[1]) );
+                                    //MuBan_info += "质控品" + info2[0] + ", 编号" + info2[1] + "， 浓度" + info[1];
+                                    Info wi = new Info(Convert.ToDouble(info[1]), iM, j);
+                                    tpl.ctr.Add(info2[1], wi);
                                 }
                                 else if (d_value[j].Contains("smp"))
                                 {
                                     info = d_value[j].Split(' ');
-                                    MuBan_info += "待测样品" + info[0] + "， 编号" + info[1];
+                                    //tpl.ctr.Add(info[1],-1);
+                                    //MuBan_info += "待测样品" + info[0] + "， 编号" + info[1];
+                                    Info wi = new Info(-1, iM, j);
+                                    tpl.smp.Add(info[1], wi);
                                 }
-
-                                Location = (string)(iM + "行" + j + "列");
-                                MessageBox.Show(MuBan_info, "Mub-" + Location);
                             }
                         }
                     }
@@ -238,12 +270,9 @@ namespace fileReadWrite
                 //    string info = plate_Info[item];
                 //    text += item + " [:] " + info + "\n";
                 //}
-                //返回一个字典
-                return plate_Info;
-
-
             }
             //
+            return plate_Info;
         
         }
 
