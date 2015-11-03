@@ -46,6 +46,7 @@ day3:	画图
 			b.Save(fileName);
 			//释放位图资源
 			b.Dispose();
+	winChart:另一个画图控件chart。感觉用于画饼状图、柱状图。
 	
 	
 	
