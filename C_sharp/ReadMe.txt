@@ -21,9 +21,12 @@ day2:
 
 
 day3:	画图
+	winImg1:简单画图，熟悉概念：Graphics、Pen、Brush, Draw开头的划线方法，Fill开头的填充方法
+		自定义方法 private void renderXY(Graphics g)画背景坐标：背景虚线、坐标刻度还没画
+		下载的CurvePaint类=========todo:需要看懂。
 	 
 
-
+ 
 
 
 ---------------------------
