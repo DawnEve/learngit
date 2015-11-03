@@ -48,7 +48,7 @@ day3:	画图
 			b.Dispose();
 	winChart:另一个画图控件chart。感觉用于画饼状图、柱状图。
 	
-	
+	myCurve:正在做的项目集成。2窗口的切换、关闭。
 	
 	
 	
