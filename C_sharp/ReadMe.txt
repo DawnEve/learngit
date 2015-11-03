@@ -25,7 +25,7 @@ day3:	画图
 		自定义方法 private void renderXY(Graphics g)画背景坐标：背景虚线、坐标刻度还没画
 		下载的CurvePaint类=========todo:需要看懂。
 	
-	winImg2:(1)我自己的curveRender类，有待完善。已有：坐标轴转换。
+	curveRender:(1)我自己的curveRender类，有待完善。已有：坐标轴转换。
 			(2)自定义一个箭头，代替不好用的默认箭头
 			//自定义箭头-可以用于画坐标轴的箭头
             // http://bbs.csdn.net/topics/390311725
@@ -35,7 +35,23 @@ day3:	画图
             penSmall.CustomEndCap = lineArrow;
             g.DrawLine(penSmall, new Point(100, 10), new Point(500, 10));
 			(3)旋转的箭头
- 
+	winImgSaveCopyPaste:图片的保存。复制，粘贴。截屏（很不完善）。
+		(1)保存图片
+			//先新建位图
+			Bitmap b = new Bitmap(this.pictureBox1.Width, this.pictureBox1.Height);
+			//通过pictureBox1的DrawToBitmap方法获取该图片到位图中
+			this.pictureBox1.DrawToBitmap(b, new Rectangle(0, 0, this.pictureBox1.Width, this.pictureBox1.Height));
+
+			//保存位图
+			b.Save(fileName);
+			//释放位图资源
+			b.Dispose();
+	
+	
+	
+	
+	
+	
 
 
 ---------------------------
