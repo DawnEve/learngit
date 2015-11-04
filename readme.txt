@@ -5,11 +5,10 @@ title: "Git 常用命令"
 
 ---
 #Git is a version control system.
-##Some very good notes are in the folder.
+##Some very good notes about Git are in the folder [git_note].
 
 
 …or create a new repository on the command line
-
 
 echo # DawnPHPTools >> README.md
 git init
@@ -19,12 +18,26 @@ git remote add origin git@github.com:DawnEve/DawnPHPTools.git
 git push -u origin master
 …or push an existing repository from the command line
 
-
+在本地增加远程版本库信息
 git remote add origin git@github.com:DawnEve/DawnPHPTools.git
+
+推送当前文件到远程版本库
 git push -u origin master
 
+从远程获取最新文件
+git pull
 
 
+查看当前版本：
+$ git log --pretty=oneline
+
+版本回退到上一个版本：
+$ git reset --hard HEAD^
+HEAD is now at ea34578 add distributed
+
+版本回退：
+$ git reset --hard 3628164
+HEAD is now at 3628164 append GPL
 
 
 
