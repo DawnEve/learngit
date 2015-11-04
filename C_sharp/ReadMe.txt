@@ -48,7 +48,14 @@ day3:	画图
 			b.Dispose();
 	winChart:另一个画图控件chart。感觉用于画饼状图、柱状图。
 	
-	myCurve:正在做的项目集成。2窗口的切换、关闭。
+	myCurve:正在做的项目集成。2窗口的切换、关闭。v1.0
+		修改启动窗体：Program.cs里面修改
+			Application.Run(new LoginForm());
+			但是有一点要注意，你将loginform作为启动窗体之后，这个窗体是不能关闭的，一旦关闭，程序就结束了，只能隐藏
+
+		保存。复制。
+		怎么从第一个窗体向另一个窗体传值？
+				//http://zhidao.baidu.com/link?url=kxz98yHmsCCjGoaRyiLOb16MDHLVXH2tgpEE_R8aK5UN1Y6nP4j78Eg5z0PGx07HMQgE1dAAoZEK9it8cbv2YSeEJwGK9t-1opUptfUhHEe
 	
 	
 	

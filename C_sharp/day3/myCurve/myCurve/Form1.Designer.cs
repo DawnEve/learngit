@@ -70,7 +70,7 @@
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.btnFit);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "主窗体";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 

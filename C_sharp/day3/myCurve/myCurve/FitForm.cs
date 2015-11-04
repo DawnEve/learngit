@@ -11,8 +11,12 @@ using System.Windows.Forms;
 
 namespace myCurve
 {
+
+
+
     public partial class FitForm : Form
     {
+        private float num;//从前一个窗体接收变量
         public FitForm()
         {
             InitializeComponent();
@@ -36,9 +40,29 @@ namespace myCurve
 
             //创建Graphics对象
             Graphics g = e.Graphics;
+            //白色背景
+            g.Clear(Color.White);
 
+            //画笔画图
             Pen pen = new Pen(Color.Red);
-            g.DrawString("Hello", new Font("宋体", 12), new SolidBrush(Color.Blue), new Point(10, 10));
+            g.DrawString("The xxx curve", new Font("宋体", 12), new SolidBrush(Color.Blue), new Point(Width/3, 10));
+
+
+            //获取第一窗体输入的数字
+            num = ((Form1)this.Owner).num;
+
+            int dot_num = (int)(num);
+            int dot_radius = 6;
+            for (int i = 0; i < dot_num; i++)
+            {
+                float x = Width * i / dot_num;
+                float y = (float)(Height / 5 * Math.Sin(x*3.1415926/180)) + Height / 3;//Height * i / dot_num;
+
+                //g.FillEllipse(new SolidBrush(Color.Green), x, y, dot_radius, dot_radius);
+                g.DrawEllipse(new Pen(Color.Green), x, y, dot_radius, dot_radius);
+            }
+
+                
         }
 
         private void FitForm_Load(object sender, EventArgs e)
