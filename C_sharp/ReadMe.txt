@@ -23,7 +23,15 @@ day2:
 			- 模板基本信息采用字典；
 			- 模板设置信息采用字典 + 对象；
 		怎么保存？先新建文档，整合该项目和项目ExcelFile。
-
+	ExcelFile2:	
+		(1)怎么使dataGridView控件失去焦点为什么还处于选中状态？
+		在leave事件中添加控件的ClearSelection方法。
+		private void dataGridView1_Leave(object sender, EventArgs e)
+        {
+            this.dataGridView1.ClearSelection();
+        }
+		(2)
+		
 
 day3:	画图
 	winImg1:简单画图，熟悉概念：Graphics、Pen、Brush, Draw开头的划线方法，Fill开头的填充方法
