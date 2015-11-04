@@ -25,9 +25,46 @@ day2:
 		怎么保存？先新建文档，整合该项目和项目ExcelFile。
 
 
+day3:	画图
+	winImg1:简单画图，熟悉概念：Graphics、Pen、Brush, Draw开头的划线方法，Fill开头的填充方法
+		自定义方法 private void renderXY(Graphics g)画背景坐标：背景虚线、坐标刻度还没画
+		下载的CurvePaint类=========todo:需要看懂。
+	
+	curveRender:(1)我自己的curveRender类，有待完善。已有：坐标轴转换。
+			(2)自定义一个箭头，代替不好用的默认箭头
+			//自定义箭头-可以用于画坐标轴的箭头
+            // http://bbs.csdn.net/topics/390311725
+            Pen penSmall = new Pen(Color.Orange, 1);
+            System.Drawing.Drawing2D.AdjustableArrowCap lineArrow =
+                new System.Drawing.Drawing2D.AdjustableArrowCap(4, 4, true);
+            penSmall.CustomEndCap = lineArrow;
+            g.DrawLine(penSmall, new Point(100, 10), new Point(500, 10));
+			(3)旋转的箭头
+	winImgSaveCopyPaste:图片的保存。复制，粘贴。截屏（很不完善）。
+		(1)保存图片
+			//先新建位图
+			Bitmap b = new Bitmap(this.pictureBox1.Width, this.pictureBox1.Height);
+			//通过pictureBox1的DrawToBitmap方法获取该图片到位图中
+			this.pictureBox1.DrawToBitmap(b, new Rectangle(0, 0, this.pictureBox1.Width, this.pictureBox1.Height));
 
+			//保存位图
+			b.Save(fileName);
+			//释放位图资源
+			b.Dispose();
+	winChart:另一个画图控件chart。感觉用于画饼状图、柱状图。
+	
+	myCurve:正在做的项目集成。2窗口的切换、关闭。v1.0
+		修改启动窗体：Program.cs里面修改
+			Application.Run(new LoginForm());
+			但是有一点要注意，你将loginform作为启动窗体之后，这个窗体是不能关闭的，一旦关闭，程序就结束了，只能隐藏
 
-
+		保存。复制。
+		怎么从第一个窗体向另一个窗体传值？
+				//http://zhidao.baidu.com/link?url=kxz98yHmsCCjGoaRyiLOb16MDHLVXH2tgpEE_R8aK5UN1Y6nP4j78Eg5z0PGx07HMQgE1dAAoZEK9it8cbv2YSeEJwGK9t-1opUptfUhHEe
+	
+	
+	
+	
 
 
 ---------------------------
