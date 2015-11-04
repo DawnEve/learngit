@@ -294,26 +294,72 @@ namespace fileReadWrite
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 string fName = openFileDialog1.FileName;
-                //调用类文件读取   
-                plate_info = new DataFormat().read(fName);
+                //调用类文件读取文件，并获取模板信息、OD信息   
+                DataFormat df=new DataFormat();
+                plate_info = df.readDatFile(fName);//获取基本信息
+                Template tpl= df.getTpl();//模板信息
+                double[,] od=df.getOd();//OD信息
 
 
-                //输出结果todo
+
+                //输出板子基本信息：日期、单位、模型编号
                 this.richTextBox1.Text = "";
                 foreach (string item in plate_info.Keys)
                 {
                     string info = this.plate_info[item];
                     this.richTextBox1.Text += item + " [:] " + info + "\n";
                 }
-            }  
+
+
+
+                //输出模板信息
+                this.richTextBox1.Text += "===标准品设置===\n";
+                foreach (string item in tpl.std.Keys)
+                {
+                    Info info = tpl.std[item];
+                    this.richTextBox1.Text += item + "(" + info.i +","+info.j+"), conc="+info.conc+ "\n";
+                }
+
+                this.richTextBox1.Text += "===质控品设置===\n";
+                foreach (string item in tpl.ctr.Keys)
+                {
+                    Info info = tpl.ctr[item];
+                    this.richTextBox1.Text += item + "(" + info.i + "," + info.j + "), conc=" + info.conc + "\n";
+                }
+
+                this.richTextBox1.Text += "===样品设置===\n";
+                foreach (string item in tpl.smp.Keys)
+                {
+                    Info info = tpl.smp[item];
+                    this.richTextBox1.Text += item + "(" + info.i + "," + info.j + "), conc=" + info.conc + "\n";
+                }
+
+                //输出OD值
+                this.richTextBox1.Text += "===OD值===\n";
+                for (int i = 0; i < 8; i++) 
+                {
+                    for (int j = 0; j < 12; j++) 
+                    {
+                        if (od[i, j] != 0)
+                        {
+                            this.richTextBox1.Text += "(" + i + "," + j + ")" + od[i, j] + "\n";
+                        }
+                    }
+                }
+
+            } 
         }
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-            string txt = "SaveTime:2014-12-13 12:04:37";
-            string[] info = txt.Split(':');
-           // string info2 = info.Join(':');
-            MessageBox.Show(info[1] + ':' + info[2] + ':' + info[3]);
+           // string txt = "SaveTime:2014-12-13 12:04:37";
+           // string[] info = txt.Split(':');
+           //// string info2 = info.Join(':');
+           // MessageBox.Show(info[1] + ':' + info[2] + ':' + info[3]);
+
+            //Template t = new Template();
+            //t = new DataFormat().test();
+            //MessageBox.Show(t.std["01"].i.ToString());
         }
 
 
