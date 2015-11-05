@@ -83,6 +83,8 @@
             this.textLot = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
+            this.btnOpenTpl = new System.Windows.Forms.Button();
+            this.btnSaveTpl = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView0)).BeginInit();
@@ -110,9 +112,9 @@
             // 
             // btnOpen
             // 
-            this.btnOpen.Location = new System.Drawing.Point(855, 30);
+            this.btnOpen.Location = new System.Drawing.Point(853, 30);
             this.btnOpen.Name = "btnOpen";
-            this.btnOpen.Size = new System.Drawing.Size(75, 23);
+            this.btnOpen.Size = new System.Drawing.Size(70, 23);
             this.btnOpen.TabIndex = 1;
             this.btnOpen.Text = "打开";
             this.btnOpen.UseVisualStyleBackColor = true;
@@ -120,9 +122,9 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(936, 30);
+            this.btnSave.Location = new System.Drawing.Point(942, 30);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(70, 23);
             this.btnSave.TabIndex = 2;
             this.btnSave.Text = "保存";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -276,6 +278,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnOpenTpl);
+            this.groupBox1.Controls.Add(this.btnSaveTpl);
             this.groupBox1.Controls.Add(this.groupBox4);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.dataGridView0);
@@ -292,10 +296,10 @@
             this.groupBox4.Controls.Add(this.cmbTpl);
             this.groupBox4.Location = new System.Drawing.Point(806, 20);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(230, 72);
+            this.groupBox4.Size = new System.Drawing.Size(230, 63);
             this.groupBox4.TabIndex = 17;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "预置模板";
+            this.groupBox4.Text = "内置模板";
             // 
             // label14
             // 
@@ -304,7 +308,7 @@
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(65, 12);
             this.label14.TabIndex = 8;
-            this.label14.Text = "模板名称：";
+            this.label14.Text = "内置模板：";
             // 
             // cmbTpl
             // 
@@ -327,16 +331,16 @@
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.txtUnit);
-            this.groupBox3.Location = new System.Drawing.Point(806, 123);
+            this.groupBox3.Location = new System.Drawing.Point(806, 145);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(230, 185);
+            this.groupBox3.Size = new System.Drawing.Size(230, 166);
             this.groupBox3.TabIndex = 16;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "  设置模板";
             // 
             // txtNum
             // 
-            this.txtNum.Location = new System.Drawing.Point(65, 51);
+            this.txtNum.Location = new System.Drawing.Point(65, 50);
             this.txtNum.Name = "txtNum";
             this.txtNum.Size = new System.Drawing.Size(145, 21);
             this.txtNum.TabIndex = 12;
@@ -354,9 +358,9 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(124, 146);
+            this.btnClear.Location = new System.Drawing.Point(124, 133);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(67, 23);
+            this.btnClear.Size = new System.Drawing.Size(70, 23);
             this.btnClear.TabIndex = 14;
             this.btnClear.Text = "清除";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -364,7 +368,7 @@
             // 
             // txtConc
             // 
-            this.txtConc.Location = new System.Drawing.Point(65, 81);
+            this.txtConc.Location = new System.Drawing.Point(65, 79);
             this.txtConc.Name = "txtConc";
             this.txtConc.Size = new System.Drawing.Size(145, 21);
             this.txtConc.TabIndex = 6;
@@ -373,9 +377,9 @@
             // 
             // btnAsign
             // 
-            this.btnAsign.Location = new System.Drawing.Point(42, 146);
+            this.btnAsign.Location = new System.Drawing.Point(35, 133);
             this.btnAsign.Name = "btnAsign";
-            this.btnAsign.Size = new System.Drawing.Size(67, 23);
+            this.btnAsign.Size = new System.Drawing.Size(70, 23);
             this.btnAsign.TabIndex = 11;
             this.btnAsign.Text = "设置";
             this.btnAsign.UseVisualStyleBackColor = true;
@@ -384,7 +388,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(22, 55);
+            this.label12.Location = new System.Drawing.Point(22, 54);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(41, 12);
             this.label12.TabIndex = 13;
@@ -402,7 +406,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(22, 85);
+            this.label10.Location = new System.Drawing.Point(22, 83);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(41, 12);
             this.label10.TabIndex = 8;
@@ -411,7 +415,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(22, 112);
+            this.label11.Location = new System.Drawing.Point(22, 109);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(41, 12);
             this.label11.TabIndex = 9;
@@ -419,7 +423,7 @@
             // 
             // txtUnit
             // 
-            this.txtUnit.Location = new System.Drawing.Point(65, 108);
+            this.txtUnit.Location = new System.Drawing.Point(65, 105);
             this.txtUnit.Name = "txtUnit";
             this.txtUnit.Size = new System.Drawing.Size(145, 21);
             this.txtUnit.TabIndex = 10;
@@ -430,6 +434,7 @@
             // 
             this.groupBox2.Controls.Add(this.tableLayoutPanel1);
             this.groupBox2.Controls.Add(this.dataGridView1);
+            this.groupBox2.ForeColor = System.Drawing.Color.Red;
             this.groupBox2.Location = new System.Drawing.Point(12, 406);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1020, 359);
@@ -595,7 +600,25 @@
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(41, 12);
             this.label17.TabIndex = 15;
-            this.label17.Text = "清除：";
+            this.label17.Text = "备注：";
+            // 
+            // btnOpenTpl
+            // 
+            this.btnOpenTpl.Location = new System.Drawing.Point(841, 98);
+            this.btnOpenTpl.Name = "btnOpenTpl";
+            this.btnOpenTpl.Size = new System.Drawing.Size(70, 23);
+            this.btnOpenTpl.TabIndex = 16;
+            this.btnOpenTpl.Text = "打开模板";
+            this.btnOpenTpl.UseVisualStyleBackColor = true;
+            // 
+            // btnSaveTpl
+            // 
+            this.btnSaveTpl.Location = new System.Drawing.Point(930, 98);
+            this.btnSaveTpl.Name = "btnSaveTpl";
+            this.btnSaveTpl.Size = new System.Drawing.Size(70, 23);
+            this.btnSaveTpl.TabIndex = 15;
+            this.btnSaveTpl.Text = "保存模板";
+            this.btnSaveTpl.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -693,6 +716,8 @@
         private System.Windows.Forms.TextBox textLot;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Button btnOpenTpl;
+        private System.Windows.Forms.Button btnSaveTpl;
     }
 }
 
