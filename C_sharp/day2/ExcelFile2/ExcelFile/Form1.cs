@@ -44,6 +44,14 @@ namespace ExcelFile
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //设定界面颜色变化:从rgb和16进制来换算
+            //this.label1.BackColor = System.Drawing.Color.FromArgb(69, 209, 208);
+            this.label1.BackColor = System.Drawing.ColorTranslator.FromHtml("#008000");
+            this.label3.BackColor = System.Drawing.ColorTranslator.FromHtml("#9ACD32");
+            this.label5.BackColor = System.Drawing.ColorTranslator.FromHtml("#808080");
+            this.label7.BackColor = System.Drawing.ColorTranslator.FromHtml("#87CEFA");
+
+
             //窗体固定
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
 
