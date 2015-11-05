@@ -23,7 +23,46 @@ day2:
 			- 模板基本信息采用字典；
 			- 模板设置信息采用字典 + 对象；
 		怎么保存？先新建文档，整合该项目和项目ExcelFile。
-
+	ExcelFile2:	
+		(1)怎么使dataGridView控件失去焦点为什么还处于选中状态？
+		在leave事件中添加控件的ClearSelection方法。
+		private void dataGridView1_Leave(object sender, EventArgs e)
+        {
+            this.dataGridView1.ClearSelection();
+        }
+		(2)主文件只写事件处理函数，其他函数都移动到主文件之外的独立文件中。
+		第0个控件显示设置，只读；第1个控件显示OD。
+		(3)增加了DataReadWrite类，能实现从文件读取到界面了。颜色还没有实现。
+		(4)增加读取模板后的颜色变化std#008000, ctr#9ACD32, blank#808080,smp#87CEFA;
+		    this.label1.BackColor = System.Drawing.Color.FromArgb(69, 209, 208);
+            this.label1.BackColor = System.Drawing.ColorTranslator.FromHtml("#008000");
+		(5)C#中设置ComboBox控件为不可编辑状态
+			comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			comboBox检测：http://www.shangxueba.com/jingyan/1829518.html
+		(6)删除模板中的单元格，od值表不受影响。		
+		怎么对每个选中的单元格赋值？
+		//清除所选区域
+        public static  void clearSelectCell(DataGridView dgv) {
+            for (int i = 0; i < 8; i++) {
+                for (int j = 0; j < 12; j++)
+                {
+                    if (dgv.Rows[i].Cells[j].Selected==true)
+                      dgv.Rows[i].Cells[j].Value = "";
+                }
+            }
+        }
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 day3:	画图
 	winImg1:简单画图，熟悉概念：Graphics、Pen、Brush, Draw开头的划线方法，Fill开头的填充方法
