@@ -38,24 +38,24 @@
             this.剪切ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.粘贴ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridView0 = new System.Windows.Forms.DataGridView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.编辑ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.打开文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.保存文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.保存图片ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.编辑ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.复制ctrlcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.粘贴ctrlvToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.软件使用ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关于ELISAAnalyser001ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView0)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -140,15 +140,15 @@
             this.删除ToolStripMenuItem.Text = "删除";
             this.删除ToolStripMenuItem.Click += new System.EventHandler(this.删除ToolStripMenuItem_Click);
             // 
-            // dataGridView2
+            // dataGridView0
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(6, 19);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowTemplate.Height = 23;
-            this.dataGridView2.Size = new System.Drawing.Size(787, 220);
-            this.dataGridView2.TabIndex = 4;
-            this.dataGridView2.Leave += new System.EventHandler(this.dataGridView2_Leave);
+            this.dataGridView0.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView0.Location = new System.Drawing.Point(6, 20);
+            this.dataGridView0.Name = "dataGridView0";
+            this.dataGridView0.RowTemplate.Height = 23;
+            this.dataGridView0.Size = new System.Drawing.Size(787, 220);
+            this.dataGridView0.TabIndex = 4;
+            this.dataGridView0.Leave += new System.EventHandler(this.dataGridView2_Leave);
             // 
             // menuStrip1
             // 
@@ -172,6 +172,24 @@
             this.文件ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.文件ToolStripMenuItem.Text = "文件";
             // 
+            // 打开文件ToolStripMenuItem
+            // 
+            this.打开文件ToolStripMenuItem.Name = "打开文件ToolStripMenuItem";
+            this.打开文件ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.打开文件ToolStripMenuItem.Text = "打开文件";
+            // 
+            // 保存文件ToolStripMenuItem
+            // 
+            this.保存文件ToolStripMenuItem.Name = "保存文件ToolStripMenuItem";
+            this.保存文件ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.保存文件ToolStripMenuItem.Text = "保存文件";
+            // 
+            // 保存图片ToolStripMenuItem
+            // 
+            this.保存图片ToolStripMenuItem.Name = "保存图片ToolStripMenuItem";
+            this.保存图片ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.保存图片ToolStripMenuItem.Text = "保存图片";
+            // 
             // 编辑ToolStripMenuItem
             // 
             this.编辑ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -182,6 +200,24 @@
             this.编辑ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.编辑ToolStripMenuItem.Text = "编辑";
             // 
+            // 复制ctrlcToolStripMenuItem
+            // 
+            this.复制ctrlcToolStripMenuItem.Name = "复制ctrlcToolStripMenuItem";
+            this.复制ctrlcToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.复制ctrlcToolStripMenuItem.Text = "复制(ctrl+c)";
+            // 
+            // 粘贴ctrlvToolStripMenuItem
+            // 
+            this.粘贴ctrlvToolStripMenuItem.Name = "粘贴ctrlvToolStripMenuItem";
+            this.粘贴ctrlvToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.粘贴ctrlvToolStripMenuItem.Text = "粘贴(ctrl+v)";
+            // 
+            // 删除ToolStripMenuItem1
+            // 
+            this.删除ToolStripMenuItem1.Name = "删除ToolStripMenuItem1";
+            this.删除ToolStripMenuItem1.Size = new System.Drawing.Size(141, 22);
+            this.删除ToolStripMenuItem1.Text = "删除";
+            // 
             // 帮助ToolStripMenuItem
             // 
             this.帮助ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -190,42 +226,6 @@
             this.帮助ToolStripMenuItem.Name = "帮助ToolStripMenuItem";
             this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.帮助ToolStripMenuItem.Text = "帮助";
-            // 
-            // 打开文件ToolStripMenuItem
-            // 
-            this.打开文件ToolStripMenuItem.Name = "打开文件ToolStripMenuItem";
-            this.打开文件ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.打开文件ToolStripMenuItem.Text = "打开文件";
-            // 
-            // 保存文件ToolStripMenuItem
-            // 
-            this.保存文件ToolStripMenuItem.Name = "保存文件ToolStripMenuItem";
-            this.保存文件ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.保存文件ToolStripMenuItem.Text = "保存文件";
-            // 
-            // 保存图片ToolStripMenuItem
-            // 
-            this.保存图片ToolStripMenuItem.Name = "保存图片ToolStripMenuItem";
-            this.保存图片ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.保存图片ToolStripMenuItem.Text = "保存图片";
-            // 
-            // 复制ctrlcToolStripMenuItem
-            // 
-            this.复制ctrlcToolStripMenuItem.Name = "复制ctrlcToolStripMenuItem";
-            this.复制ctrlcToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.复制ctrlcToolStripMenuItem.Text = "复制(ctrl+c)";
-            // 
-            // 粘贴ctrlvToolStripMenuItem
-            // 
-            this.粘贴ctrlvToolStripMenuItem.Name = "粘贴ctrlvToolStripMenuItem";
-            this.粘贴ctrlvToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.粘贴ctrlvToolStripMenuItem.Text = "粘贴(ctrl+v)";
-            // 
-            // 删除ToolStripMenuItem1
-            // 
-            this.删除ToolStripMenuItem1.Name = "删除ToolStripMenuItem1";
-            this.删除ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.删除ToolStripMenuItem1.Text = "删除";
             // 
             // 软件使用ToolStripMenuItem
             // 
@@ -241,7 +241,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dataGridView1);
+            this.groupBox1.Controls.Add(this.dataGridView0);
             this.groupBox1.Location = new System.Drawing.Point(12, 28);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1020, 250);
@@ -251,7 +251,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.dataGridView2);
+            this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Location = new System.Drawing.Point(12, 297);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1020, 250);
@@ -276,7 +276,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView0)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -297,7 +297,7 @@
         private System.Windows.Forms.ToolStripMenuItem 剪切ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 粘贴ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 删除ToolStripMenuItem;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dataGridView0;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 文件ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 打开文件ToolStripMenuItem;

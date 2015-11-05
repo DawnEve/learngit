@@ -31,25 +31,30 @@ namespace ExcelFile
 
             //设置数据显示框位置
             this.dataGridView1.Width = 787;
-            this.dataGridView2.Width = 787;
+            this.dataGridView0.Width = 787;
 
-            //实例化一个dataGridView控制类
+
+            //实例化一个dataGridView类：控制类
+            DgvCtrl dc0 = new DgvCtrl();
+            //初始化一个dataGridView
+            dc0.dataGridView1Init(this.dataGridView0);
+            //添加测试数据
+            //dc0.addTestData(this.dataGridView0);
+            //设置为只读
+            this.dataGridView0.ReadOnly = true;  
+
+            //实例化一个dataGridView类：数据显示
             DgvCtrl dc1 = new DgvCtrl();
             //初始化一个dataGridView
             dc1.dataGridView1Init(this.dataGridView1);
             //添加测试数据
-            //dc1.addTestData(this.dataGridView1);
+            dc1.addTestData(this.dataGridView1);
 
-            //实例化一个dataGridView控制类
-            DgvCtrl dc2 = new DgvCtrl();
-            //初始化一个dataGridView
-            dc2.dataGridView1Init(this.dataGridView2);
-            //添加测试数据
-            dc2.addTestData(this.dataGridView2);
+
 
             //消除焦点
             this.dataGridView1.ClearSelection();
-            this.dataGridView2.ClearSelection();
+            this.dataGridView0.ClearSelection();
         }
 
 
@@ -219,7 +224,7 @@ namespace ExcelFile
 
         private void dataGridView2_Leave(object sender, EventArgs e)
         {
-            this.dataGridView2.ClearSelection();
+            this.dataGridView0.ClearSelection();
         }
 
 
