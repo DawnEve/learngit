@@ -55,7 +55,7 @@ namespace ExcelFile
         //板子OD信息
         private Double[,] od = new double[8, 12];
 
-        public static string textDebug { get; set; }
+        //public static string textDebug { get; set; }
 
 
 
@@ -299,7 +299,7 @@ namespace ExcelFile
                     if (tpl[i, j] != null)
                     {
                         Info info = tpl[i, j];
-                        textDebug += "(" + info.i + "," + info.j + ")," + info.well_class + "(" + info.well_num + "): " + " conc=" + info.well_conc + "\n";
+                        //textDebug += "(" + info.i + "," + info.j + ")," + info.well_class + "(" + info.well_num + "): " + " conc=" + info.well_conc + "\n";
                         dgv.Rows[i].Cells[j].Value = info.well_class + " " + info.well_num + System.Environment.NewLine + info.well_conc;
 
                         //调整板子的颜色变化
@@ -322,7 +322,7 @@ namespace ExcelFile
                 {
                     if (od[i, j] != 0)
                     {
-                        textDebug += "(" + i + "," + j + ")" + od[i, j] + "\n";
+                        //textDebug += "(" + i + "," + j + ")" + od[i, j] + "\n";
                         dgv.Rows[i].Cells[j].Value = od[i, j];
                     }
                 }
