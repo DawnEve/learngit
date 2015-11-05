@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace ExcelFile
 {
+    /// <summary>
+    /// 坚持只在本文件中写事件处理函数，其他的函数写到单独的文件中
+    /// </summary>
     public partial class Form1 : Form
     {
 
@@ -144,11 +147,20 @@ namespace ExcelFile
             this.dataGridView1.Rows[e.RowIndex].ErrorText = "";
             double NewVal = 0;
             //empty or number, or go error
-            if ( e.FormattedValue.ToString()!="" && (!double.TryParse(e.FormattedValue.ToString(), out NewVal) || NewVal < 0))
+            if ( e.FormattedValue.ToString()!="")
             {
-                e.Cancel = true;
-                this.dataGridView1.Rows[e.RowIndex].ErrorText = "只能输入数字";
-                return;
+                if ((!double.TryParse(e.FormattedValue.ToString(), out NewVal) || NewVal < 0))
+                {
+                    e.Cancel = true;
+                    //this.dataGridView1.Rows[e.RowIndex].ErrorText = "只能输入数字";
+                    MessageBox.Show("请输入数字！","系统提示");
+                    return;
+                }
+                else
+                {
+                    //todo:如果输入001，应该显示1，而不是001.
+                    this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value= float.Parse(e.FormattedValue.ToString());
+                }
             }
 
         }
