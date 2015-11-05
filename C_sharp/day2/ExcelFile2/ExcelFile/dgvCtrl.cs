@@ -63,20 +63,24 @@ namespace ExcelFile
                 dgv.Rows[i].Resizable = DataGridViewTriState.False;
             }
 
-            //消除焦点
-            dgv.ClearSelection();
+            
 
 
             //如果是设置框，需要额外设置属性
             if (isSettings)
             {
                 //设置只读
-                dgv.ReadOnly = true;  
+                dgv.ReadOnly = true;
 
                 //方格内换行
                 dgv.RowsDefaultCellStyle.WrapMode = DataGridViewTriState.True;
                 //内容居中
-                
+
+            }
+            else 
+            {
+                //消除焦点
+                dgv.ClearSelection();
             }
 
         }
@@ -151,6 +155,70 @@ namespace ExcelFile
                     else if (dgv.ColumnCount - 1 >= cc + iCol)
                     {
                         dgv.Rows[r + iRow].Cells[cc + iCol].Value = valuesInRow[iCol]; //被注释的语句,与此处作用相同
+                    }
+                }
+            }
+        }
+
+
+        //含有浓度的设置
+        public static void setValueToUI(DataGridView dgv, DataGridView dgv1, int well_class_index, string well_num, double well_conc)
+        {
+            //MessageBox.Show("调用了赋值函数:" + well_class_index.ToString() + " - " + well_num + " - " + well_conc);
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 12; j++)
+                {
+                    if (dgv.Rows[i].Cells[j].Selected == true)
+                    {
+                        //Info info = tpl[i, j];
+                        Info info;
+                        if (well_class_index == 0)
+                        {
+                            info = new Info(i, j, "std", well_num, well_conc);
+                        }
+                        else
+                        {
+                            info = new Info(i, j, "ctr", well_num, well_conc);
+                        }
+
+                        dgv.Rows[i].Cells[j].Value = info.well_class + " " + info.well_num + System.Environment.NewLine + info.well_conc;
+
+                        //调整板子的颜色变化
+                        DataReadWrite.changeODBackColor(info.well_class, dgv, info.i, info.j);//set板子
+                        DataReadWrite.changeODBackColor(info.well_class, dgv1, info.i, info.j);//od板子
+                    }
+                }
+            }
+        }
+
+
+        //含有浓度的设置
+        public static void setValueToUI(DataGridView dgv, DataGridView dgv1, int well_class_index, string well_num)
+        {
+            //MessageBox.Show("调用了赋值函数:" + well_class_index.ToString() + " - " + well_num + " - " + well_conc);
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 12; j++)
+                {
+                    if (dgv.Rows[i].Cells[j].Selected == true)
+                    {
+                        //Info info = tpl[i, j];
+                        Info info;
+                        if (well_class_index == 2)
+                        {
+                            info = new Info(i, j, "blank", well_num);
+                        }
+                        else
+                        {
+                            info = new Info(i, j, "smp", well_num);
+                        }
+
+                        dgv.Rows[i].Cells[j].Value = info.well_class + " " + info.well_num;
+
+                        //调整板子的颜色变化
+                        DataReadWrite.changeODBackColor(info.well_class, dgv, info.i, info.j);//set板子
+                        DataReadWrite.changeODBackColor(info.well_class, dgv1, info.i, info.j);//od板子
                     }
                 }
             }

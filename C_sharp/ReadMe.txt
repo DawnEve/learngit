@@ -36,7 +36,32 @@ day2:
 		(4)增加读取模板后的颜色变化std#008000, ctr#9ACD32, blank#808080,smp#87CEFA;
 		    this.label1.BackColor = System.Drawing.Color.FromArgb(69, 209, 208);
             this.label1.BackColor = System.Drawing.ColorTranslator.FromHtml("#008000");
-			
+		(5)C#中设置ComboBox控件为不可编辑状态
+			comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			comboBox检测：http://www.shangxueba.com/jingyan/1829518.html
+		(6)删除模板中的单元格，od值表不受影响。		
+		怎么对每个选中的单元格赋值？
+		//清除所选区域
+        public static  void clearSelectCell(DataGridView dgv) {
+            for (int i = 0; i < 8; i++) {
+                for (int j = 0; j < 12; j++)
+                {
+                    if (dgv.Rows[i].Cells[j].Selected==true)
+                      dgv.Rows[i].Cells[j].Value = "";
+                }
+            }
+        }
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 
 day3:	画图
