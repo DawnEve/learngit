@@ -257,11 +257,17 @@ namespace ExcelFile
 
                 //输出板子基本信息：日期、单位、模型编号
                 //this.richTextBox1.Text = "";
-                foreach (string item in plate_info.Keys)
+                /*foreach (string item in plate_info.Keys)
                 {
                     string info = this.plate_info[item];
                     this.richTextBox1.Text += item + " [:] " + info + "\n";
-                }
+                }*/
+                this.textName.Text = plate_info["Name"];
+                this.textLabDate.Text = plate_info["LabDate"];
+                this.textLot.Text = plate_info["Lot"];
+                this.txtUnit.Text = plate_info["Unit"];
+
+
 
                 //从中间数据读取到表格中
                 DataReadWrite.readIntoUI(tpl, this.dataGridView0,this.dataGridView1);//模板文件

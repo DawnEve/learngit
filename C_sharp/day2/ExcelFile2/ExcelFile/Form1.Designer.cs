@@ -132,9 +132,9 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(1132, 159);
+            this.richTextBox1.Location = new System.Drawing.Point(1086, 115);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(261, 266);
+            this.richTextBox1.Size = new System.Drawing.Size(220, 594);
             this.richTextBox1.TabIndex = 3;
             this.richTextBox1.Text = "";
             // 
@@ -195,7 +195,7 @@
             this.帮助ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1500, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(1343, 25);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -596,7 +596,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(1130, 130);
+            this.label17.Location = new System.Drawing.Point(1084, 86);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(41, 12);
             this.label17.TabIndex = 15;
@@ -624,7 +624,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1500, 804);
+            this.ClientSize = new System.Drawing.Size(1343, 804);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.textLot);
             this.Controls.Add(this.label16);
