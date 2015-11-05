@@ -53,7 +53,12 @@ namespace ExcelFile
 
 
             //添加组合框
-            //this.comboBox1.ControlAdded.
+            string[] well_classes ={ "标准品", "质控品", "空白对照", "送检样品" };
+            comboBox1.DataSource = well_classes;
+            comboBox1.SelectedIndex = 0;
+            //只能选择，不能编辑
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.FlatStyle = FlatStyle.Popup;//样式
 
 
             //窗体固定
@@ -109,7 +114,10 @@ namespace ExcelFile
         //控制框不能输入
         private void dataGridView0_KeyDown(object sender, KeyEventArgs e)
         {
-            MessageBox.Show("请使用右侧控制区完成设置！", "系统提示");
+            if ((e.KeyCode >= Keys.A && e.KeyCode <= Keys.Z) || (e.KeyValue >= '0' && e.KeyValue <= '9') || e.KeyValue == '.' || (e.KeyCode >= Keys.NumPad0 && e.KeyCode <= Keys.NumPad9))
+
+                // if (!(e.KeyChar > '0' && e.KeyChar < '9' || e.KeyChar == '.' || e.KeyChar == 8))
+                MessageBox.Show("请使用右侧控制区完成设置！", "系统提示");
         }
 
 
@@ -160,6 +168,7 @@ namespace ExcelFile
             //this.dataGridView1.CurrentCell = null;
             DgvCtrl.clearSelectCell(this.dataGridView1);
         }
+
         //右键菜单命令-删除
         private void 删除ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -192,15 +201,23 @@ namespace ExcelFile
 
         }
 
+        //失去焦点-0
+        private void dataGridView0_Leave(object sender, EventArgs e)
+        {
+            //this.dataGridView0.ClearSelection();
+        }
+
+        //失去焦点-1
         private void dataGridView1_Leave(object sender, EventArgs e)
         {
             this.dataGridView1.ClearSelection();
         }
-
-        private void dataGridView2_Leave(object sender, EventArgs e)
+        //获得焦点-0
+        private void dataGridView1_Enter(object sender, EventArgs e)
         {
             this.dataGridView0.ClearSelection();
         }
+
 
         //解析文件
         private void btnOpen_Click(object sender, EventArgs e)
@@ -234,21 +251,118 @@ namespace ExcelFile
                 DataReadWrite.readIntoUI(tpl, this.dataGridView0,this.dataGridView1);//模板文件
                 DataReadWrite.readIntoUI(od, this.dataGridView1);//od文件
 
-
                 this.richTextBox1.Text += DataReadWrite.textDebug;
-
-
-
-
-
             } 
         }
+
+
+
 
         //保存文件
         private void btnSave_Click(object sender, EventArgs e)
         {
 
         }
+
+
+        //删除模板上的数据：
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            if (this.dataGridView0.SelectedCells.Count == 0)
+            {
+                MessageBox.Show("请先在左侧模板中选择一个孔。", "系统提示");
+                return;
+            }
+
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 12; j++)
+                {
+                    if (this.dataGridView0.Rows[i].Cells[j].Selected == true)
+                    {
+
+                        this.dataGridView0.Rows[i].Cells[j].Value = "";
+
+                        //清除颜色 - 调整板子的颜色变化
+                        DataReadWrite.changeODBackColor("", this.dataGridView0, i, j);//set板子
+                        DataReadWrite.changeODBackColor("", this.dataGridView1, i, j);//od板子
+                    }
+                }
+            }
+        }
+
+
+        //设置模板：要注意对用户数据的验证过滤
+        private void btnAsign_Click(object sender, EventArgs e)
+        {
+            //如果没有选择文本框，报错
+            // int i=dataGridView1.SelectedRows.Count; //选择的行数。
+            if (this.dataGridView0.SelectedCells.Count == 0) {
+                MessageBox.Show("请先在左侧模板中选择一个孔。","系统提示");
+                return;
+            }
+
+
+            //如果是标准品/质控品没有填写编号，则报错
+            if (this.comboBox1.SelectedIndex < 2)
+            {
+                if (this.txtNum.Text.Trim() == "")
+                {
+                    MessageBox.Show("请填写编号");
+                    return;
+                }
+                if (this.txtConc.Text.Trim() == "")
+                {
+                    MessageBox.Show("请填写浓度");
+                    return;
+                }
+                //浓度不能是负数
+                if (float.Parse(this.txtConc.Text.Trim()) < 0)
+                {
+                    MessageBox.Show("浓度不能为负值");
+                    return;
+                }
+
+                //给图形界面赋值
+                DgvCtrl.setValueToUI(this.dataGridView0, this.dataGridView1, this.comboBox1.SelectedIndex, this.txtNum.Text.Trim(), double.Parse(this.txtConc.Text.Trim()));
+            }
+            else
+            {
+                //如果是空白对照 或未知样品 没填写编号，则报错
+                if (this.comboBox1.SelectedIndex >= 2)
+                {
+                    if (this.txtNum.Text.Trim() == "")
+                    {
+                        MessageBox.Show("请填写编号");
+                        return;
+                    }
+                }
+                //给图形界面赋值
+                DgvCtrl.setValueToUI(this.dataGridView0, this.dataGridView1, this.comboBox1.SelectedIndex, this.txtNum.Text.Trim() );
+            }
+        }
+
+
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //计数从0开始。01234
+            if (this.comboBox1.SelectedIndex >= 2)
+            {
+                this.txtConc.Text = "";
+                this.txtConc.Enabled = false;
+            }
+            else 
+            {
+                this.txtConc.Enabled = true;
+            }
+            
+
+        }
+
+
+
+
 
 
 

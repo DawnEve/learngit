@@ -330,17 +330,32 @@ namespace ExcelFile
         }
 
         //根据行列设置孔的颜色变化
-        private static void changeODBackColor(string well_class,DataGridView dgv, int i, int j) {
+        public static void changeODBackColor(string well_class,DataGridView dgv, int i, int j) {
             if (well_class == "std")
                 dgv.Rows[i].Cells[j].Style.BackColor = System.Drawing.ColorTranslator.FromHtml("#008000");
-            if (well_class == "ctr")
+            else if (well_class == "ctr")
                 dgv.Rows[i].Cells[j].Style.BackColor = System.Drawing.ColorTranslator.FromHtml("#9ACD32");
-            if (well_class == "blank")
+            else if (well_class == "blank")
                 dgv.Rows[i].Cells[j].Style.BackColor =System.Drawing.ColorTranslator.FromHtml("#808080");
-            if (well_class == "smp")
+            else if (well_class == "smp")
                 dgv.Rows[i].Cells[j].Style.BackColor =System.Drawing.ColorTranslator.FromHtml("#87CEFA");
+            else
+            {
+                dgv.Rows[i].Cells[j].Style.BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
+            }
 
         }
+
+
+
+        //=================================从界面到文件
+        private static void aa() { 
+            
+        
+        }
+
+
+
 
 
     }
