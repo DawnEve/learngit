@@ -14,7 +14,7 @@ namespace ExcelFile
     class DgvCtrl
     {
         //初始化控件
-        public static void dataGridViewInit(DataGridView dgv)
+        public static void dataGridViewInit(DataGridView dgv,bool isSettings=false)
         {
             //样式
             //列标题居中显示
@@ -29,7 +29,7 @@ namespace ExcelFile
 
 
 
-            //一共12行
+            //一共12列
             int dgvWidth = dgv.Width;
             for (int i = 0; i < 12; i++)
             {
@@ -42,18 +42,22 @@ namespace ExcelFile
                 dgv.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
                 //填充满
                 dgv.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                //控制控件居中显示
+                if (isSettings)
+                    dgv.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
 
 
-            //一共8列
+            //一共8行
             string[] RowNames = { "A", "B", "C", "D", "E", "F", "G", "H" };
-            dgv.Height = 222;
+            dgv.Height = 302;//222
             for (int i = 0; i < 8; i++)
             {
                 dgv.Rows.Add();
                 dgv.Rows[i].HeaderCell.Value = RowNames[i];
                 //最小高度
-                dgv.Rows[i].MinimumHeight = 25;
+                dgv.Rows[i].MinimumHeight = 35;//25
 
                 //不允许改变大小
                 dgv.Rows[i].Resizable = DataGridViewTriState.False;
@@ -61,6 +65,20 @@ namespace ExcelFile
 
             //消除焦点
             dgv.ClearSelection();
+
+
+            //如果是设置框，需要额外设置属性
+            if (isSettings)
+            {
+                //设置只读
+                dgv.ReadOnly = true;  
+
+                //方格内换行
+                dgv.RowsDefaultCellStyle.WrapMode = DataGridViewTriState.True;
+                //内容居中
+                
+            }
+
         }
 
         //添加测试数据

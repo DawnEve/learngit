@@ -67,7 +67,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(6, 20);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(787, 220);
+            this.dataGridView1.Size = new System.Drawing.Size(787, 302);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDown);
             this.dataGridView1.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridView1_CellValidating);
@@ -76,7 +76,7 @@
             // 
             // btnOpen
             // 
-            this.btnOpen.Location = new System.Drawing.Point(1058, 226);
+            this.btnOpen.Location = new System.Drawing.Point(1038, 39);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(75, 23);
             this.btnOpen.TabIndex = 1;
@@ -86,7 +86,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(1058, 255);
+            this.btnSave.Location = new System.Drawing.Point(1119, 39);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 2;
@@ -96,9 +96,9 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(1041, 48);
+            this.richTextBox1.Location = new System.Drawing.Point(1038, 80);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(179, 156);
+            this.richTextBox1.Size = new System.Drawing.Size(450, 266);
             this.richTextBox1.TabIndex = 3;
             this.richTextBox1.Text = "";
             // 
@@ -146,7 +146,7 @@
             this.dataGridView0.Location = new System.Drawing.Point(6, 20);
             this.dataGridView0.Name = "dataGridView0";
             this.dataGridView0.RowTemplate.Height = 23;
-            this.dataGridView0.Size = new System.Drawing.Size(787, 220);
+            this.dataGridView0.Size = new System.Drawing.Size(787, 302);
             this.dataGridView0.TabIndex = 4;
             this.dataGridView0.Leave += new System.EventHandler(this.dataGridView2_Leave);
             // 
@@ -158,7 +158,7 @@
             this.帮助ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1232, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(1500, 25);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -244,7 +244,7 @@
             this.groupBox1.Controls.Add(this.dataGridView0);
             this.groupBox1.Location = new System.Drawing.Point(12, 28);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1020, 250);
+            this.groupBox1.Size = new System.Drawing.Size(1020, 330);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "请设置模板(提示：使用右边控制区)";
@@ -252,9 +252,9 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dataGridView1);
-            this.groupBox2.Location = new System.Drawing.Point(12, 297);
+            this.groupBox2.Location = new System.Drawing.Point(12, 375);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1020, 250);
+            this.groupBox2.Size = new System.Drawing.Size(1020, 330);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "请输入OD值(提示：右键菜单可以复制、粘贴等)";
@@ -263,7 +263,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1232, 625);
+            this.ClientSize = new System.Drawing.Size(1500, 737);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.richTextBox1);
