@@ -30,7 +30,13 @@ day2:
         {
             this.dataGridView1.ClearSelection();
         }
-		(2)
+		(2)主文件只写事件处理函数，其他函数都移动到主文件之外的独立文件中。
+		第0个控件显示设置，只读；第1个控件显示OD。
+		(3)增加了DataReadWrite类，能实现从文件读取到界面了。颜色还没有实现。
+		(4)增加读取模板后的颜色变化std#008000, ctr#9ACD32, blank#808080,smp#87CEFA;
+		    this.label1.BackColor = System.Drawing.Color.FromArgb(69, 209, 208);
+            this.label1.BackColor = System.Drawing.ColorTranslator.FromHtml("#008000");
+			
 		
 
 day3:	画图

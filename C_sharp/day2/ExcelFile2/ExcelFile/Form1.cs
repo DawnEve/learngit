@@ -15,12 +15,27 @@ namespace ExcelFile
     /// </summary>
     public partial class Form1 : Form
     {
+        /* 定义一些公用属性
+         *  
+         */
+        //====================================中间信息（文件与界面之间）
+        //板子基本信息-plate_Info
+        private Dictionary<string, string> plate_info = new Dictionary<string, string>();
 
-        //定义一个模板对象 dataGridView1;
+        //板子模板设置信息
+        private Info[,] tpl = new Info[8, 12];
+
+        //板子OD信息
+        private Double[,] od = new double[8, 12];
+
+        //====================================加工过的信息
 
 
-        //定义一个数据对象 dataGridView2;
 
+
+        /// <summary>
+        /// 开始定义方法
+        /// </summary>
 
         public Form1()
         {
@@ -29,6 +44,18 @@ namespace ExcelFile
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //设定界面底部颜色变化:从rgb和16进制来换算
+            //this.label1.BackColor = System.Drawing.Color.FromArgb(69, 209, 208);
+            this.label1.BackColor = System.Drawing.ColorTranslator.FromHtml("#008000");
+            this.label3.BackColor = System.Drawing.ColorTranslator.FromHtml("#9ACD32");
+            this.label5.BackColor = System.Drawing.ColorTranslator.FromHtml("#808080");
+            this.label7.BackColor = System.Drawing.ColorTranslator.FromHtml("#87CEFA");
+
+
+            //添加组合框
+            //this.comboBox1.ControlAdded.
+
+
             //窗体固定
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
 
@@ -38,16 +65,13 @@ namespace ExcelFile
 
 
             //实例化一个dataGridView类：0控制类
-            DgvCtrl.dataGridViewInit(this.dataGridView0);
-            //添加测试数据
-            //dc0.addTestData(this.dataGridView0);
-            //设置为只读
-            this.dataGridView0.ReadOnly = true;  
+            DgvCtrl.dataGridViewInit(this.dataGridView0,true);
+            
 
             //实例化一个dataGridView类：1数据显示
             DgvCtrl.dataGridViewInit(this.dataGridView1);
             //添加测试数据
-            DgvCtrl.addTestData(this.dataGridView1);
+            //DgvCtrl.addTestData(this.dataGridView1);
 
         }
 
@@ -82,8 +106,11 @@ namespace ExcelFile
         }
 
 
-
-
+        //控制框不能输入
+        private void dataGridView0_KeyDown(object sender, KeyEventArgs e)
+        {
+            MessageBox.Show("请使用右侧控制区完成设置！", "系统提示");
+        }
 
 
         //键盘事件ctrl+c和ctrl+v和ctrl+x和delete
@@ -159,22 +186,9 @@ namespace ExcelFile
                 else
                 {
                     //todo:如果输入001，应该显示1，而不是001.
-                    this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value= float.Parse(e.FormattedValue.ToString());
+                    //this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value= float.Parse(e.FormattedValue.ToString());
                 }
             }
-
-        }
-
-
-
-
-        private void btnOpen_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
 
         }
 
@@ -187,6 +201,58 @@ namespace ExcelFile
         {
             this.dataGridView0.ClearSelection();
         }
+
+        //解析文件
+        private void btnOpen_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            //openFileDialog1.InitialDirectory = "E:\\";
+            openFileDialog1.Filter = "mub File(*.mub)|*.mub|All files|*.*";
+            openFileDialog1.RestoreDirectory = true;
+            openFileDialog1.FilterIndex = 2;
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string fName = openFileDialog1.FileName;
+                //调用类文件读取文件，并获取模板信息、OD信息   
+                DataReadWrite df = new DataReadWrite();
+                plate_info = df.readFromFile(fName);//获取基本信息
+                Info[,] tpl = df.getTpl();//模板信息
+                double[,] od = df.getOd();//OD信息
+
+
+
+                //输出板子基本信息：日期、单位、模型编号
+                this.richTextBox1.Text = "";
+                foreach (string item in plate_info.Keys)
+                {
+                    string info = this.plate_info[item];
+                    this.richTextBox1.Text += item + " [:] " + info + "\n";
+                }
+
+                //从中间数据读取到表格中
+                DataReadWrite.readIntoUI(tpl, this.dataGridView0,this.dataGridView1);//模板文件
+                DataReadWrite.readIntoUI(od, this.dataGridView1);//od文件
+
+
+                this.richTextBox1.Text += DataReadWrite.textDebug;
+
+
+
+
+
+            } 
+        }
+
+        //保存文件
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+
 
 
 
