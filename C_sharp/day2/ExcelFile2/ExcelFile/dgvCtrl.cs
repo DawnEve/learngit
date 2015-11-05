@@ -14,7 +14,7 @@ namespace ExcelFile
     class DgvCtrl
     {
         //初始化控件
-        public void dataGridViewInit(DataGridView dgv)
+        public static void dataGridViewInit(DataGridView dgv)
         {
             //样式
             //列标题居中显示
@@ -59,10 +59,12 @@ namespace ExcelFile
                 dgv.Rows[i].Resizable = DataGridViewTriState.False;
             }
 
+            //消除焦点
+            dgv.ClearSelection();
         }
 
         //添加测试数据
-        public void addTestData(DataGridView dgv)
+        public static void addTestData(DataGridView dgv)
         {
             for (int i = 0; i < 8; i++)
             {
@@ -76,23 +78,65 @@ namespace ExcelFile
                 dgv.Rows[i].Cells[6].Value = i + 0.754;
                 dgv.Rows[i].Cells[7].Value = i + 0.820;
             }
-            //添加测试数据
+            //添加随机测试数据
             dgv.Rows[4].Cells[3].Value = 10.00;
         }
 
-
-        public void clearSelectCell(DataGridView dgv) {
+        //清除所选区域
+        public static  void clearSelectCell(DataGridView dgv) {
             for (int i = 0; i < 12; i++) {
                 for (int j = 0; j < 8; j++)
                 {
                     if (dgv.Rows[j].Cells[i].Selected==true)
                       dgv.Rows[j].Cells[i].Value = "";
-
                 }
-            
             }
         }
 
+
+
+        //从剪切板粘贴数据到dataGridView控件
+        public static void pasteToDataGridView(DataGridView dgv)
+        {
+            //如果当前没有选中，则直接返回
+            if (dgv.CurrentCell == null) return;
+
+            //------------从剪切板获得数据字符文本
+            string paste = Clipboard.GetText();
+            //剪切板数据转化成字符串，并去除首尾空格
+            paste = paste.ToString().Trim();
+            //如果字符串为空，则直接返回
+            if (string.IsNullOrEmpty(paste)) return;
+            //---------经过检验不为空
+
+            //设置行和列分隔符
+            char[] rowSplitter = { '\r', '\n' };
+            char[] columnSplitter = { '\t' };
+
+            //从剪切板获得数据
+            IDataObject dataInClipboard = Clipboard.GetDataObject();
+            string stringInClipboard = (string)dataInClipboard.GetData(DataFormats.Text);
+            //?
+            string[] rowsInClipboard = stringInClipboard.Split(rowSplitter, StringSplitOptions.RemoveEmptyEntries);
+            stringInClipboard = stringInClipboard.Replace("?", ""); //刪除转行的行未空格
+            //获得单元格位置
+            int r = dgv.SelectedCells[0].RowIndex;
+            int cc = dgv.SelectedCells[0].ColumnIndex;
+
+            for (int iRow = 0; iRow < rowsInClipboard.Length; iRow++)
+            {
+                string[] valuesInRow = rowsInClipboard[iRow].Split(columnSplitter);
+                for (int iCol = 0; iCol < valuesInRow.Length; iCol++)
+                {
+                    if ((r + iRow) > (dgv.Rows.Count - 1)) //如果拷贝数据超过现有单元格长度,要中止运行,否则会报错
+                    { break; }
+                    else if (dgv.ColumnCount - 1 >= cc + iCol)
+                    {
+                        dgv.Rows[r + iRow].Cells[cc + iCol].Value = valuesInRow[iCol]; //被注释的语句,与此处作用相同
+                    }
+                }
+            }
+        }
 
 
     }

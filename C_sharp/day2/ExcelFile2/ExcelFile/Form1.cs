@@ -34,27 +34,18 @@ namespace ExcelFile
             this.dataGridView0.Width = 787;
 
 
-            //实例化一个dataGridView类：控制类
-            DgvCtrl dc0 = new DgvCtrl();
-            //初始化一个dataGridView
-            dc0.dataGridViewInit(this.dataGridView0);
+            //实例化一个dataGridView类：0控制类
+            DgvCtrl.dataGridViewInit(this.dataGridView0);
             //添加测试数据
             //dc0.addTestData(this.dataGridView0);
             //设置为只读
             this.dataGridView0.ReadOnly = true;  
 
-            //实例化一个dataGridView类：数据显示
-            DgvCtrl dc1 = new DgvCtrl();
-            //初始化一个dataGridView
-            dc1.dataGridViewInit(this.dataGridView1);
+            //实例化一个dataGridView类：1数据显示
+            DgvCtrl.dataGridViewInit(this.dataGridView1);
             //添加测试数据
-            dc1.addTestData(this.dataGridView1);
+            DgvCtrl.addTestData(this.dataGridView1);
 
-
-
-            //消除焦点
-            this.dataGridView1.ClearSelection();
-            this.dataGridView0.ClearSelection();
         }
 
 
@@ -90,48 +81,6 @@ namespace ExcelFile
 
 
 
-        //从剪切板粘贴数据到dataGridView控件
-        private void pasteToDataGridView()
-        {
-            //如果当前没有选中，则直接返回
-            if (this.dataGridView1.CurrentCell == null) return;
-
-            //------------从剪切板获得数据字符文本
-            string paste = Clipboard.GetText();
-            //剪切板数据转化成字符串，并去除首尾空格
-            paste = paste.ToString().Trim();
-            //如果字符串为空，则直接返回
-            if (string.IsNullOrEmpty(paste)) return;
-            //---------经过检验不为空
-
-            //设置行和列分隔符
-            char[] rowSplitter = { '\r', '\n' };
-            char[] columnSplitter = { '\t' };
-
-            //从剪切板获得数据
-            IDataObject dataInClipboard = Clipboard.GetDataObject();
-            string stringInClipboard = (string)dataInClipboard.GetData(DataFormats.Text);
-            //?
-            string[] rowsInClipboard = stringInClipboard.Split(rowSplitter, StringSplitOptions.RemoveEmptyEntries);
-            stringInClipboard = stringInClipboard.Replace("?", ""); //刪除转行的行未空格
-            //获得单元格位置
-            int r = dataGridView1.SelectedCells[0].RowIndex;
-            int cc = dataGridView1.SelectedCells[0].ColumnIndex;
-
-            for (int iRow = 0; iRow < rowsInClipboard.Length; iRow++)
-            {
-                string[] valuesInRow = rowsInClipboard[iRow].Split(columnSplitter);
-                for (int iCol = 0; iCol < valuesInRow.Length; iCol++)
-                {
-                    if ((r + iRow) > (dataGridView1.Rows.Count - 1)) //如果拷贝数据超过现有单元格长度,要中止运行,否则会报错
-                    { break; }
-                    else if (dataGridView1.ColumnCount - 1 >= cc + iCol)
-                    {
-                        dataGridView1.Rows[r + iRow].Cells[cc + iCol].Value = valuesInRow[iCol]; //被注释的语句,与此处作用相同
-                    }
-                }
-            }
-        }
 
 
         //键盘事件ctrl+c和ctrl+v和ctrl+x和delete
@@ -146,18 +95,18 @@ namespace ExcelFile
             {
                 Clipboard.SetDataObject(dataGridView1.GetClipboardContent());
                 //this.dataGridView1.CurrentCell = null;
-                new DgvCtrl().clearSelectCell(this.dataGridView1);
+                DgvCtrl.clearSelectCell(this.dataGridView1);
             }
 
 
             //ctrl+v
             if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.V)
-                pasteToDataGridView();
+                DgvCtrl.pasteToDataGridView(this.dataGridView1);
 
             //delete
             if (e.KeyCode == Keys.Delete)
             {
-                new DgvCtrl().clearSelectCell(this.dataGridView1);
+                DgvCtrl.clearSelectCell(this.dataGridView1);
             }
 
         }
@@ -172,23 +121,23 @@ namespace ExcelFile
         //右键菜单命令-粘贴
         private void 粘贴ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            pasteToDataGridView();
+            DgvCtrl.pasteToDataGridView(this.dataGridView1);
         }
-
+        //右键菜单命令-剪切
         private void 剪切ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Clipboard.SetDataObject(dataGridView1.GetClipboardContent());
             //this.dataGridView1.CurrentCell = null;
-            new DgvCtrl().clearSelectCell(this.dataGridView1);
+            DgvCtrl.clearSelectCell(this.dataGridView1);
         }
-
+        //右键菜单命令-删除
         private void 删除ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new DgvCtrl().clearSelectCell(this.dataGridView1);
+            DgvCtrl.clearSelectCell(this.dataGridView1);
         }
 
 
-
+        //表格内数据验证
         private void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
             //numbers only

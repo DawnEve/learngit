@@ -247,7 +247,7 @@
             this.groupBox1.Size = new System.Drawing.Size(1020, 250);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "模板设置";
+            this.groupBox1.Text = "请设置模板(提示：使用右边控制区)";
             // 
             // groupBox2
             // 
@@ -257,7 +257,7 @@
             this.groupBox2.Size = new System.Drawing.Size(1020, 250);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "数据编辑";
+            this.groupBox2.Text = "请输入OD值(提示：右键菜单可以复制、粘贴等)";
             // 
             // Form1
             // 
