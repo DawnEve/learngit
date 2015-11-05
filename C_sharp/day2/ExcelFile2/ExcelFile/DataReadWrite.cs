@@ -349,11 +349,55 @@ namespace ExcelFile
 
 
         //=================================从界面到文件
-        private static void aa() { 
-            
-        
+        //返回模板设置信息
+        public Info[,] readFromUI(DataGridView dgv, bool isContrl)
+        {
+
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 12; j++)
+                {
+                    
+                    if (dgv.Rows[i].Cells[j].Value != null)
+                    {
+                        //获取单元格内容字符串
+                        string txt = dgv.Rows[i].Cells[j].Value.ToString();
+                        Info wi;
+                        //拆分字符串获取信息
+                        string[] info = txt.Split(' ');
+                        if (info.Length == 3)
+                        {
+                            wi = new Info( i, j, info[0], info[1], double.Parse(info[2]) );
+                        }
+                        else
+                        {
+                            wi = new Info(i, j, info[0], info[1]);
+                        }
+                        tpl[i, j] = wi;
+                    }
+                }
+            }
+            return tpl;
         }
 
+        //返回od数据
+        public double[,] readFromUI(DataGridView dgv)
+        {
+
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 12; j++)
+                {
+                    if(  (dgv.Rows[i].Cells[j].Value != null) && (dgv.Rows[i].Cells[j].Value.ToString() != "")  )
+                    {
+                        //获取单元格内容字符串
+                        string txt = dgv.Rows[i].Cells[j].Value.ToString();
+                        od[i, j] = double.Parse(txt);
+                    }
+                }
+            }
+            return od;
+        }
 
 
 

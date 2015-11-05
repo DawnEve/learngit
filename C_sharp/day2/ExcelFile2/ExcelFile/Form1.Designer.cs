@@ -78,13 +78,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.textName = new System.Windows.Forms.TextBox();
-            this.textLabDate = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.textLot = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.btnOpenTpl = new System.Windows.Forms.Button();
             this.btnSaveTpl = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView0)).BeginInit();
@@ -434,7 +434,7 @@
             // 
             this.groupBox2.Controls.Add(this.tableLayoutPanel1);
             this.groupBox2.Controls.Add(this.dataGridView1);
-            this.groupBox2.ForeColor = System.Drawing.Color.Red;
+            this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.groupBox2.Location = new System.Drawing.Point(12, 406);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1020, 359);
@@ -561,13 +561,6 @@
             this.textName.Size = new System.Drawing.Size(293, 21);
             this.textName.TabIndex = 10;
             // 
-            // textLabDate
-            // 
-            this.textLabDate.Location = new System.Drawing.Point(481, 30);
-            this.textLabDate.Name = "textLabDate";
-            this.textLabDate.Size = new System.Drawing.Size(124, 21);
-            this.textLabDate.TabIndex = 12;
-            // 
             // label15
             // 
             this.label15.AutoSize = true;
@@ -620,15 +613,22 @@
             this.btnSaveTpl.Text = "保存模板";
             this.btnSaveTpl.UseVisualStyleBackColor = true;
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(483, 30);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(124, 21);
+            this.dateTimePicker1.TabIndex = 16;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1343, 804);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.textLot);
             this.Controls.Add(this.label16);
-            this.Controls.Add(this.textLabDate);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.textName);
             this.Controls.Add(this.label13);
@@ -711,13 +711,13 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox cmbTpl;
-        private System.Windows.Forms.TextBox textLabDate;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox textLot;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button btnOpenTpl;
         private System.Windows.Forms.Button btnSaveTpl;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }
 
