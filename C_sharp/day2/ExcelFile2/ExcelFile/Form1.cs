@@ -37,7 +37,7 @@ namespace ExcelFile
             //实例化一个dataGridView类：控制类
             DgvCtrl dc0 = new DgvCtrl();
             //初始化一个dataGridView
-            dc0.dataGridView1Init(this.dataGridView0);
+            dc0.dataGridViewInit(this.dataGridView0);
             //添加测试数据
             //dc0.addTestData(this.dataGridView0);
             //设置为只读
@@ -46,7 +46,7 @@ namespace ExcelFile
             //实例化一个dataGridView类：数据显示
             DgvCtrl dc1 = new DgvCtrl();
             //初始化一个dataGridView
-            dc1.dataGridView1Init(this.dataGridView1);
+            dc1.dataGridViewInit(this.dataGridView1);
             //添加测试数据
             dc1.addTestData(this.dataGridView1);
 

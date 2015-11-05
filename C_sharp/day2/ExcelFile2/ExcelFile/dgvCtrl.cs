@@ -14,7 +14,7 @@ namespace ExcelFile
     class DgvCtrl
     {
         //初始化控件
-        public void dataGridView1Init(DataGridView dgv)
+        public void dataGridViewInit(DataGridView dgv)
         {
             //样式
             //列标题居中显示
