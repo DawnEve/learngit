@@ -44,12 +44,16 @@ namespace ExcelFile
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //设定界面颜色变化:从rgb和16进制来换算
+            //设定界面底部颜色变化:从rgb和16进制来换算
             //this.label1.BackColor = System.Drawing.Color.FromArgb(69, 209, 208);
             this.label1.BackColor = System.Drawing.ColorTranslator.FromHtml("#008000");
             this.label3.BackColor = System.Drawing.ColorTranslator.FromHtml("#9ACD32");
             this.label5.BackColor = System.Drawing.ColorTranslator.FromHtml("#808080");
             this.label7.BackColor = System.Drawing.ColorTranslator.FromHtml("#87CEFA");
+
+
+            //添加组合框
+            //this.comboBox1.ControlAdded.
 
 
             //窗体固定
@@ -102,8 +106,11 @@ namespace ExcelFile
         }
 
 
-
-
+        //控制框不能输入
+        private void dataGridView0_KeyDown(object sender, KeyEventArgs e)
+        {
+            MessageBox.Show("请使用右侧控制区完成设置！", "系统提示");
+        }
 
 
         //键盘事件ctrl+c和ctrl+v和ctrl+x和delete
@@ -179,7 +186,7 @@ namespace ExcelFile
                 else
                 {
                     //todo:如果输入001，应该显示1，而不是001.
-                    this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value= float.Parse(e.FormattedValue.ToString());
+                    //this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value= float.Parse(e.FormattedValue.ToString());
                 }
             }
 
@@ -224,7 +231,7 @@ namespace ExcelFile
                 }
 
                 //从中间数据读取到表格中
-                DataReadWrite.readIntoUI(tpl, this.dataGridView0);//模板文件
+                DataReadWrite.readIntoUI(tpl, this.dataGridView0,this.dataGridView1);//模板文件
                 DataReadWrite.readIntoUI(od, this.dataGridView1);//od文件
 
 
@@ -242,6 +249,8 @@ namespace ExcelFile
         {
 
         }
+
+
 
 
 

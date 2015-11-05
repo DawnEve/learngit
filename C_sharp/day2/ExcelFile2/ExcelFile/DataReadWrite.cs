@@ -291,7 +291,7 @@ namespace ExcelFile
 
 
         //中间文件到界面-设置
-        public static void readIntoUI(Info[,] tpl, DataGridView dgv)
+        public static void readIntoUI(Info[,] tpl, DataGridView dgv, DataGridView dgv1)
         {
             //输出模板信息
             for (int i = 0; i < 8; i++) {
@@ -301,12 +301,16 @@ namespace ExcelFile
                         Info info = tpl[i, j];
                         textDebug += "(" + info.i + "," + info.j + ")," + info.well_class + "(" + info.well_num + "): " + " conc=" + info.well_conc + "\n";
                         dgv.Rows[i].Cells[j].Value = info.well_class + " " + info.well_num + System.Environment.NewLine + info.well_conc;
+
+                        //调整板子的颜色变化
+                        changeODBackColor(info.well_class, dgv, info.i, info.j);//set板子
+                        changeODBackColor(info.well_class, dgv1, info.i,info.j);//od板子
                     }
                     
                 }
             }
-        
         }
+
 
         //中间文件到界面-od
         public static void readIntoUI(Double[,] od, DataGridView dgv)
@@ -323,7 +327,18 @@ namespace ExcelFile
                     }
                 }
             }
+        }
 
+        //根据行列设置孔的颜色变化
+        private static void changeODBackColor(string well_class,DataGridView dgv, int i, int j) {
+            if (well_class == "std")
+                dgv.Rows[i].Cells[j].Style.BackColor = System.Drawing.ColorTranslator.FromHtml("#008000");
+            if (well_class == "ctr")
+                dgv.Rows[i].Cells[j].Style.BackColor = System.Drawing.ColorTranslator.FromHtml("#9ACD32");
+            if (well_class == "blank")
+                dgv.Rows[i].Cells[j].Style.BackColor =System.Drawing.ColorTranslator.FromHtml("#808080");
+            if (well_class == "smp")
+                dgv.Rows[i].Cells[j].Style.BackColor =System.Drawing.ColorTranslator.FromHtml("#87CEFA");
 
         }
 

@@ -62,6 +62,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView0)).BeginInit();
@@ -86,7 +92,7 @@
             // 
             // btnOpen
             // 
-            this.btnOpen.Location = new System.Drawing.Point(1038, 39);
+            this.btnOpen.Location = new System.Drawing.Point(1038, 38);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(75, 23);
             this.btnOpen.TabIndex = 1;
@@ -96,7 +102,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(1119, 39);
+            this.btnSave.Location = new System.Drawing.Point(1132, 38);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 2;
@@ -106,9 +112,9 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(1038, 80);
+            this.richTextBox1.Location = new System.Drawing.Point(1038, 84);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(450, 266);
+            this.richTextBox1.Size = new System.Drawing.Size(261, 266);
             this.richTextBox1.TabIndex = 3;
             this.richTextBox1.Text = "";
             // 
@@ -158,6 +164,7 @@
             this.dataGridView0.RowTemplate.Height = 23;
             this.dataGridView0.Size = new System.Drawing.Size(787, 302);
             this.dataGridView0.TabIndex = 4;
+            this.dataGridView0.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView0_KeyDown);
             this.dataGridView0.Leave += new System.EventHandler(this.dataGridView2_Leave);
             // 
             // menuStrip1
@@ -251,6 +258,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.dataGridView0);
             this.groupBox1.Location = new System.Drawing.Point(12, 28);
             this.groupBox1.Name = "groupBox1";
@@ -373,17 +386,69 @@
             this.label8.TabIndex = 6;
             this.label8.Text = "送检测样品";
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(800, 32);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(41, 12);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "类别：";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(843, 72);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(116, 21);
+            this.textBox1.TabIndex = 6;
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(843, 28);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(116, 20);
+            this.comboBox1.TabIndex = 7;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(800, 77);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(41, 12);
+            this.label10.TabIndex = 8;
+            this.label10.Text = "浓度：";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(800, 122);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(41, 12);
+            this.label11.TabIndex = 9;
+            this.label11.Text = "单位：";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(843, 117);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(116, 21);
+            this.textBox2.TabIndex = 10;
+            this.textBox2.Text = "ng/ul";
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1500, 746);
             this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnOpen);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnOpen);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
@@ -394,6 +459,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -437,6 +503,12 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
     }
 }
 
