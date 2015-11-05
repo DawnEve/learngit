@@ -33,6 +33,7 @@ namespace ExcelFile
                 return inner_tpl_names;
         }
 
+        //
         public Info[,] getTplByName(string tpl_name)
         {
             return tpls[tpl_name];
@@ -52,14 +53,14 @@ namespace ExcelFile
             //初始化数组
             tpl=new Info[8,12];
             //设置标准品
-            tpl[0,0]=new Info(0,1,"std","0",0);
-            tpl[0,1]=new Info(0,1,"std","1",10);
-            tpl[0,2]=new Info(0,2,"std","2",20);
-            tpl[0,3]=new Info(0,3,"std","3",30);
-            tpl[0,4]=new Info(0,4,"std","4",40);
-            tpl[0,5]=new Info(0,5,"std","5",50);
-            tpl[0,6]=new Info(0,6,"std","6",60);
-            tpl[0,7]=new Info(0,7,"std","7",70);
+            tpl[0, 0] = new Info(0, 0, "std", "0", 0);
+            tpl[1, 0] = new Info(1, 0, "std", "1", 10);
+            tpl[2, 0] = new Info(2, 0, "std", "2", 20);
+            tpl[3, 0] = new Info(3, 0, "std", "3", 30);
+            tpl[4, 0] = new Info(4, 0, "std", "4", 40);
+            tpl[5, 0] = new Info(5, 0, "std", "5", 50);
+            tpl[6, 0] = new Info(6, 0, "std", "6", 60);
+            tpl[7, 0] = new Info(7, 0, "std", "7", 70);
             //设置结束，增加到模板中
             tpls.Add("瘦肉精", tpl);
 
@@ -68,16 +69,16 @@ namespace ExcelFile
             //初始化数组
             tpl = new Info[8, 12];
             //设置标准品
-            tpl[0, 0] = new Info(0, 1, "std", "0", 0);
-            tpl[0, 1] = new Info(0, 1, "std", "1", 20);
-            tpl[0, 2] = new Info(0, 2, "std", "2", 40);
-            tpl[0, 3] = new Info(0, 3, "std", "3", 60);
-            tpl[0, 4] = new Info(0, 4, "std", "4", 80);
-            tpl[0, 5] = new Info(0, 5, "std", "5", 100);
-            tpl[0, 6] = new Info(0, 6, "std", "6", 120);
-            tpl[0, 7] = new Info(0, 7, "std", "7", 140);
+            tpl[0, 0] = new Info(0, 0, "std", "0", 0);
+            tpl[1, 0] = new Info(1, 0, "std", "1", 20);
+            tpl[2, 0] = new Info(2, 0, "std", "2", 40);
+            tpl[3, 0] = new Info(3, 0, "std", "3", 60);
+            tpl[4, 0] = new Info(4, 0, "std", "4", 80);
+            tpl[5, 0] = new Info(5, 0, "std", "5", 100);
+            tpl[6, 0] = new Info(6, 0, "std", "6", 120);
+            tpl[7, 0] = new Info(7, 0, "std", "7", 140);
             //设置质控品
-            tpl[1, 0] = new Info(1, 0, "ctr", "1", 100);
+            tpl[0, 1] = new Info(0,1, "ctr", "1", 100);
             //设置结束，增加到模板中
             tpls.Add("霉菌毒素", tpl);
 
@@ -86,7 +87,7 @@ namespace ExcelFile
             //初始化数组
             tpl = new Info[8, 12];
             //设置标准品
-            tpl[0, 0] = new Info(0, 1, "std", "0", 0);
+            tpl[0, 0] = new Info(0, 0, "std", "0", 0);
             tpl[0, 1] = new Info(0, 1, "std", "1", 30);
             tpl[0, 2] = new Info(0, 2, "std", "2", 60);
             tpl[0, 3] = new Info(0, 3, "std", "3", 90);
@@ -105,7 +106,7 @@ namespace ExcelFile
             //初始化数组
             tpl = new Info[8, 12];
             //设置标准品
-            tpl[0, 0] = new Info(0, 1, "std", "0", 0);
+            tpl[0, 0] = new Info(0, 0, "std", "0", 0);
             tpl[0, 1] = new Info(0, 1, "std", "1", 30);
             tpl[0, 2] = new Info(0, 2, "std", "2", 60);
             tpl[0, 3] = new Info(0, 3, "std", "3", 90);

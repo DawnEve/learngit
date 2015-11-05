@@ -68,8 +68,6 @@ namespace ExcelFile
 
 
 
-
-
             //添加组合框-样品类型（因为不需要修改，所以直接写死了）
             string[] well_classes ={ "标准品", "质控品", "空白对照", "送检样品" };
             comboBox1.DataSource = well_classes;
@@ -389,19 +387,8 @@ namespace ExcelFile
             Info[,] tpl = form_inner_tpl.getTplByName(tpl_name);
 
 
-            //设置背景为白色
-            this.dataGridView0.BackgroundColor = Color.White;
-            this.dataGridView1.BackgroundColor = Color.White;
             //先重置模板-初始化
-            for (int i = 0; i < 8; i++)
-            {
-                for (int j = 0; j < 12; j++)
-                {
-                    //消除模板文字和背景
-                    //this.dataGridView0.Rows[i].Cells[j].Value = "";
-                }
-            }
-
+            DgvCtrl.clearAllCells(this.dataGridView0, this.dataGridView1);
 
 
             //中间信息写到界面上
