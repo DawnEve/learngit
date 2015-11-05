@@ -29,7 +29,7 @@ namespace ExcelFile
         private Double[,] od = new double[8, 12];
 
         //====================================加工过的信息
-
+        
 
 
 
@@ -51,8 +51,24 @@ namespace ExcelFile
             this.label5.BackColor = System.Drawing.ColorTranslator.FromHtml("#808080");
             this.label7.BackColor = System.Drawing.ColorTranslator.FromHtml("#87CEFA");
 
+            
 
-            //添加组合框
+            //添加组合框-内置模板（因为要后续扩展，所以没写死）
+            //实例化内置模板类
+            InnerTpl form_inner_tpl = new InnerTpl();
+            //调用方法，返回现有内置的模板名字
+            string[] inner_tpls = form_inner_tpl.getInnerTplNames();
+            //显示到下拉框控件中
+            cmbTpl.DataSource = inner_tpls;
+            cmbTpl.SelectedIndex = 0;
+            //该控件只能选择，不能编辑
+            cmbTpl.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbTpl.FlatStyle = FlatStyle.Popup;//样式
+
+
+
+
+            //添加组合框-样品类型（因为不需要修改，所以直接写死了）
             string[] well_classes ={ "标准品", "质控品", "空白对照", "送检样品" };
             comboBox1.DataSource = well_classes;
             comboBox1.SelectedIndex = 0;
@@ -240,7 +256,7 @@ namespace ExcelFile
 
 
                 //输出板子基本信息：日期、单位、模型编号
-                this.richTextBox1.Text = "";
+                //this.richTextBox1.Text = "";
                 foreach (string item in plate_info.Keys)
                 {
                     string info = this.plate_info[item];
@@ -251,7 +267,7 @@ namespace ExcelFile
                 DataReadWrite.readIntoUI(tpl, this.dataGridView0,this.dataGridView1);//模板文件
                 DataReadWrite.readIntoUI(od, this.dataGridView1);//od文件
 
-                this.richTextBox1.Text += DataReadWrite.textDebug;
+                //this.richTextBox1.Text += DataReadWrite.textDebug;
             } 
         }
 
@@ -357,6 +373,26 @@ namespace ExcelFile
                 this.txtConc.Enabled = true;
             }
             
+
+        }
+
+        //单击内置模板会载入内置模板
+        private void cmbTpl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string tpl_name=this.cmbTpl.Text;//.SelectedIndex. >= 2)
+            //实例化内置模板类
+            InnerTpl form_inner_tpl = new InnerTpl();
+            //MessageBox.Show(tpl_name);
+            //获取模板内容
+            Info[,] tpl = form_inner_tpl.getTplByName(tpl_name);
+
+
+            //先重置模板-初始化
+            DgvCtrl.clearAllCells(this.dataGridView0, this.dataGridView1);
+
+
+            //中间信息写到界面上
+            DataReadWrite.readIntoUI(tpl, this.dataGridView0, this.dataGridView1);
 
         }
 

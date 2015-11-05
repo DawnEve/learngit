@@ -52,10 +52,14 @@
             this.软件使用ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关于ELISAAnalyser001ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtNum = new System.Windows.Forms.TextBox();
             this.btnAsign = new System.Windows.Forms.Button();
             this.txtUnit = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.txtConc = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -68,12 +72,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtNum = new System.Windows.Forms.TextBox();
-            this.btnClear = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.cmbTpl = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView0)).BeginInit();
@@ -81,6 +85,8 @@
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -265,16 +271,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnClear);
-            this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.txtNum);
-            this.groupBox1.Controls.Add(this.btnAsign);
-            this.groupBox1.Controls.Add(this.txtUnit);
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.txtConc);
-            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.groupBox4);
+            this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.dataGridView0);
             this.groupBox1.Location = new System.Drawing.Point(12, 59);
             this.groupBox1.Name = "groupBox1";
@@ -283,11 +281,39 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "请设置模板(提示：使用右边控制区)";
             // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(124, 146);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(67, 23);
+            this.btnClear.TabIndex = 14;
+            this.btnClear.Text = "清除";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(22, 55);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(41, 12);
+            this.label12.TabIndex = 13;
+            this.label12.Text = "编号：";
+            // 
+            // txtNum
+            // 
+            this.txtNum.Location = new System.Drawing.Point(65, 51);
+            this.txtNum.Name = "txtNum";
+            this.txtNum.Size = new System.Drawing.Size(145, 21);
+            this.txtNum.TabIndex = 12;
+            this.txtNum.Text = "1";
+            this.txtNum.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // btnAsign
             // 
-            this.btnAsign.Location = new System.Drawing.Point(931, 92);
+            this.btnAsign.Location = new System.Drawing.Point(42, 146);
             this.btnAsign.Name = "btnAsign";
-            this.btnAsign.Size = new System.Drawing.Size(116, 23);
+            this.btnAsign.Size = new System.Drawing.Size(67, 23);
             this.btnAsign.TabIndex = 11;
             this.btnAsign.Text = "设置";
             this.btnAsign.UseVisualStyleBackColor = true;
@@ -295,9 +321,9 @@
             // 
             // txtUnit
             // 
-            this.txtUnit.Location = new System.Drawing.Point(968, 65);
+            this.txtUnit.Location = new System.Drawing.Point(65, 108);
             this.txtUnit.Name = "txtUnit";
-            this.txtUnit.Size = new System.Drawing.Size(76, 21);
+            this.txtUnit.Size = new System.Drawing.Size(145, 21);
             this.txtUnit.TabIndex = 10;
             this.txtUnit.Text = "ng/ul";
             this.txtUnit.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -305,7 +331,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(925, 69);
+            this.label11.Location = new System.Drawing.Point(22, 112);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(41, 12);
             this.label11.TabIndex = 9;
@@ -314,17 +340,26 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(800, 69);
+            this.label10.Location = new System.Drawing.Point(22, 85);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(41, 12);
             this.label10.TabIndex = 8;
             this.label10.Text = "浓度：";
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(65, 25);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(145, 20);
+            this.comboBox1.TabIndex = 7;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // txtConc
             // 
-            this.txtConc.Location = new System.Drawing.Point(843, 65);
+            this.txtConc.Location = new System.Drawing.Point(65, 81);
             this.txtConc.Name = "txtConc";
-            this.txtConc.Size = new System.Drawing.Size(76, 21);
+            this.txtConc.Size = new System.Drawing.Size(145, 21);
             this.txtConc.TabIndex = 6;
             this.txtConc.Text = "00";
             this.txtConc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -332,7 +367,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(800, 31);
+            this.label9.Location = new System.Drawing.Point(22, 28);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(41, 12);
             this.label9.TabIndex = 5;
@@ -452,43 +487,6 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "标准品";
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(843, 28);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(76, 20);
-            this.comboBox1.TabIndex = 7;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(925, 32);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(41, 12);
-            this.label12.TabIndex = 13;
-            this.label12.Text = "编号：";
-            // 
-            // txtNum
-            // 
-            this.txtNum.Location = new System.Drawing.Point(968, 28);
-            this.txtNum.Name = "txtNum";
-            this.txtNum.Size = new System.Drawing.Size(76, 21);
-            this.txtNum.TabIndex = 12;
-            this.txtNum.Text = "1";
-            this.txtNum.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // btnClear
-            // 
-            this.btnClear.Location = new System.Drawing.Point(931, 132);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(116, 23);
-            this.btnClear.TabIndex = 14;
-            this.btnClear.Text = "清除";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -504,6 +502,54 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(210, 21);
             this.textBox1.TabIndex = 10;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.txtNum);
+            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Controls.Add(this.btnClear);
+            this.groupBox3.Controls.Add(this.txtConc);
+            this.groupBox3.Controls.Add(this.btnAsign);
+            this.groupBox3.Controls.Add(this.label12);
+            this.groupBox3.Controls.Add(this.comboBox1);
+            this.groupBox3.Controls.Add(this.label10);
+            this.groupBox3.Controls.Add(this.label11);
+            this.groupBox3.Controls.Add(this.txtUnit);
+            this.groupBox3.Location = new System.Drawing.Point(806, 123);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(230, 185);
+            this.groupBox3.TabIndex = 16;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "  设置模板";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.label14);
+            this.groupBox4.Controls.Add(this.cmbTpl);
+            this.groupBox4.Location = new System.Drawing.Point(806, 20);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(230, 72);
+            this.groupBox4.TabIndex = 17;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "预置模板";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(10, 27);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(65, 12);
+            this.label14.TabIndex = 8;
+            this.label14.Text = "模板名称：";
+            // 
+            // cmbTpl
+            // 
+            this.cmbTpl.FormattingEnabled = true;
+            this.cmbTpl.Location = new System.Drawing.Point(73, 24);
+            this.cmbTpl.Name = "cmbTpl";
+            this.cmbTpl.Size = new System.Drawing.Size(148, 20);
+            this.cmbTpl.TabIndex = 9;
+            this.cmbTpl.SelectedIndexChanged += new System.EventHandler(this.cmbTpl_SelectedIndexChanged);
             // 
             // Form1
             // 
@@ -528,10 +574,13 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -584,6 +633,10 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ComboBox cmbTpl;
     }
 }
 
