@@ -197,13 +197,14 @@ namespace ExcelFile
                     //if (flag_Value && false)//先跳过OD data
                     if (flag_Value)
                     {
+                        //MessageBox.Show(i + "[]" + txt, "OD data");
                         string[] d_value = txt.Split('\t');
 
                         //j相当于列
                         //string Location = "";
                         for (int j = 0; j < 12; j++)
                         {
-                            if (d_value[j].Trim() != "")
+                            if (d_value[j]!=null && d_value[j].Trim() != "")
                             {
                                 //Location = (string)(i + "行" + j + "列");
                                 //MessageBox.Show(d_value[j], "OD-" + Location);
@@ -212,6 +213,10 @@ namespace ExcelFile
                         }
 
                         i++;//i相当于行
+                        if (i >= 7)
+                        {
+                            flag_Value = false; 
+                        }
                     }
 
 
@@ -221,19 +226,19 @@ namespace ExcelFile
                     //if (flag_Layout && false)//先跳过模板data
                     if (flag_Layout)
                     {
-                        //MessageBox.Show(txt, "Layout");
+                        //MessageBox.Show(iM+"[]"+txt, "Layout");
                         string[] d_value = txt.Split('\t');
 
                        
                         //j相当于列
                         //string Location = "";
-                        string MuBan_info = "";
+                        //string MuBan_info = "";
                         string[] info = new string[2];
                         string[] info2 = new string[2];
                         for (int j = 0; j < 12; j++)
                         {
-                            MuBan_info = d_value[j] + "  \n";
-                            if (d_value[j].Trim() != "")
+                            //MuBan_info = d_value[j] + "  \n";
+                            if ( d_value[j]!=null && d_value[j].Trim() != "")
                             {
                                 if (d_value[j].Contains("std") || d_value[j].Contains("ctr") )
                                 {
@@ -257,6 +262,11 @@ namespace ExcelFile
                         }
 
                         iM++;//i相当于行
+                        if (iM >= 7)
+                        {
+                            flag_Layout = false;
+                            flag_Curve = true;
+                        }
                     }
 
 
@@ -270,7 +280,7 @@ namespace ExcelFile
                             string[] info = txt.Split(':');
                             plate_Info.Add(info[0], info[1]);
                         }
-                        if (txt.Contains("备注"))
+                        if (txt.Contains("Note"))
                         {
                             string[] info = txt.Split(':');
                             plate_Info.Add(info[0], info[1]);
@@ -300,7 +310,8 @@ namespace ExcelFile
                     {
                         Info info = tpl[i, j];
                         //textDebug += "(" + info.i + "," + info.j + ")," + info.well_class + "(" + info.well_num + "): " + " conc=" + info.well_conc + "\n";
-                        dgv.Rows[i].Cells[j].Value = info.well_class + " " + info.well_num + System.Environment.NewLine + info.well_conc;
+                        //dgv.Rows[i].Cells[j].Value = info.well_class + " " + info.well_num + System.Environment.NewLine + info.well_conc;
+                        dgv.Rows[i].Cells[j].Value = info.well_class + " " + info.well_num + '\r' + info.well_conc;
 
                         //调整板子的颜色变化
                         changeODBackColor(info.well_class, dgv, info.i, info.j);//set板子
@@ -349,11 +360,76 @@ namespace ExcelFile
 
 
         //=================================从界面到文件
-        private static void aa() { 
-            
-        
+        //返回模板设置信息
+        public Info[,] readFromUI(DataGridView dgv, bool isContrl)
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 12; j++)
+                {
+                    
+                    //if (dgv.Rows[i].Cells[j].Value != null)
+                    if ((dgv.Rows[i].Cells[j].Value != null) && (dgv.Rows[i].Cells[j].Value.ToString() != ""))
+                    {
+                        //保存拆分后的字符串
+                        string[] info = new string[2];
+                        string[] info2 = new string[2];
+                        //定义cell信息类
+                        Info wi;
+
+                        //获取单元格内容字符串
+                        string txt = dgv.Rows[i].Cells[j].Value.ToString();
+                        //拆分字符串
+                        info = txt.Split(' ');
+
+                        if (info[1].IndexOf('\r') != -1)
+                        {
+                            info2 = info[1].Split('\r');
+                            //if (i < 2 && j < 2) MessageBox.Show(info[0] + " " + info2[0] + "#" + info2[1]);//todo
+                            wi = new Info(i, j, info[0], info2[0], double.Parse(info2[1]));
+
+                        }
+                        else
+                        {
+                            //if (i < 2 && j < 2) MessageBox.Show(info[0] + " " + info[1]);//todo
+                            wi = new Info(i, j, info[0], info[1]);
+
+                        }
+
+                        tpl[i, j] = wi;
+                    }
+                    else 
+                    {
+                        tpl[i, j] = null;
+                    }
+                }
+            }
+            return tpl;
         }
 
+        //返回od数据
+        public double[,] readFromUI(DataGridView dgv)
+        {
+            //string[,] odStr=new string[8,12];
+            od = new double[8, 12];
+
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 12; j++)
+                {
+                    if ((dgv.Rows[i].Cells[j].Value != null) && (dgv.Rows[i].Cells[j].Value.ToString() != ""))
+                    {
+                        //获取单元格内容字符串
+                        od[i, j] = double.Parse(dgv.Rows[i].Cells[j].Value.ToString());
+                    }
+                    else 
+                    {
+                        od[i, j] = -10000; 
+                    }
+                }
+            }
+            return od;
+        }
 
 
 

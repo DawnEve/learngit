@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -65,6 +66,13 @@ namespace ExcelFile
             cmbTpl.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbTpl.FlatStyle = FlatStyle.Popup;//样式
 
+
+            //添加分组单选框-拟合选项
+            this.groupBox5.Controls.Add(this.radioButton1);
+            this.groupBox5.Controls.Add(this.radioButton2);
+            this.groupBox5.Controls.Add(this.radioButton3);
+            this.groupBox5.Controls.Add(this.radioButton4);
+            this.radioButton1.Checked = true;//默认选中第一项
 
 
 
@@ -248,27 +256,38 @@ namespace ExcelFile
             {
                 string fName = openFileDialog1.FileName;
                 //调用类文件读取文件，并获取模板信息、OD信息   
-                DataReadWrite df = new DataReadWrite();
-                plate_info = df.readFromFile(fName);//获取基本信息
-                Info[,] tpl = df.getTpl();//模板信息
-                double[,] od = df.getOd();//OD信息
+                DataReadWrite dfw = new DataReadWrite();
+                plate_info = dfw.readFromFile(fName);//获取基本信息
+                Info[,] tpl = dfw.getTpl();//模板信息
+                double[,] od = dfw.getOd();//OD信息
 
 
 
-                //输出板子基本信息：日期、单位、模型编号
+                //输出板子基本信息：标题、日期、单位、模型编号
                 //this.richTextBox1.Text = "";
-                foreach (string item in plate_info.Keys)
+                /*foreach (string item in plate_info.Keys)
                 {
                     string info = this.plate_info[item];
                     this.richTextBox1.Text += item + " [:] " + info + "\n";
-                }
+                }*/
+                this.textName.Text = plate_info["Name"];
+                this.dateTimePicker1.Text = plate_info["LabDate"];
+                this.textLot.Text = plate_info["Lot"];
+                this.txtUnit.Text = plate_info["Unit"];
+                this.richTextBox1.Text = plate_info["Note"];
+
+
+                //先初始化模板-重置所有方格 + //清空od数据
+                DgvCtrl.clearAllCells(this.dataGridView0, this.dataGridView1,true);
+                
+
 
                 //从中间数据读取到表格中
                 DataReadWrite.readIntoUI(tpl, this.dataGridView0,this.dataGridView1);//模板文件
                 DataReadWrite.readIntoUI(od, this.dataGridView1);//od文件
 
                 //this.richTextBox1.Text += DataReadWrite.textDebug;
-            } 
+            }
         }
 
 
@@ -277,6 +296,128 @@ namespace ExcelFile
         //保存文件
         private void btnSave_Click(object sender, EventArgs e)
         {
+            //清空字典
+            plate_info = new Dictionary<string,string>();
+            //重新初始化中间数组
+            tpl = new Info[8, 12];
+            od = new double[8, 12];
+            //string[,] odStr = new string[8, 12];//使用字符数组更好？
+
+
+            //读取文件到中间数组
+            //合法性检测
+            if (this.textName.Text.Trim() == null)
+            {
+                MessageBox.Show("请输入项目名称！", "系统提示");
+                return;
+            }
+            if (this.txtUnit.Text.Trim() == null)
+            {
+                MessageBox.Show("请输入单位名称！", "系统提示");
+                return;
+            }
+
+
+            //基本信息-》中间数据
+            plate_info["SaveTime"] = DateTime.Now.ToString();//保存文件时的时间
+            plate_info["Name"] = this.textName.Text.Trim();
+            plate_info["Lot"] = this.textLot.Text.Trim();
+            plate_info["LabDate"] = this.dateTimePicker1.Text.Trim();
+            plate_info["Unit"] = this.txtUnit.Text.Trim();
+            plate_info["Notice"] = "不要随意更改文件内容，否则再次读取时将发生错误。";
+            
+            //tpl-》中间数据
+
+            //tpl=>中间数据
+            DataReadWrite drw = new DataReadWrite();
+
+            //从UI读取到中间数组
+            tpl = drw.readFromUI(this.dataGridView0,true);
+            od = drw.readFromUI(this.dataGridView1);
+
+
+            //中间数据-》文件
+
+            //保存文件
+            Stream myStream;
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+
+            saveFileDialog1.Filter = "*.mub(模板文件)|*.mub|*.dat(数据文件)|*.dat|txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            saveFileDialog1.FilterIndex = 2;
+            saveFileDialog1.RestoreDirectory = true;
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                if ((myStream = saveFileDialog1.OpenFile()) != null)
+                {
+                    // Code to write the stream goes here.
+                    myStream.Close();
+
+                    using (StreamWriter writer = new StreamWriter(saveFileDialog1.FileName, true))
+                    {
+                        //中间数据写入文件-基本信息
+                        foreach (string k in plate_info.Keys)
+                        {
+                            writer.WriteLine(k+":"+plate_info[k]);
+                        }
+                        //中间数据写入文件-od
+                        writer.WriteLine();
+                        writer.WriteLine("[OD Value]");
+
+                        for (int i = 0; i < 8; i++)
+                        {
+                            for (int j = 0; j < 12; j++)
+                            {
+                                //writer.Write(i + "\t");
+                                //if (od[i, j] != null && od[i, j].ToString() != "")
+                                if (od[i, j] != null && od[i, j]>=0)
+                                {
+                                    writer.Write(od[i, j] + "\t");
+                                }
+                                else
+                                {
+                                    writer.Write("\t");
+                                }
+                            }
+                            writer.WriteLine();
+                        }
+
+                        //中间数据写入文件-tpl
+                        writer.WriteLine();
+                        writer.WriteLine("[Layout]");
+
+                        for (int i = 0; i < 8; i++)
+                        {
+                            for (int j = 0; j < 12; j++)
+                            {
+                                Info info = tpl[i, j];
+                                if (info != null)
+                                {
+                                    writer.Write(info.well_class + " " + info.well_num + "#" + info.well_conc + "\t");
+                                }
+                                else 
+                                {
+                                    writer.Write( "\t");
+                                }
+                            }
+                            writer.WriteLine();
+                        }
+                        
+                        //写曲线类型
+                        writer.WriteLine("Curve:"+getRadioIndex().ToString());
+                        //写备注
+                        writer.WriteLine("Note:"+this.richTextBox1.Text);
+                        //plate_info["Note"] = this.richTextBox1.Text;
+
+                        writer.WriteLine("======end======");
+
+                        //写md5验证码：考虑使用tpl和od联合生成
+
+                    }
+                }
+                myStream.Close();
+            }
+
 
         }
 
@@ -387,7 +528,7 @@ namespace ExcelFile
             Info[,] tpl = form_inner_tpl.getTplByName(tpl_name);
 
 
-            //先重置模板-初始化
+            //先初始化模板-重置所有方格
             DgvCtrl.clearAllCells(this.dataGridView0, this.dataGridView1);
 
 
@@ -396,6 +537,52 @@ namespace ExcelFile
 
         }
 
+        private void btnOpenTpl_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Sorry, 该功能尚未实现", "作者提示");
+
+        }
+
+        private void btnSaveTpl_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Sorry, 该功能尚未实现", "作者提示");
+        }
+
+        //按照指定模型对曲线进行拟合
+        private void btnStartFit_Click(object sender, EventArgs e)
+        {
+            int curve_syle = getRadioIndex();
+            richTextBox1.Text = curve_syle.ToString();
+
+
+        }
+
+        //获取单选按钮的序号
+        private int getRadioIndex() {
+            if (radioButton1.Checked == true)
+            {
+                //richTextBox1.Text = "选择了radioButton1";
+                return 1;
+            }
+            else if (radioButton2.Checked == true)
+            {
+                //richTextBox1.Text = "选择了radioButton2";
+                return 2;
+            }
+            else if (radioButton3.Checked == true)
+            {
+                //richTextBox1.Text = "选择了radioButton3";
+                return 3;
+            }
+            else if (radioButton4.Checked == true)
+            {
+                //richTextBox1.Text = "选择了radioButton4";
+                return 4;
+            }
+            else {
+                return -1;
+            }
+        }
 
 
 
