@@ -560,6 +560,7 @@
             this.textName.Name = "textName";
             this.textName.Size = new System.Drawing.Size(293, 21);
             this.textName.TabIndex = 10;
+            this.textName.Text = "ELISA数据分析";
             // 
             // label15
             // 

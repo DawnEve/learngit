@@ -300,7 +300,8 @@ namespace ExcelFile
                     {
                         Info info = tpl[i, j];
                         //textDebug += "(" + info.i + "," + info.j + ")," + info.well_class + "(" + info.well_num + "): " + " conc=" + info.well_conc + "\n";
-                        dgv.Rows[i].Cells[j].Value = info.well_class + " " + info.well_num + System.Environment.NewLine + info.well_conc;
+                        //dgv.Rows[i].Cells[j].Value = info.well_class + " " + info.well_num + System.Environment.NewLine + info.well_conc;
+                        dgv.Rows[i].Cells[j].Value = info.well_class + " " + info.well_num + '\r' + info.well_conc;
 
                         //调整板子的颜色变化
                         changeODBackColor(info.well_class, dgv, info.i, info.j);//set板子
@@ -353,27 +354,45 @@ namespace ExcelFile
         public Info[,] readFromUI(DataGridView dgv, bool isContrl)
         {
 
+
             for (int i = 0; i < 8; i++)
             {
                 for (int j = 0; j < 12; j++)
                 {
                     
-                    if (dgv.Rows[i].Cells[j].Value != null)
+                    //if (dgv.Rows[i].Cells[j].Value != null)
+                    if ((dgv.Rows[i].Cells[j].Value != null) && (dgv.Rows[i].Cells[j].Value.ToString() != ""))
                     {
+                        //保存拆分后的字符串
+                        string[] info = new string[2];
+                        string[] info2 = new string[2];
+                        //定义cell信息类
+                        Info wi;
+
                         //获取单元格内容字符串
                         string txt = dgv.Rows[i].Cells[j].Value.ToString();
-                        Info wi;
-                        //拆分字符串获取信息
-                        string[] info = txt.Split(' ');
-                        if (info.Length == 3)
+                        //拆分字符串
+                        info = txt.Split(' ');
+
+                        if (info[1].IndexOf('\r') != -1)
                         {
-                            wi = new Info( i, j, info[0], info[1], double.Parse(info[2]) );
+                            info2 = info[1].Split('\r');
+                            //if (i < 2 && j < 2) MessageBox.Show(info[0] + " " + info2[0] + "#" + info2[1]);//todo
+                            wi = new Info(i, j, info[0], info2[0], double.Parse(info2[1]));
+
                         }
                         else
                         {
+                            //if (i < 2 && j < 2) MessageBox.Show(info[0] + " " + info[1]);//todo
                             wi = new Info(i, j, info[0], info[1]);
+
                         }
+
                         tpl[i, j] = wi;
+                    }
+                    else 
+                    {
+                        tpl[i, j] = null;
                     }
                 }
             }

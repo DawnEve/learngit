@@ -540,22 +540,37 @@ namespace ExcelFile
 
         private void btnSaveTpl_Click(object sender, EventArgs e)
         {
-            DataGridView dgv = dataGridView1;//todo
-            for (int i = 0; i < 2; i++)
+            DataGridView dgv = dataGridView0;//todo
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < 3; j++)
+                for (int j = 0; j < 12; j++)
                 {
-                    string s = "nothing";
+                    
+                    string txt = "nothing";
+                    string[] info = { "", "","","" };
+                    string[] info2 = { "", "", "", "" };
                     //if (this.dataGridView0.Rows[i].Cells[j].Selected == true)
                     if ((dgv.Rows[i].Cells[j].Value != null) && (dgv.Rows[i].Cells[j].Value.ToString() != ""))
                     {
 
-                        s = dgv.Rows[i].Cells[j].Value.ToString();
+                        txt = dgv.Rows[i].Cells[j].Value.ToString();
+                        info = txt.Split(' ');
+
+                        if(info[1].IndexOf('\r') != -1){
+                            info2 = info[1].Split('\r');
+                            if (i < 2 && j < 2) MessageBox.Show(info[0] + " " + info2[0] + "#" + info2[1]);//todo
+
+                        }else{
+                            if (i < 2 && j < 2) MessageBox.Show(info[0] + " " + info[1]);//todo
+                        
+                        }
                     }
                     else {
-                        s = "";
+                        txt = "";
+
+                        if (i < 2 && j < 2) MessageBox.Show("nothing");//todo
                     }
-                    //if (i < 2 && j < 2) MessageBox.Show(odStr[i, j]);//todo
+                    
                     
                 }
             }
