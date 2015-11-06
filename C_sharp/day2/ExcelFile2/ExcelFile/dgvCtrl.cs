@@ -116,6 +116,32 @@ namespace ExcelFile
         }
 
 
+        //删除整个模板的背景色
+        public static void clearAllCells(DataGridView dgv, DataGridView dgv1,bool isClearOD=false)
+        {
+            if (dgv.SelectedCells.Count == 0)
+            {
+                //MessageBox.Show("请先在左侧模板中选择一个孔。", "系统提示");//todo 首次不能提醒，how?
+                return;
+            }
+
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 12; j++)
+                {
+                    dgv.Rows[i].Cells[j].Value = "";
+
+                    //清除颜色 - 调整板子的颜色变化
+                    DataReadWrite.changeODBackColor("", dgv, i, j);//set板子
+                    DataReadWrite.changeODBackColor("", dgv1, i, j);//od板子
+                    if (isClearOD) {
+                        dgv1.Rows[i].Cells[j].Value = "";
+                    }
+                }
+            }
+        }
+
+
 
         //从剪切板粘贴数据到dataGridView控件
         public static void pasteToDataGridView(DataGridView dgv)
