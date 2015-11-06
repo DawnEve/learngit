@@ -249,10 +249,10 @@ namespace ExcelFile
             {
                 string fName = openFileDialog1.FileName;
                 //调用类文件读取文件，并获取模板信息、OD信息   
-                DataReadWrite df = new DataReadWrite();
-                plate_info = df.readFromFile(fName);//获取基本信息
-                Info[,] tpl = df.getTpl();//模板信息
-                double[,] od = df.getOd();//OD信息
+                DataReadWrite dfw = new DataReadWrite();
+                plate_info = dfw.readFromFile(fName);//获取基本信息
+                Info[,] tpl = dfw.getTpl();//模板信息
+                double[,] od = dfw.getOd();//OD信息
 
 
 
@@ -268,6 +268,9 @@ namespace ExcelFile
                 this.textLot.Text = plate_info["Lot"];
                 this.txtUnit.Text = plate_info["Unit"];
 
+
+                //先初始化模板-重置所有方格
+                DgvCtrl.clearAllCells(this.dataGridView0, this.dataGridView1);
 
 
                 //从中间数据读取到表格中
@@ -288,8 +291,8 @@ namespace ExcelFile
             plate_info = new Dictionary<string,string>();
             //重新初始化中间数组
             tpl = new Info[8, 12];
-            //od = new double[8, 12];
-            string[,] odStr = new string[8, 12];//使用字符数组更好？
+            od = new double[8, 12];
+            //string[,] odStr = new string[8, 12];//使用字符数组更好？
 
 
             //读取文件到中间数组
@@ -320,7 +323,7 @@ namespace ExcelFile
 
             //从UI读取到中间数组
             tpl = drw.readFromUI(this.dataGridView0,true);
-            odStr = drw.readFromUI(this.dataGridView1);
+            od = drw.readFromUI(this.dataGridView1);
 
 
             //中间数据-》文件
@@ -356,9 +359,13 @@ namespace ExcelFile
                             for (int j = 0; j < 12; j++)
                             {
                                 //writer.Write(i + "\t");
-                                if (odStr[i, j] != null && odStr[i, j].ToString() != "")
+                                if (od[i, j] != null && od[i, j].ToString() != "")
                                 {
-                                    writer.Write(odStr[i, j] + "\t");
+                                    writer.Write(od[i, j] + "\t");
+                                }
+                                else
+                                {
+                                    writer.Write("\t");
                                 }
                             }
                             writer.WriteLine();

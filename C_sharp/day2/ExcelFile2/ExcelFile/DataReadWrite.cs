@@ -197,13 +197,14 @@ namespace ExcelFile
                     //if (flag_Value && false)//先跳过OD data
                     if (flag_Value)
                     {
+                        //MessageBox.Show(i + "[]" + txt, "OD data");
                         string[] d_value = txt.Split('\t');
 
                         //j相当于列
                         //string Location = "";
                         for (int j = 0; j < 12; j++)
                         {
-                            if (d_value[j].Trim() != "")
+                            if (d_value[j]!=null && d_value[j].Trim() != "")
                             {
                                 //Location = (string)(i + "行" + j + "列");
                                 //MessageBox.Show(d_value[j], "OD-" + Location);
@@ -212,6 +213,10 @@ namespace ExcelFile
                         }
 
                         i++;//i相当于行
+                        if (i >= 7)
+                        {
+                            flag_Value = false; 
+                        }
                     }
 
 
@@ -358,8 +363,6 @@ namespace ExcelFile
         //返回模板设置信息
         public Info[,] readFromUI(DataGridView dgv, bool isContrl)
         {
-
-
             for (int i = 0; i < 8; i++)
             {
                 for (int j = 0; j < 12; j++)
@@ -405,9 +408,10 @@ namespace ExcelFile
         }
 
         //返回od数据
-        public string[,] readFromUI(DataGridView dgv)
+        public double[,] readFromUI(DataGridView dgv)
         {
-            string[,] odStr=new string[8,12];
+            //string[,] odStr=new string[8,12];
+            od = new double[8, 12];
 
             for (int i = 0; i < 8; i++)
             {
@@ -416,15 +420,11 @@ namespace ExcelFile
                     if ((dgv.Rows[i].Cells[j].Value != null) && (dgv.Rows[i].Cells[j].Value.ToString() != ""))
                     {
                         //获取单元格内容字符串
-                        odStr[i, j] = dgv.Rows[i].Cells[j].Value.ToString();
-                    }
-                    else 
-                    {
-                        odStr[i, j] = "";
+                        od[i, j] = double.Parse( dgv.Rows[i].Cells[j].Value.ToString() );
                     }
                 }
             }
-            return odStr;
+            return od;
         }
 
 
