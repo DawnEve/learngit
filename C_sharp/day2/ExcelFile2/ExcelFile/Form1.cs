@@ -67,6 +67,13 @@ namespace ExcelFile
             cmbTpl.FlatStyle = FlatStyle.Popup;//样式
 
 
+            //添加分组单选框-拟合选项
+            this.groupBox5.Controls.Add(this.radioButton1);
+            this.groupBox5.Controls.Add(this.radioButton2);
+            this.groupBox5.Controls.Add(this.radioButton3);
+            this.groupBox5.Controls.Add(this.radioButton4);
+            this.radioButton1.Checked = true;//默认选中第一项
+
 
 
             //添加组合框-样品类型（因为不需要修改，所以直接写死了）
@@ -267,6 +274,7 @@ namespace ExcelFile
                 this.dateTimePicker1.Text = plate_info["LabDate"];
                 this.textLot.Text = plate_info["Lot"];
                 this.txtUnit.Text = plate_info["Unit"];
+                this.richTextBox1.Text = plate_info["Note"];
 
 
                 //先初始化模板-重置所有方格 + //清空od数据
@@ -317,6 +325,7 @@ namespace ExcelFile
             plate_info["LabDate"] = this.dateTimePicker1.Text.Trim();
             plate_info["Unit"] = this.txtUnit.Text.Trim();
             plate_info["Notice"] = "不要随意更改文件内容，否则再次读取时将发生错误。";
+            
             //tpl-》中间数据
 
             //tpl=>中间数据
@@ -393,8 +402,16 @@ namespace ExcelFile
                             writer.WriteLine();
                         }
                         
-                        
+                        //写曲线类型
+                        writer.WriteLine("Curve:"+getRadioIndex().ToString());
+                        //写备注
+                        writer.WriteLine("Note:"+this.richTextBox1.Text);
+                        //plate_info["Note"] = this.richTextBox1.Text;
+
                         writer.WriteLine("======end======");
+
+                        //写md5验证码：考虑使用tpl和od联合生成
+
                     }
                 }
                 myStream.Close();
@@ -530,6 +547,41 @@ namespace ExcelFile
             MessageBox.Show("Sorry, 该功能尚未实现", "作者提示");
         }
 
+        //按照指定模型对曲线进行拟合
+        private void btnStartFit_Click(object sender, EventArgs e)
+        {
+            int curve_syle = getRadioIndex();
+            richTextBox1.Text = curve_syle.ToString();
+
+
+        }
+
+        //获取单选按钮的序号
+        private int getRadioIndex() {
+            if (radioButton1.Checked == true)
+            {
+                //richTextBox1.Text = "选择了radioButton1";
+                return 1;
+            }
+            else if (radioButton2.Checked == true)
+            {
+                //richTextBox1.Text = "选择了radioButton2";
+                return 2;
+            }
+            else if (radioButton3.Checked == true)
+            {
+                //richTextBox1.Text = "选择了radioButton3";
+                return 3;
+            }
+            else if (radioButton4.Checked == true)
+            {
+                //richTextBox1.Text = "选择了radioButton4";
+                return 4;
+            }
+            else {
+                return -1;
+            }
+        }
 
 
 

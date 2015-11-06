@@ -280,7 +280,7 @@ namespace ExcelFile
                             string[] info = txt.Split(':');
                             plate_Info.Add(info[0], info[1]);
                         }
-                        if (txt.Contains("备注"))
+                        if (txt.Contains("Note"))
                         {
                             string[] info = txt.Split(':');
                             plate_Info.Add(info[0], info[1]);
