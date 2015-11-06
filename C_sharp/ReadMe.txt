@@ -68,7 +68,10 @@ day2:
 			- [7] 增加拟合选项按钮：radioButton
 				用法：http://www.codefans.net/articles/1688.shtml
 			- [8] 计划用第二个窗体进行拟合计算、画图
-
+		(9)从界面获得数据，拟合，画图。
+			-[0] 熟悉拟合方法
+			利用最小二乘法拟合任意次函数曲线（C#）：http://blog.sina.com.cn/s/blog_6e51df7f0100thie.html
+			
 		
 		
 		
@@ -118,7 +121,9 @@ day3:	画图
 		怎么从第一个窗体向另一个窗体传值？
 				//http://zhidao.baidu.com/link?url=kxz98yHmsCCjGoaRyiLOb16MDHLVXH2tgpEE_R8aK5UN1Y6nP4j78Eg5z0PGx07HMQgE1dAAoZEK9it8cbv2YSeEJwGK9t-1opUptfUhHEe
 	
-	
+day4:	拟合
+		polyfit:多项式拟合，包括线性拟合（一次方拟合）；
+		
 	
 	
 
