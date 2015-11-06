@@ -269,8 +269,9 @@ namespace ExcelFile
                 this.txtUnit.Text = plate_info["Unit"];
 
 
-                //先初始化模板-重置所有方格
-                DgvCtrl.clearAllCells(this.dataGridView0, this.dataGridView1);
+                //先初始化模板-重置所有方格 + //清空od数据
+                DgvCtrl.clearAllCells(this.dataGridView0, this.dataGridView1,true);
+                
 
 
                 //从中间数据读取到表格中

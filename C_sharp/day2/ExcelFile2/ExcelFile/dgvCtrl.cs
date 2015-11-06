@@ -117,7 +117,7 @@ namespace ExcelFile
 
 
         //删除整个模板的背景色
-        public static void clearAllCells(DataGridView dgv, DataGridView dgv1)
+        public static void clearAllCells(DataGridView dgv, DataGridView dgv1,bool isClearOD=false)
         {
             if (dgv.SelectedCells.Count == 0)
             {
@@ -134,6 +134,9 @@ namespace ExcelFile
                     //清除颜色 - 调整板子的颜色变化
                     DataReadWrite.changeODBackColor("", dgv, i, j);//set板子
                     DataReadWrite.changeODBackColor("", dgv1, i, j);//od板子
+                    if (isClearOD) {
+                        dgv1.Rows[i].Cells[j].Value = "";
+                    }
                 }
             }
         }
