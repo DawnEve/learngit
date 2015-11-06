@@ -221,19 +221,19 @@ namespace ExcelFile
                     //if (flag_Layout && false)//先跳过模板data
                     if (flag_Layout)
                     {
-                        //MessageBox.Show(txt, "Layout");
+                        //MessageBox.Show(iM+"[]"+txt, "Layout");
                         string[] d_value = txt.Split('\t');
 
                        
                         //j相当于列
                         //string Location = "";
-                        string MuBan_info = "";
+                        //string MuBan_info = "";
                         string[] info = new string[2];
                         string[] info2 = new string[2];
                         for (int j = 0; j < 12; j++)
                         {
-                            MuBan_info = d_value[j] + "  \n";
-                            if (d_value[j].Trim() != "")
+                            //MuBan_info = d_value[j] + "  \n";
+                            if ( d_value[j]!=null && d_value[j].Trim() != "")
                             {
                                 if (d_value[j].Contains("std") || d_value[j].Contains("ctr") )
                                 {
@@ -257,6 +257,11 @@ namespace ExcelFile
                         }
 
                         iM++;//i相当于行
+                        if (iM >= 7)
+                        {
+                            flag_Layout = false;
+                            flag_Curve = true;
+                        }
                     }
 
 
