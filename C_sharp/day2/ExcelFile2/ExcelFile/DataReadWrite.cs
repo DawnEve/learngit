@@ -420,7 +420,11 @@ namespace ExcelFile
                     if ((dgv.Rows[i].Cells[j].Value != null) && (dgv.Rows[i].Cells[j].Value.ToString() != ""))
                     {
                         //获取单元格内容字符串
-                        od[i, j] = double.Parse( dgv.Rows[i].Cells[j].Value.ToString() );
+                        od[i, j] = double.Parse(dgv.Rows[i].Cells[j].Value.ToString());
+                    }
+                    else 
+                    {
+                        od[i, j] = -10000; 
                     }
                 }
             }

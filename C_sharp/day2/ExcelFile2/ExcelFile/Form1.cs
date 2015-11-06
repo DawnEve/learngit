@@ -287,7 +287,7 @@ namespace ExcelFile
                 DataReadWrite.readIntoUI(od, this.dataGridView1);//od文件
 
                 //this.richTextBox1.Text += DataReadWrite.textDebug;
-            } 
+            }
         }
 
 
@@ -369,7 +369,8 @@ namespace ExcelFile
                             for (int j = 0; j < 12; j++)
                             {
                                 //writer.Write(i + "\t");
-                                if (od[i, j] != null && od[i, j].ToString() != "")
+                                //if (od[i, j] != null && od[i, j].ToString() != "")
+                                if (od[i, j] != null && od[i, j]>=0)
                                 {
                                     writer.Write(od[i, j] + "\t");
                                 }
