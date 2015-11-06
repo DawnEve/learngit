@@ -521,67 +521,13 @@ namespace ExcelFile
 
         private void btnOpenTpl_Click(object sender, EventArgs e)
         {
-            //如何判断一个数组是否初始化？
-
-            double[,] dd = new double[2, 3];
-
-
-             for (int i = 0; i < 2; i++)
-            {
-	            for (int j = 0; j < 3; j++)
-	            {
-                    bool boo=double.IsNaN(dd[i,j]);
-                    //bool boo=dd[i,j].Length==0 || dd[i,j]==null || dd[i,j].ToString()=="";
-		            //if (dd[i,j].ToString()!="")
-                    if(!boo)
-		            {
-			            MessageBox.Show(dd[i, j] + "\t");
-		            }
-		            else 
-		            {
-                        MessageBox.Show("空值"+"\t");
-		            }
-	            }
-            }
+            MessageBox.Show("Sorry, 该功能尚未实现", "作者提示");
 
         }
 
         private void btnSaveTpl_Click(object sender, EventArgs e)
         {
-            DataGridView dgv = dataGridView0;//todo
-            for (int i = 0; i < 8; i++)
-            {
-                for (int j = 0; j < 12; j++)
-                {
-                    
-                    string txt = "nothing";
-                    string[] info = { "", "","","" };
-                    string[] info2 = { "", "", "", "" };
-                    //if (this.dataGridView0.Rows[i].Cells[j].Selected == true)
-                    if ((dgv.Rows[i].Cells[j].Value != null) && (dgv.Rows[i].Cells[j].Value.ToString() != ""))
-                    {
-
-                        txt = dgv.Rows[i].Cells[j].Value.ToString();
-                        info = txt.Split(' ');
-
-                        if(info[1].IndexOf('\r') != -1){
-                            info2 = info[1].Split('\r');
-                            if (i < 2 && j < 2) MessageBox.Show(info[0] + " " + info2[0] + "#" + info2[1]);//todo
-
-                        }else{
-                            if (i < 2 && j < 2) MessageBox.Show(info[0] + " " + info[1]);//todo
-                        
-                        }
-                    }
-                    else {
-                        txt = "";
-
-                        if (i < 2 && j < 2) MessageBox.Show("nothing");//todo
-                    }
-                    
-                    
-                }
-            }
+            MessageBox.Show("Sorry, 该功能尚未实现", "作者提示");
         }
 
 
