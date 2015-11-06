@@ -381,22 +381,26 @@ namespace ExcelFile
         }
 
         //返回od数据
-        public double[,] readFromUI(DataGridView dgv)
+        public string[,] readFromUI(DataGridView dgv)
         {
+            string[,] odStr=new string[8,12];
 
             for (int i = 0; i < 8; i++)
             {
                 for (int j = 0; j < 12; j++)
                 {
-                    if(  (dgv.Rows[i].Cells[j].Value != null) && (dgv.Rows[i].Cells[j].Value.ToString() != "")  )
+                    if ((dgv.Rows[i].Cells[j].Value != null) && (dgv.Rows[i].Cells[j].Value.ToString() != ""))
                     {
                         //获取单元格内容字符串
-                        string txt = dgv.Rows[i].Cells[j].Value.ToString();
-                        od[i, j] = double.Parse(txt);
+                        odStr[i, j] = dgv.Rows[i].Cells[j].Value.ToString();
+                    }
+                    else 
+                    {
+                        odStr[i, j] = "";
                     }
                 }
             }
-            return od;
+            return odStr;
         }
 
 

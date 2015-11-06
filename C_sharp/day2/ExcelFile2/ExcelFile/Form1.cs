@@ -286,6 +286,10 @@ namespace ExcelFile
         {
             //清空字典
             plate_info = new Dictionary<string,string>();
+            //重新初始化中间数组
+            tpl = new Info[8, 12];
+            //od = new double[8, 12];
+            string[,] odStr = new string[8, 12];//使用字符数组更好？
 
 
             //读取文件到中间数组
@@ -313,12 +317,11 @@ namespace ExcelFile
 
             //tpl=>中间数据
             DataReadWrite drw = new DataReadWrite();
-            //重新初始化中间数组
-            tpl=new Info[8,12];
-            od = new double[8, 12];
+
             //从UI读取到中间数组
             tpl = drw.readFromUI(this.dataGridView0,true);
-            od = drw.readFromUI(this.dataGridView1);
+            odStr = drw.readFromUI(this.dataGridView1);
+
 
             //中间数据-》文件
 
@@ -352,13 +355,10 @@ namespace ExcelFile
                         {
                             for (int j = 0; j < 12; j++)
                             {
-                                if (od[i, j] != null && od[i,j].ToString()!="")
+                                //writer.Write(i + "\t");
+                                if (odStr[i, j] != null && odStr[i, j].ToString() != "")
                                 {
-                                    writer.Write(od[i, j] + "\t");
-                                }
-                                else 
-                                {
-                                    writer.Write("\t");
+                                    writer.Write(odStr[i, j] + "\t");
                                 }
                             }
                             writer.WriteLine();
@@ -375,7 +375,7 @@ namespace ExcelFile
                                 Info info = tpl[i, j];
                                 if (info != null)
                                 {
-                                    //writer.WriteLine(info.well_class + " " + info.well_num + "#" + info.well_conc + "\t");
+                                    writer.Write(info.well_class + " " + info.well_num + "#" + info.well_conc + "\t");
                                 }
                                 else 
                                 {
@@ -502,13 +502,63 @@ namespace ExcelFile
             Info[,] tpl = form_inner_tpl.getTplByName(tpl_name);
 
 
-            //先重置模板-初始化
+            //先初始化模板-重置所有方格
             DgvCtrl.clearAllCells(this.dataGridView0, this.dataGridView1);
 
 
             //中间信息写到界面上
             DataReadWrite.readIntoUI(tpl, this.dataGridView0, this.dataGridView1);
 
+        }
+
+        private void btnOpenTpl_Click(object sender, EventArgs e)
+        {
+            //如何判断一个数组是否初始化？
+
+            double[,] dd = new double[2, 3];
+
+
+             for (int i = 0; i < 2; i++)
+            {
+	            for (int j = 0; j < 3; j++)
+	            {
+                    bool boo=double.IsNaN(dd[i,j]);
+                    //bool boo=dd[i,j].Length==0 || dd[i,j]==null || dd[i,j].ToString()=="";
+		            //if (dd[i,j].ToString()!="")
+                    if(!boo)
+		            {
+			            MessageBox.Show(dd[i, j] + "\t");
+		            }
+		            else 
+		            {
+                        MessageBox.Show("空值"+"\t");
+		            }
+	            }
+            }
+
+        }
+
+        private void btnSaveTpl_Click(object sender, EventArgs e)
+        {
+            DataGridView dgv = dataGridView1;//todo
+            for (int i = 0; i < 2; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    string s = "nothing";
+                    //if (this.dataGridView0.Rows[i].Cells[j].Selected == true)
+                    if ((dgv.Rows[i].Cells[j].Value != null) && (dgv.Rows[i].Cells[j].Value.ToString() != ""))
+                    {
+
+                        s = dgv.Rows[i].Cells[j].Value.ToString();
+                    }
+                    else {
+                        s = "";
+                    }
+                    //if (i < 2 && j < 2) MessageBox.Show(odStr[i, j]);//todo
+                    
+                }
+            }
         }
 
 

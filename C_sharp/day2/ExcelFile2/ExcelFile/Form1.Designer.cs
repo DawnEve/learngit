@@ -603,6 +603,7 @@
             this.btnOpenTpl.TabIndex = 16;
             this.btnOpenTpl.Text = "打开模板";
             this.btnOpenTpl.UseVisualStyleBackColor = true;
+            this.btnOpenTpl.Click += new System.EventHandler(this.btnOpenTpl_Click);
             // 
             // btnSaveTpl
             // 
@@ -612,6 +613,7 @@
             this.btnSaveTpl.TabIndex = 15;
             this.btnSaveTpl.Text = "保存模板";
             this.btnSaveTpl.UseVisualStyleBackColor = true;
+            this.btnSaveTpl.Click += new System.EventHandler(this.btnSaveTpl_Click);
             // 
             // dateTimePicker1
             // 
