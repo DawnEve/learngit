@@ -122,12 +122,16 @@ day3:	画图
 				//http://zhidao.baidu.com/link?url=kxz98yHmsCCjGoaRyiLOb16MDHLVXH2tgpEE_R8aK5UN1Y6nP4j78Eg5z0PGx07HMQgE1dAAoZEK9it8cbv2YSeEJwGK9t-1opUptfUhHEe
 	
 day4:	拟合
-		polyfit:多项式拟合，包括线性拟合（一次方拟合）；
-		
+		polyfit: 拟合算法的集合
+			1.  [1]CurveFit类：多项式拟合，包括线性拟合（一次方拟合）；
+				[2]FittingFunct类：多项式拟合，指数拟合等；没看懂
+			
 	
 	
 
-
+---------------------------
+安卓的开源项目
+http://blog.csdn.net/sasoritattoo/article/details/26400347
 ---------------------------
 主要内容
 - 按钮
