@@ -73,7 +73,7 @@ namespace ExcelFile
             od = ((Form1)this.Owner).od;
         }
 
-        //计算标准曲线
+        //计算线性拟合的标准曲线
         private void calclateStd(Graphics g) {
             //计算标准曲线
             List<PointF> stdPoints = new List<PointF>();//保存标准曲线上的点
@@ -180,23 +180,43 @@ namespace ExcelFile
 
             //计算R^2
             double RSqure = 1 - rss / tss;
-            this.richTextBox1.Text += "\r\nRSqure=" + RSqure;
+            //this.richTextBox1.Text += "\r\nRSqure=" + RSqure;
+            this.label2.Text = RSqure.ToString();
 
 
             //==========================================================画图
-
             //计算最值
             double[] xM = getMinMax(arr_x);
             double[] yM = getMinMax(arr_y);
             //当前画布最值
             double pWidth = this.pictureBox1.Width;
-            double pHeight = this.pictureBox1.Height; this.richTextBox1.Text += "\r\r画布尺寸(" + pWidth + "," + pHeight + "); \r";
+            double pHeight = this.pictureBox1.Height; //this.richTextBox1.Text += "\r\r画布尺寸(" + pWidth + "," + pHeight + "); \r";
             //坐标轴范围
             double x_span=xM[1]-xM[0];
             double y_span=yM[1]-yM[0];
             //画坐标轴 10格
-            double x_kedu =Math.Ceiling( x_span/10 );
+            double x_kedu =Math.Ceiling( x_span/10 );//刻度
             double y_kedu = Math.Ceiling(y_span / 10);
+
+            double x_o = xM[0] + x_kedu * 3;//坐标轴所在位置
+            double y_o = yM[0] + y_kedu * 3;
+
+            //画坐标
+
+
+            double x_axis = xM[0];
+            double y_axis = yM[0];
+
+
+            while (x_axis <= xM[1])
+            {
+                x_axis +=  x_kedu;
+            
+            }
+
+
+
+
             //细分点数
             int dot_num = 10;
             List<Point> pointList = new List<Point>();

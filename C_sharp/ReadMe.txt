@@ -83,7 +83,8 @@ day2:
 			- [4] 第一次调整，没有坐标轴。增加了myDebug类和myDraw类。
 			- [5] 使用g.DrawCurve(new Pen(Color.Red, 1), temps,0.2F);方法划线，速度快、效果好。
 			- [6] 画出原始std空心点。g.DrawEllipse(new Pen(Color.Green), p.X, p.Y, dot_radius, dot_radius);//6
-			
+			- [7] 修复了bug：修改模板信息后，内置模板下拉框立刻变为“自定义模板”字样。
+			还在画坐标轴。
 			
 			
 			
