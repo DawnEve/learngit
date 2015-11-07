@@ -36,6 +36,26 @@ namespace ExcelFile
             InitializeComponent();
         }
 
+
+        private void reportForm_Load(object sender, EventArgs e)
+        {
+            //初始化重新拟合按钮
+            btnFitAgain.BackColor = Color.Red;
+            btnFitAgain.ForeColor = Color.White;
+            btnFitAgain.FlatStyle = FlatStyle.Flat;
+
+            //获取数据
+            getData();
+
+            //尝试打印接收的数据
+            DemoShowData();
+
+
+            //计算标准曲线
+            calclateStd();
+        }
+
+
         private void btnFitAgain_Click(object sender, EventArgs e)
         {
             this.Dispose();
@@ -46,7 +66,151 @@ namespace ExcelFile
             this.Dispose();
         }
 
-        private void pictureBox1_Paint(object sender, PaintEventArgs e)
+
+        //从前一个窗体获得数据
+        private void getData()
+        {
+            //获取第一窗体输入的数字
+            //int num = ((Form1)this.Owner).num;
+            plate_info = ((Form1)this.Owner).plate_info;
+            tpl = ((Form1)this.Owner).tpl;
+            od = ((Form1)this.Owner).od;
+        }
+
+        //计算标准曲线
+        private void calclateStd() {
+
+            //计算标准曲线
+            //整理出标准品数据，用字典实现conc唯一性
+            int std_count = 0;
+            Dictionary<double, List<Info>> std = new Dictionary<double, List<Info>>();
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 12; j++)
+                {
+                    Info info = tpl[i, j];
+                    List<Info> infoPlus = new List<Info>();
+                    if (info != null && info.well_class == "std")
+                    {
+                        //增加od属性
+                        info.well_od = od[i, j]; 
+                        //整合到数据中
+                        if (std.ContainsKey(info.well_conc))
+                        {
+                            //如果存在，则先获得od值，然后增加
+                            infoPlus = std[info.well_conc];
+                            infoPlus.Add(info);
+                            std.Add(info.well_conc, infoPlus);
+                        }
+                        else
+                        {
+                            //首次增加
+                            std_count++;
+                            infoPlus.Add(info);
+                            std.Add(info.well_conc, infoPlus);
+                        }
+                    }
+                }
+            }
+            //整理x和y数组
+            double[] arr_x = new double[std_count];//conc
+            double[] arr_y = new double[std_count];//od
+            //MessageBox.Show(std_count.ToString());
+
+            int std_i = 0;//最大值为 std_count
+            foreach (double conc in std.Keys)
+            {
+                //MessageBox.Show(conc.ToString());
+                arr_x[std_i] = conc;
+                List<Info> list=std[conc];
+
+                
+
+                int od_counter=0;
+                double od_sum = 0; 
+                foreach(Info info in list)
+                {
+                    od_sum += double.Parse( info.well_od.ToString() );
+                    od_counter++;
+                }
+                arr_y[std_i] = od_sum / od_counter;//计算od的平均值
+                std_i++;
+            }
+
+
+            //输出数组
+            showArray(arr_y);
+
+
+            
+            
+
+
+            return;
+             //arr_x = new double[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+             //arr_y = new double[] { 283, 285, 300, 339, 380, 424, 516, 550, 542, 532 };
+
+            //拟合计算
+            int Pointlen = arr_x.Length;
+            //拟合，返回参数列表
+            Double[] paras = CurveFit.MultiLine(arr_x, arr_y, Pointlen,1);
+
+            //输出结果
+            //y=a0+a1*x 返回值则为a0 a1
+            int len = paras.Length;
+
+            string str = "";
+            for (int i = 0; i < len; i++)
+            {
+                str += paras[i].ToString() + "\r\n";
+            }
+            //显示结果
+            this.richTextBox1.Text += str;
+
+
+
+            //由参数计算回算测量值
+            double a0 = paras[0], a1 = paras[1];
+            double rss = 0, tss = 0;//残差平方和，总平方和
+
+            double[] arrX2 = new double[Pointlen];//用于浓度回算
+            double[] arrY2 = new double[Pointlen];//用于计算RSqure
+            for (int i = 0; i < Pointlen; i++)
+            {
+                arrX2[i] = (arr_y[i] - a0) / a1;
+                arrY2[i] = a0 + a1 * arr_x[i];
+
+                rss += Math.Pow(arr_y[i] - arrY2[i], 2);
+                tss += Math.Pow(arr_y[i], 2);
+            }
+
+
+            //计算R^2
+            double RSqure = 1 - rss / tss;
+
+            this.richTextBox1.Text += "\r\nRSqure=" + RSqure;
+
+            
+            
+        }
+
+
+
+
+
+                    //输出数组
+            private void showArray(double[] d){
+                int iMax=d.Length;
+                for(int i=0; i<iMax; i++)
+                {
+                    this.richTextBox1.Text += "array(" + i + ")=" + d[i]+"\r";
+                }
+            }
+
+
+
+
+            private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
             //初始化图片框样式
             this.pictureBox1.BorderStyle = BorderStyle.Fixed3D;
@@ -63,19 +227,9 @@ namespace ExcelFile
             g.DrawString("The xxx curve", new Font("宋体", 12), new SolidBrush(Color.Blue), new Point(Width / 3, 10));
 
 
-            //获取第一窗体输入的数字
-            //int num = ((Form1)this.Owner).num;
-            plate_info = ((Form1)this.Owner).plate_info;
-            tpl = ((Form1)this.Owner).tpl;
-            od = ((Form1)this.Owner).od;
-
-
-
-
             //以下尝试画图，可以删除
             DemoPaint(g);
-            //尝试打印接收的数据
-            DemoShowData();
+            
 
         }
 
@@ -135,13 +289,6 @@ namespace ExcelFile
         
         }
 
-        private void reportForm_Load(object sender, EventArgs e)
-        {
-            //初始化重新拟合按钮
-            btnFitAgain.BackColor = Color.Red;
-            btnFitAgain.ForeColor = Color.White;
-            btnFitAgain.FlatStyle = FlatStyle.Flat;
-        }
 
         //保存按钮
         private void btnSave_Click(object sender, EventArgs e)

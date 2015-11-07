@@ -18,6 +18,8 @@ namespace ExcelFile
         public string well_class;//样品类别 std ctr smp
         public string well_num;//样品编号
         public double well_conc;//样品浓度
+        //增加OD信息
+        public double well_od;//样品od
 
         //标准品和质控品
         public Info(int i, int j, string well_class, string well_num, double well_conc)
