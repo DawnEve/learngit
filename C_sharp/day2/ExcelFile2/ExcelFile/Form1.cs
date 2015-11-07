@@ -30,7 +30,7 @@ namespace ExcelFile
         public Double[,] od = new double[8, 12];
 
         //====================================加工过的信息
-        public int num = 10;
+
 
 
 
@@ -569,7 +569,7 @@ namespace ExcelFile
             //UI->中间数组
             readUItoArray();
 
-
+            
             //设置窗体归属，从该窗体向后传值
             reportForm ff = new reportForm();//给窗体赋值
             ff.Owner = this;//向窗口ff传递值得关键

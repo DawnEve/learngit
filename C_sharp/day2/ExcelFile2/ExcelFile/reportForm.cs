@@ -13,6 +13,19 @@ namespace ExcelFile
 {
     public partial class reportForm : Form
     {
+                /* 定义一些公用属性
+         *  
+         */
+        //====================================中间信息（文件与界面之间）
+        //板子基本信息-plate_Info
+        public Dictionary<string, string> plate_info = new Dictionary<string, string>();
+
+        //板子模板设置信息
+        public Info[,] tpl = new Info[8, 12];
+
+        //板子OD信息
+        public Double[,] od = new double[8, 12];
+    
         public reportForm()
         {
             InitializeComponent();
@@ -46,9 +59,17 @@ namespace ExcelFile
 
 
             //获取第一窗体输入的数字
-            int num = ((Form1)this.Owner).num;
+            //int num = ((Form1)this.Owner).num;
+            plate_info = ((Form1)this.Owner).plate_info;
+            tpl = ((Form1)this.Owner).tpl;
+            od = ((Form1)this.Owner).od;
 
-            int dot_num = (int)(num);
+
+
+
+            //以下可以删除
+            int dot_num = int.Parse(plate_info["Curve"]);
+
             int dot_radius = 6;
             for (int i = 0; i < dot_num; i++)
             {
@@ -155,7 +176,7 @@ namespace ExcelFile
             this.pictureBox1.DrawToBitmap(b, new Rectangle(0, 0, this.pictureBox1.Width, this.pictureBox1.Height));
 
             Clipboard.SetImage(b);
-            MessageBox.Show("照片复制成功！", "系统提示");
+            MessageBox.Show("图片已经复制到剪切板！", "系统提示");
         }
     }
 }
