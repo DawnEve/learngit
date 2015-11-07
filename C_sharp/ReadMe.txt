@@ -81,9 +81,11 @@ day2:
 			- [2] 整理std数据，已经整理好，拟合成功参数y=a0+a1*x 返回值则为a0 a1。并计算了R^2.
 			- [3] 开始画图，初步能画图，但是数据还需要调整。
 			- [4] 第一次调整，没有坐标轴。增加了myDebug类和myDraw类。
-			
-			
-			
+			- [5] 使用g.DrawCurve(new Pen(Color.Red, 1), temps,0.2F);方法划线，速度快、效果好。
+			- [6] 画出原始std空心点。g.DrawEllipse(new Pen(Color.Green), p.X, p.Y, dot_radius, dot_radius);//6
+			- [7] 修复了bug：修改模板信息后，内置模板下拉框立刻变为“自定义模板”字样。
+			- [8] 画出了坐标轴，还没有刻度。
+				用到了 匿名函数 lambda表达式    Func<int, string> gwl = p => p + 10 + "--返回类型为string";   
 			
 			
 			
