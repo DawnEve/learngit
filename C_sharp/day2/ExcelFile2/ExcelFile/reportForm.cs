@@ -28,7 +28,7 @@ namespace ExcelFile
 
         //====================================加工后的信息
         //private List<Info> std
-
+        public Graphics g;
 
     
         public reportForm()
@@ -52,7 +52,7 @@ namespace ExcelFile
 
 
             //计算标准曲线
-            calclateStd();
+            //calclateStd();
         }
 
 
@@ -78,7 +78,7 @@ namespace ExcelFile
         }
 
         //计算标准曲线
-        private void calclateStd() {
+        private List<double[]> calclateStd() {
 
             //计算标准曲线
             //整理出标准品数据，用字典实现conc唯一性
@@ -183,29 +183,93 @@ namespace ExcelFile
             double RSqure = 1 - rss / tss;
             this.richTextBox1.Text += "\r\nRSqure=" + RSqure;
 
+
             //==========================================================画图
 
+            //计算最值
+            double[] xM = getMinMax(arr_x);
+            double[] yM = getMinMax(arr_y);
+            //当前画布最值
+            double pWidth = this.pictureBox1.Width;
+            double pHeight = this.pictureBox1.Height;
+            //坐标轴范围
+            double x_span=xM[1]-xM[0];
+            double y_span=yM[1]-yM[0];
+            //画坐标轴 10格
+            double x_kedu =Math.Ceiling( x_span/10 );
+            double y_kedu = Math.Ceiling(y_span / 10);
+            //细分点数
+            int dot_num = 100;
+            //计算拟合出来的点
+            double[] xp = new double[dot_num];
+            double[] yp = new double[dot_num];
+            for (int i = 0; i < dot_num; i++)
+            {
+                xp[i] = xM[0] + i * x_span / dot_num;
+                yp[i] = a0 + a1 * xp[i];
 
-   
+                //针对当前画布调整
+                xp[i] = (xp[i]-xM[0]) * pWidth / x_span;
+                yp[i] = (yp[i] - yM[0]) * pHeight / y_span;
+                //纵轴倒置
+                yp[i] = pHeight - yp[i];
+                
+                //缩放
+                xp[i] *= 0.8;
+                yp[i] *= 0.8;
+            }
+            
+            //随机造一些点
+
+            xp=new double[]{100,200,300};
+            yp = new double[] { 100, 200, 300 };
+            //画出这些点
+            DrawPoint(this.g,xp,yp);
+            return new List<double[]> { xp,yp};
+        }
+
+        //画点
+        private void DrawPoint(Graphics g, double[] x, double[] y)
+        {
+            //定义铅笔
+
+            int iM = x.Length;
+            int dot_radius = 5;
+            for (int i = 0; i < iM; i++)
+            {
+                g.DrawEllipse(new Pen(Color.Green), int.Parse( x[i].ToString() ),  int.Parse( y[i].ToString() ), dot_radius, dot_radius);
+            }
+
+        }
+
+        //获取数组的最值
+        private double[] getMinMax(double[] d) 
+        {
+            double min = d[0], max = d[0];
+            for (int i = 0; i < d.Length; i++) 
+            {
+                if (d[i] < min) min = d[i];
+                if (d[i] > max) max = d[i];
+            }
+            return new double[]{min,max};
+        }
+
+
+
+            //输出数组
+        private void showArray(double[] d)
+        {
+            int iMax=d.Length;
+            for(int i=0; i<iMax; i++)
+            {
+                this.richTextBox1.Text += "array(" + i + ")=" + d[i]+"\r";
+            }
         }
 
 
 
 
-
-                    //输出数组
-            private void showArray(double[] d){
-                int iMax=d.Length;
-                for(int i=0; i<iMax; i++)
-                {
-                    this.richTextBox1.Text += "array(" + i + ")=" + d[i]+"\r";
-                }
-            }
-
-
-
-
-            private void pictureBox1_Paint(object sender, PaintEventArgs e)
+         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
             //初始化图片框样式
             this.pictureBox1.BorderStyle = BorderStyle.Fixed3D;
@@ -213,7 +277,8 @@ namespace ExcelFile
             this.pictureBox1.Height = 400;
 
             //创建Graphics对象
-            Graphics g = e.Graphics;
+            //Graphics g = e.Graphics;
+            g = e.Graphics;
             //白色背景
             g.Clear(Color.White);
 
@@ -222,10 +287,10 @@ namespace ExcelFile
             g.DrawString("The xxx curve", new Font("宋体", 12), new SolidBrush(Color.Blue), new Point(Width / 3, 10));
 
 
-            //以下尝试画图，可以删除
-            DemoPaint(g);
-            
-
+            //以下尝试画图
+            List<double[]> d=calclateStd();
+            //DrawPoint(g,d[0],d[1]);
+            //DemoPaint(g);
         }
 
         //尝试打印接收的数据
