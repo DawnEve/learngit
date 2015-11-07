@@ -76,6 +76,7 @@ namespace ExcelFile
         //计算标准曲线
         private void calclateStd(Graphics g) {
             //计算标准曲线
+            List<PointF> stdPoints = new List<PointF>();//保存标准曲线上的点
             //整理出标准品数据，用字典实现conc唯一性
             int std_count = 0;
             Dictionary<double, List<Info>> std = new Dictionary<double, List<Info>>();
@@ -124,8 +125,12 @@ namespace ExcelFile
                 double od_sum = 0; 
                 foreach(Info info in list)
                 {
-                    od_sum += double.Parse( info.well_od.ToString() );
+                    double temp = double.Parse(info.well_od.ToString());
+                    od_sum += temp;
                     od_counter++;
+
+                    //保存标准曲线上的点
+                    stdPoints.Add(new PointF(float.Parse(conc.ToString()), float.Parse(temp.ToString())));
                 }
                 arr_y[std_i] = od_sum / od_counter;//计算od的平均值
                 std_i++;
@@ -214,13 +219,19 @@ namespace ExcelFile
                 //this.richTextBox1.Text += "(" + xp[i] + "," + yp[i] + "); \r";
                 pointList.Add(new Point(int.Parse(Math.Round(xp[i]).ToString()), int.Parse(Math.Round(yp[i]).ToString())));
             }
-            
-            //随机造一些点
-            //xp=new double[]{100,200,300};
-            //yp = new double[] { 100, 200, 300 };
 
-            //返回这些点，供画点
-            //return new List<double[]> { xp,yp};
+
+            //画std原始点
+            //myDraw.DrawPoints(g, xp, yp,1,true);
+            PointF p = new PointF();
+            int dot_radius = 6;//空心点的大小
+            for (int i = 0; i < stdPoints.Count; i++)
+            {
+                p = pointList[i];
+                g.DrawEllipse(new Pen(Color.Green), p.X, p.Y, dot_radius, dot_radius);
+            }
+
+
             //画线
             myDraw.DrawLine(g, pointList);
         }
