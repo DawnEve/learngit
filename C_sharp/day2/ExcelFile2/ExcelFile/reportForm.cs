@@ -48,11 +48,7 @@ namespace ExcelFile
             getData();
 
             //尝试打印接收的数据
-            DemoShowData();
-
-
-            //计算标准曲线
-            //calclateStd();
+            //DemoShowData();
         }
 
 
@@ -78,8 +74,7 @@ namespace ExcelFile
         }
 
         //计算标准曲线
-        private List<double[]> calclateStd() {
-
+        private void calclateStd(Graphics g) {
             //计算标准曲线
             //整理出标准品数据，用字典实现conc唯一性
             int std_count = 0;
@@ -115,7 +110,6 @@ namespace ExcelFile
             //整理x和y数组
             double[] arr_x = new double[std_count];//conc
             double[] arr_y = new double[std_count];//od
-            //MessageBox.Show(std_count.ToString());
 
             int std_i = 0;//最大值为 std_count
             foreach (double conc in std.Keys)
@@ -191,7 +185,7 @@ namespace ExcelFile
             double[] yM = getMinMax(arr_y);
             //当前画布最值
             double pWidth = this.pictureBox1.Width;
-            double pHeight = this.pictureBox1.Height;
+            double pHeight = this.pictureBox1.Height; this.richTextBox1.Text += "\r\r画布尺寸(" + pWidth + "," + pHeight + "); \r";
             //坐标轴范围
             double x_span=xM[1]-xM[0];
             double y_span=yM[1]-yM[0];
@@ -215,32 +209,26 @@ namespace ExcelFile
                 yp[i] = pHeight - yp[i];
                 
                 //缩放
-                xp[i] *= 0.8;
-                yp[i] *= 0.8;
+                //xp[i] *= 0.8;
+                //yp[i] *= 0.8; 
+                
+                //取整
+                xp[i]=Math.Round(xp[i]);
+                yp[i] = Math.Round(yp[i]);
+
+                this.richTextBox1.Text += "(" + xp[i] + "," + yp[i] + "); \r";
             }
             
             //随机造一些点
+            //xp=new double[]{100,200,300};
+            //yp = new double[] { 100, 200, 300 };
 
-            xp=new double[]{100,200,300};
-            yp = new double[] { 100, 200, 300 };
-            //画出这些点
-            DrawPoint(this.g,xp,yp);
-            return new List<double[]> { xp,yp};
+            //返回这些点，供画点
+            //return new List<double[]> { xp,yp};
+            myDraw.DrawPoints(g, xp, yp);
         }
 
-        //画点
-        private void DrawPoint(Graphics g, double[] x, double[] y)
-        {
-            //定义铅笔
 
-            int iM = x.Length;
-            int dot_radius = 5;
-            for (int i = 0; i < iM; i++)
-            {
-                g.DrawEllipse(new Pen(Color.Green), int.Parse( x[i].ToString() ),  int.Parse( y[i].ToString() ), dot_radius, dot_radius);
-            }
-
-        }
 
         //获取数组的最值
         private double[] getMinMax(double[] d) 
@@ -252,18 +240,6 @@ namespace ExcelFile
                 if (d[i] > max) max = d[i];
             }
             return new double[]{min,max};
-        }
-
-
-
-            //输出数组
-        private void showArray(double[] d)
-        {
-            int iMax=d.Length;
-            for(int i=0; i<iMax; i++)
-            {
-                this.richTextBox1.Text += "array(" + i + ")=" + d[i]+"\r";
-            }
         }
 
 
@@ -288,9 +264,12 @@ namespace ExcelFile
 
 
             //以下尝试画图
-            List<double[]> d=calclateStd();
-            //DrawPoint(g,d[0],d[1]);
+            //List<double[]> d=calclateStd();
+            //DrawPoint(g);
             //DemoPaint(g);
+
+
+            calclateStd(g);
         }
 
         //尝试打印接收的数据
