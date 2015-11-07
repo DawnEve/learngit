@@ -67,7 +67,55 @@ namespace ExcelFile
 
 
 
-            //以下可以删除
+            //以下尝试画图，可以删除
+            DemoPaint(g);
+            //尝试打印接收的数据
+            DemoShowData();
+
+        }
+
+        //尝试打印接收的数据
+        private void DemoShowData()
+        {
+            string s = "===basic info \r\n";
+            foreach (string k in plate_info.Keys) {
+                s += k + ": " + plate_info[k] + "; \r\n";
+            }
+
+
+            s += "\r===tpl \r\n";
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 12; j++)
+                {
+                    Info info = tpl[i, j];
+                    if (info != null) {
+                        s += "tpl(" + i + ", " + j + "):" + info.i + " | " + info.j + " | " + info.well_class + " | " + info.well_num + " | " + info.well_conc.ToString()+"\r";
+                    }
+                }
+            }
+
+
+            s += "\r===od \r\n";
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 12; j++)
+                {
+                    Info info = tpl[i, j];
+                    if (info != null)
+                    {
+                        s += "OD(" + i + ", " + j + "):" + od[i, j].ToString()+"\r";
+                    }
+                }
+            }
+
+            this.richTextBox1.Text = s;
+
+        }
+
+        ////以下尝试画图，可以删除
+        private void DemoPaint(Graphics g) 
+        {
             int dot_num = int.Parse(plate_info["Curve"]);
 
             int dot_radius = 6;
@@ -79,7 +127,7 @@ namespace ExcelFile
                 //g.FillEllipse(new SolidBrush(Color.Green), x, y, dot_radius, dot_radius);
                 g.DrawEllipse(new Pen(Color.Green), x, y, dot_radius, dot_radius);
             }
-
+        
         }
 
         private void reportForm_Load(object sender, EventArgs e)

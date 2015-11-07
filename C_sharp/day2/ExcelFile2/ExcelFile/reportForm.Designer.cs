@@ -38,7 +38,7 @@
             // 
             // btnFitAgain
             // 
-            this.btnFitAgain.Location = new System.Drawing.Point(993, 518);
+            this.btnFitAgain.Location = new System.Drawing.Point(683, 454);
             this.btnFitAgain.Name = "btnFitAgain";
             this.btnFitAgain.Size = new System.Drawing.Size(75, 23);
             this.btnFitAgain.TabIndex = 7;
@@ -77,9 +77,9 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(817, 100);
+            this.richTextBox1.Location = new System.Drawing.Point(896, 103);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(283, 384);
+            this.richTextBox1.Size = new System.Drawing.Size(488, 501);
             this.richTextBox1.TabIndex = 8;
             this.richTextBox1.Text = "";
             // 
@@ -87,7 +87,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1127, 568);
+            this.ClientSize = new System.Drawing.Size(1396, 629);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.btnFitAgain);
             this.Controls.Add(this.btnCopy);
