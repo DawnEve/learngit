@@ -16,7 +16,7 @@ namespace ExcelFile
         }
 
         //输出数组
-        private static string showArray(double[] d)
+        public static string showArray(double[] d)
         {
             string s = "";
             int iMax = d.Length;

@@ -194,16 +194,15 @@ namespace ExcelFile
             //坐标轴范围
             double x_span=xM[1]-xM[0];
             double y_span=yM[1]-yM[0];
-            //画坐标轴 10格
+            //坐标轴 10格
             double x_kedu =Math.Ceiling( x_span/10 );//刻度
             double y_kedu = Math.Ceiling(y_span / 10);
 
-            double x_o = xM[0] + x_kedu * 3;//坐标轴所在位置
-            double y_o = yM[0] + y_kedu * 3;
+            double x_o = xM[0] + x_kedu;//坐标轴所在位置
+            double y_o = yM[0] + y_kedu;
+
 
             //画坐标
-
-
             double x_axis = xM[0];
             double y_axis = yM[0];
 
@@ -214,8 +213,29 @@ namespace ExcelFile
             
             }
 
+            //匿名函数 lambda表达式    Func<int, string> gwl = p => p + 10 + "--返回类型为string";    
+            Func<double, double> getAjustX = x => (x - xM[0]) * pWidth / x_span;
+            Func<double, double> getAjustY = y => pHeight - (y - yM[0]) * pHeight / y_span; //纵轴倒置
 
+            //定义铅笔
+            Pen pen1 = new Pen(Color.Black, 1);
+            Pen pen2 = new Pen(Color.Black, 2);
 
+            PointF px1=new PointF(0, float.Parse(getAjustY(y_o).ToString())); 
+            PointF px2=new PointF(float.Parse(getAjustX(xM[1]).ToString()), float.Parse(getAjustY(y_o).ToString()));
+
+            PointF py1 = new PointF(float.Parse(getAjustX(x_o).ToString()), float.Parse(getAjustY(0).ToString()));
+            PointF py2=new PointF(float.Parse(getAjustX(x_o).ToString()),  float.Parse(getAjustY(yM[1]).ToString()));
+
+            //MessageBox.Show(py2.Y.ToString());
+            //myDebug.a(px1.Y);
+            //return;
+
+            g.DrawLine(pen1,px1,px2);//x
+            g.DrawLine(pen1, py1,py2);//y
+                //, float.Parse(getAjustX(y_o).ToString())), new PointF(float.Parse(getAjustX(xM[1]).ToString()), float.Parse(getAjustX(y_o).ToString())));//x
+
+            //g.DrawLine(pen1, new PointF(0,100), new PointF(500,100));
 
             //细分点数
             int dot_num = 10;
