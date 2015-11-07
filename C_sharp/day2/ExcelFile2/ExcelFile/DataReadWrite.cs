@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace ExcelFile
 {
     //保存well信息
-    class Info
+    public class Info
     {
         //位置信息
         public int i;//8行

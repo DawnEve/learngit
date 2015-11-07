@@ -21,16 +21,16 @@ namespace ExcelFile
          */
         //====================================中间信息（文件与界面之间）
         //板子基本信息-plate_Info
-        private Dictionary<string, string> plate_info = new Dictionary<string, string>();
+        public Dictionary<string, string> plate_info = new Dictionary<string, string>();
 
         //板子模板设置信息
-        private Info[,] tpl = new Info[8, 12];
+        public Info[,] tpl = new Info[8, 12];
 
         //板子OD信息
-        private Double[,] od = new double[8, 12];
+        public Double[,] od = new double[8, 12];
 
         //====================================加工过的信息
-        
+        public int num = 10;
 
 
 
@@ -290,14 +290,11 @@ namespace ExcelFile
             }
         }
 
-
-
-
-        //保存文件
-        private void btnSave_Click(object sender, EventArgs e)
+        //把数据从UI读取到中间文件
+        private void readUItoArray()
         {
             //清空字典
-            plate_info = new Dictionary<string,string>();
+            plate_info = new Dictionary<string, string>();
             //重新初始化中间数组
             tpl = new Info[8, 12];
             od = new double[8, 12];
@@ -325,15 +322,21 @@ namespace ExcelFile
             plate_info["LabDate"] = this.dateTimePicker1.Text.Trim();
             plate_info["Unit"] = this.txtUnit.Text.Trim();
             plate_info["Notice"] = "不要随意更改文件内容，否则再次读取时将发生错误。";
-            
+            plate_info["Curve"] = this.getRadioIndex().ToString();//拟合的模型编号
+
             //tpl-》中间数据
-
-            //tpl=>中间数据
             DataReadWrite drw = new DataReadWrite();
-
             //从UI读取到中间数组
-            tpl = drw.readFromUI(this.dataGridView0,true);
+            tpl = drw.readFromUI(this.dataGridView0, true);
             od = drw.readFromUI(this.dataGridView1);
+        }
+
+
+        //保存文件
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            //UI->中间数据
+            readUItoArray();
 
 
             //中间数据-》文件
@@ -555,7 +558,22 @@ namespace ExcelFile
             richTextBox1.Text = curve_type.ToString();
 
             if (curve_type >= 2)
+            {
                 MessageBox.Show("Sorry, 该功能尚未实现", "作者提示");
+                return;
+            }
+
+
+
+            //===============================获取拟合所需信息
+            //UI->中间数组
+            readUItoArray();
+
+
+            //设置窗体归属，从该窗体向后传值
+            reportForm ff = new reportForm();//给窗体赋值
+            ff.Owner = this;//向窗口ff传递值得关键
+            ff.Show();//显示拟合窗体
 
         }
 
