@@ -20,5 +20,23 @@ namespace ExcelFile
             }
 
         }
+
+
+        //划线
+        public static void DrawLine(Graphics g, List<Point> pointList)
+        {
+            Point[] temps = new Point[pointList.Count];
+            for (int i = 0; i < pointList.Count; i++)
+            {
+                temps[i] = pointList[i];
+            }
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            g.DrawCurve(new Pen(Color.Red, 1), temps, 0.2F);
+            //g.Dispose();
+
+        }
+
+
+
     }
 }

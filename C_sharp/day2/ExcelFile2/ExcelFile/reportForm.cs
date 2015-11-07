@@ -193,30 +193,26 @@ namespace ExcelFile
             double x_kedu =Math.Ceiling( x_span/10 );
             double y_kedu = Math.Ceiling(y_span / 10);
             //细分点数
-            int dot_num = 100;
+            int dot_num = 10;
+            List<Point> pointList = new List<Point>();
+
             //计算拟合出来的点
             double[] xp = new double[dot_num];
             double[] yp = new double[dot_num];
             for (int i = 0; i < dot_num; i++)
             {
+                //生成点
                 xp[i] = xM[0] + i * x_span / dot_num;
                 yp[i] = a0 + a1 * xp[i];
 
                 //针对当前画布调整
-                xp[i] = (xp[i]-xM[0]) * pWidth / x_span;
-                yp[i] = (yp[i] - yM[0]) * pHeight / y_span;
-                //纵轴倒置
-                yp[i] = pHeight - yp[i];
-                
-                //缩放
-                //xp[i] *= 0.8;
-                //yp[i] *= 0.8; 
-                
-                //取整
-                xp[i]=Math.Round(xp[i]);
-                yp[i] = Math.Round(yp[i]);
+                xp[i] = (xp[i] - xM[0]) * pWidth / x_span;
+                yp[i] = pHeight - (yp[i] - yM[0]) * pHeight / y_span; //纵轴倒置
 
-                this.richTextBox1.Text += "(" + xp[i] + "," + yp[i] + "); \r";
+
+                //取整
+                //this.richTextBox1.Text += "(" + xp[i] + "," + yp[i] + "); \r";
+                pointList.Add(new Point(int.Parse(Math.Round(xp[i]).ToString()), int.Parse(Math.Round(yp[i]).ToString())));
             }
             
             //随机造一些点
@@ -225,7 +221,8 @@ namespace ExcelFile
 
             //返回这些点，供画点
             //return new List<double[]> { xp,yp};
-            myDraw.DrawPoints(g, xp, yp);
+            //画线
+            myDraw.DrawLine(g, pointList);
         }
 
 
