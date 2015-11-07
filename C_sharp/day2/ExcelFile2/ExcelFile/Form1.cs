@@ -551,50 +551,46 @@ namespace ExcelFile
         //按照指定模型对曲线进行拟合
         private void btnStartFit_Click(object sender, EventArgs e)
         {
-            int curve_syle = getRadioIndex();
-            richTextBox1.Text = curve_syle.ToString();
+            int curve_type = getRadioIndex();
+            richTextBox1.Text = curve_type.ToString();
 
+            if (curve_type >= 2)
+                MessageBox.Show("Sorry, 该功能尚未实现", "作者提示");
 
         }
 
         //获取单选按钮的序号
         private int getRadioIndex() {
+            int curve_type=-1;
             if (radioButton1.Checked == true)
             {
                 //richTextBox1.Text = "选择了radioButton1";
-                return 1;
+                curve_type= 1;
             }
             else if (radioButton2.Checked == true)
             {
                 //richTextBox1.Text = "选择了radioButton2";
-                return 2;
+                curve_type= 2;
             }
             else if (radioButton3.Checked == true)
             {
                 //richTextBox1.Text = "选择了radioButton3";
-                return 3;
+                curve_type= 3;
             }
             else if (radioButton4.Checked == true)
             {
                 //richTextBox1.Text = "选择了radioButton4";
-                return 4;
+                curve_type= 4;
             }
-            else {
-                return -1;
-            }
+
+            return curve_type;
         }
 
 
 
 
 
-
-
-
-
-
-        
-
+      
     }
                 
 }
