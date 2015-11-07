@@ -1,4 +1,8 @@
-﻿
+﻿# ELISA data analysis
+
+https://github.com/kaedei/gitignore/blob/master/VisualStudio.gitignore
+for c#
+
 day1:
 	aboutMe
 	tabPage
@@ -68,8 +72,23 @@ day2:
 			- [7] 增加拟合选项按钮：radioButton
 				用法：http://www.codefans.net/articles/1688.shtml
 			- [8] 计划用第二个窗体进行拟合计算、画图
-
-		
+		(9)从界面获得数据，拟合，画图。
+			- [0] 熟悉拟合方法-记录在day4的1中；
+				利用最小二乘法拟合任意次函数曲线（C#）：http://blog.sina.com.cn/s/blog_6e51df7f0100thie.html
+				添加了CurveFits方法，但是并没有立刻使用。需要添加第二个窗体，用来拟合、画图；
+			- [1] 可以从第一个窗体向后传值，并用于demo画图。
+				整理传递三个变量。可以打印这三个变量。（如果模板没有设置，则相应od数据程序不予处理）
+			- [2] 整理std数据，已经整理好，拟合成功参数y=a0+a1*x 返回值则为a0 a1。并计算了R^2.
+			- [3] 开始画图，初步能画图，但是数据还需要调整。
+			- [4] 第一次调整，没有坐标轴。增加了myDebug类和myDraw类。
+			
+			
+			
+			
+			
+			
+			
+			【toDoList】修改模板之前应设置逻辑，增加对std的限制，编号只能是数字且浓度相同的必须编号相同。或者内部给编号。
 		
 		
 		
@@ -118,11 +137,17 @@ day3:	画图
 		怎么从第一个窗体向另一个窗体传值？
 				//http://zhidao.baidu.com/link?url=kxz98yHmsCCjGoaRyiLOb16MDHLVXH2tgpEE_R8aK5UN1Y6nP4j78Eg5z0PGx07HMQgE1dAAoZEK9it8cbv2YSeEJwGK9t-1opUptfUhHEe
 	
-	
+day4:	拟合
+		01-polyfit: 拟合算法的集合
+			1). [1]CurveFit类：多项式拟合，包括线性拟合（一次方拟合）；
+				[2]FittingFunct类：多项式拟合，指数拟合等；没看懂
+			
 	
 	
 
-
+---------------------------
+安卓的开源项目
+http://blog.csdn.net/sasoritattoo/article/details/26400347
 ---------------------------
 主要内容
 - 按钮

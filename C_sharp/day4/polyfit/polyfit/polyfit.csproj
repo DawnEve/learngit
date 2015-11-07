@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4FA07386-4EE9-445B-9BB8-A7C75E8F2C20}</ProjectGuid>
+    <ProjectGuid>{2BFAFBAC-8D68-4EAD-92D7-EDAC14491DEC}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ExcelFile</RootNamespace>
-    <AssemblyName>ExcelFile</AssemblyName>
+    <RootNamespace>polyfit</RootNamespace>
+    <AssemblyName>polyfit</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -45,24 +45,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CurveFit.cs" />
-    <Compile Include="DataReadWrite.cs" />
-    <Compile Include="DgvCtrl.cs" />
+    <Compile Include="FittingFunct.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="InnerTpl.cs" />
-    <Compile Include="myDraw.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="reportForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="reportForm.Designer.cs">
-      <DependentUpon>reportForm.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -75,9 +66,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="reportForm.resx">
-      <DependentUpon>reportForm.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
