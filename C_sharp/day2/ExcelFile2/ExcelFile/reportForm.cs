@@ -139,18 +139,12 @@ namespace ExcelFile
 
 
             //输出数组
-            showArray(arr_y);
+            //showArray(arr_x);
+            this.richTextBox1.Text += "\r\r";
+            //showArray(arr_y);
 
 
-            
-            
-
-
-            return;
-             //arr_x = new double[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-             //arr_y = new double[] { 283, 285, 300, 339, 380, 424, 516, 550, 542, 532 };
-
-            //拟合计算
+            //拟合计算============================================================================
             int Pointlen = arr_x.Length;
             //拟合，返回参数列表
             Double[] paras = CurveFit.MultiLine(arr_x, arr_y, Pointlen,1);
@@ -169,7 +163,7 @@ namespace ExcelFile
 
 
 
-            //由参数计算回算测量值
+            //由参数计算回算测量值=============================================
             double a0 = paras[0], a1 = paras[1];
             double rss = 0, tss = 0;//残差平方和，总平方和
 
@@ -187,11 +181,12 @@ namespace ExcelFile
 
             //计算R^2
             double RSqure = 1 - rss / tss;
-
             this.richTextBox1.Text += "\r\nRSqure=" + RSqure;
 
-            
-            
+            //==========================================================画图
+
+
+   
         }
 
 
