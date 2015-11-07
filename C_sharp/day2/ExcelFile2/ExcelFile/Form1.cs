@@ -21,27 +21,41 @@ namespace ExcelFile
          */
         //====================================中间信息（文件与界面之间）
         //板子基本信息-plate_Info
-        private Dictionary<string, string> plate_info = new Dictionary<string, string>();
+        public Dictionary<string, string> plate_info = new Dictionary<string, string>();
 
         //板子模板设置信息
-        private Info[,] tpl = new Info[8, 12];
+        public Info[,] tpl = new Info[8, 12];
 
         //板子OD信息
-        private Double[,] od = new double[8, 12];
+        public Double[,] od = new double[8, 12];
 
         //====================================加工过的信息
-        
+
 
 
 
         /// <summary>
         /// 开始定义方法
         /// </summary>
-
         public Form1()
         {
             InitializeComponent();
         }
+
+        private void initTplList(int index) {
+            //添加组合框-内置模板（因为要后续扩展，所以没写死）
+            //实例化内置模板类
+            InnerTpl form_inner_tpl = new InnerTpl();
+            //调用方法，返回现有内置的模板名字
+            string[] inner_tpls = form_inner_tpl.getInnerTplNames();
+            //显示到下拉框控件中
+            cmbTpl.DataSource = inner_tpls;
+            cmbTpl.SelectedIndex = index;
+            //该控件只能选择，不能编辑
+            cmbTpl.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbTpl.FlatStyle = FlatStyle.Popup;//样式  
+        }
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -52,19 +66,9 @@ namespace ExcelFile
             this.label5.BackColor = System.Drawing.ColorTranslator.FromHtml("#808080");
             this.label7.BackColor = System.Drawing.ColorTranslator.FromHtml("#87CEFA");
 
-            
-
             //添加组合框-内置模板（因为要后续扩展，所以没写死）
-            //实例化内置模板类
-            InnerTpl form_inner_tpl = new InnerTpl();
-            //调用方法，返回现有内置的模板名字
-            string[] inner_tpls = form_inner_tpl.getInnerTplNames();
-            //显示到下拉框控件中
-            cmbTpl.DataSource = inner_tpls;
-            cmbTpl.SelectedIndex = 0;
-            //该控件只能选择，不能编辑
-            cmbTpl.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbTpl.FlatStyle = FlatStyle.Popup;//样式
+            initTplList(0);
+
 
 
             //添加分组单选框-拟合选项
@@ -290,14 +294,11 @@ namespace ExcelFile
             }
         }
 
-
-
-
-        //保存文件
-        private void btnSave_Click(object sender, EventArgs e)
+        //把数据从UI读取到中间文件
+        private void readUItoArray()
         {
             //清空字典
-            plate_info = new Dictionary<string,string>();
+            plate_info = new Dictionary<string, string>();
             //重新初始化中间数组
             tpl = new Info[8, 12];
             od = new double[8, 12];
@@ -325,15 +326,21 @@ namespace ExcelFile
             plate_info["LabDate"] = this.dateTimePicker1.Text.Trim();
             plate_info["Unit"] = this.txtUnit.Text.Trim();
             plate_info["Notice"] = "不要随意更改文件内容，否则再次读取时将发生错误。";
-            
+            plate_info["Curve"] = this.getRadioIndex().ToString();//拟合的模型编号
+
             //tpl-》中间数据
-
-            //tpl=>中间数据
             DataReadWrite drw = new DataReadWrite();
-
             //从UI读取到中间数组
-            tpl = drw.readFromUI(this.dataGridView0,true);
+            tpl = drw.readFromUI(this.dataGridView0, true);
             od = drw.readFromUI(this.dataGridView1);
+        }
+
+
+        //保存文件
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            //UI->中间数据
+            readUItoArray();
 
 
             //中间数据-》文件
@@ -370,7 +377,7 @@ namespace ExcelFile
                             {
                                 //writer.Write(i + "\t");
                                 //if (od[i, j] != null && od[i, j].ToString() != "")
-                                if (od[i, j] != null && od[i, j]>=0)
+                                if (od[i, j]>=0)
                                 {
                                     writer.Write(od[i, j] + "\t");
                                 }
@@ -496,6 +503,9 @@ namespace ExcelFile
                 }
                 //给图形界面赋值
                 DgvCtrl.setValueToUI(this.dataGridView0, this.dataGridView1, this.comboBox1.SelectedIndex, this.txtNum.Text.Trim() );
+
+                //使内置模板显示自定义
+                initTplList(0);
             }
         }
 
@@ -521,6 +531,13 @@ namespace ExcelFile
         private void cmbTpl_SelectedIndexChanged(object sender, EventArgs e)
         {
             string tpl_name=this.cmbTpl.Text;//.SelectedIndex. >= 2)
+
+            //如果是自定义模板，则啥也不管
+            if (this.cmbTpl.SelectedIndex == 0)
+            {
+                return;
+            }
+
             //实例化内置模板类
             InnerTpl form_inner_tpl = new InnerTpl();
             //MessageBox.Show(tpl_name);
@@ -551,50 +568,61 @@ namespace ExcelFile
         //按照指定模型对曲线进行拟合
         private void btnStartFit_Click(object sender, EventArgs e)
         {
-            int curve_syle = getRadioIndex();
-            richTextBox1.Text = curve_syle.ToString();
+            int curve_type = getRadioIndex();
+            richTextBox1.Text = curve_type.ToString();
 
+            if (curve_type >= 2)
+            {
+                MessageBox.Show("Sorry, 该功能尚未实现", "作者提示");
+                return;
+            }
+
+
+
+            //===============================获取拟合所需信息
+            //UI->中间数组
+            readUItoArray();
+
+            
+            //设置窗体归属，从该窗体向后传值
+            reportForm ff = new reportForm();//给窗体赋值
+            ff.Owner = this;//向窗口ff传递值得关键
+            ff.Show();//显示拟合窗体
 
         }
 
         //获取单选按钮的序号
         private int getRadioIndex() {
+            int curve_type=-1;
             if (radioButton1.Checked == true)
             {
                 //richTextBox1.Text = "选择了radioButton1";
-                return 1;
+                curve_type= 1;
             }
             else if (radioButton2.Checked == true)
             {
                 //richTextBox1.Text = "选择了radioButton2";
-                return 2;
+                curve_type= 2;
             }
             else if (radioButton3.Checked == true)
             {
                 //richTextBox1.Text = "选择了radioButton3";
-                return 3;
+                curve_type= 3;
             }
             else if (radioButton4.Checked == true)
             {
                 //richTextBox1.Text = "选择了radioButton4";
-                return 4;
+                curve_type= 4;
             }
-            else {
-                return -1;
-            }
+
+            return curve_type;
         }
 
 
 
 
 
-
-
-
-
-
-        
-
+      
     }
                 
 }
