@@ -13,18 +13,23 @@ namespace ExcelFile
 {
     public partial class reportForm : Form
     {
-                /* 定义一些公用属性
+         /* 定义一些公用属性
          *  
          */
         //====================================中间信息（文件与界面之间）
         //板子基本信息-plate_Info
-        public Dictionary<string, string> plate_info = new Dictionary<string, string>();
+        private Dictionary<string, string> plate_info = new Dictionary<string, string>();
 
         //板子模板设置信息
-        public Info[,] tpl = new Info[8, 12];
+        private Info[,] tpl = new Info[8, 12];
 
         //板子OD信息
-        public Double[,] od = new double[8, 12];
+        private Double[,] od = new double[8, 12];
+
+        //====================================加工后的信息
+        //private List<Info> std
+
+
     
         public reportForm()
         {

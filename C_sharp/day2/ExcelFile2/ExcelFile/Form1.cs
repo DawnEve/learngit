@@ -37,11 +37,25 @@ namespace ExcelFile
         /// <summary>
         /// 开始定义方法
         /// </summary>
-
         public Form1()
         {
             InitializeComponent();
         }
+
+        private void initTplList(int index) {
+            //添加组合框-内置模板（因为要后续扩展，所以没写死）
+            //实例化内置模板类
+            InnerTpl form_inner_tpl = new InnerTpl();
+            //调用方法，返回现有内置的模板名字
+            string[] inner_tpls = form_inner_tpl.getInnerTplNames();
+            //显示到下拉框控件中
+            cmbTpl.DataSource = inner_tpls;
+            cmbTpl.SelectedIndex = index;
+            //该控件只能选择，不能编辑
+            cmbTpl.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbTpl.FlatStyle = FlatStyle.Popup;//样式  
+        }
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -52,19 +66,9 @@ namespace ExcelFile
             this.label5.BackColor = System.Drawing.ColorTranslator.FromHtml("#808080");
             this.label7.BackColor = System.Drawing.ColorTranslator.FromHtml("#87CEFA");
 
-            
-
             //添加组合框-内置模板（因为要后续扩展，所以没写死）
-            //实例化内置模板类
-            InnerTpl form_inner_tpl = new InnerTpl();
-            //调用方法，返回现有内置的模板名字
-            string[] inner_tpls = form_inner_tpl.getInnerTplNames();
-            //显示到下拉框控件中
-            cmbTpl.DataSource = inner_tpls;
-            cmbTpl.SelectedIndex = 0;
-            //该控件只能选择，不能编辑
-            cmbTpl.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbTpl.FlatStyle = FlatStyle.Popup;//样式
+            initTplList(0);
+
 
 
             //添加分组单选框-拟合选项
@@ -373,7 +377,7 @@ namespace ExcelFile
                             {
                                 //writer.Write(i + "\t");
                                 //if (od[i, j] != null && od[i, j].ToString() != "")
-                                if (od[i, j] != null && od[i, j]>=0)
+                                if (od[i, j]>=0)
                                 {
                                     writer.Write(od[i, j] + "\t");
                                 }
@@ -499,6 +503,9 @@ namespace ExcelFile
                 }
                 //给图形界面赋值
                 DgvCtrl.setValueToUI(this.dataGridView0, this.dataGridView1, this.comboBox1.SelectedIndex, this.txtNum.Text.Trim() );
+
+                //使内置模板显示自定义
+                initTplList(0);
             }
         }
 
@@ -524,6 +531,13 @@ namespace ExcelFile
         private void cmbTpl_SelectedIndexChanged(object sender, EventArgs e)
         {
             string tpl_name=this.cmbTpl.Text;//.SelectedIndex. >= 2)
+
+            //如果是自定义模板，则啥也不管
+            if (this.cmbTpl.SelectedIndex == 0)
+            {
+                return;
+            }
+
             //实例化内置模板类
             InnerTpl form_inner_tpl = new InnerTpl();
             //MessageBox.Show(tpl_name);
