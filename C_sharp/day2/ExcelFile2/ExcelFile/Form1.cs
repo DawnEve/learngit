@@ -453,6 +453,9 @@ namespace ExcelFile
                     }
                 }
             }
+
+            //一旦改动，就不是内置模板了，组合框中的值变为自定义
+            this.cmbTpl.SelectedItem = cmbTpl.Items[0];
         }
 
 
@@ -503,10 +506,10 @@ namespace ExcelFile
                 }
                 //给图形界面赋值
                 DgvCtrl.setValueToUI(this.dataGridView0, this.dataGridView1, this.comboBox1.SelectedIndex, this.txtNum.Text.Trim() );
-
-                //使内置模板显示自定义
-                initTplList(0);
             }
+
+            //一旦改动，就不是内置模板了，组合框中的值变为自定义
+            this.cmbTpl.SelectedItem = cmbTpl.Items[0];
         }
 
 

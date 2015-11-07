@@ -73,9 +73,10 @@ namespace ExcelFile
             od = ((Form1)this.Owner).od;
         }
 
-        //计算标准曲线
+        //计算线性拟合的标准曲线
         private void calclateStd(Graphics g) {
             //计算标准曲线
+            List<PointF> stdPoints = new List<PointF>();//保存标准曲线上的点
             //整理出标准品数据，用字典实现conc唯一性
             int std_count = 0;
             Dictionary<double, List<Info>> std = new Dictionary<double, List<Info>>();
@@ -124,8 +125,12 @@ namespace ExcelFile
                 double od_sum = 0; 
                 foreach(Info info in list)
                 {
-                    od_sum += double.Parse( info.well_od.ToString() );
+                    double temp = double.Parse(info.well_od.ToString());
+                    od_sum += temp;
                     od_counter++;
+
+                    //保存标准曲线上的点
+                    stdPoints.Add(new PointF(float.Parse(conc.ToString()), float.Parse(temp.ToString())));
                 }
                 arr_y[std_i] = od_sum / od_counter;//计算od的平均值
                 std_i++;
@@ -175,57 +180,100 @@ namespace ExcelFile
 
             //计算R^2
             double RSqure = 1 - rss / tss;
-            this.richTextBox1.Text += "\r\nRSqure=" + RSqure;
+            //this.richTextBox1.Text += "\r\nRSqure=" + RSqure;
+            this.label2.Text = RSqure.ToString();
 
 
             //==========================================================画图
-
             //计算最值
             double[] xM = getMinMax(arr_x);
             double[] yM = getMinMax(arr_y);
             //当前画布最值
             double pWidth = this.pictureBox1.Width;
-            double pHeight = this.pictureBox1.Height; this.richTextBox1.Text += "\r\r画布尺寸(" + pWidth + "," + pHeight + "); \r";
+            double pHeight = this.pictureBox1.Height; //this.richTextBox1.Text += "\r\r画布尺寸(" + pWidth + "," + pHeight + "); \r";
             //坐标轴范围
             double x_span=xM[1]-xM[0];
             double y_span=yM[1]-yM[0];
-            //画坐标轴 10格
-            double x_kedu =Math.Ceiling( x_span/10 );
+            //坐标轴 10格
+            double x_kedu =Math.Ceiling( x_span/10 );//刻度
             double y_kedu = Math.Ceiling(y_span / 10);
+
+            double x_o = xM[0] + x_kedu;//坐标轴所在位置
+            double y_o = yM[0] + y_kedu;
+
+
+            //画坐标
+            double x_axis = xM[0];
+            double y_axis = yM[0];
+
+
+            while (x_axis <= xM[1])
+            {
+                x_axis +=  x_kedu;
+            
+            }
+
+            //匿名函数 lambda表达式    Func<int, string> gwl = p => p + 10 + "--返回类型为string";    
+            Func<double, double> getAjustX = x => (x - xM[0]) * pWidth / x_span;
+            Func<double, double> getAjustY = y => pHeight - (y - yM[0]) * pHeight / y_span; //纵轴倒置
+
+            //定义铅笔
+            Pen pen1 = new Pen(Color.Black, 1);
+            Pen pen2 = new Pen(Color.Black, 2);
+
+            PointF px1=new PointF(0, float.Parse(getAjustY(y_o).ToString())); 
+            PointF px2=new PointF(float.Parse(getAjustX(xM[1]).ToString()), float.Parse(getAjustY(y_o).ToString()));
+
+            PointF py1 = new PointF(float.Parse(getAjustX(x_o).ToString()), float.Parse(getAjustY(0).ToString()));
+            PointF py2=new PointF(float.Parse(getAjustX(x_o).ToString()),  float.Parse(getAjustY(yM[1]).ToString()));
+
+            //MessageBox.Show(py2.Y.ToString());
+            //myDebug.a(px1.Y);
+            //return;
+
+            g.DrawLine(pen1,px1,px2);//x
+            g.DrawLine(pen1, py1,py2);//y
+                //, float.Parse(getAjustX(y_o).ToString())), new PointF(float.Parse(getAjustX(xM[1]).ToString()), float.Parse(getAjustX(y_o).ToString())));//x
+
+            //g.DrawLine(pen1, new PointF(0,100), new PointF(500,100));
+
             //细分点数
-            int dot_num = 100;
+            int dot_num = 10;
+            List<Point> pointList = new List<Point>();
+
             //计算拟合出来的点
             double[] xp = new double[dot_num];
             double[] yp = new double[dot_num];
             for (int i = 0; i < dot_num; i++)
             {
+                //生成点
                 xp[i] = xM[0] + i * x_span / dot_num;
                 yp[i] = a0 + a1 * xp[i];
 
                 //针对当前画布调整
-                xp[i] = (xp[i]-xM[0]) * pWidth / x_span;
-                yp[i] = (yp[i] - yM[0]) * pHeight / y_span;
-                //纵轴倒置
-                yp[i] = pHeight - yp[i];
-                
-                //缩放
-                //xp[i] *= 0.8;
-                //yp[i] *= 0.8; 
-                
+                xp[i] = (xp[i] - xM[0]) * pWidth / x_span;
+                yp[i] = pHeight - (yp[i] - yM[0]) * pHeight / y_span; //纵轴倒置
+
+
                 //取整
-                xp[i]=Math.Round(xp[i]);
-                yp[i] = Math.Round(yp[i]);
-
-                this.richTextBox1.Text += "(" + xp[i] + "," + yp[i] + "); \r";
+                //this.richTextBox1.Text += "(" + xp[i] + "," + yp[i] + "); \r";
+                pointList.Add(new Point(int.Parse(Math.Round(xp[i]).ToString()), int.Parse(Math.Round(yp[i]).ToString())));
             }
-            
-            //随机造一些点
-            //xp=new double[]{100,200,300};
-            //yp = new double[] { 100, 200, 300 };
 
-            //返回这些点，供画点
-            //return new List<double[]> { xp,yp};
-            myDraw.DrawPoints(g, xp, yp);
+
+            //画std原始点
+            //myDraw.DrawPoints(g, xp, yp,1,true);
+            PointF p = new PointF();
+            int dot_radius = 6;//空心点的大小
+            for (int i = 0; i < stdPoints.Count; i++)
+            {
+                p = pointList[i];
+                g.DrawEllipse(new Pen(Color.Green), p.X, p.Y, dot_radius, dot_radius);
+            }
+
+
+            //画线
+            myDraw.DrawLine(g, pointList);
         }
 
 
