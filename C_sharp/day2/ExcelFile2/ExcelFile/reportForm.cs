@@ -77,6 +77,10 @@ namespace ExcelFile
         private void calclateStd(Graphics g) {
             //计算标准曲线
             List<PointF> stdPoints = new List<PointF>();//保存标准曲线上的点
+
+            //lambda表达式 : double变为float格式
+            Func<double, float> double2Float = x => float.Parse(x.ToString());
+
             //整理出标准品数据，用字典实现conc唯一性
             int std_count = 0;
             Dictionary<double, List<Info>> std = new Dictionary<double, List<Info>>();
@@ -125,12 +129,12 @@ namespace ExcelFile
                 double od_sum = 0; 
                 foreach(Info info in list)
                 {
-                    double temp = double.Parse(info.well_od.ToString());
+                    double temp = double2Float(info.well_od);
                     od_sum += temp;
                     od_counter++;
 
                     //保存标准曲线上的点
-                    stdPoints.Add(new PointF(float.Parse(conc.ToString()), float.Parse(temp.ToString())));
+                    stdPoints.Add(new PointF(double2Float(conc), double2Float(temp)));
                 }
                 arr_y[std_i] = od_sum / od_counter;//计算od的平均值
                 std_i++;
@@ -195,11 +199,10 @@ namespace ExcelFile
             double x_span=xM[1]-xM[0];
             double y_span=yM[1]-yM[0];
 
-            //做坐标变换，lambda表达式 
+            //lambda表达式 : 做坐标变换，
             Func<double, double> getAjustX = x => 0.98 * (x - xM[0]) * pWidth / x_span;
             Func<double, double> getAjustY = y => 0.98 * (pHeight - (y - yM[0]) * pHeight / y_span); //纵轴倒置
-            //double变为float格式
-            Func<double, float> double2Float = x => float.Parse(x.ToString());
+
 
             //==========================================================画图 坐标轴
             //坐标轴刻度 - 先按照 10格
@@ -258,17 +261,14 @@ namespace ExcelFile
                 yp[i] = a0 + a1 * xp[i];
 
                 //针对当前画布调整
-                xp[i] = float.Parse(getAjustX(xp[i]).ToString());
-                yp[i] = float.Parse(getAjustY(yp[i]).ToString());
+                xp[i] = double2Float(getAjustX(xp[i]));
+                yp[i] = double2Float(getAjustY(yp[i]));
 
-
-                //取整
-                //this.richTextBox1.Text += "(" + xp[i] + "," + yp[i] + "); \r";
-                //pointList.Add(new Point(float.Parse(Math.Round(xp[i]).ToString()), float.Parse(Math.Round(yp[i]).ToString())));
-                pointFList.Add( new PointF(float.Parse( xp[i].ToString() ),  float.Parse( yp[i].ToString())));
+                //记录曲线
+                pointFList.Add( new PointF(double2Float( xp[i] ),  double2Float( yp[i])));
             }
             
-            //画线
+            //画很多线
             myDraw.DrawLine(g, pointFList);
 
 

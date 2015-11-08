@@ -43,7 +43,7 @@ namespace ExcelFile
         }
 
 
-        //划线
+        //划很多线
         public static void DrawLine(Graphics g, List<PointF> pointList)
         {
             PointF[] temps = new PointF[pointList.Count];
@@ -56,7 +56,6 @@ namespace ExcelFile
             //g.Dispose();
 
         }
-
 
 
     }
