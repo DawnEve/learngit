@@ -184,7 +184,7 @@ namespace ExcelFile
             this.label2.Text = RSqure.ToString();
 
 
-            //==========================================================画图
+            //==========================================================画图 basic
             //计算最值
             double[] xM = getMinMax(arr_x);
             double[] yM = getMinMax(arr_y);
@@ -198,8 +198,10 @@ namespace ExcelFile
             //做坐标变换，lambda表达式 
             Func<double, double> getAjustX = x => 0.98 * (x - xM[0]) * pWidth / x_span;
             Func<double, double> getAjustY = y => 0.98 * (pHeight - (y - yM[0]) * pHeight / y_span); //纵轴倒置
+            //double变为float格式
+            Func<double, float> double2Float = x => float.Parse(x.ToString());
 
-
+            //==========================================================画图 坐标轴
             //坐标轴刻度 - 先按照 10格
             double x_kedu =Math.Ceiling( x_span/10 );//刻度
             double y_kedu = Math.Ceiling(y_span / 10);
@@ -230,18 +232,18 @@ namespace ExcelFile
             pen1.CustomEndCap = lineArrow;
 
             //定义坐标点-x轴
-            PointF px1=new PointF(0, float.Parse(getAjustY(y_o).ToString())); 
-            PointF px2=new PointF(float.Parse(getAjustX(xM[1]).ToString()), float.Parse(getAjustY(y_o).ToString()));
+            PointF px1 = new PointF(0, double2Float(getAjustY(y_o)) );
+            PointF px2 = new PointF(double2Float(getAjustX(xM[1])), double2Float(getAjustY(y_o)));
             //定义坐标点-y轴
-            PointF py1 = new PointF(float.Parse(getAjustX(x_o).ToString()), float.Parse(getAjustY(0).ToString()));
-            PointF py2=new PointF(float.Parse(getAjustX(x_o).ToString()),  float.Parse(getAjustY(yM[1]).ToString()));
+            PointF py1 = new PointF(double2Float(getAjustX(x_o)), double2Float(getAjustY(0)));
+            PointF py2 = new PointF(double2Float(getAjustX(x_o)), double2Float(getAjustY(yM[1])));
             //画坐标轴
             g.DrawLine(pen1,px1,px2);//x
             g.DrawLine(pen1, py1,py2);//y
-                //, float.Parse(getAjustX(y_o).ToString())), new PointF(float.Parse(getAjustX(xM[1]).ToString()), float.Parse(getAjustX(y_o).ToString())));//x
 
-            //g.DrawLine(pen1, new PointF(0,100), new PointF(500,100));
 
+
+            //==========================================================画图 拟合曲线
             //细分点数
             int dot_num = 10;
             List<PointF> pointFList = new List<PointF>();
@@ -265,21 +267,27 @@ namespace ExcelFile
                 //pointList.Add(new Point(float.Parse(Math.Round(xp[i]).ToString()), float.Parse(Math.Round(yp[i]).ToString())));
                 pointFList.Add( new PointF(float.Parse( xp[i].ToString() ),  float.Parse( yp[i].ToString())));
             }
+            
+            //画线
+            myDraw.DrawLine(g, pointFList);
 
 
+
+            //==========================================================画图 std原始点
             //画std原始点
             //myDraw.DrawPoints(g, xp, yp,1,true);
             PointF p = new PointF();
             int dot_radius = 6;//空心点的大小
             for (int i = 0; i < stdPoints.Count; i++)
             {
-                p = pointFList[i];
+                p = stdPoints[i];
+                p.X = double2Float(getAjustX(p.X));
+                p.Y = double2Float(getAjustY(p.Y));
                 g.DrawEllipse(new Pen(Color.Green), p.X, p.Y, dot_radius, dot_radius);
             }
 
 
-            //画线
-            myDraw.DrawLine(g, pointFList);
+            
         }
 
 
