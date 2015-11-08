@@ -72,7 +72,7 @@ day2:
 			- [7] 增加拟合选项按钮：radioButton
 				用法：http://www.codefans.net/articles/1688.shtml
 			- [8] 计划用第二个窗体进行拟合计算、画图
-		(9)从界面获得数据，拟合，画图。
+		(9)从界面获得数据，线性拟合，画图。
 			- [0] 熟悉拟合方法-记录在day4的1中；
 				利用最小二乘法拟合任意次函数曲线（C#）：http://blog.sina.com.cn/s/blog_6e51df7f0100thie.html
 				添加了CurveFits方法，但是并没有立刻使用。需要添加第二个窗体，用来拟合、画图；
@@ -81,17 +81,40 @@ day2:
 			- [2] 整理std数据，已经整理好，拟合成功参数y=a0+a1*x 返回值则为a0 a1。并计算了R^2.
 			- [3] 开始画图，初步能画图，但是数据还需要调整。
 			- [4] 第一次调整，没有坐标轴。增加了myDebug类和myDraw类。
-			- [5] 使用g.DrawCurve(new Pen(Color.Red, 1), temps,0.2F);方法划线，速度快、效果好。
+			- [5] 使用g.DrawCurve(new Pen(Color.Red, 1), temps,0.2F);方法划线，速度快、效果好。bug[2]
 			- [6] 画出原始std空心点。g.DrawEllipse(new Pen(Color.Green), p.X, p.Y, dot_radius, dot_radius);//6
 			- [7] 修复了bug：修改模板信息后，内置模板下拉框立刻变为“自定义模板”字样。
-			- [8] 画出了坐标轴，还没有刻度。
-				用到了 匿名函数 lambda表达式    Func<int, string> gwl = p => p + 10 + "--返回类型为string";   
+			- [8] 画出了坐标轴。用到了 匿名函数 做坐标变换，其他点（原始点）的绘制也用到该坐标变换。
+			
+				http://www.cnblogs.com/knowledgesea/p/3163725.html
+				lambda表达式: Func<int, string> gwl = p => p + 10;// "--返回类型为string";
+				调整表达式 使坐标尽量大且都显示。fix bug[2]
+				
+			- [9] 对坐标轴增加 自定义箭头 
+				//定义铅笔的头部箭头
+				System.Drawing.Drawing2D.AdjustableArrowCap lineArrow =
+					new System.Drawing.Drawing2D.AdjustableArrowCap(4, 4, true);
+				pen1.CustomEndCap = lineArrow;
+			- [10] 画出了x、y轴刻度。
+			- [11] 标注了x、y轴刻度，但是数据太大！
+				已经使用科学计数法表示，但是边缘依旧不好看。
+			- [12] 打开文件有异常：曲线类型问题。bug[3]
+				打开文件是0的od为什么不显示？
+				打开文件时曲线类型没处理
+			- [13] fix bug[4]:打开时把od的空值设置为-10000，这个方案还不完美。//todo
+			- [14] 坐标轴还是不完善，显示有问题。----------todo
+			- [15] 画背景网格线。
+			- [16] fix bug:打开文件最后一行全是0，本来是空格的。
 			
 			
 			
 			
-			【toDoList】修改模板之前应设置逻辑，增加对std的限制，编号只能是数字且浓度相同的必须编号相同。或者内部给编号。
-		
+			
+			[bug]【toDoList】
+			[1].修改模板之前应设置逻辑，增加对std的限制，编号只能是数字且浓度相同的必须编号相同。或者内部给编号。
+			[2+].为什么点不在线上？
+			[3].打开文件有异常：曲线类型问题。
+			[4+].打开文件是0的od为什么不显示？
 		
 		
 		
@@ -145,8 +168,11 @@ day4:	拟合
 				[2]FittingFunct类：多项式拟合，指数拟合等；没看懂
 			
 	
-	
+day5:	报表与打印：
+	http://blog.sciencenet.cn/blog-244606-747345.html
 
+	
+	
 ---------------------------
 安卓的开源项目
 http://blog.csdn.net/sasoritattoo/article/details/26400347
