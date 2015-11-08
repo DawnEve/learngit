@@ -228,7 +228,7 @@ namespace ExcelFile
             PointF px1 = new PointF(0, double2Float(getAjustY(y_o)));
             PointF px2 = new PointF(double2Float(getAjustX(xM[1])), double2Float(getAjustY(y_o)));
             //定义坐标点-y轴
-            PointF py1 = new PointF(double2Float(getAjustX(x_o)), double2Float(getAjustY(0)));
+            PointF py1 = new PointF(double2Float(getAjustX(x_o)), double2Float(pHeight));
             PointF py2 = new PointF(double2Float(getAjustX(x_o)), double2Float(getAjustY(yM[1])));
             //画坐标轴
             g.DrawLine(pen1, px1, px2);//x
@@ -297,7 +297,9 @@ namespace ExcelFile
 
                 
             }
-
+            
+            //==========================================================画标注 主标题和坐标注释
+            g.DrawString("线性拟合标准曲线", new Font("宋体", 10), new SolidBrush(Color.Black), new Point(Width / 4, 10));
 
 
             //==========================================================画图 拟合曲线
@@ -375,8 +377,8 @@ namespace ExcelFile
             g.Clear(Color.White);
 
             //画笔画图
-            Pen pen = new Pen(Color.Red);
-            g.DrawString("The xxx curve", new Font("宋体", 12), new SolidBrush(Color.Blue), new Point(Width / 3, 10));
+            //Pen pen = new Pen(Color.Red);
+            
 
 
             //以下尝试画图
