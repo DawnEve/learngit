@@ -194,7 +194,13 @@ namespace ExcelFile
             //坐标轴范围
             double x_span=xM[1]-xM[0];
             double y_span=yM[1]-yM[0];
-            //坐标轴 10格
+
+            //做坐标变换，lambda表达式 
+            Func<double, double> getAjustX = x => 0.98 * (x - xM[0]) * pWidth / x_span;
+            Func<double, double> getAjustY = y => 0.98 * (pHeight - (y - yM[0]) * pHeight / y_span); //纵轴倒置
+
+
+            //坐标轴刻度 - 先按照 10格
             double x_kedu =Math.Ceiling( x_span/10 );//刻度
             double y_kedu = Math.Ceiling(y_span / 10);
 
@@ -202,7 +208,7 @@ namespace ExcelFile
             double y_o = yM[0] + y_kedu;
 
 
-            //画坐标
+            //画坐标轴刻度
             double x_axis = xM[0];
             double y_axis = yM[0];
 
@@ -213,30 +219,23 @@ namespace ExcelFile
             
             }
 
-            //  
-            Func<double, double> getAjustX = x => 0.98* (x - xM[0]) * pWidth / x_span;
-            Func<double, double> getAjustY = y => 0.98* ( pHeight - (y - yM[0]) * pHeight / y_span ); //纵轴倒置
+
 
             //定义铅笔
-            Pen pen1 = new Pen(Color.Black, 1);
-            Pen pen2 = new Pen(Color.Black, 2);
-
+            Pen pen1 = new Pen(Color.Black, 1);//画坐标轴
+            Pen pen2 = new Pen(Color.Black, 2);//画刻度
             //定义铅笔的头部箭头
             System.Drawing.Drawing2D.AdjustableArrowCap lineArrow =
                 new System.Drawing.Drawing2D.AdjustableArrowCap(4, 4, true);
             pen1.CustomEndCap = lineArrow;
 
-            //定义坐标点
+            //定义坐标点-x轴
             PointF px1=new PointF(0, float.Parse(getAjustY(y_o).ToString())); 
             PointF px2=new PointF(float.Parse(getAjustX(xM[1]).ToString()), float.Parse(getAjustY(y_o).ToString()));
-
+            //定义坐标点-y轴
             PointF py1 = new PointF(float.Parse(getAjustX(x_o).ToString()), float.Parse(getAjustY(0).ToString()));
             PointF py2=new PointF(float.Parse(getAjustX(x_o).ToString()),  float.Parse(getAjustY(yM[1]).ToString()));
-
-            //MessageBox.Show(py2.Y.ToString());
-            //myDebug.a(px1.Y);
-            //return;
-
+            //画坐标轴
             g.DrawLine(pen1,px1,px2);//x
             g.DrawLine(pen1, py1,py2);//y
                 //, float.Parse(getAjustX(y_o).ToString())), new PointF(float.Parse(getAjustX(xM[1]).ToString()), float.Parse(getAjustX(y_o).ToString())));//x
@@ -245,7 +244,7 @@ namespace ExcelFile
 
             //细分点数
             int dot_num = 10;
-            List<Point> pointList = new List<Point>();
+            List<PointF> pointFList = new List<PointF>();
 
             //计算拟合出来的点
             double[] xp = new double[dot_num];
@@ -257,13 +256,14 @@ namespace ExcelFile
                 yp[i] = a0 + a1 * xp[i];
 
                 //针对当前画布调整
-                xp[i] = (xp[i] - xM[0]) * pWidth / x_span;
-                yp[i] = pHeight - (yp[i] - yM[0]) * pHeight / y_span; //纵轴倒置
+                xp[i] = float.Parse(getAjustX(xp[i]).ToString());
+                yp[i] = float.Parse(getAjustY(yp[i]).ToString());
 
 
                 //取整
                 //this.richTextBox1.Text += "(" + xp[i] + "," + yp[i] + "); \r";
-                pointList.Add(new Point(int.Parse(Math.Round(xp[i]).ToString()), int.Parse(Math.Round(yp[i]).ToString())));
+                //pointList.Add(new Point(float.Parse(Math.Round(xp[i]).ToString()), float.Parse(Math.Round(yp[i]).ToString())));
+                pointFList.Add( new PointF(float.Parse( xp[i].ToString() ),  float.Parse( yp[i].ToString())));
             }
 
 
@@ -273,13 +273,13 @@ namespace ExcelFile
             int dot_radius = 6;//空心点的大小
             for (int i = 0; i < stdPoints.Count; i++)
             {
-                p = pointList[i];
+                p = pointFList[i];
                 g.DrawEllipse(new Pen(Color.Green), p.X, p.Y, dot_radius, dot_radius);
             }
 
 
             //画线
-            myDraw.DrawLine(g, pointList);
+            myDraw.DrawLine(g, pointFList);
         }
 
 

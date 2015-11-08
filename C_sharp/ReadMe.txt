@@ -72,7 +72,7 @@ day2:
 			- [7] 增加拟合选项按钮：radioButton
 				用法：http://www.codefans.net/articles/1688.shtml
 			- [8] 计划用第二个窗体进行拟合计算、画图
-		(9)从界面获得数据，拟合，画图。
+		(9)从界面获得数据，线性拟合，画图。
 			- [0] 熟悉拟合方法-记录在day4的1中；
 				利用最小二乘法拟合任意次函数曲线（C#）：http://blog.sina.com.cn/s/blog_6e51df7f0100thie.html
 				添加了CurveFits方法，但是并没有立刻使用。需要添加第二个窗体，用来拟合、画图；
@@ -84,16 +84,21 @@ day2:
 			- [5] 使用g.DrawCurve(new Pen(Color.Red, 1), temps,0.2F);方法划线，速度快、效果好。
 			- [6] 画出原始std空心点。g.DrawEllipse(new Pen(Color.Green), p.X, p.Y, dot_radius, dot_radius);//6
 			- [7] 修复了bug：修改模板信息后，内置模板下拉框立刻变为“自定义模板”字样。
-			- [8] 画出了坐标轴，还没有刻度。
-				用到了 匿名函数 做坐标变换 lambda表达式    Func<int, string> gwl = p => p + 10 + "--返回类型为string";   
+			- [8] 画出了坐标轴。用到了 匿名函数 做坐标变换，其他点（原始点）的绘制也用到该坐标变换。
+				lambda表达式: Func<int, string> gwl = p => p + 10 + "--返回类型为string";
 			- [9] 对坐标轴增加 自定义箭头 
 				//定义铅笔的头部箭头
 				System.Drawing.Drawing2D.AdjustableArrowCap lineArrow =
 					new System.Drawing.Drawing2D.AdjustableArrowCap(4, 4, true);
 				pen1.CustomEndCap = lineArrow;
+			- [10] 还没有刻度
 			
 			
-			【toDoList】修改模板之前应设置逻辑，增加对std的限制，编号只能是数字且浓度相同的必须编号相同。或者内部给编号。
+			
+			
+			【toDoList】
+			1.修改模板之前应设置逻辑，增加对std的限制，编号只能是数字且浓度相同的必须编号相同。或者内部给编号。
+			2.为什么点不在线上？
 		
 		
 		

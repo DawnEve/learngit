@@ -44,9 +44,9 @@ namespace ExcelFile
 
 
         //划线
-        public static void DrawLine(Graphics g, List<Point> pointList)
+        public static void DrawLine(Graphics g, List<PointF> pointList)
         {
-            Point[] temps = new Point[pointList.Count];
+            PointF[] temps = new PointF[pointList.Count];
             for (int i = 0; i < pointList.Count; i++)
             {
                 temps[i] = pointList[i];
