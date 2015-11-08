@@ -200,8 +200,8 @@ namespace ExcelFile
             double y_span=yM[1]-yM[0];
 
             //lambda表达式 : 做坐标变换，
-            Func<double, double> getAjustX = x => 1 * (x - xM[0]) * pWidth / x_span;
-            Func<double, double> getAjustY = y => 1 * (pHeight - (y - yM[0]) * pHeight / y_span); //纵轴倒置
+            Func<double, double> getAjustX = x => 0.9 * (x - xM[0]) * pWidth / x_span;
+            Func<double, double> getAjustY = y => 0.9 * (pHeight - (y - yM[0]) * pHeight / y_span); //纵轴倒置
 
 
             //==========================================================画图 坐标轴
@@ -244,6 +244,9 @@ namespace ExcelFile
             Brush brush=new SolidBrush(Color.Black);//用笔刷定义刻度字体颜色
             PointF kedu_point;// = new PointF();//刻度的坐标
 
+            //坐标标度如果太大，则用科学技术法表示
+            Func<double, string> num2String = d => Int64.Parse(d.ToString()).ToString("E2"); //保留4位有效数字
+
             //x轴刻度
             while (x_axis <= xM[1])
             {
@@ -257,6 +260,15 @@ namespace ExcelFile
                 //标上刻度
                 kedu_point = new PointF(double2Float(getAjustX(x_axis)) - font_size, double2Float(getAjustY(y_o)));
                 g.DrawString(x_axis.ToString(), font, brush,kedu_point);
+
+                if (x_axis > 1000)
+                {
+                    g.DrawString(num2String(x_axis), font, brush, kedu_point);
+                }
+                else
+                {
+                    g.DrawString(x_axis.ToString(), font, brush, kedu_point);
+                }
             }
 
             //y轴刻度
@@ -271,8 +283,19 @@ namespace ExcelFile
                 g.DrawLine(pen2, py_k1, py_k2);
                 //标上刻度
                 int y_axis_len = y_axis.ToString().Length;
-                kedu_point = new PointF(double2Float(getAjustX(x_o)) - y_axis_len * font_size/2, double2Float(getAjustY(y_axis)));
-                g.DrawString(y_axis.ToString(), font, brush, kedu_point);
+                //kedu_point = new PointF(double2Float(getAjustX(x_o)) - y_axis_len * font_size, double2Float(getAjustY(y_axis)));
+                kedu_point = new PointF(double2Float(getAjustX(x_o)), double2Float(getAjustY(y_axis)));
+
+                if (y_axis > 1000)
+                {
+                    g.DrawString(num2String(y_axis), font, brush, kedu_point);
+                }
+                else
+                {
+                    g.DrawString(y_axis.ToString(), font, brush, kedu_point);//num2String
+                }
+
+                
             }
 
 

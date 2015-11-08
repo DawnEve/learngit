@@ -85,7 +85,9 @@ day2:
 			- [6] 画出原始std空心点。g.DrawEllipse(new Pen(Color.Green), p.X, p.Y, dot_radius, dot_radius);//6
 			- [7] 修复了bug：修改模板信息后，内置模板下拉框立刻变为“自定义模板”字样。
 			- [8] 画出了坐标轴。用到了 匿名函数 做坐标变换，其他点（原始点）的绘制也用到该坐标变换。
-				lambda表达式: Func<int, string> gwl = p => p + 10 + "--返回类型为string";
+			
+				http://www.cnblogs.com/knowledgesea/p/3163725.html
+				lambda表达式: Func<int, string> gwl = p => p + 10;// "--返回类型为string";
 				调整表达式 使坐标尽量大且都显示。fix bug[2]
 				
 			- [9] 对坐标轴增加 自定义箭头 
@@ -95,6 +97,10 @@ day2:
 				pen1.CustomEndCap = lineArrow;
 			- [10] 画出了x、y轴刻度。
 			- [11] 标注了x、y轴刻度，但是数据太大！
+				已经使用科学计数法表示，但是边缘依旧不好看。
+			
+			
+			
 			
 			
 			
