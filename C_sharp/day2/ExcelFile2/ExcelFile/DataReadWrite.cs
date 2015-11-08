@@ -220,7 +220,7 @@ namespace ExcelFile
                         }
 
                         i++;//i相当于行
-                        if (i >= 7)
+                        if (i > 7)
                         {
                             flag_Value = false; 
                         }
