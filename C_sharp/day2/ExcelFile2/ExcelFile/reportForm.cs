@@ -200,49 +200,57 @@ namespace ExcelFile
             double y_span=yM[1]-yM[0];
 
             //lambda表达式 : 做坐标变换，
-            Func<double, double> getAjustX = x => 0.98 * (x - xM[0]) * pWidth / x_span;
-            Func<double, double> getAjustY = y => 0.98 * (pHeight - (y - yM[0]) * pHeight / y_span); //纵轴倒置
+            Func<double, double> getAjustX = x => 1 * (x - xM[0]) * pWidth / x_span;
+            Func<double, double> getAjustY = y => 1 * (pHeight - (y - yM[0]) * pHeight / y_span); //纵轴倒置
 
 
             //==========================================================画图 坐标轴
-            //坐标轴刻度 - 先按照 10格
-            double x_kedu =Math.Ceiling( x_span/10 );//刻度
-            double y_kedu = Math.Ceiling(y_span / 10);
-
-            double x_o = xM[0] + x_kedu;//坐标轴所在位置
-            double y_o = yM[0] + y_kedu;
-
-
-            //画坐标轴刻度
-            double x_axis = xM[0];
-            double y_axis = yM[0];
-
-
-            while (x_axis <= xM[1])
-            {
-                x_axis +=  x_kedu;
-            
-            }
-
-
-
             //定义铅笔
             Pen pen1 = new Pen(Color.Black, 1);//画坐标轴
-            Pen pen2 = new Pen(Color.Black, 2);//画刻度
+            Pen pen2 = new Pen(Color.Black, 1);//画刻度
             //定义铅笔的头部箭头
             System.Drawing.Drawing2D.AdjustableArrowCap lineArrow =
                 new System.Drawing.Drawing2D.AdjustableArrowCap(4, 4, true);
             pen1.CustomEndCap = lineArrow;
 
+
+            //--------------------定义坐标轴刻度
+            //坐标轴刻度 - 先按照 10格
+            double x_kedu =Math.Ceiling( x_span/10 );//刻度
+            double y_kedu = Math.Ceiling(y_span / 10);
+
+            double x_o = xM[0] + x_kedu*0.5;//坐标轴所在位置
+            double y_o = yM[0] + y_kedu*0.6;
+
+
+            //--------------------画坐标轴
             //定义坐标点-x轴
-            PointF px1 = new PointF(0, double2Float(getAjustY(y_o)) );
+            PointF px1 = new PointF(0, double2Float(getAjustY(y_o)));
             PointF px2 = new PointF(double2Float(getAjustX(xM[1])), double2Float(getAjustY(y_o)));
             //定义坐标点-y轴
             PointF py1 = new PointF(double2Float(getAjustX(x_o)), double2Float(getAjustY(0)));
             PointF py2 = new PointF(double2Float(getAjustX(x_o)), double2Float(getAjustY(yM[1])));
             //画坐标轴
-            g.DrawLine(pen1,px1,px2);//x
-            g.DrawLine(pen1, py1,py2);//y
+            g.DrawLine(pen1, px1, px2);//x
+            g.DrawLine(pen1, py1, py2);//y
+
+
+            //--------------------画坐标轴刻度
+            double x_axis = xM[0];
+            double y_axis = yM[0];
+
+            //x轴刻度
+            while (x_axis <= xM[1])
+            {
+                x_axis += x_kedu;//刻度向右递增
+                //定义刻度线的首尾点
+                PointF px_k1 = new PointF(double2Float(getAjustX(x_axis)), double2Float(getAjustY(y_o)) -10 );
+                PointF px_k2 = new PointF(double2Float(getAjustX(x_axis)), double2Float(getAjustY(y_o)));
+
+                g.DrawLine(pen2, px_k1, px_k2);//x
+
+            }
+
 
 
 
@@ -268,7 +276,7 @@ namespace ExcelFile
                 pointFList.Add( new PointF(double2Float( xp[i] ),  double2Float( yp[i])));
             }
             
-            //画很多线
+            //画很多线 - 很多点连起来就是一条直线
             myDraw.DrawLine(g, pointFList);
 
 

@@ -93,7 +93,7 @@ day2:
 				System.Drawing.Drawing2D.AdjustableArrowCap lineArrow =
 					new System.Drawing.Drawing2D.AdjustableArrowCap(4, 4, true);
 				pen1.CustomEndCap = lineArrow;
-			- [10] 还没有刻度
+			- [10] 画出了x轴。
 			
 			
 			
