@@ -87,6 +87,7 @@ day2:
 			- [8] 画出了坐标轴。用到了 匿名函数 做坐标变换，其他点（原始点）的绘制也用到该坐标变换。
 				lambda表达式: Func<int, string> gwl = p => p + 10 + "--返回类型为string";
 				调整表达式 使坐标尽量大且都显示。fix bug[2]
+				
 			- [9] 对坐标轴增加 自定义箭头 
 				//定义铅笔的头部箭头
 				System.Drawing.Drawing2D.AdjustableArrowCap lineArrow =
