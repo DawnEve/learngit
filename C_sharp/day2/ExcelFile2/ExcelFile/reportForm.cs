@@ -248,7 +248,7 @@ namespace ExcelFile
             Func<double, string> num2String = d => Int64.Parse(d.ToString()).ToString("E2"); //保留4位有效数字
 
             //x轴刻度
-            while (x_axis <= xM[1])
+            while (x_axis < xM[1])
             {
                 //刻度向右递增
                 x_axis += x_kedu;
@@ -272,7 +272,7 @@ namespace ExcelFile
             }
 
             //y轴刻度
-            while (y_axis <= yM[1])
+            while (y_axis < yM[1])
             {
                 //刻度向右递增
                 y_axis += y_kedu;
