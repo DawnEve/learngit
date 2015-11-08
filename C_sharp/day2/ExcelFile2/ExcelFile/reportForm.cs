@@ -238,19 +238,31 @@ namespace ExcelFile
             //--------------------画坐标轴刻度
             double x_axis = xM[0];
             double y_axis = yM[0];
+            int ke_height = 8;//刻度尺寸
 
             //x轴刻度
             while (x_axis <= xM[1])
             {
-                x_axis += x_kedu;//刻度向右递增
+                //刻度向右递增
+                x_axis += x_kedu;
                 //定义刻度线的首尾点
-                PointF px_k1 = new PointF(double2Float(getAjustX(x_axis)), double2Float(getAjustY(y_o)) -10 );
+                PointF px_k1 = new PointF(double2Float(getAjustX(x_axis)), double2Float(getAjustY(y_o)) - ke_height);
                 PointF px_k2 = new PointF(double2Float(getAjustX(x_axis)), double2Float(getAjustY(y_o)));
-
-                g.DrawLine(pen2, px_k1, px_k2);//x
-
+                //画刻度
+                g.DrawLine(pen2, px_k1, px_k2);
             }
 
+            //y轴刻度
+            while (y_axis <= yM[1])
+            {
+                //刻度向右递增
+                y_axis += y_kedu;
+                //定义刻度线的首尾点
+                PointF py_k1 = new PointF(double2Float(getAjustX(x_o)) + ke_height, double2Float(getAjustY(y_axis)));
+                PointF py_k2 = new PointF(double2Float(getAjustX(x_o)), double2Float(getAjustY(y_axis)));
+                //画刻度
+                g.DrawLine(pen2, py_k1, py_k2);
+            }
 
 
 
