@@ -52,6 +52,8 @@
             this.软件使用ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关于ELISAAnalyser001ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnOpenTpl = new System.Windows.Forms.Button();
+            this.btnSaveTpl = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label14 = new System.Windows.Forms.Label();
             this.cmbTpl = new System.Windows.Forms.ComboBox();
@@ -67,6 +69,12 @@
             this.label11 = new System.Windows.Forms.Label();
             this.txtUnit = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnStartFit = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -82,15 +90,7 @@
             this.textLot = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.btnOpenTpl = new System.Windows.Forms.Button();
-            this.btnSaveTpl = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.btnStartFit = new System.Windows.Forms.Button();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView0)).BeginInit();
@@ -99,8 +99,8 @@
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -275,13 +275,15 @@
             // 
             this.软件使用ToolStripMenuItem.Name = "软件使用ToolStripMenuItem";
             this.软件使用ToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
-            this.软件使用ToolStripMenuItem.Text = "软件使用";
+            this.软件使用ToolStripMenuItem.Text = "使用帮助";
+            this.软件使用ToolStripMenuItem.Click += new System.EventHandler(this.软件使用ToolStripMenuItem_Click);
             // 
             // 关于ELISAAnalyser001ToolStripMenuItem
             // 
             this.关于ELISAAnalyser001ToolStripMenuItem.Name = "关于ELISAAnalyser001ToolStripMenuItem";
             this.关于ELISAAnalyser001ToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.关于ELISAAnalyser001ToolStripMenuItem.Text = "关于ELISA Analyser0.0.1";
+            this.关于ELISAAnalyser001ToolStripMenuItem.Click += new System.EventHandler(this.关于ELISAAnalyser001ToolStripMenuItem_Click);
             // 
             // groupBox1
             // 
@@ -296,6 +298,26 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "请设置模板(提示：使用右边控制区)";
+            // 
+            // btnOpenTpl
+            // 
+            this.btnOpenTpl.Location = new System.Drawing.Point(841, 98);
+            this.btnOpenTpl.Name = "btnOpenTpl";
+            this.btnOpenTpl.Size = new System.Drawing.Size(70, 23);
+            this.btnOpenTpl.TabIndex = 16;
+            this.btnOpenTpl.Text = "打开模板";
+            this.btnOpenTpl.UseVisualStyleBackColor = true;
+            this.btnOpenTpl.Click += new System.EventHandler(this.btnOpenTpl_Click);
+            // 
+            // btnSaveTpl
+            // 
+            this.btnSaveTpl.Location = new System.Drawing.Point(930, 98);
+            this.btnSaveTpl.Name = "btnSaveTpl";
+            this.btnSaveTpl.Size = new System.Drawing.Size(70, 23);
+            this.btnSaveTpl.TabIndex = 15;
+            this.btnSaveTpl.Text = "保存模板";
+            this.btnSaveTpl.UseVisualStyleBackColor = true;
+            this.btnSaveTpl.Click += new System.EventHandler(this.btnSaveTpl_Click);
             // 
             // groupBox4
             // 
@@ -451,6 +473,73 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "请输入OD值(提示：右键菜单可以复制、粘贴等)";
             // 
+            // btnStartFit
+            // 
+            this.btnStartFit.Location = new System.Drawing.Point(841, 275);
+            this.btnStartFit.Name = "btnStartFit";
+            this.btnStartFit.Size = new System.Drawing.Size(159, 56);
+            this.btnStartFit.TabIndex = 18;
+            this.btnStartFit.Text = "开始拟合";
+            this.btnStartFit.UseVisualStyleBackColor = true;
+            this.btnStartFit.Click += new System.EventHandler(this.btnStartFit_Click);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.radioButton4);
+            this.groupBox5.Controls.Add(this.radioButton3);
+            this.groupBox5.Controls.Add(this.radioButton2);
+            this.groupBox5.Controls.Add(this.radioButton1);
+            this.groupBox5.Location = new System.Drawing.Point(806, 40);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(230, 220);
+            this.groupBox5.TabIndex = 17;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "选择拟合模型";
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(55, 171);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(113, 16);
+            this.radioButton4.TabIndex = 3;
+            this.radioButton4.TabStop = true;
+            this.radioButton4.Text = "4参数模型(4-PL)";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(55, 117);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(101, 16);
+            this.radioButton3.TabIndex = 2;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "logit-log模型";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(55, 77);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(83, 16);
+            this.radioButton2.TabIndex = 1;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "多项式模型";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(55, 31);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(71, 16);
+            this.radioButton1.TabIndex = 0;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "线性模型";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 8;
@@ -605,99 +694,12 @@
             this.label17.TabIndex = 15;
             this.label17.Text = "备注：";
             // 
-            // btnOpenTpl
-            // 
-            this.btnOpenTpl.Location = new System.Drawing.Point(841, 98);
-            this.btnOpenTpl.Name = "btnOpenTpl";
-            this.btnOpenTpl.Size = new System.Drawing.Size(70, 23);
-            this.btnOpenTpl.TabIndex = 16;
-            this.btnOpenTpl.Text = "打开模板";
-            this.btnOpenTpl.UseVisualStyleBackColor = true;
-            this.btnOpenTpl.Click += new System.EventHandler(this.btnOpenTpl_Click);
-            // 
-            // btnSaveTpl
-            // 
-            this.btnSaveTpl.Location = new System.Drawing.Point(930, 98);
-            this.btnSaveTpl.Name = "btnSaveTpl";
-            this.btnSaveTpl.Size = new System.Drawing.Size(70, 23);
-            this.btnSaveTpl.TabIndex = 15;
-            this.btnSaveTpl.Text = "保存模板";
-            this.btnSaveTpl.UseVisualStyleBackColor = true;
-            this.btnSaveTpl.Click += new System.EventHandler(this.btnSaveTpl_Click);
-            // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(483, 30);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(124, 21);
             this.dateTimePicker1.TabIndex = 16;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.radioButton4);
-            this.groupBox5.Controls.Add(this.radioButton3);
-            this.groupBox5.Controls.Add(this.radioButton2);
-            this.groupBox5.Controls.Add(this.radioButton1);
-            this.groupBox5.Location = new System.Drawing.Point(806, 40);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(230, 220);
-            this.groupBox5.TabIndex = 17;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "选择拟合模型";
-            // 
-            // btnStartFit
-            // 
-            this.btnStartFit.Location = new System.Drawing.Point(841, 275);
-            this.btnStartFit.Name = "btnStartFit";
-            this.btnStartFit.Size = new System.Drawing.Size(159, 56);
-            this.btnStartFit.TabIndex = 18;
-            this.btnStartFit.Text = "开始拟合";
-            this.btnStartFit.UseVisualStyleBackColor = true;
-            this.btnStartFit.Click += new System.EventHandler(this.btnStartFit_Click);
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(55, 31);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(71, 16);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "线性模型";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(55, 77);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(83, 16);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "多项式模型";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(55, 117);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(101, 16);
-            this.radioButton3.TabIndex = 2;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "logit-log模型";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(55, 171);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(113, 16);
-            this.radioButton4.TabIndex = 3;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "4参数模型(4-PL)";
-            this.radioButton4.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -732,10 +734,10 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
