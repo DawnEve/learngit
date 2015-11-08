@@ -94,6 +94,7 @@ day2:
 					new System.Drawing.Drawing2D.AdjustableArrowCap(4, 4, true);
 				pen1.CustomEndCap = lineArrow;
 			- [10] 画出了x、y轴刻度。
+			- [11] 标注了x、y轴刻度，但是数据太大！
 			
 			
 			

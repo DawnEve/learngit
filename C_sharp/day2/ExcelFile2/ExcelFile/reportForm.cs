@@ -238,7 +238,11 @@ namespace ExcelFile
             //--------------------画坐标轴刻度
             double x_axis = xM[0];
             double y_axis = yM[0];
-            int ke_height = 8;//刻度尺寸
+            int ke_height = 6;//刻度尺寸
+            int font_size = 8;
+            Font font = new Font("微软雅黑", font_size);//刻度字体
+            Brush brush=new SolidBrush(Color.Black);//用笔刷定义刻度字体颜色
+            PointF kedu_point;// = new PointF();//刻度的坐标
 
             //x轴刻度
             while (x_axis <= xM[1])
@@ -250,6 +254,9 @@ namespace ExcelFile
                 PointF px_k2 = new PointF(double2Float(getAjustX(x_axis)), double2Float(getAjustY(y_o)));
                 //画刻度
                 g.DrawLine(pen2, px_k1, px_k2);
+                //标上刻度
+                kedu_point = new PointF(double2Float(getAjustX(x_axis)) - font_size, double2Float(getAjustY(y_o)));
+                g.DrawString(x_axis.ToString(), font, brush,kedu_point);
             }
 
             //y轴刻度
@@ -262,6 +269,10 @@ namespace ExcelFile
                 PointF py_k2 = new PointF(double2Float(getAjustX(x_o)), double2Float(getAjustY(y_axis)));
                 //画刻度
                 g.DrawLine(pen2, py_k1, py_k2);
+                //标上刻度
+                int y_axis_len = y_axis.ToString().Length;
+                kedu_point = new PointF(double2Float(getAjustX(x_o)) - y_axis_len * font_size/2, double2Float(getAjustY(y_axis)));
+                g.DrawString(y_axis.ToString(), font, brush, kedu_point);
             }
 
 
