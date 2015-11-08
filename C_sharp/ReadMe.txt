@@ -85,9 +85,12 @@ day2:
 			- [6] 画出原始std空心点。g.DrawEllipse(new Pen(Color.Green), p.X, p.Y, dot_radius, dot_radius);//6
 			- [7] 修复了bug：修改模板信息后，内置模板下拉框立刻变为“自定义模板”字样。
 			- [8] 画出了坐标轴，还没有刻度。
-				用到了 匿名函数 lambda表达式    Func<int, string> gwl = p => p + 10 + "--返回类型为string";   
-			
-			
+				用到了 匿名函数 做坐标变换 lambda表达式    Func<int, string> gwl = p => p + 10 + "--返回类型为string";   
+			- [9] 对坐标轴增加 自定义箭头 
+				//定义铅笔的头部箭头
+				System.Drawing.Drawing2D.AdjustableArrowCap lineArrow =
+					new System.Drawing.Drawing2D.AdjustableArrowCap(4, 4, true);
+				pen1.CustomEndCap = lineArrow;
 			
 			
 			【toDoList】修改模板之前应设置逻辑，增加对std的限制，编号只能是数字且浓度相同的必须编号相同。或者内部给编号。

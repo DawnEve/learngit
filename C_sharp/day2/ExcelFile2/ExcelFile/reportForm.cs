@@ -213,14 +213,20 @@ namespace ExcelFile
             
             }
 
-            //匿名函数 lambda表达式    Func<int, string> gwl = p => p + 10 + "--返回类型为string";    
-            Func<double, double> getAjustX = x => (x - xM[0]) * pWidth / x_span;
-            Func<double, double> getAjustY = y => pHeight - (y - yM[0]) * pHeight / y_span; //纵轴倒置
+            //  
+            Func<double, double> getAjustX = x => 0.98* (x - xM[0]) * pWidth / x_span;
+            Func<double, double> getAjustY = y => 0.98* ( pHeight - (y - yM[0]) * pHeight / y_span ); //纵轴倒置
 
             //定义铅笔
             Pen pen1 = new Pen(Color.Black, 1);
             Pen pen2 = new Pen(Color.Black, 2);
 
+            //定义铅笔的头部箭头
+            System.Drawing.Drawing2D.AdjustableArrowCap lineArrow =
+                new System.Drawing.Drawing2D.AdjustableArrowCap(4, 4, true);
+            pen1.CustomEndCap = lineArrow;
+
+            //定义坐标点
             PointF px1=new PointF(0, float.Parse(getAjustY(y_o).ToString())); 
             PointF px2=new PointF(float.Parse(getAjustX(xM[1]).ToString()), float.Parse(getAjustY(y_o).ToString()));
 
