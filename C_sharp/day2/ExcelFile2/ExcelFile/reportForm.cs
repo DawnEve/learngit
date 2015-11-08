@@ -200,14 +200,17 @@ namespace ExcelFile
             double y_span=yM[1]-yM[0];
 
             //lambda表达式 : 做坐标变换，
-            Func<double, double> getAjustX = x => 0.9 * (x - xM[0]) * pWidth / x_span;
-            Func<double, double> getAjustY = y => 0.9 * (pHeight - (y - yM[0]) * pHeight / y_span); //纵轴倒置
+            Func<double, double> getAjustX = x => 20+ 0.9 * (x - xM[0]) * pWidth / x_span;
+            Func<double, double> getAjustY = y => -20 + pHeight - 0.9 * (y - yM[0]) * pHeight / y_span; //纵轴倒置
 
 
             //==========================================================画图 坐标轴
             //定义铅笔
-            Pen pen1 = new Pen(Color.Black, 1);//画坐标轴
+            Pen pen1 = new Pen(Color.Black, 1);//画坐标轴，带箭头
             Pen pen2 = new Pen(Color.Black, 1);//画刻度
+            Pen pen3 = new Pen(Color.LightGray, 1);//画背景虚线
+            pen3.DashStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
+
             //定义铅笔的头部箭头
             System.Drawing.Drawing2D.AdjustableArrowCap lineArrow =
                 new System.Drawing.Drawing2D.AdjustableArrowCap(4, 4, true);
@@ -257,6 +260,12 @@ namespace ExcelFile
                 PointF px_k2 = new PointF(double2Float(getAjustX(x_axis)), double2Float(getAjustY(y_o)));
                 //画刻度
                 g.DrawLine(pen2, px_k1, px_k2);
+
+                //画背景虚线
+                PointF px_k3 = new PointF(double2Float(getAjustX(x_axis)), double2Float(getAjustY(yM[0])));
+                PointF px_k4 = new PointF(double2Float(getAjustX(x_axis)), double2Float(getAjustY(yM[1])));
+                g.DrawLine(pen3, px_k3, px_k4);
+
                 //标上刻度
                 kedu_point = new PointF(double2Float(getAjustX(x_axis)) - font_size, double2Float(getAjustY(y_o)));
                 g.DrawString(x_axis.ToString(), font, brush,kedu_point);
@@ -281,6 +290,12 @@ namespace ExcelFile
                 PointF py_k2 = new PointF(double2Float(getAjustX(x_o)), double2Float(getAjustY(y_axis)));
                 //画刻度
                 g.DrawLine(pen2, py_k1, py_k2);
+
+                //画背景虚线
+                PointF py_k3 = new PointF(double2Float(getAjustX(xM[0])), double2Float(getAjustY(y_axis)));
+                PointF py_k4 = new PointF(double2Float(getAjustX(xM[1])), double2Float(getAjustY(y_axis)));
+                g.DrawLine(pen3, py_k3, py_k4);
+
                 //标上刻度
                 int y_axis_len = y_axis.ToString().Length;
                 //kedu_point = new PointF(double2Float(getAjustX(x_o)) - y_axis_len * font_size, double2Float(getAjustY(y_axis)));

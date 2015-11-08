@@ -103,6 +103,9 @@ day2:
 				打开文件时曲线类型没处理
 			- [13] fix bug[4]:打开时把od的空值设置为-10000，这个方案还不完美。//todo
 			- [14] 坐标轴还是不完善，显示有问题。----------todo
+			- [15] 画背景网格线。
+			
+			
 			
 			
 			
@@ -164,8 +167,11 @@ day4:	拟合
 				[2]FittingFunct类：多项式拟合，指数拟合等；没看懂
 			
 	
-	
+day5:	报表与打印：
+	http://blog.sciencenet.cn/blog-244606-747345.html
 
+	
+	
 ---------------------------
 安卓的开源项目
 http://blog.csdn.net/sasoritattoo/article/details/26400347
