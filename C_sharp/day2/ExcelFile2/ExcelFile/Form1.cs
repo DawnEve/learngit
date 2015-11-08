@@ -622,6 +622,16 @@ namespace ExcelFile
             return curve_type;
         }
 
+        private void 关于ELISAAnalyser001ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("此软件由王军亮编写和维护，如有需要，请联系15890149335，EMail:jimmyMall@163.com","版权声明");
+        }
+
+        private void 软件使用ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://blog.163.com/med_devices/blog/static/2199720502015108321798/");  
+        }
+
 
 
 
