@@ -77,6 +77,10 @@ namespace ExcelFile
         private void calclateStd(Graphics g) {
             //计算标准曲线
             List<PointF> stdPoints = new List<PointF>();//保存标准曲线上的点
+
+            //lambda表达式 : double变为float格式
+            Func<double, float> double2Float = x => float.Parse(x.ToString());
+
             //整理出标准品数据，用字典实现conc唯一性
             int std_count = 0;
             Dictionary<double, List<Info>> std = new Dictionary<double, List<Info>>();
@@ -125,12 +129,12 @@ namespace ExcelFile
                 double od_sum = 0; 
                 foreach(Info info in list)
                 {
-                    double temp = double.Parse(info.well_od.ToString());
+                    double temp = double2Float(info.well_od);
                     od_sum += temp;
                     od_counter++;
 
                     //保存标准曲线上的点
-                    stdPoints.Add(new PointF(float.Parse(conc.ToString()), float.Parse(temp.ToString())));
+                    stdPoints.Add(new PointF(double2Float(conc), double2Float(temp)));
                 }
                 arr_y[std_i] = od_sum / od_counter;//计算od的平均值
                 std_i++;
@@ -184,7 +188,7 @@ namespace ExcelFile
             this.label2.Text = RSqure.ToString();
 
 
-            //==========================================================画图
+            //==========================================================画图 basic
             //计算最值
             double[] xM = getMinMax(arr_x);
             double[] yM = getMinMax(arr_y);
@@ -194,52 +198,129 @@ namespace ExcelFile
             //坐标轴范围
             double x_span=xM[1]-xM[0];
             double y_span=yM[1]-yM[0];
-            //坐标轴 10格
+
+            //lambda表达式 : 做坐标变换，
+            Func<double, double> getAjustX = x => 20+ 0.9 * (x - xM[0]) * pWidth / x_span;
+            Func<double, double> getAjustY = y => -20 + pHeight - 0.9 * (y - yM[0]) * pHeight / y_span; //纵轴倒置
+
+
+            //==========================================================画图 坐标轴
+            //定义铅笔
+            Pen pen1 = new Pen(Color.Black, 1);//画坐标轴，带箭头
+            Pen pen2 = new Pen(Color.Black, 1);//画刻度
+            Pen pen3 = new Pen(Color.LightGray, 1);//画背景虚线
+            pen3.DashStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
+
+            //定义铅笔的头部箭头
+            System.Drawing.Drawing2D.AdjustableArrowCap lineArrow =
+                new System.Drawing.Drawing2D.AdjustableArrowCap(4, 4, true);
+            pen1.CustomEndCap = lineArrow;
+
+
+            //--------------------定义坐标轴刻度
+            //坐标轴刻度 - 先按照 10格
             double x_kedu =Math.Ceiling( x_span/10 );//刻度
             double y_kedu = Math.Ceiling(y_span / 10);
 
-            double x_o = xM[0] + x_kedu;//坐标轴所在位置
-            double y_o = yM[0] + y_kedu;
+            double x_o = xM[0] + x_kedu*0.5;//坐标轴所在位置
+            double y_o = yM[0] + y_kedu*0.6;
 
 
-            //画坐标
+            //--------------------画坐标轴
+            //定义坐标点-x轴
+            PointF px1 = new PointF(0, double2Float(getAjustY(y_o)));
+            PointF px2 = new PointF(double2Float(getAjustX(xM[1])), double2Float(getAjustY(y_o)));
+            //定义坐标点-y轴
+            PointF py1 = new PointF(double2Float(getAjustX(x_o)), double2Float(pHeight));
+            PointF py2 = new PointF(double2Float(getAjustX(x_o)), double2Float(getAjustY(yM[1])));
+            //画坐标轴
+            g.DrawLine(pen1, px1, px2);//x
+            g.DrawLine(pen1, py1, py2);//y
+
+
+            //--------------------画坐标轴刻度
             double x_axis = xM[0];
             double y_axis = yM[0];
+            int ke_height = 6;//刻度尺寸
+            int font_size = 8;
+            Font font = new Font("微软雅黑", font_size);//刻度字体
+            Brush brush=new SolidBrush(Color.Black);//用笔刷定义刻度字体颜色
+            PointF kedu_point;// = new PointF();//刻度的坐标
 
+            //坐标标度如果太大，则用科学技术法表示
+            Func<double, string> num2String = d => Int64.Parse(d.ToString()).ToString("E2"); //保留4位有效数字
 
-            while (x_axis <= xM[1])
+            //x轴刻度
+            while (x_axis < xM[1])
             {
-                x_axis +=  x_kedu;
-            
+                //刻度向右递增
+                x_axis += x_kedu;
+                //定义刻度线的首尾点
+                PointF px_k1 = new PointF(double2Float(getAjustX(x_axis)), double2Float(getAjustY(y_o)) - ke_height);
+                PointF px_k2 = new PointF(double2Float(getAjustX(x_axis)), double2Float(getAjustY(y_o)));
+                //画刻度
+                g.DrawLine(pen2, px_k1, px_k2);
+
+                //画背景虚线
+                PointF px_k3 = new PointF(double2Float(getAjustX(x_axis)), double2Float(getAjustY(yM[0])));
+                PointF px_k4 = new PointF(double2Float(getAjustX(x_axis)), double2Float(getAjustY(yM[1])));
+                g.DrawLine(pen3, px_k3, px_k4);
+
+                //标上刻度
+                kedu_point = new PointF(double2Float(getAjustX(x_axis)) - font_size, double2Float(getAjustY(y_o)));
+                g.DrawString(x_axis.ToString(), font, brush,kedu_point);
+
+                if (x_axis > 1000)
+                {
+                    g.DrawString(num2String(x_axis), font, brush, kedu_point);
+                }
+                else
+                {
+                    g.DrawString(x_axis.ToString(), font, brush, kedu_point);
+                }
             }
 
-            //匿名函数 lambda表达式    Func<int, string> gwl = p => p + 10 + "--返回类型为string";    
-            Func<double, double> getAjustX = x => (x - xM[0]) * pWidth / x_span;
-            Func<double, double> getAjustY = y => pHeight - (y - yM[0]) * pHeight / y_span; //纵轴倒置
+            //y轴刻度
+            while (y_axis < yM[1])
+            {
+                //刻度向右递增
+                y_axis += y_kedu;
+                //定义刻度线的首尾点
+                PointF py_k1 = new PointF(double2Float(getAjustX(x_o)) + ke_height, double2Float(getAjustY(y_axis)));
+                PointF py_k2 = new PointF(double2Float(getAjustX(x_o)), double2Float(getAjustY(y_axis)));
+                //画刻度
+                g.DrawLine(pen2, py_k1, py_k2);
 
-            //定义铅笔
-            Pen pen1 = new Pen(Color.Black, 1);
-            Pen pen2 = new Pen(Color.Black, 2);
+                //画背景虚线
+                PointF py_k3 = new PointF(double2Float(getAjustX(xM[0])), double2Float(getAjustY(y_axis)));
+                PointF py_k4 = new PointF(double2Float(getAjustX(xM[1])), double2Float(getAjustY(y_axis)));
+                g.DrawLine(pen3, py_k3, py_k4);
 
-            PointF px1=new PointF(0, float.Parse(getAjustY(y_o).ToString())); 
-            PointF px2=new PointF(float.Parse(getAjustX(xM[1]).ToString()), float.Parse(getAjustY(y_o).ToString()));
+                //标上刻度
+                int y_axis_len = y_axis.ToString().Length;
+                //kedu_point = new PointF(double2Float(getAjustX(x_o)) - y_axis_len * font_size, double2Float(getAjustY(y_axis)));
+                kedu_point = new PointF(double2Float(getAjustX(x_o)), double2Float(getAjustY(y_axis)));
 
-            PointF py1 = new PointF(float.Parse(getAjustX(x_o).ToString()), float.Parse(getAjustY(0).ToString()));
-            PointF py2=new PointF(float.Parse(getAjustX(x_o).ToString()),  float.Parse(getAjustY(yM[1]).ToString()));
+                if (y_axis > 1000)
+                {
+                    g.DrawString(num2String(y_axis), font, brush, kedu_point);
+                }
+                else
+                {
+                    g.DrawString(y_axis.ToString(), font, brush, kedu_point);//num2String
+                }
 
-            //MessageBox.Show(py2.Y.ToString());
-            //myDebug.a(px1.Y);
-            //return;
+                
+            }
+            
+            //==========================================================画标注 主标题和坐标注释
+            g.DrawString("线性拟合标准曲线", new Font("宋体", 10), new SolidBrush(Color.Black), new Point(Width / 4, 10));
 
-            g.DrawLine(pen1,px1,px2);//x
-            g.DrawLine(pen1, py1,py2);//y
-                //, float.Parse(getAjustX(y_o).ToString())), new PointF(float.Parse(getAjustX(xM[1]).ToString()), float.Parse(getAjustX(y_o).ToString())));//x
 
-            //g.DrawLine(pen1, new PointF(0,100), new PointF(500,100));
-
+            //==========================================================画图 拟合曲线
             //细分点数
             int dot_num = 10;
-            List<Point> pointList = new List<Point>();
+            List<PointF> pointFList = new List<PointF>();
 
             //计算拟合出来的点
             double[] xp = new double[dot_num];
@@ -251,29 +332,33 @@ namespace ExcelFile
                 yp[i] = a0 + a1 * xp[i];
 
                 //针对当前画布调整
-                xp[i] = (xp[i] - xM[0]) * pWidth / x_span;
-                yp[i] = pHeight - (yp[i] - yM[0]) * pHeight / y_span; //纵轴倒置
+                xp[i] = double2Float(getAjustX(xp[i]));
+                yp[i] = double2Float(getAjustY(yp[i]));
 
-
-                //取整
-                //this.richTextBox1.Text += "(" + xp[i] + "," + yp[i] + "); \r";
-                pointList.Add(new Point(int.Parse(Math.Round(xp[i]).ToString()), int.Parse(Math.Round(yp[i]).ToString())));
+                //记录曲线
+                pointFList.Add( new PointF(double2Float( xp[i] ),  double2Float( yp[i])));
             }
+            
+            //画很多线 - 很多点连起来就是一条直线
+            myDraw.DrawLine(g, pointFList);
 
 
+
+            //==========================================================画图 std原始点
             //画std原始点
             //myDraw.DrawPoints(g, xp, yp,1,true);
             PointF p = new PointF();
             int dot_radius = 6;//空心点的大小
             for (int i = 0; i < stdPoints.Count; i++)
             {
-                p = pointList[i];
+                p = stdPoints[i];
+                p.X = double2Float(getAjustX(p.X));
+                p.Y = double2Float(getAjustY(p.Y));
                 g.DrawEllipse(new Pen(Color.Green), p.X, p.Y, dot_radius, dot_radius);
             }
 
 
-            //画线
-            myDraw.DrawLine(g, pointList);
+            
         }
 
 
@@ -307,8 +392,8 @@ namespace ExcelFile
             g.Clear(Color.White);
 
             //画笔画图
-            Pen pen = new Pen(Color.Red);
-            g.DrawString("The xxx curve", new Font("宋体", 12), new SolidBrush(Color.Blue), new Point(Width / 3, 10));
+            //Pen pen = new Pen(Color.Red);
+            
 
 
             //以下尝试画图

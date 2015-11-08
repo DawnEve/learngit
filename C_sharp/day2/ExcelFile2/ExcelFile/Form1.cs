@@ -278,6 +278,7 @@ namespace ExcelFile
                 this.dateTimePicker1.Text = plate_info["LabDate"];
                 this.textLot.Text = plate_info["Lot"];
                 this.txtUnit.Text = plate_info["Unit"];
+                //todo 打开文件时曲线类型没处理
                 this.richTextBox1.Text = plate_info["Note"];
 
 

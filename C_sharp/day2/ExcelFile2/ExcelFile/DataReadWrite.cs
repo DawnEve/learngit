@@ -206,16 +206,21 @@ namespace ExcelFile
                         //string Location = "";
                         for (int j = 0; j < 12; j++)
                         {
-                            if (d_value[j]!=null && d_value[j].Trim() != "")
+                            if (d_value[j]!=null)
                             {
-                                //Location = (string)(i + "行" + j + "列");
-                                //MessageBox.Show(d_value[j], "OD-" + Location);
-                                od[i, j] = Double.Parse(d_value[j]);
+                                if (d_value[j].Trim() != "")
+                                {
+                                    od[i, j] = Double.Parse(d_value[j]);
+                                }
+                                else 
+                                {
+                                    od[i, j] = -10000;
+                                }
                             }
                         }
 
                         i++;//i相当于行
-                        if (i >= 7)
+                        if (i > 7)
                         {
                             flag_Value = false; 
                         }
@@ -277,11 +282,11 @@ namespace ExcelFile
                     if (flag_Curve)
                     {
                         //MessageBox.Show(txt, "Curve");
-                        if (txt.Contains("Curve"))
-                        {
-                            string[] info = txt.Split(':');
-                            plate_Info.Add(info[0], info[1]);
-                        }
+                        //if (txt.Contains("Curve"))
+                        //{
+                        //    string[] info = txt.Split(':');
+                       //     plate_Info.Add(info[0], info[1]);
+                        //}
                         if (txt.Contains("Note"))
                         {
                             string[] info = txt.Split(':');
@@ -333,7 +338,7 @@ namespace ExcelFile
             {
                 for (int j = 0; j < 12; j++)
                 {
-                    if (od[i, j] != 0)
+                    if (od[i, j] >= 0)
                     {
                         //textDebug += "(" + i + "," + j + ")" + od[i, j] + "\n";
                         dgv.Rows[i].Cells[j].Value = od[i, j];
