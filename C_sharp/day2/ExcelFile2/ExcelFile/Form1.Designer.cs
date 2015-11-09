@@ -109,7 +109,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(6, 20);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(787, 302);
+            this.dataGridView1.Size = new System.Drawing.Size(787, 222);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDown);
             this.dataGridView1.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridView1_CellValidating);
@@ -141,7 +141,7 @@
             // 
             this.richTextBox1.Location = new System.Drawing.Point(1086, 115);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(220, 594);
+            this.richTextBox1.Size = new System.Drawing.Size(220, 551);
             this.richTextBox1.TabIndex = 3;
             this.richTextBox1.Text = "";
             // 
@@ -202,7 +202,7 @@
             this.帮助ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1343, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(1318, 25);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -468,14 +468,14 @@
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.groupBox2.Location = new System.Drawing.Point(12, 406);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1050, 359);
+            this.groupBox2.Size = new System.Drawing.Size(1050, 271);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "请输入OD值(提示：右键菜单可以复制、粘贴等)";
             // 
             // btnStartFit
             // 
-            this.btnStartFit.Location = new System.Drawing.Point(841, 275);
+            this.btnStartFit.Location = new System.Drawing.Point(841, 189);
             this.btnStartFit.Name = "btnStartFit";
             this.btnStartFit.Size = new System.Drawing.Size(159, 56);
             this.btnStartFit.TabIndex = 18;
@@ -489,9 +489,9 @@
             this.groupBox5.Controls.Add(this.radioButton3);
             this.groupBox5.Controls.Add(this.radioButton2);
             this.groupBox5.Controls.Add(this.radioButton1);
-            this.groupBox5.Location = new System.Drawing.Point(806, 40);
+            this.groupBox5.Location = new System.Drawing.Point(806, 26);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(230, 220);
+            this.groupBox5.Size = new System.Drawing.Size(230, 144);
             this.groupBox5.TabIndex = 17;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "选择拟合模型";
@@ -499,7 +499,7 @@
             // radioButton4
             // 
             this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(55, 171);
+            this.radioButton4.Location = new System.Drawing.Point(55, 115);
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(113, 16);
             this.radioButton4.TabIndex = 3;
@@ -510,7 +510,7 @@
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(55, 117);
+            this.radioButton3.Location = new System.Drawing.Point(55, 87);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(101, 16);
             this.radioButton3.TabIndex = 2;
@@ -521,7 +521,7 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(55, 77);
+            this.radioButton2.Location = new System.Drawing.Point(55, 59);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(83, 16);
             this.radioButton2.TabIndex = 1;
@@ -559,7 +559,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label4, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 328);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(14, 248);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -705,7 +705,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1343, 804);
+            this.ClientSize = new System.Drawing.Size(1318, 685);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.textLot);

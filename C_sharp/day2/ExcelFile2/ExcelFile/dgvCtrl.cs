@@ -51,13 +51,28 @@ namespace ExcelFile
 
             //一共8行
             string[] RowNames = { "A", "B", "C", "D", "E", "F", "G", "H" };
-            dgv.Height = 302;//222
+            if(isSettings)
+            {
+                dgv.Height = 302;//222
+            }
+            else
+            {
+                dgv.Height = 222;//222
+            }
             for (int i = 0; i < 8; i++)
             {
                 dgv.Rows.Add();
                 dgv.Rows[i].HeaderCell.Value = RowNames[i];
                 //最小高度
-                dgv.Rows[i].MinimumHeight = 35;//25
+                //dgv.Rows[i].MinimumHeight = 35;//25
+                if (isSettings)
+                {
+                    dgv.Rows[i].MinimumHeight = 35;//25
+                }
+                else
+                {
+                    dgv.Rows[i].MinimumHeight = 25;
+                }
 
                 //不允许改变大小
                 dgv.Rows[i].Resizable = DataGridViewTriState.False;
