@@ -1,4 +1,4 @@
-﻿# DOM单页面特效
+# DOM单页面特效
 ----------------------------
 - 001-popUpMsg.html  
 描述：仿网易邮箱顶部**消息框**  
@@ -12,9 +12,11 @@
 
 
 
+![baidu](http://www.baidu.com/img/bdlogo.gif "百度logo")  
 
 
-
+```Javascript
+$('div_id').innerHTML="123456";
 
 
 
