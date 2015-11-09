@@ -18,6 +18,8 @@
 ```Javascript
 $('div_id').innerHTML="123456";
 
+var a=123;
+···
 
 
 
