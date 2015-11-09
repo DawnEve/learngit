@@ -1,0 +1,121 @@
+
+<body>
+<h1>仿网易邮箱顶部消息框V0.1</h1>
+<input type='button' id=btn1 value='增加'/>
+<input type='button' id=btn2 value='删除'/>
+<input type='button' id=btn3 value='更新'/>
+<input type='button' id=btn4 value='查找'/>
+<input type='button' id=btn5 value='登陆'/>
+<input type='button' id=btn6 value='退出'/>
+<hr>
+
+<pre>
+<b>版本记录</b>
+V0.1.基本可用；
+
+todo:
+V0.2.做成渐现、渐隐的；
+
+
+<hr>
+<b>js获取网页屏幕可见区域高度</b>
+
+http://qiaolevip.iteye.com/blog/2076034
+http://www.jb51.net/article/19844.htm
+
+document.body.clientWidth ==> BODY对象宽度  
+document.body.clientHeight ==> BODY对象高度  
+document.documentElement.clientWidth ==> 可见区域宽度  
+document.documentElement.clientHeight ==> 可见区域高度  
+  
+网页可见区域宽： document.body.clientWidth  
+网页可见区域高： document.body.clientHeight  
+网页可见区域宽： document.body.offsetWidth (包括边线的宽)  
+网页可见区域高： document.body.offsetHeight (包括边线的高)  
+网页正文全文宽： document.body.scrollWidth  
+网页正文全文高： document.body.scrollHeight  
+网页被卷去的高： document.body.scrollTop  
+网页被卷去的左： document.body.scrollLeft  
+网页正文部分上： window.screenTop  
+网页正文部分左： window.screenLeft  
+屏幕分辨率的高： window.screen.height  
+屏幕分辨率的宽： window.screen.width  
+屏幕可用工作区高度： window.screen.availHeight  
+屏幕可用工作区宽度： window.screen.availWidth  
+
+</pre>
+
+</body>
+
+
+<script>
+/*example begin*/
+function $(s){
+	return document.getElementById(s);
+}
+
+$("btn1").onclick=function(){
+	showPopUpMsg("added!",3000)
+}
+$("btn2").onclick=function(){
+	showPopUpMsg("deleted!",3000,'red')
+}
+$("btn3").onclick=function(){
+	showPopUpMsg("更新成功!",3000,'orange')
+}
+$("btn4").onclick=function(){
+	showPopUpMsg("没有查找到所需条目!",3000,'red')
+}
+$("btn5").onclick=function(){
+	showPopUpMsg("已登陆!",3000)
+}
+$("btn6").onclick=function(){
+	showPopUpMsg("已退出!",3000)
+}
+
+
+showPopUpMsg("this is a test!")
+/*example end*/
+
+
+
+/**
+* 仿网易邮箱顶部消息框，封装成一个函数
+* 参数是消息内容、显示时间(optional)、背景颜色(optional)。显示时间至少2000毫秒
+*/
+function showPopUpMsg(msg, time,bgColor){
+	//获取参数，处理参数
+	var bgColor=bgColor||'#5DB249';
+	var time=time||2000;
+	if(time<2000) time=2000;
+	
+	//拿到消息提示框的div
+	function getDiv(){
+		//如果有该元素，则直接返回；否则新建一个
+		if(document.getElementById("popUpMsg")){
+			var ele=document.getElementById("popUpMsg");
+		}else{
+			var ele=document.createElement("div");
+			ele.setAttribute('id','popUpMsg');
+			var parent=document.getElementsByTagName('body')[0];
+			parent.appendChild(ele);
+		}
+		//返回元素
+		return ele;
+	}
+	
+	//获取元素
+	var ele=getDiv();
+	//设置消息内容
+	ele.innerHTML=msg;
+	//设置样式 font-weight:bold;
+	ele.setAttribute('style','display:inline-block;color:#fff;padding:5px;  border-radius:5px; position:fixed; top:10px; font-family:"微软雅黑"; font-size:12px;');
+	ele.style.background =bgColor;//背景颜色
+	ele.style.left = document.body.clientWidth/2;//居中显示
+	//定时隐藏
+	clearTimeout(ele.timer);//先清除，保证最后一条消失显示时间够长
+	ele.timer=setTimeout(function(){
+		ele.style.display = "none"; 
+	}, time);
+}
+</script>
