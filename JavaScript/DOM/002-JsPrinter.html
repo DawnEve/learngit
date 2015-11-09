@@ -1,0 +1,110 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>JS字幕打字效果</title>
+    <style type="text/css">
+body{
+	font-family: Arial;
+	margin-top:0px;
+	background-repeat:no-repeat;
+	padding-top:100px;
+}
+#myContent, #myContent blink{
+	width:500px;
+	height:200px;
+	background:black;
+	color: #00FF00;
+	font-family:courier;
+}    
+#blink{
+	display:inline;
+}
+    </style>
+<script type="text/javascript">
+var inputText, charIndex, stringLength;
+
+function writeContent(init){
+	//首次获取待输入内容
+    if(init){
+		//获取文本内容
+    	//inputText = document.getElementById('contentToWrite').innerHTML;
+		
+		inputText = "Login: username<br>password: ******<br>Access is granted by WJL<br>";
+		
+		//首次获取性质
+		charIndex = 0;
+		stringLength = inputText.length;
+    }
+
+	
+	//获取dest区域内容
+	var initString = document.getElementById('myContent').innerHTML;
+	initString = initString.replace(/<SPAN.*$/gi,"");//为什么替换？是为了替换[here001]处的下划线
+	//.任意字符，*是{0,}, ?={0,1}, +={1,}
+	
+	var theChar = inputText.charAt(charIndex);//获取当前字符
+	var nextFourChars = inputText.substr(charIndex,4);//获取当前字符起的4个字符
+	
+	//如果接下来4个是换行，则当前字符为换行，且当前编号+3
+	if(nextFourChars=='<BR>' || nextFourChars=='<br>'){
+		theChar  = '<BR>';
+		charIndex+=3;
+	}
+	
+	//dest区域字符 + 当前字符，末尾增加一个_ [here001]
+	initString = initString + theChar + "<SPAN id='blink'>_</SPAN>";
+	document.getElementById('myContent').innerHTML = initString;
+	charIndex = charIndex/1 +1;//为什么除以1？
+	
+	//控制下划线的闪动
+	if(charIndex%2==1){
+		 document.getElementById('blink').style.display='none';//如果是奇数，则显示
+	}else{
+		 document.getElementById('blink').style.display='inline';//如果是偶数，则隐藏
+	}
+    
+	//
+	if(charIndex<=stringLength){
+		setTimeout('writeContent(false)',150);//150
+	}else{
+		blinkSpan();
+	}  
+}
+
+//字符打印完毕时的光标闪烁
+var currentStyle = 'inline';
+function blinkSpan(){
+	if(currentStyle=='inline'){
+		currentStyle='none';
+	}else{
+		currentStyle='inline';
+	}
+	document.getElementById('blink').style.display = currentStyle;
+	setTimeout('blinkSpan()',1000);
+}
+
+
+</script>
+</head>
+<body>
+
+<h1>JS字幕打字效果</h1>
+<pre>
+确实很逼真的JS打字效果，配合黑色的背景，整个效果就像一个DOS命令窗口一样，得益于JS与CSS技术的结合。
+这里要注意writeContent(true);的用法。
+</pre>
+
+<hr />
+
+<div id="myContent">
+
+
+</div>
+
+
+<script type="text/javascript">
+writeContent(true);
+</script>
+
+</body>
+</html>
