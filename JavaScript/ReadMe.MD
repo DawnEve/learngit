@@ -11,9 +11,9 @@
 
 效果图：
 
-![example](images/Dom001.jpg "悬浮提示框")  
+![example](images/DOM001.png "悬浮提示框")  
 
-
+[MarkDown语法](http://sspai.com/25137)
 
 
 ![baidu](http://www.baidu.com/img/bdlogo.gif "百度logo")  
