@@ -1,0 +1,131 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>JS字幕打字效果</title>
+    <style type="text/css">
+body{
+	font-family: Arial;
+	margin-top:0px;
+	background-repeat:no-repeat;
+}
+
+#myContent{
+	width:500px;
+	height:200px;
+	background:black;
+	color: #00FF00;
+	font-family:courier;
+}
+
+#blink{
+	display:inline;
+}
+    </style>
+<script type="text/javascript">
+//定义一个类
+function JsPrinter(obj,inputText){
+	this.obj=get(obj);
+	//其他参数有默认值
+	//this.inputText=inputText||'';//输入字符
+	this.inputText =inputText|| "Login: username<br>password: ******<br>Access is granted by master<br>";
+	
+	this.charIndex=-1;
+	this.stringLength=0;
+	
+	this.currentStyle='inline';
+	this.init=true;
+	this.initString='';
+	this.theChar='';
+	this.nextFourChars="";
+	
+	//私有函数，调用
+	function get(id){
+		if(typeof id=="object") return id;
+		if(typeof id=="string") return document.getElementById(id);
+		return;
+	}
+}
+
+
+JsPrinter.prototype={
+	writeContent: function(){
+		//首次获取待输入内容
+		if(this.init){
+			this.init=false;
+
+			//首次获取性质
+			this.charIndex = 0;
+			this.stringLength = this.inputText.length;
+		}
+
+		
+		//获取dest区域内容
+		
+		this.initString = this.obj.innerHTML;
+		this.initString = this.initString.replace(/<SPAN.*$/gi,"");//为什么替换？是为了替换[here001]处的下划线
+		//.任意字符，*是{0,}, ?={0,1}, +={1,}
+		
+		this.theChar = this.inputText.charAt(this.charIndex);//获取当前字符
+		this.nextFourChars = this.inputText.substr(this.charIndex,4);//获取当前字符起的4个字符
+		
+		//如果接下来4个是换行，则当前字符为换行，且当前编号+3
+		if(this.nextFourChars=='<BR>' || this.nextFourChars=='<br>'){
+			this.theChar  = '<BR>';
+			this.charIndex+=3;
+		}
+		
+		//dest区域字符 + 当前字符，末尾增加一个_ [here001]
+		this.initString = this.initString + this.theChar + "<SPAN id='blink'>_</SPAN>";
+		this.obj.innerHTML = this.initString;
+		this.charIndex = this.charIndex/1 +1;//为什么除以1？
+		
+		//控制末尾下划线的闪动
+		if(this.charIndex%2==1){
+			 document.getElementById('blink').style.display='none';//如果是奇数，则显示
+		}else{
+			 document.getElementById('blink').style.display='inline';//如果是偶数，则隐藏
+		}
+		
+		//检查是否完全输出?
+		if(this.charIndex<=this.stringLength){
+			var _that=this;
+			setTimeout(function(){_that.writeContent()} ,180);//150
+		}else{
+			this.blinkSpan();
+		}  
+	},
+
+	//字符打印完毕时的光标闪烁
+	blinkSpan: function (){
+		if(this.currentStyle=='inline'){
+			this.currentStyle='none';
+		}else{
+			this.currentStyle='inline';
+		}
+		document.getElementById('blink').style.display = this.currentStyle;
+		var _that=this;
+		setTimeout(function(){_that.blinkSpan();},500);//1000
+	}
+
+}
+</script>
+</head>
+<body>
+
+<h1>JS字幕打字效果V2.0</h1>
+<pre>
+确实很逼真的JS打字效果，配合黑色的背景，整个效果就像一个DOS命令窗口一样，得益于JS与CSS技术的结合。
+使用OOP实现版本。
+</pre>
+
+<hr />
+
+<div id="myContent"></div>
+
+
+<script type="text/javascript">
+new JsPrinter('myContent', '123abc, 中文 test.').writeContent();
+</script>
+
+</body>
+</html>
