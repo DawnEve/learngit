@@ -13,17 +13,24 @@
 
 ![example](images/DOM001.png "悬浮提示框")  
 
-[MarkDown语法](http://sspai.com/25137)
+
+- 002-  JsPrinter.html
+描述：JS字幕**打字效果**  
+需求：  
+
+1. 结合css和js实现打字效果;  
+2. 最好使用OOP实现；
+
+效果图:
+
+![Printer](images/JsPrinter.png "JsPrinter") 
+
+![Printer](images/javascript_object_layout.jpg "js prototypes") 
 
 
-![baidu](http://www.baidu.com/img/bdlogo.gif "百度logo")  
 
 
-```Javascript
-$('div_id').innerHTML="123456";
 
-var a=123;
-```
 
 
 
@@ -35,3 +42,14 @@ var a=123;
 
 
 ---
+[MarkDown语法](http://sspai.com/25137)
+
+![baidu](http://www.baidu.com/img/bdlogo.gif "百度logo")  
+
+
+
+```Javascript
+$('div_id').innerHTML="123456";
+
+var a=123;
+```
