@@ -1,6 +1,6 @@
 # DOM单页面特效
 ----------------------------
-- 001-popUpMsg.html  
+## 001-popUpMsg.html  
 描述：仿网易邮箱顶部**消息框**  
 需求：  
 
@@ -14,7 +14,9 @@
 ![example](images/DOM001.png "悬浮提示框")  
 
 
-- 002-  JsPrinter.html
+----------------------
+
+## 002-  JsPrinter.html
 描述：JS字幕**打字效果**  
 需求：  
 
@@ -24,6 +26,10 @@
 效果图:
 
 ![Printer](images/JsPrinter.png "JsPrinter") 
+
+
+
+js prototype
 
 ![Printer](images/javascript_object_layout.jpg "js prototypes") 
 

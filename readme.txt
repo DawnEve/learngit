@@ -34,9 +34,16 @@ $ git log --pretty=oneline
 $ git reset --hard HEAD^
 HEAD is now at ea34578 add distributed
 
-版本回退：
+或者
+git reset --hard HEAD~
+或者 
+git reset --hard HEAD~1
+
+回退到指定的版本：
 $ git reset --hard 3628164
 HEAD is now at 3628164 append GPL
+
+
 
 某个文件版本回退(没成功，下次再试试)
 git reset a4e215234 demo.java
