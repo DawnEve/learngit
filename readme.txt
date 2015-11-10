@@ -1,11 +1,9 @@
----
-
-layout: post  
-title: "Git 常用命令"
+# Git 常用命令
 
 ---
-#Git is a version control system.
-##Some very good notes about Git are in the folder [git_note].
+
+# Git is a version control system.
+## Some very good notes about Git are in the folder [git_note].
 
 
 …or create a new repository on the command line
@@ -40,6 +38,12 @@ HEAD is now at ea34578 add distributed
 $ git reset --hard 3628164
 HEAD is now at 3628164 append GPL
 
+某个文件版本回退(没成功，下次再试试)
+git reset a4e215234 demo.java
+
+--------------------------
+查看所有提交命令：
+git reflog
 
 --------------------------
 标签
