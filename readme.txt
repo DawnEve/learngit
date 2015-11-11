@@ -46,6 +46,7 @@ HEAD is now at 3628164 append GPL
 
 --------------------------
 某个文件版本回退(比较复杂)
+在/git_note/git-Roll_Back_One_File.txt有详细记录。
 http://blog.csdn.net/b_h_l/article/details/17266849
 
 1.获取指定文件的历史提交id列表
@@ -54,8 +55,13 @@ $git log demo.txt
 2.回退到指定版本
 $git reset a4e215234 demo.txt
 
-3.
+3.提交绿色文件到版本库
+$git commit -m "revert old file because a commmit have a bug"
 
+4.更新到工作区：
+$git checkout demo.txt
+
+此时可以看到工作区文件已经更新了。
 
 
 
