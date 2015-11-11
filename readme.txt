@@ -66,6 +66,50 @@ git push --tags
 git push origin --tags
 
 
+---------------------------
+
+===========================
+git push总是失败的排错方法：
+
+$ git config --list
+      你也可以查看Git认为的一个特定的关键字目前的值，使用如下命令 git config {key}:
+$ git config user.name
+
+http://blog.163.com/023_dns/blog/static/1187273662013111301046930/
+
+
+
+尝试连接，失败,这怎么解决啊
+$ ssh git@github.com
+Permission denied (publickey).
+
+# ssh -T git@github.com
+Hi NuadaAndre! You've successfully authenticated, but GitHub does not provide shell access.
+
+GitHub不允许你登陆到它的shell，只能git pull/push
+
+
+
+github ssh失败
+按照github上面添加ssh的指示来操作的
+
+然后在ssh -T git@github.com出现了错误，最后显示Host key verification failed.
+之后用ssh -T -v git@github.com显示调试信息，输出如下：
+
+OpenSSH_6.4, OpenSSL 1.0.1e-fips 11 Feb 2013
+debug1: Reading configuration data /etc/ssh/ssh_config
+debug1: /etc/ssh/ssh_config line 51: Applying options for *
+debug1: Connecting to github.com [192.30.252.130] port 22.
+debug1: Connection established.
+debug1: identity file /home/terranlee/.ssh/id_rsa type 1
+debug1: identity file /home/terranlee/.ssh/id_rsa-cert type -1
+debug1: identity file /home/terranlee/.ssh/id_dsa type -1
+debug1: identity file /home/terranlee/.ssh/id_dsa-cert type -1
+debug1: identity file /home/terranlee/.ssh/id_ecdsa type -1
+debug1: identity file /home/terranlee/.ssh/id_ecdsa-cert type -1
+
+
+
 
 
 ---------------------------
