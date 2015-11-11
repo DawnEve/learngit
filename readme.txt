@@ -1,5 +1,5 @@
 # Git 常用命令
-
+http://git-scm.com/book/zh/v1
 ---
 
 # Git is a version control system.
@@ -44,9 +44,20 @@ $ git reset --hard 3628164
 HEAD is now at 3628164 append GPL
 
 
+--------------------------
+某个文件版本回退(比较复杂)
+http://blog.csdn.net/b_h_l/article/details/17266849
 
-某个文件版本回退(没成功，下次再试试)
-git reset a4e215234 demo.java
+1.获取指定文件的历史提交id列表
+$git log demo.txt
+
+2.回退到指定版本
+$git reset a4e215234 demo.txt
+
+3.
+
+
+
 
 --------------------------
 查看所有提交命令：
