@@ -45,9 +45,17 @@ HEAD is now at 3628164 append GPL
 
 
 --------------------------
+某个文件版本回退(简易版本)
+
+$git checkout SHA1 a.txt
+此时a.txt 是 SHA1时的文件内容 
+-------
 某个文件版本回退(比较复杂)
+
 在/git_note/git-Roll_Back_One_File.txt有详细记录。
-http://blog.csdn.net/b_h_l/article/details/17266849
+在/git_note/git-Roll_Back_One_File2.txt有详细记录。
+
+refer: http://blog.csdn.net/b_h_l/article/details/17266849
 
 1.获取指定文件的历史提交id列表
 $git log demo.txt
