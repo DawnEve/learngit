@@ -1,0 +1,226 @@
+git任意回滚单一文件
+
+
+
+git中误删了文件如何恢复呢？
+-------
+情景1：本地修改后，回退还没有缓存的文件(没有执行$git add a.txt)
+ 
+$vim a.txt
+$git checkout  a.txt
+ 
+-------
+情景2  本地修改后，回退已经提交的文件 （已经执行 $git  commit -am "message" )
+$vim a.txt
+$git commit -am "message" a.txt
+$git  reset master~1
+这是，a.txt 的这次提交已经被取消了， 这是的状态是a.txt 刚被修改的状态，可以用
+$git checkout a.txt   回到a.txt 被修改前的状态。
+
+-------
+情景3 将a.txt 文件回退到某个版本
+$git log a.txt
+选择回退的SHA1值，
+$git checkout SHA1 a.txt
+此时a.txt 是 SHA1时的文件内容 
+
+
+
+
+
+
+
+
+---------------------
+http://wbj05791467.blog.163.com/blog/static/120329697201331735158420/
+
+
+1. 只修改一个文件，查看当前状态
+$ git status  
+发现有一个距离上次修改后有更改
+modified:  demo.txt
+
+2. 使用checkout ，回滚文件
+$ git checkout -- demo.txt
+$ git status  
+# On branch master  
+nothing to commit, working directory clean  
+上次提交以来的修改被撤销，该文件已经回到上次提交状态。
+
+
+使用两个减号 -- 什么意思呢，不用行不行，试试~~
+Administrator@win7Big MINGW64 /f/gitHub/learngit (img2)
+$ git status
+On branch img2
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   demo.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Administrator@win7Big MINGW64 /f/gitHub/learngit (img2)
+$ git checkout demo.txt
+
+Administrator@win7Big MINGW64 /f/gitHub/learngit (img2)
+$ git status
+On branch img2
+nothing to commit, working directory clean
+
+发现git checkout file 把文件从当前的修改状态会退到上次修改状态，有没有两个减号 --效果一样，可能其他作用有待发现
+
+
+
+3 文件修改提交到index后，又修改了工作区文件内容
+
+Administrator@win7Big MINGW64 /f/gitHub/learngit (img2)
+$ git status
+On branch img2
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        modified:   demo.txt
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   demo.txt
+--------
+3.1 只从index撤销但不撤销工作区修改，这样工作区可接着上次修改继续，(相当于仅仅撤销git add的内容)
+$ git  reset demo.txt
+
+Administrator@win7Big MINGW64 /f/gitHub/learngit (img2)
+$ git status
+On branch img2
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   demo.txt
+
+--------
+3.2 第二种情况是不但从index撤销，而且还把work区的修改也撤销 
+$ git checkout HEAD  yourFile.Name //从history既搞index又搞work~~
+（1）修改work（2）add 到index（3）修改work   
+
+要把index和work都撤销到上次提交
+
+Administrator@win7Big MINGW64 /f/gitHub/learngit (img2)
+$ git status
+On branch img2
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        modified:   demo.txt
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   demo.txt
+
+
+Administrator@win7Big MINGW64 /f/gitHub/learngit (img2)
+$ git checkout HEAD demo.txt
+
+Administrator@win7Big MINGW64 /f/gitHub/learngit (img2)
+$ git status
+On branch img2
+nothing to commit, working directory clean
+
+
+-------------
+3.3 第三种情况，把work回退到index中的状态
+（1）修改work （2）add到index （3）再修改work  想要回退到index中状态，也就是（2）执行后的状态
+
+Administrator@win7Big MINGW64 /f/gitHub/learngit (img2)
+$ git status
+On branch img2
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        modified:   demo.txt
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   demo.txt
+
+
+Administrator@win7Big MINGW64 /f/gitHub/learngit (img2)
+$ git checkout demo.txt
+
+Administrator@win7Big MINGW64 /f/gitHub/learngit (img2)
+$ git status
+On branch img2
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        modified:   demo.txt
+-------------
+3.4 第四种情况，想要继续add呢
+（1）修改work （2）add到index （3）再修改work，这时候想继续add，就继续add，相当于把最新的更新合并到index中去
+
+直接git add demo.txt即可；
+
+
+4. 单文件任意回滚
+
+4.1 查找文件历史上的提交id：
+$ git log demo.txt
+
+
+4.2 单文件返回到某个版本
+
+reset是指将当前head的内容重置，不会留任何痕迹。
+Sets the current head to the specified commit and optionally resets the index and working tree to match. 
+ git reset --hard HEAD~3
+会将最新的3次提交全部重置，就像没有提交过一样。
+根据--soft --mixed --hard，会对working tree和index和HEAD进行重置。
+
+？？？？？
+
+
+
+
+
+
+reset命令有3种方式：
+
+    git reset --mixed：此为默认方式，不带任何参数的git reset，即时这种方式，它回退到某个版本，只保留源码，回退commit和index信息
+
+    git reset --soft：回退到某个版本，只回退了commit的信息，不会恢复到index file一级。如果还要提交，直接commit即可
+
+    git reset --hard：彻底回退到某个版本，本地的源码也会变为上一个版本的内容
+	
+以下是一些reset的示例：
+
+(1) 回退所有内容到上一个版本  
+git reset HEAD^  
+(2) 回退a.py这个文件的版本到上一个版本  
+git reset HEAD^ a.py  
+(3) 向前回退到第3个版本  
+git reset –soft HEAD~3  
+(4) 将本地的状态回退到和远程的一样  
+git reset –hard origin/master  
+(5) 回退到某个版本  
+git reset 057d  
+(7) 回退到上一次提交的状态，按照某一次的commit完全反向的进行一次commit  
+git revert HEAD   
+
+
+
+
+
+git将单个文件恢复到历史版本的正确方法如下：
+   git reset commit_id 文件路径
+   
+   git checkout -- 文件路径
+用暂存区中filename文件来覆盖工作区中的filename文件。相当于取消自上次执行git add filename以来（如果执行过）的本地修改。
+
+   git checkout commit_id 文件路径 // 这种为什么commitID不变呢？
+
+
