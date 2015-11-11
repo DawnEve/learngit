@@ -30,6 +30,9 @@ git pull
 查看当前版本：
 $ git log --pretty=oneline
 
+git reset --hard HEAD
+回退整套代码到最近一次提后的状态。
+
 版本回退到上一个版本：
 $ git reset --hard HEAD^
 HEAD is now at ea34578 add distributed
