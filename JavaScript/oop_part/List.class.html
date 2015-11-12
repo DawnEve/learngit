@@ -1,0 +1,42 @@
+<body>
+<h1>List</h1>
+
+
+</body>
+
+<script>
+function List(){
+	var m_elements = [];
+	m_elements = Array.apply(m_elements,arguments);
+	 
+	this.length = function(){
+		return m_elements.length;
+	}
+	this.indexOf = function(ele){
+		for(var i=0; i<m_elements.length; i++){
+				//console.log('>'+m_elements[i])
+			if(ele==m_elements[i]){
+				return i;
+			}
+		}
+		return -1;
+	}
+	 
+	this.toString = function(){
+		return m_elements.toString();
+	}
+	 
+	this.add = function(){
+		//m_elements.push.apply(m_elements,arguments);//arguments是类数组，不是数组{区别是啥？}
+		Array.prototype.push.apply(m_elements,arguments);
+	}
+}
+     
+    //var list = new List(0,1,2,3);
+    list = new List(0,1,2,3);
+    list.add(3,4,5,[6,7]);
+    document.write("<p/>"+list.toString());
+    document.write("<p/>"+list.length());
+    document.write("<p/>"+list.indexOf(0));
+    document.write("<p/>"+list.indexOf(4));
+</script>
