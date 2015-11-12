@@ -1,13 +1,6 @@
 # DOM单页面特效
 ----------------------------
 
-New words:
-
-- angular
-- react
-- nodeJS: npm, package
-- 
-
 
 ----------------------------
 ## 001-popUpMsg.html  
