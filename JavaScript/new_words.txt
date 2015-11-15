@@ -1,0 +1,15 @@
+New words:
+
+- angular
+- react
+- nodeJS: npm, package
+- 
+
+
+- RESTful API
+
+- 静态化
+
+-[ok] call/apply在js中的应用
+
+- 弹出层
