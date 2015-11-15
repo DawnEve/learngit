@@ -1,13 +1,6 @@
 # DOM单页面特效
 ----------------------------
 
-New words:
-
-- angular
-- react
-- nodeJS: npm, package
-- 
-
 
 ----------------------------
 ## 001-popUpMsg.html  
@@ -50,9 +43,20 @@ js prototype
 
 
 
-
+--------------------------
 # 添加oop_part
 16:43 2015-10-13
+
+1. minimalist.style.html  
+	缺点是不节省资源，不提倡用；  
+2. create.class.html  
+	很好用的类定义方法，就是不知道兼容性如何  
+
+
+
+
+
+
 
 
 
@@ -68,4 +72,10 @@ js prototype
 $('div_id').innerHTML="123456";
 
 var a=123;
+```
+
+```
+http://bonsaiden.github.io/JavaScript-Garden/zh/
+
+
 ```

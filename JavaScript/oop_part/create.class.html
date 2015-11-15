@@ -1,0 +1,31 @@
+<h1>create.class</h1>
+
+很好用的类定义方法，就是不知道兼容性如何
+
+<script>
+var Cat = {
+	num : undefined,
+	color : 'red',
+	create : function ( num, color ) { var me = Object.create( this ); me.num = num; if ( color ) me.color = color; return me; },
+	sayColor : function ( ) { alert(this.num + this.color); }
+};
+
+var BigCat = {
+	__proto__ : Cat, /* IE <= 10 需要改用稍長一點的 Object.create shim. */
+	size: 'Big'
+};
+
+
+bigcat1=BigCat.create(1,'grey');
+bigcat2=BigCat.create(2,'black');
+console.log( bigcat1.num==bigcat2.num );//false
+console.log( bigcat1.sayColor==bigcat2.sayColor );//true
+
+
+//console.log( bigcat1 instanceof Cat );//Uncaught TypeError: Expecting a function in instanceof check, but got #<Object>
+//console.log( bigcat1 instanceof BigCat );//Uncaught TypeError: Expecting a function in instanceof check, but got #<Object>
+
+//bigcat1.isPrototypeOf( BigCat );//false
+console.log( BigCat.isPrototypeOf( bigcat1 ) ); //true
+console.log( Cat.isPrototypeOf( bigcat1 ) ); //true
+</script>
