@@ -59,15 +59,17 @@ js prototype
 
 
 ============================
-# 添加BOM  
+# 添加BOM  浏览器嗅探  
 9:37 2015-11-15  
 
 1. browserInfo.html  
 	浏览器信息  
 	
 2. askBeforeShutDown.html  
-	离开时刻弹出提示：数据未保存，是否离开。
+	离开时刻弹出提示：数据未保存，是否离开。  
 	
+3.	isHtml5video.html  
+是否支持html5的video特性  
 
 
 
