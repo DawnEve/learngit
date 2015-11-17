@@ -1,4 +1,10 @@
 New words:
+[html5]
+- HTML5的各个新特性(canvas, video, geolocation, web storage, offline, form, microdata)
+
+- 自适应/响应式 布局
+- Responsive Web Design ＝ RWD，Adaptive Web Design ＝ AWD
+
 [css]
 - 盒模型
 - 定位
@@ -11,8 +17,6 @@ New words:
 - nodeJS: npm, package
 -[ok] call/apply在js中的应用
 - 弹出层
-- 自适应/响应式 布局
-- 
 
 
 
