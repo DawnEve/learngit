@@ -1,0 +1,21 @@
+﻿<body onload='alert("hello");' onunload='console.log("bye bye");'>
+
+<pre>
+onload  可以用
+onunload	失效！
+	使用onbeforeunload事件代替了。
+
+</body>
+
+<script>
+var x=123456;
+function myFunction(){
+	x="你能看到这行，就说明myFunction函数运行了！";
+	//这里可以加入事件处理函数
+	alert(x);
+}
+window.onbeforeunload=function(){
+   myFunction();
+   return x;
+}
+</script>
