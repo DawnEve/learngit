@@ -1,0 +1,26 @@
+
+<pre>
+学习 JavaScript 最难点之一 -- 理解enclosure(闭包)
+JavaScript, 感觉最难的就2个部分, 原型和闭包.
+
+http://www.douban.com/note/293295975/
+
+在理解闭包之前, 首先要清楚JS中的作用域只有2种: 全局作用域和方法作用域。
+
+for(var i = 0; i < 10; i++) {
+    setTimeout(function() {
+        console.log(i);
+    }, 1000);
+}
+
+for(var i = 0; i < 10000; i++) {
+    setTimeout(function() {
+        console.log('some: '+i);
+    }, 1);
+}
+
+</pre>
+<script>
+
+
+</script>
