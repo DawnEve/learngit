@@ -1,0 +1,89 @@
+<style>
+h2{    border-bottom: 1px solid #eee;}
+</style>
+
+<article class="markdown-body">
+  	<h1>markdown 简明语法</h1>
+
+	<pre>
+http://sspai.com/25137
+https://github.com/guodongxiaren/README
+http://blog.sina.com.cn/s/blog_4a2100f801016v05.html
+
+简书：支持MarkDown的web
+http://www.jianshu.com/
+	</pre>
+<hr>
+
+<h2>基本符号</h2>
+
+<ul>
+<li>*,-,+ 3个符号效果都一样，这3个符号被称为 <strong>Markdown符号</strong></li>
+<li>空白行表示另起一个段落</li>
+<li>`是表示inline代码，tab是用来标记 代码段，分别对应html的code，pre标签</li>
+</ul>
+
+
+<h2>换行</h2>
+
+<ul>
+<li>单一段落( &lt;p&gt;) 用一个空白行</li>
+<li>连续两个空格 会变成一个 &lt;br&gt;</li>
+<li>连续3个符号，然后是空行，表示 hr横线</li>
+</ul>
+
+
+<h2>标题</h2>
+
+<ul>
+<li>生成h1--h6,在文字前面加上 1--6个# 来实现</li>
+<li>文字加粗是通过 文字左右各两个符号</li>
+</ul>
+
+
+<h2>引用</h2>
+
+<ul>
+<li>在第一行加上 “&gt;”和一个空格，表示代码引用，还可以嵌套</li>
+</ul>
+
+
+<h2>列表</h2>
+
+<p>这个是markdown文件的主要表示方式，主题要点化</p>
+
+<ul>
+<li>使用*,+,-加上一个空格来表示</li>
+<li>可以支持嵌套</li>
+<li>有序列表用 数字+英文点+空格来表示</li>
+<li>列表内容很长，不需要手工输入换行符，css控制段落的宽度，会自动的缩放的</li>
+</ul>
+
+
+<h2>链接</h2>
+
+<ul>
+<li>直接写  [锚文本](url "可选的title")</li>
+<li>引用 先定义 [ref_name]:url，然后在需要写入url的地方， 这样使用[锚文本][ref_name]，通常的ref_name一般用数字表示，这样显得专业</li>
+<li>简写url：用尖括号包裹url   <code><url></url></code><br>这样生成的url锚文本就是url本身</li>
+</ul>
+
+
+<h2>插入图片</h2>
+
+<ul>
+<li>一行表示: ![alt_text](url "可选的title")</li>
+<li>引用表示法: ![alt_text][id],预先定义 [id]:url "可选title"</li>
+<li>直接使用&lt;img&gt;标签，这样可以指定图片的大小尺寸</li>
+</ul>
+
+
+<h2>特殊符号</h2>
+
+<ul>
+<li>用\来转义，表示文本中的markdown符号</li>
+<li>可以在文本种直接使用html标签，但是要注意在使用的时候，前后加上空行</li>
+<li>文本前后各加一个符号，表示斜体</li>
+</ul>
+
+    </article>

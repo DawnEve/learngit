@@ -1,0 +1,48 @@
+
+--------------------------
+某个文件版本回退(比较复杂)
+http://blog.csdn.net/b_h_l/article/details/17266849
+
+1.获取指定文件的历史提交id列表
+$git log demo.txt
+
+2.回退到指定版本
+$git reset 2302b94392dde6c demo.txt
+Unstaged changes after reset:
+M       demo.txt
+
+此时，工作区文件没变化！但是不要失望，查看git status，
+可以看到红绿两条demo.txt提示：
+一个是绿色：该文件的历史版本，需要提交到版本库中: $git commit -m 'some note here'。
+一个是红色：提示当前工作区文件和git add后的文件不一致。该文件需要丢弃（步骤4）:用暂存区覆盖掉即可 $git checkout demo.txt 
+
+3.提交绿色文件到版本库
+Administrator@PeptideLab MINGW64 /f/gitHub/learngit (img2)
+$git commit -m "revert old file because a commmit have a bug"
+[img2 dd9811d] revert old file because a commmit have a bug
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Administrator@PeptideLab MINGW64 /f/gitHub/learngit (img2)
+$ git status
+On branch img2
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   demo.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Administrator@PeptideLab MINGW64 /f/gitHub/learngit (img2)
+
+4.更新到工作区：
+用暂存区中filename文件来覆盖工作区中的filename文件。相当于取消自上次执行git add filename以来（如果执行过）的工作区修改。
+(use "git checkout -- <file>..." to discard changes in working directory)
+$git checkout demo.txt
+//此时工作区文件已经回到指定版本了，但是git log可以看到，所有的commit记录都还在。
+
+
+5.提交到远程仓库，如果需要的话
+$ git push origin master
+
+这样就把指定的文件回退到指定的版本了。其他文件没回退。

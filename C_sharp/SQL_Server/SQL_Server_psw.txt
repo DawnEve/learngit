@@ -1,0 +1,54 @@
+
+13:25 2015/11/1
+=================================
+192.168.1.100
+
+安装ms数据库程序
+YQWTX-G8T4R-QW4XX-BVH62-GP68Y
+SQL server 2012 SP1;
+
+安装失败，重新安装了sql server2008R2:
+实例根目录：D:\Program Files\Microsoft SQL Server\
+实例ID: SQL2008W
+
+服务器配置：
+新建windows用户名：MS_server/ms16
+服务账户：
+服务	账户名	密码	启动类型
+SQL Server代理	PEPTIDELAB\MS_server	ms16
+SQL Server Reporting service代理	PEPTIDELAB\MS_server	ms16
+
+(1)
+混合模式。
+为SQL Server系统管理员(sa)账户指定密码：ms16
+SQL Server系统管理员: PEPTIDELAB\Administrator
+(2)
+指定哪些账户具有Analysis Service的管理权限: PEPTIDELAB\Administrator
+(3)
+安装并配置报表服务器。
+
+安装日志文件：
+C:\Program Files\Microsoft SQL Server\100\Setup Bootstrap\Log\20151101_133244\Summary_PeptideLab_20151101_133244.txt
+
+=================================
+自带安装microsoft SQL Server Management Studio 2008R2
+
+1.如何启动和打开SQL Server服务？
+http://jingyan.baidu.com/article/e52e36158c05b140c70c5165.html
+	1)找到SQL server 配置管理器；
+	2)点击左侧SQL server 服务；
+	3)右侧找到SQL Server(SQL2008W)，右击：停止/启动。
+
+2.如何解决SQL Server 2008 无法连接到（local）
+http://jingyan.baidu.com/article/b24f6c82c52ed686bfe5da17.html
+	1)找到SQL server 配置管理器，点击左侧SQL server 网络配置-->实例名的协议（我的是SQL2008W，安装时填写的实例ID）；
+	2)开启Named Pipes.
+	3)重启sql服务；
+3.打开management studio，连接：
+	服务器名字：(local)\SQL2008W
+	身份验证：
+
+=================================
+
+
+

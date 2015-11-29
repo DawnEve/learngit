@@ -1,0 +1,40 @@
+﻿<html xmlns=" http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>onbeforeunload测试</title>
+<script>
+  /*页面离开*/
+	//blnCheckUnload = false;
+	blnCheckUnload = true;
+	window.onbeforeunload = function() {		
+		var j = "本页面要求您确认您要离开 - 您输入的数据可能不会被保存？" ;
+		if (blnCheckUnload) {
+			//在这里处理数据吗？
+			console.log('正在自动保存数据...');
+			return j;
+		}
+	}
+
+	/**
+	$( ":input" ).change(function(){
+		blnCheckUnload = true;//离开提示失效
+	})
+	$("xxForm").submit(function(){
+	   blnCheckUnload = false;
+	   $("xxForm").submit();
+	})
+
+	*/
+	/*页面离开*/
+</script>
+</head>
+<body >
+<h1>如何在离开页面时弹出确认对话框</h1>
+<pre>
+onbeforeunload测试
+http://www.oschina.net/code/snippet_1258171_44014
+
+
+</pre>
+</body>
+</html>
