@@ -102,9 +102,13 @@ setInterval('',2000)
 
 3.cookie的增删改查。
 
-4.有用的内容
-	-[1]ok 下拉换头像
-	-[2] 2级联动：onchange事件
+4.有用的内容：usefull文件夹
+要做成简单的效果，满足要求并简练是最好的效果。
+	-[1]ok 下拉换头像usefull->userPic.html
+	-[2] 2/3级联动列表：onchange事件
+	-[3] 侧边滑动式菜单:onouseover滑动出来
+	-[4] 抽屉式菜单
+	-[5]ok 日历效果。插件式，点击获取oop_part->calender->calender.html
 
 	
 ------------------------
