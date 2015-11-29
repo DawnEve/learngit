@@ -1,0 +1,34 @@
+﻿<h1>下拉框改变替换头像</h1>
+<pre>
+1.select中的option有value和text属性
+</pre>
+<hr />
+
+<select id="s1"> 
+	<option value="/upload/46929.gif">biggrin</option> 
+	<option value="/upload/46913.gif">confused</option> 
+	<option value="/upload/46995.gif">cool</option> 
+	<option value="/upload/46667.gif">eek</option> 
+	<option value="/upload/46725.gif">frown</option> 
+	<option value="/upload/46792.gif">han</option> 
+	<option value="/upload/46356.gif">mad</option> 
+	<option value="/upload/46762.gif">redface</option> 
+	<option value="/upload/46633.gif">rolleyes</option> 
+	<option value="/upload/46854.gif">smile</option> 
+	<option value="/upload/47307.gif">tongue</option> 
+	<option value="/upload/47238.gif">wink</option> 
+</select> 
+<img id="pic" src="http://files.jb51.net/upload/20080918164946929.gif" border="0" width="15">
+
+<script>
+//获取目标
+function $(s){
+	return (typeof s=='object')?s:document.getElementById(s);
+}
+//事件处理
+$('s1').onchange=function(){
+	document.getElementById("pic").src=this.value;
+
+}
+
+</script>

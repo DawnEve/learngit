@@ -13,11 +13,13 @@ var oSearch = document.getElementById("search");
 oSearch.onkeydown=function(event){
 	var e = event || window.event || arguments.callee.caller.arguments[0];
 	// enter键 或 空格
-	if((e && e.keyCode==13) || (e && e.keyCode==32)){
+	if(e && (e.keyCode==13 || e.keyCode==32) ){
 		//判断是否输入五个了
 		if(getSome()){
-			console.log("最多只能输入5个标签！--console");
-			alert("最多只能输入5个标签！--alert");
+			//证明代码执行到这里了
+			console.log("最多只能输入5个！--console");
+			//一定要在按下空格的时候alert出来，不能一闪而过
+			alert("最多只能输入5个！--alert");
 		}
 	}
 }
