@@ -109,7 +109,40 @@ setInterval('',2000)
 	-[3] 侧边滑动式菜单:onouseover滑动出来
 	-[4] 抽屉式菜单
 	-[5]ok 日历效果。插件式，点击获取oop_part->calender->calender.html
+		梅花雨日历控件：demo失败，不能用。
+	-[6] 
+	模拟alert的弹出层：httphttp://www.cnblogs.com/NNUF/archive/2012/04/26/2471120.html
+	延迟加载的原理：
+	http://www.daxueit.com/article/3777.html
+	http://www.cnblogs.com/NNUF/archive/2012/06/25/2561570.html
+	
+	
+	
+	-[7] 判断：是否为数字，是否为字符，是否为
 
+------------------------
+第8章 js表单验证
+1.常规的是判断并弹出提示；
+
+------------------------
+第9章 js表单验证-ajax
+1.	更有好的方式是避免弹窗，在末尾显示<span>红色提示文字</span>；
+		获得obj，在innerHTML中加入文字提示；
+2.ajax
+	
+------------------------
+第10章 js后台框架
+1.不要求漂亮，要求清晰、好用；
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 ------------------------
 第0章 js初步和调试
