@@ -1,0 +1,62 @@
+﻿http://www.w3school.com.cn/js/js_cookies.asp
+
+
+<script>
+function n(s){
+	console.log(s);
+}
+
+//cookie类
+function Cookie(){
+	this.cookie;
+};
+Cookie.prototype={
+	constructor:Cookie,
+	all:function(){
+		return document.cookie;
+	},
+	getObj:function(){
+		var aa=(document.cookie).split('; ');
+		var o={};
+		for(var i=0;i<aa.length;i++){
+			var bb=(aa[i]).split('=');
+			o[bb[0]]=bb[1];
+		}
+		return o;
+	},
+	//获取cookie，这比indexOf的方法靠谱
+	get:function(c_name){
+		var o=this.getObj();
+		if(o[c_name]){
+			return o[c_name];
+		}
+		return "";
+	},
+
+	//设置cookie
+	set:function(c_name,value,expiredays){
+		var exdate=new Date()
+		exdate.setDate(exdate.getDate()+expiredays)
+		document.cookie=c_name+ "=" +escape(value)+
+		((expiredays==null) ? "0" : ";expires="+exdate.toGMTString())
+	},
+	
+	//删除cookies
+	del:function(key){
+		this.set(key,'',-1);
+	},
+	
+	//检查是否登陆
+	check:function (){
+		var username=this.get('username')
+		if(username!=null && username!=""){
+			alert('Welcome again '+username+'!')
+		}else{
+			username=prompt('Please enter your name:',"")
+			if(username!=null && username!=""){
+				this.set('username',username,365)
+			}
+		}
+	}
+}
+</script>

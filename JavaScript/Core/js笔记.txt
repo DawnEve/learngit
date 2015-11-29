@@ -1,0 +1,140 @@
+﻿0.问题：
+	-[1] 怎么处理空格不能弹出alert？alertAfterSpace.html
+		贴吧：http://tieba.baidu.com/p/4178119582
+
+=====================================================
+尚学堂科技_马士兵_Javascript视频.第1-12讲. 2008-5的视频
+很基础。不过学到了一些东西。
+
+1.很酷的东西不一定复杂，不一定有用。
+2.调试时一个很艰难的事情，因为js错误很多时候不报告，而且还默默地运行着；
+	另外即便报错，如果是php动态生成的，行数也是错误的。
+
+
+
+------------------------
+第1章 js初步和调试
+1.模态：alert窗口就是；
+	你不处理就不能继续。
+	
+2.js核心、Dom、Bom共3种；
+
+------------------------
+第2章 js基本语法
+1.数组
+	arr=[];//初始化
+	arr[0]=0;//赋值
+	arr.length;//数组长度
+2.时间
+	var today=new Date();
+	//Tue Nov 24 2015 16:41:42 GMT+0800 (中国标准时间)
+	//获取小时
+	var h=today.getHours();//16
+
+3.只有全局变量和函数体局部变量；
+	只要首次出现不加var的都是全局变量：按照原型链上溯，最后添加到window对象上，就成全局变量了。
+	
+------------------------
+第3章 js函数
+很难！原型链、闭包；模拟类
+
+function aa(){}
+var aa=function(){}
+
+------------------------
+第4章 js事件处理
+1.事件都是加到具体对象上
+	oDiv.onclick=function(){}
+
+2.onload事件，onunload事件
+<body onload='alert("hello");' onbeforeunload='alert("bye bye");'>
+
+3.鼠标事件  
+	onmouseover:鼠标移进
+	onmouseout:移出操作
+
+4.表单事件
+	onsubmit:表单提交之前，可做数据验证
+
+------------------------
+第5章 js的内置对象Dom和Bom
+1.alert:弹出警告等信息；
+2.prompt:输入框,第一个参数是提示语句，第二个是默认值；
+3.confirm:确认框,很有用：你确认要删除吗？
+
+4.this的意义：当前对象本身，但是有很多意外解释//todo
+5.with(document){write('some text');}
+6.new: 创建新对象，new的时候发生了什么？
+
+7.window
+	- 当前窗口
+	- 新开窗口
+	- 通过本地窗口控制新开的窗口
+	不过现在不常用了，因为被流氓网站用烂了。
+
+8.location:当前地址栏的url
+9.history:历史记录。用例：history.goback();
+
+
+------------------------
+第6章 js的趣味
+1.学习方法：看API、看书、做练习
+
+趣味代码：
+	- 黑客帝国
+	- 鼠标跟随
+	- 找相同图片
+	- 漂浮的云
+	- 打字效果
+	- 石头剪刀布
+	- 星球大战
+
+读书进步快：都英文书
+	- 看目录
+	- 看例子代码
+推荐的书
+	- javascript programmer's reference
+	- professional javascript for web developers
+
+2.产生动画的2个函数
+setTimeOut('',1000)
+setInterval('',2000)
+
+3.cookie的增删改查。
+
+4.有用的内容：usefull文件夹
+要做成简单的效果，满足要求并简练是最好的效果。
+	-[1]ok 下拉换头像usefull->userPic.html
+	-[2] 2/3级联动列表：onchange事件
+	-[3] 侧边滑动式菜单:onouseover滑动出来
+	-[4] 抽屉式菜单
+	-[5]ok 日历效果。插件式，点击获取oop_part->calender->calender.html
+		5.1梅花雨日历控件：demo失败，不能用。
+	-[6] 
+	模拟alert的弹出层：httphttp://www.cnblogs.com/NNUF/archive/2012/04/26/2471120.html
+	延迟加载的原理：
+	http://www.daxueit.com/article/3777.html
+	http://www.cnblogs.com/NNUF/archive/2012/06/25/2561570.html
+	
+	
+	
+	-[7] 判断：是否为数字，是否为字符，是否为邮箱
+	-[8] 树结构 treeview.js，接口简单，写着困难。
+
+
+------------------------
+第8章 js表单验证
+1.常规的是判断并弹出提示；
+
+------------------------
+第9章 js表单验证-ajax
+1.	更有好的方式是避免弹窗，在末尾显示<span>红色提示文字</span>；
+		获得obj，在innerHTML中加入文字提示；
+2.ajax
+	
+------------------------
+第10章 js后台框架
+1.不要求漂亮，要求清晰、好用；
+	
+
+	

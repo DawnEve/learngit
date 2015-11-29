@@ -1,0 +1,80 @@
+﻿<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta name="Copyright" content="沃格斯克 http://www.orgsc.com/" />
+<meta name="keywords" content="JS代码,悬浮漂浮,JS广告代码,JS特效代码" />
+<meta name="description" content="此代码内容为js物理弹性漂浮广告，属于站长常用代码，更多悬浮漂浮代码请访问沃格斯克JS代码频道。" />
+<title>js物理弹性漂浮广告_沃格斯克</title>
+</head>
+
+<body>
+<div id=img1 style="Z-INDEX: 100; LEFT: 2px; WIDTH: 219px; POSITION: absolute; TOP: 43px; HEIGHT: 81px; visibility: visible;">
+	<a href="#" target="_blank">
+		<img src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png" width="219" height="81" border="1">
+	</a>
+</div>
+
+<script language="javascript">
+//此段代码必须放在body的尾部
+var xPos = 300;
+var yPos = 200; 
+var step = 3;//1
+var delay = 30;//30
+var height = 0;
+var Hoffset = 0;
+var Woffset = 0;
+var yon = 0;
+var xon = 0;
+var pause = true;
+var interval;
+img1.style.top = yPos;
+
+function changePos(){
+	width = document.body.clientWidth;
+	height = document.body.clientHeight;
+	Hoffset = img1.offsetHeight;
+	Woffset = img1.offsetWidth;
+	img1.style.left = xPos + document.body.scrollLeft;
+	img1.style.top = yPos + document.body.scrollTop;
+	if (yon) 
+		{yPos = yPos + step;}
+	else 
+		{yPos = yPos - step;}
+	if (yPos < 0) 
+		{yon = 1;yPos = 0;}
+	if (yPos >= (height - Hoffset)) 
+		{yon = 0;yPos = (height - Hoffset);}
+	if (xon) 
+		{xPos = xPos + step;}
+	else 
+		{xPos = xPos - step;}
+	if (xPos < 0) 
+		{xon = 1;xPos = 0;}
+	if (xPos >= (width - Woffset)) 
+		{xon = 0;xPos = (width - Woffset);   }
+}
+	
+function start(){
+	img1.visibility = "visible";
+	interval = setInterval('changePos()', delay);
+}
+
+function pause_resume(){
+	if(pause){
+		clearInterval(interval);
+		pause = false;}
+	else{
+		interval = setInterval('changePos()',delay);
+		pause = true; 
+	}
+}
+img1.onmouseover=function(){
+	pause_resume();
+	img1.onmouseout=function(){
+		pause_resume();
+	}
+};
+start();
+</script>
+</body>
+</html>

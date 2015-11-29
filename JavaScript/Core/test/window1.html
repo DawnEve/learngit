@@ -1,0 +1,87 @@
+﻿window
+
+<hr>
+<input id='btn1' type='button' value='commen'/>
+<input id='btn2' type='button' value='newWin toolbar=no'/>
+<input id='btn3' type='button' value='newWin more'/>
+<input id='btn4' type='button' value='newWin canclose'/>
+
+
+<pre>
+http://www.cnblogs.com/stswordman/archive/2006/06/02/415853.html
+
+二、基本语法：
+window.open(pageURL,name,parameters) 
+其中：
+pageURL 为子窗口路径 
+name 为子窗口句柄 
+parameters 为窗口参数(各参数用逗号分隔) 
+
+三、示例
+<! -- 
+window.open ('page.html','newwindow','height=100,width=400,top=0,left=0,toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no') 
+//写成一行 
+--> 
+脚本运行后，page.html将在新窗体newwindow中打开，宽为100，高为400，距屏顶0象素，屏左0象素，无工具条，无菜单条，无滚动条，不可调整大小，无地址栏，无状态栏。请对照。
+
+
+四、各项参数
+　　其中yes/no也可使用1/0；pixel value为具体的数值，单位象素。
+
+参数 | 取值范围 | 说明 
+
+alwaysLowered | yes/no | 指定窗口隐藏在所有窗口之后 
+alwaysRaised | yes/no | 指定窗口悬浮在所有窗口之上 
+depended | yes/no | 是否和父窗口同时关闭 
+directories | yes/no | Nav2和3的目录栏是否可见 
+height | pixel value | 窗口高度 
+hotkeys | yes/no | 在没菜单栏的窗口中设安全退出热键 
+innerHeight | pixel value | 窗口中文档的像素高度 
+innerWidth | pixel value | 窗口中文档的像素宽度 
+location | yes/no | 位置栏是否可见 
+menubar | yes/no | 菜单栏是否可见 
+outerHeight | pixel value | 设定窗口(包括装饰边框)的像素高度 
+outerWidth | pixel value | 设定窗口(包括装饰边框)的像素宽度 
+resizable | yes/no | 窗口大小是否可调整 
+screenX | pixel value | 窗口距屏幕左边界的像素长度 
+screenY | pixel value | 窗口距屏幕上边界的像素长度 
+scrollbars | yes/no | 窗口是否可有滚动栏 
+titlebar | yes/no | 窗口题目栏是否可见 
+toolbar | yes/no | 窗口工具栏是否可见 
+Width | pixel value | 窗口的像素宽度 
+z-look | yes/no | 窗口被激活后是否浮在其它窗口之上
+
+
+</pre>
+
+
+<script>
+//1.修改状态栏的提示
+window.status="this is a good place;";//IE8可以，chrome不行
+
+//2.打开新窗口
+//可以有很多选项，控制窗口
+document.getElementById('btn1').onclick=function(){
+	window.open('window2.html');
+}
+
+//加入更多选项
+document.getElementById('btn2').onclick=function(){
+	window.open('window2.html','newWin',"toolbar=no");
+}
+
+//加入更多选项
+document.getElementById('btn3').onclick=function(){
+	window.open('window2.html','newWin','height=200,width=500,top=0,left=0,toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no');
+}
+
+//加入更多选项-可以在父窗口关闭
+document.getElementById('btn4').onclick=function(){
+	var newWin=window.open('window2.html','newWin','height=200,width=500,top=0,left=0,toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no');
+	
+	//newWin
+	newWin.document.write('该窗口2s后自动关闭');
+	setTimeout(function(){
+		newWin.close()},2000);
+}
+</script>
