@@ -1,0 +1,88 @@
+﻿<h1>js表单验证</h1>
+<pre>
+1.基于onblur构建的邮箱注册验证函数。
+2.使用了outerHTML显示提示框。
+
+</pre>
+<style>
+input{margin:10px; padding:5px;}
+
+</style>
+<hr />
+
+<form name='signin' method='get' target='' action='' onsubmit='return check(this)'>
+	<div>usr:<input type='text' name='usr' /></div>
+	<div>psw:<input type='password' name='psw' /></div>
+	<div>re psw:<input type='password' name='repsw' /></div>
+	<div>email:<input type='email' name='email' /></div>
+	<div><input type='submit' name='send' value='submit' />
+		<input type='reset' name='reset' value='reset' /></div>
+</form>
+
+<script>
+//获取目标
+function $(s){
+	return (typeof s=='object')?s:document.getElementById(s);
+}
+//添加提示
+function noticeAfter(txt,obj){
+	var span=obj.parentElement.getElementsByTagName('span')[0];
+	if(span==undefined){
+		span=document.createElement('span');
+	}
+	span.innerHTML='<b style="color:red">'+txt+'</b>';
+	obj.parentElement.appendChild(span);
+}
+
+//检查表单是否为空
+function check(obj){
+	console.log('checking');
+	//验证用户名===========================
+	var usr=obj.usr;
+	if(usr.value==''){
+		noticeAfter('用户名不能为空',usr);
+		return false;
+	}else{
+		noticeAfter('',usr);
+	}
+	
+	//验证密码===========================
+	var psw=obj.psw;
+	if(psw.value==''){
+		noticeAfter('密码不能为空',psw);
+		return false;
+	}else{
+		noticeAfter('',psw);
+	}
+	
+	//验证密码2次===========================
+	var repsw=obj.repsw;
+	if(repsw.value==''){
+		noticeAfter('密码不能为空',repsw);
+		return false;
+	}else if(repsw.value!=psw.value){
+		noticeAfter('两次密码不同，请重新输入',repsw);
+	}else{
+		noticeAfter('',repsw);
+	}
+	
+	//验证邮箱===========================
+	var email=obj.email;
+	if(email.value==''){
+		noticeAfter('邮箱不能为空',email);
+		return false;
+	}else{
+		noticeAfter('',email);
+	}
+	
+	return true;
+}
+window.onload=function(){
+	//事件
+	var form=document.forms[0];
+	form.usr.onblur=form.psw.onblur=
+		form.repsw.onblur=form.email.onblur=function(){
+		check(form);
+	}
+}
+</script>
