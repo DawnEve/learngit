@@ -109,7 +109,7 @@ setInterval('',2000)
 	-[3] 侧边滑动式菜单:onouseover滑动出来
 	-[4] 抽屉式菜单
 	-[5]ok 日历效果。插件式，点击获取oop_part->calender->calender.html
-		梅花雨日历控件：demo失败，不能用。
+		5.1梅花雨日历控件：demo失败，不能用。
 	-[6] 
 	模拟alert的弹出层：httphttp://www.cnblogs.com/NNUF/archive/2012/04/26/2471120.html
 	延迟加载的原理：
