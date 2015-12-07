@@ -1,0 +1,25 @@
+﻿<h1>默认事件-只能输入数字的文本框</h1>
+<pre>
+1.阻止默认事件；
+2.还要允许删除和左右键
+</pre>
+<input id='txt1' />
+<script>
+window.onload=function(){
+	var oTxt=document.getElementById('txt1');
+	oTxt.onkeydown=function(e){
+		var oEvent=e||event;
+		var code=oEvent.keyCode;
+		console.log(code);
+		//0	-	48
+		//9	-	57
+		if(code<48 || code >57){
+			//允许左37右39键和删除键8
+			if(code!=37 && code!=39 && code!=8){
+				return false;
+			}
+		}
+	}
+
+};
+</script>

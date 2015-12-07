@@ -1,0 +1,80 @@
+﻿<pre>
+scroll bar 自定义滚动条
+v0.1	自定义滚动条，控制div大小
+
+</pre>
+<style>
+#parent{width:600px;height:20px;background:#ddd;position:relative; margin:10px auto;}
+#bar1{width:20px;height:20px;background:red;position:absolute;left:0;top:0;}
+#div2{width:0px;height:0px;background:orange;}
+</style>
+<div id='parent'>
+	<div id='bar1'></div>
+
+</div>
+<div id=div2></div>
+<script>
+window.onload=function(){
+	var oParent=document.getElementById('parent');
+	var oDiv=document.getElementById('bar1');
+	var oDiv2=document.getElementById('div2');
+	var disX=0;
+	//var disY=0;
+	
+	var bindSpace=00;//吸附距离
+	
+	oDiv.onmousedown=function(e){
+		var oEvent=e||event;
+		//记录相对坐标
+		disX=oEvent.clientX-oDiv.offsetLeft;//鼠标坐标-物体坐标
+		//disY=oEvent.clientY-oDiv.offsetTop;
+		
+		//设置捕获范围
+		if(oDiv.setCapture){
+			oDiv.setCapture();//IE
+		}else if(window.captureEvents){
+			window.captureEvents(e.MOUSEMOVE | e.MOUSEUP);
+		}
+		
+		
+		
+		//鼠标移动，为了防止鼠标快速移动时出去，
+		//事件加到了document上
+		document.onmousemove=function(e){
+			var oEvent=e||event;
+			var x=oEvent.clientX-disX;
+			//var y=oEvent.clientY-disY;
+			
+			//限制移动范围
+			if(x<0){x=0;}//left
+			var length=oParent.offsetWidth-oDiv.offsetWidth;
+			if(x>length){x=length;}//right
+			
+			//这里只有虚线框在移动
+			oDiv.style.left=x+'px';
+			//oDiv.style.top=y+'px';
+			
+			//滚动条显示出来
+			var scale=parseInt(x/length*100);
+			document.title=scale;
+			oDiv2.style.width=scale*2+"px";
+			oDiv2.style.height=scale*2+"px";
+		};
+		document.onmouseup=function(e){			
+			//取消捕获范围
+			if(oDiv.releaseCapture){
+				oDiv.releaseCapture();//IE
+			}else if(window.captureEvents){
+				window.captureEvents(e.MOUSEMOVE|e.MOUSEUP);
+			}
+			
+			//清空鼠标移动事件
+			document.onmousemove=null;
+			//清空鼠标抬起事件
+			document.onmouseup=null;
+		};
+		//阻止默认事件，否则会重影，拖动效果十分糟糕。for chrome,ff
+		return false;
+	};
+}
+</script>

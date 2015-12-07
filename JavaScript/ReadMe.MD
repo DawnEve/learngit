@@ -54,6 +54,7 @@ js prototype
 3. single.class.html  
 	js的单例模式：原型上写的属性和方法返回后失效。。。  
 	也是合理的。
+4. dragAndRisize:原生js图片头像截图上传_拖动图片切割头像截图上传
 
 
 

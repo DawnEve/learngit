@@ -1,0 +1,34 @@
+﻿<h1>默认事件</h1>
+1.点右键出现菜单；
+2.出现的位置：
+<style>
+*{margin:0;padding:0;list-style:none;}
+#mymenu{position:absolute;width:80px;border:1px solid red;background:#eee;display:none;}
+/**/
+</style>
+<div id='mymenu'>
+	<ul>
+		<li>aa1</li>
+		<li>aa2</li>
+		<li>aa3</li>
+		<li>aa4</li>
+	</ul>
+</div>
+<script>
+//右键菜单出现
+document.oncontextmenu=function(e){
+	var oEvent=e||event;
+	var oDiv=document.getElementById('mymenu');
+	oDiv.style.display='block';//出现菜单
+	//位置
+	oDiv.style.left=oEvent.clientX+'px';
+	oDiv.style.top=oEvent.clientY+'px';
+	return false;//阻止默认事件
+};
+
+//在其他地方单击菜单会消失
+document.onclick=function(){
+	var oDiv=document.getElementById('mymenu');
+	oDiv.style.display='none';
+};
+</script>
