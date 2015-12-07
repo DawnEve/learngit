@@ -1,0 +1,40 @@
+﻿<h1>try catch用法</h1>
+<h1>怎么让alert弹出窗口？</h1>
+<pre>
+1.请按F12打开控制台。
+2.请按输入文字，回车或空格时应该弹出提示。但是————
+回车可以弹出，而<u>空格的弹出失败，一闪而过！</u>
+问题：怎么让alert弹出窗口？
+
+使用try catch依旧没解决。
+
+[win7 + chrome]
+</pre>
+<input id="search" type="text" value=""/>
+<script type="text/javascript">
+var oSearch = document.getElementById("search");
+oSearch.onkeypress=function(event){
+	var e = event || window.event || arguments.callee.caller.arguments[0];
+	// enter键 或 空格
+	//if((e && e.keyCode==13) || (e && e.keyCode==32)){
+	try{
+		if((e && e.keyCode==13) || (e && e.keyCode==32)){
+			e.stopPropagation();
+			e.preventDefault();
+			throw new Error();
+		}
+	}catch(er){
+		//判断是否输入五个了
+		if(getSome()){
+			console.log("最多只能输入5个标签！--console");
+			alert("最多只能输入5个标签！--alert");
+		}
+	}
+}
+
+
+//这是简化的判断逻辑
+function getSome(){
+	return true;
+}
+</script>
