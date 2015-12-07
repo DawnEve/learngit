@@ -1,0 +1,24 @@
+﻿<pre>
+事件捕获有什么用？
+</pre>
+
+<input id='btn1' type='button' value='button1' />
+
+<script>
+window.onload=function(e){
+	var e=e||event;
+	 ee=e;
+	var oBtn1=document.getElementById('btn1');
+	//设置捕获范围
+	if(oBtn1.setCapture){
+		oBtn1.setCapture();//IE
+	}else if(window.captureEvents){
+		window.captureEvents(e.MOUSEMOVE | e.MOUSEMOVE | e.MOUSEUP);
+	}
+	
+	oBtn1.onclick=function(e){
+		alert('a');
+		//oBtn1.setCapture();
+	}
+}
+</script>

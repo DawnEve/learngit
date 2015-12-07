@@ -1,0 +1,67 @@
+﻿<pre>
+<b>Javasript作业，求大神帮忙，小弟谢过了。http://tieba.baidu.com/p/4193916797?pid=80030779376&cid=80031072237#80031072237</b>
+1、背景为一张图片，物体为一张图片。要求用鼠标拖动物体能动。用上下左右光标键也能控制物体移动，到达右边界时，当物体完全消失后从左边界飞出，其他类推。
+2、滚动鼠标中键，能对物体图片进行自动缩放。
+3、在页面添加两个命令按钮"自动运动"和"停止运动"，单击"自动运动"按钮，物体在屏幕上能自由、随机移动。单击"停止运动"按钮，物体停止运动。
+v0.1-可以拖拽版本；	
+v0.2-修正会拖出边框bug，防止拖出当前可视区；
+v0.3-修正会拖出边框bug，防止拖出父对象；
+v0.4-修正会拖出边框bug，防止拖出父对象，磁性吸附；
+</pre>
+<div id="bg">
+	<div id="obj"><img src='images/girl.jpg' /></div>
+</div>
+<style>
+#bg{position:relative;border:1px #000 solid; width:800px;height:500px;background:url(images/bg.jpg);}
+#obj{position:absolute;border:1px #fff solid; width:50px;height:60px; left:100px; top:100px;}
+#obj img{width:100%;height:100%;}
+	
+</style>
+<script>
+window.onload=function(){
+	var oBg=document.getElementById('bg');
+	var oDiv=document.getElementById('obj');
+	var disX=0;
+	var disY=0;
+	
+	var bindSpace=20;//吸附距离
+	
+	oDiv.onmousedown=function(e){
+		var oEvent=e||event;
+		//记录相对坐标
+		disX=oEvent.clientX-oDiv.offsetLeft;//鼠标坐标-物体坐标
+		disY=oEvent.clientY-oDiv.offsetTop;
+		//鼠标移动，为了防止鼠标快速移动时出去，事件加到了document上
+		document.onmousemove=function(e){
+			var oEvent=e||event;
+			var x=oEvent.clientX-disX;
+			var y=oEvent.clientY-disY;
+			
+			//加判断，防止拖出边框
+			if(x<bindSpace){x=0;}//左边
+			if(y<bindSpace){y=0;}//上边
+			
+			//页面可视区宽度-div宽度，就是右边最大宽度
+			var xMax=oBg.clientWidth-oDiv.clientWidth;
+			var yMax=oBg.clientHeight-oDiv.clientHeight;
+			if(x>xMax-bindSpace){x=xMax;}//右边
+			if(y>yMax-bindSpace){y=yMax;}//下边
+			
+			
+			
+			oDiv.style.left=x+'px';
+			oDiv.style.top=y+'px';
+		};
+		document.onmouseup=function(e){
+			document.onmousemove=null;//清空鼠标移动事件
+			document.onmouseup=null;//清空鼠标抬起事件
+		};
+		
+		//阻止默认事件，否则会重影，拖动效果十分糟糕。for chrome,ff
+		return false;
+	};
+		
+}
+
+
+</script>
