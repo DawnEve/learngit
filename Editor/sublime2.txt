@@ -1,0 +1,78 @@
+﻿2015-11-22  sublime2编辑器的使用技巧
+
+1.2nd的插件比较多，而3rd正在成熟。
+
+2.把sublime添加到右键菜单中:
+	开始>运行，或者快捷键【win+R】调出命令行，输入regedit并回车，打开注册表；
+	[HEY_CLASSES_ROOT\*\shell\Sublime2\command]
+	"D:\Program Files\Sublime Text 2\sublime_text.exe" -p --remote-tab-silent "%1"
+
+3.怎么安装插件？
+	查看现有插件：sublime菜单 首选项Preferences>Browse Packages
+	安装插件：sublime菜单 首选项Preferences>Package Control
+	设置插件：sublime菜单 首选项Preferences>Settings-Default，最后一行
+	"ignored_packages": ["Vintage"]
+	设置为"ignored_packages": []，其中"Vintage"就是vim的插件。
+
+		貌似不行，还原设置。
+		首选项>Settings-User设置"ignored_packages":为空[]；
+	找个文本文件，按键盘的Esc键即可进入命令行模式。
+
+4.熟悉vim的快捷键
+	(1)复制和粘贴：复制yy，粘贴p
+	yy复制游标所在行整行。或大写一个Y。 
+	2yy或y2y复制两行。 ㄟ ，请举一反三好不好！ :-) 
+	y^复制至行首，或y0。不含游标所在处字元。 
+	y$复制至行尾。含游标所在处字元。 
+	yw复制一个word。 
+	y2w复制两个字（单词）。 
+	yG复制至档尾。 
+	y1G复制至档首。 
+
+	粘贴时 p 与 P 的区别是贴到光标前后的区别。
+		p小写p代表贴至游标后（下）。 
+		P大写P代表贴至游标前（上）。
+	如果只是想使用系统粘贴板的话直接在输入模式按Shift+Inset就可以了
+	
+	(2)上下左右移动
+	H 左
+	J	下
+	K	上
+	L 右
+	
+	(3)正则替换：
+	进入末行模式，
+	在全文修改a为A：:%s/a/A/g
+	在3行替换a为A：:3s/a/A/g
+	在1-5行替换a为A：:1,5s/a/A/g
+	
+	(4)撤销与恢复
+	撤销u
+	恢复y
+	
+	
+	
+
+	5.vim简介
+	三种模式：输入模式、命令模式、末行模式；
+	默认进入的是输入模式；
+	在输入模式中，按键ESC进入命令模式：可以使用命令。
+	在命令模式中，按i键，进入输入模式：可以输入字符。
+		共有3个字母i o a可以切换到输入模式，考虑大小写，共6种：
+			insert
+			append
+			o是新行。
+			
+	在命令模式下，输入冒号【shift+;】进入末行模式：可以保存、退出等操作。
+		:w是保存；
+		:q是退出；
+		:x和:wq都是保存并退出。
+	
+	在末行模式回到编辑模式：ESC键；
+	
+	
+	
+	
+	
+	
+	
