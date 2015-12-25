@@ -1,0 +1,49 @@
+﻿<pre>
+说明：按键盘← →方向键 或 PageUp PageDown键直接翻页
+	/*
+		PageUp	33
+		PageDown	34
+		left	37
+		up	38
+		right	39
+		down	40
+	*/
+</pre>
+<div id='div1' style='color:red;'></div>
+
+<SCRIPT language=javascript>
+/**
+	事件处理函数
+	PageUp	33
+	PageDown	34
+	
+	left	37
+	up	38
+	right	39
+	down	40
+*/
+document.onkeydown =function(evt){
+	//获取键盘事件和数字
+	var evt = evt ||window.event;
+	var key=evt.which||evt.keyCode;
+	
+		console.log(key);//todo
+	//上一页 下一页的判断
+	if ([33,37,38].indexOf(key)!=-1){pre();}
+	if ([34,39,40].indexOf(key)!=-1){next();}
+};
+
+//向前翻页
+function pre(){
+	var prevpage="#up";
+	location = prevpage;
+	document.getElementById('div1').innerHTML='上一页';
+}
+
+//向后翻页
+function next(){
+	var nextpage="#down";
+	location = nextpage;
+	document.getElementById('div1').innerHTML='下一页';
+}
+</SCRIPT>
