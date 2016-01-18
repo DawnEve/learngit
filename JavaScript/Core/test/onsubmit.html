@@ -1,0 +1,21 @@
+﻿<script>
+function check(obj){
+	if(obj.usr.value==''){
+		alert('用户名不能为空！');
+		obj.usr.focus();
+		return false;
+	}
+	
+	return true;
+}
+</script>
+<pre>
+
+请使用chrome浏览器，并按F12打开控制台！
+<form method='get' action='aa.php' onsubmit='return check(this);'>
+	用户名<input type='text' name='usr' />
+	<input type='submit' name=send value='提交' />
+	
+	<hr>
+onsubmit
+</form>
