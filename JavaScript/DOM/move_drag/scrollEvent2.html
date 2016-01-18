@@ -1,0 +1,51 @@
+﻿<p><label for="wheelDelta">  滚动值:</label>(IE/chrome+-120)<input type="text" id="wheelDelta" /></p>
+
+<p><label for="detail"> 滚动值:(Firefox-+3)</label><input type="text" id="detail" /></p>
+
+<input type="text" id="div1" />
+
+<script type="text/javascript">
+var oTxt=document.getElementById("txt");
+/***********************
+* 函数：判断滚轮滚动方向
+* 作者：DawnEve
+* 参数：event
+* 返回：滚轮方向 1：向上 -1：向下
+*************************/
+function scrollDirect(e){
+    var direct=0;
+    e=e || window.event;
+	
+	//获取方向
+    if(e.wheelDelta){//IE/Opera/Chrome
+        direct=e.wheelDelta;
+    }else if(e.detail){//Firefox
+        direct=-e.detail;
+    }
+	//返回
+    return (direct>0)?1:-1;
+    //return direct;
+}
+
+
+/*注册事件*/
+if(document.addEventListener){
+	//W3C
+    document.addEventListener('DOMMouseScroll',scrollFunc,false);
+}
+//IE/Opera/Chrome/Safari
+window.onmousewheel=document.onmousewheel=scrollFunc;
+
+	
+
+function scrollFunc(e){
+	var d=scrollDirect(e);
+	
+	var t3=document.getElementById("div1");
+	var t1=document.getElementById("wheelDelta");
+	var t2=document.getElementById("detail");
+	
+	t3.value=d;
+
+}
+</script>

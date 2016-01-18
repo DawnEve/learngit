@@ -12,11 +12,18 @@ New words:
 
 
 [js]
+- 科里化函数
 - angular
 - react
 - nodeJS: npm, package
 -[ok] call/apply在js中的应用
 - 弹出层
+- Promise: http://www.csdn.net/article/2014-05-28/2819979-JavaScript-Promise
+http://www.infoq.com/cn/news/2011/09/js-promise/
+
+- 焦点图：http://poster469.blog.163.com/blog/static/131911342013915113830531/
+
+-JSONparser:
 
 
 

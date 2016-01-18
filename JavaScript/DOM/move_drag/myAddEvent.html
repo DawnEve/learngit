@@ -1,0 +1,48 @@
+﻿<pre>
+事件绑定：在一个事件中执行一系列函数
+
+IE:
+	attachEvent(事件名称，函数)，绑定事件处理函数；
+	detachEvent(事件名称，函数)，解除绑定；
+ff/chrome:
+	addEventListener(事件名称，函数，捕获)
+	removeEventListener(事件名称，函数，捕获)
+
+何时使用事件绑定
+绑定事件和this
+绑定匿名函数，会无法删除；
+	
+</pre>
+<input type='button' id=btn1 value='btn1' />
+<script>
+//给obj增加事件的自定义函数：兼容IE/chrome/ff
+function myAddEvent(obj,ev,fn){
+	if(obj.addEventListener){
+		//ff:addEventListener
+		obj.addEventListener(ev,fn,false);
+	}else{
+		//IE:attachEvent
+		obj.attachEvent('on'+ev,fn);
+	}
+}
+
+window.onload=function(){
+	var oBtn=document.getElementById('btn1');
+	oBtn.onclick=function(){
+		alert('a');
+	};
+	/*
+	oBtn.onclick=function(){
+		alert('b');
+	};
+	*/
+	oBtn.addEventListener('click',function(){
+		alert('b');
+	}, false);
+	
+	myAddEvent(oBtn,'click',function(){
+		alert('c');
+	});
+}
+
+</script>
