@@ -1,0 +1,34 @@
+<meta charset='utf8'>
+<h1>try catch finally</h1>
+异常处理try...catch...finally
+<pre>
+
+F12打开控制台，测试：
+tryDemo(10)
+tryDemo(20)
+
+
+</pre>
+<script>
+function tryDemo(age){
+	var age=age || 12;
+	try {
+		//tryCode - 尝试执行代码块
+		if(age<18){
+			throw{
+				name:'AgeError',
+				message:'age must NOT be smaller than 18'
+			}
+		}
+	}catch(err) {
+		//catchCode - 捕获错误的代码块
+		age = 18; //修正年龄后继续进行
+		//输出错误
+		console.log(err.name+': '+err.message)
+	} 
+	finally {
+		//finallyCode - 无论 try / catch 结果如何都会执行的代码块
+		console.log(age); //这里输出当前年龄
+	}
+}
+</script>
