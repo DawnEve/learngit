@@ -1,0 +1,248 @@
+<meta charset='utf8'>
+<h1>javascript的replace()第二个参数为函数时的参数:</h1>
+
+<pre>
+ 之前一直不了解，如果replace第二个参数为function，那么replace函数提供给function的输入参数是什么呢？
+ 这个函数又该如何返回？
+    例如：
+String.replace(regexp,function(?,?){})  
+</pre>
+
+<script>
+//tools 
+function n(s){console.log(s)}
+
+/************
+* 实例1：第一个参数为字符
+*************/
+var str="I love php, javascript and java.";
+console.log( str.replace("java","VB") ); //I love php, VBscript and java.
+//只能替换第一个指定字符串。
+
+/************
+* 实例2：第一个参数为正则
+*************/
+var str="I love php, javascript and java.";
+console.log( str.replace(/java/g,"VB") ); //I love php, VBscript and VB.
+//使用正则替换掉了所有指定字符串。正则更灵活、更强大
+
+
+/************
+* 实例3：第二个参数为正则
+*************/
+var str="I love php, javascript and java.";
+console.log(str.replace(/java/g,function(){
+	return "VB";
+}));
+//I love php, VBscript and VB.
+//第二个参数为函数时，结果同上，说明这个返回值就是替换值。
+//这个函数接收什么参数呢？
+console.log(str.replace(/java/g,function(){
+	console.log(arguments);
+	return "VB";
+}));
+/*
+多输出了两行：
+["java", 12, "I love php, javascript and java."]
+["java", 27, "I love php, javascript and java."]
+可见开头是匹配字符串，接着是匹配位置，最后是原始字符串。
+真的仅仅是这样吗？我们看下一个例子
+*/
+
+
+
+/************
+* 实例4：第一个参数是带有捕获组的正则，第二个参数为正则
+*************/
+//匹配前面有字母的at字符。
+var str = 'cat ware a hat at yahoo.com'
+str.replace(/\w(at)/g, function(){
+	console.log(arguments);
+});
+/*
+["cat", "at", 0, "cat ware a hat at yahoo.com"]
+["hat", "at", 11, "cat ware a hat at yahoo.com"]
+*/
+
+str.replace(/\w(at).*(wa)/g, function(a,b){
+	n(arguments);
+});
+/*
+["cat wa", "at", "wa", 0, "cat ware a hat at yahoo.com"]
+
+结论：
+
+通过比较以上三个例子，可以总结出第二个参数为函数时，接收的4类参数：
+首先，匹配到的字符
+接着，匹配regexp对象中某个圆括号子表达式的字符串，也就是捕获组，
+	可能接着第二个捕获组，以此类推；
+	
+其次，匹配开始的位置；
+最后，调用replace方法的字符串（this）
+如果还有多余参数，则赋值undefined。
+*/
+
+
+
+
+/************
+* 实例5：分析如下实体替换函数的实现
+*************/
+
+/************  example 3 ************/
+// 替换成实体的函数
+String.prototype['deentityify']=(function () {
+	//字符实体表
+	var entity={
+		quot: '"',
+		lt: '<',
+		gt: '>',
+		//可以根据需要添加更多的实体
+	}
+	return function(){
+		return this.replace(/&([^&;]+);/g, 
+			function(a,b){
+				var r=entity[b];
+				n('a:'+a +' ,b='+b);
+				return typeof r==='string' ? r : a;
+			}
+		)
+	}
+}());//这里是一个立即执行函数，返回的是一个能访问私有变量entity的特权函数。
+
+//测试例子
+var strWithEntity='&lt;&nbsp;&quot;&gt;';
+console.log( strWithEntity.deentityify() )
+/*
+上例中参数a和b的值如下：
+
+a:&lt; ,b=lt
+a:&nbsp; ,b=nbsp
+a:&quot; ,b=quot
+a:&gt; ,b=gt
+
+最终结果：<&nbsp;">
+*/
+
+
+
+
+/************
+* 实例6：jQuery 1.2.X'中有一个函数，现在貌似移除了。
+https://bugs.jquery.com/ticket/3295
+http://stackoverflow.com/questions/7083884/what-is-the-purpose-of-jquery-clean-and-cleandata-methods
+The .clean() method tries to replace empty elements defined as <elem /> with <elem></elem>. Here's the code from .clean():
+*************/
+
+//包装成函数如下
+function clean_2(elem){
+   // Convert html string into DOM nodes
+   if ( typeof elem == "string" ) {
+      // Fix "XHTML"-style tags in all browsers
+      elem = elem.replace(/(<(\w+)[^>]*?)\/>/g, function(all, front, tag){
+         return tag.match(/^(abbr|br|col|img|input|link|meta|param|hr|area|embed)$/i) ?
+            all :
+            front + "></" + tag + ">";
+      });
+	}
+	
+	return elem;
+}
+//测试
+var str='<data:person name="john doe" id="123" /><p/><br/><div/>';
+n( clean_2(str) ); // <data:person name="john doe" id="123" ></data><p></p><br/><div></div>
+
+//作用：如果匹配<div/>这种写法的就替换成<div></div>, 遇到(abbr|br|col|img|input|link|meta|param|hr|area|embed)这些标记原文返回。如果不是上边那些标签，return 为替换后的字符串。（我没想明白这是干啥的。。。是java中的模板吗？对java不熟悉）
+//replace第二个参数为函数，其参数以此：all是正则的匹配项，front是第一个捕获组，也就是(<(\w+)[^>]*?), tag是第二个捕获组也就是 (\w+), 字母，数字，下划线.
+
+
+
+
+
+
+/************
+* 实例7：alibaba前端面试题，填空题，自己分析
+http://blog.csdn.net/jcy1009015337/article/details/45220431
+*************/
+/*
+//“说出以下函数的作用是？空白区域应该填写什么？”
+// define    
+(function (window) {    
+    function fn(str) {    
+        this.str = str;    
+    }    
+    fn.prototype.format = function () {    
+        var arg = ______;    
+        return this.str.replace(_______, function (a, b) {    
+            return arg[b] || '';    
+        });    
+    }    
+    window.fn = fn;    
+})(window);    
+
+// use    
+(function(){    
+    var t = new fn('<p><a href="{0}">{1}</a><span>{2}</span></p>');  
+    console.log( t.format('http://www.alibaba.com', 'Alibaba', 'Welcome') );    
+})();  
+*/
+//先自己分析，再看我的个人理解（如有不对，欢迎留言指教）
+
+
+
+
+
+
+
+//作用：从use案例看，应该是一个js版本的模板替换。把format()方法中的字符依次填写到原字符串的{}中。
+/*
+填空部分：
+1.先使用闭包传入一个私有变量str。
+
+2.args是处理传入的参数，从类数组转变为数组，需要借用Array的方法：
+	args=Array.prototype.slice.call(arguments);
+3.从结果推断，b参数是序号，需要捕获组
+	匹配{}，且中间必须是数字。
+	/{(\d+)}/g
+//找了个很残忍的例子：
+'{0},{1},{sdsf{200}d},{abc}{3}'.replace(/{(\d+)}/g,function(){console.log(arguments);return ''})
+
+原文作者在{}前加了转义符，不知道加不加有什么区别。
+'{0},{1},{sdsf{20{3}0}d},{abc}'.replace( /\{(\d+)\}/g ,function(){console.log(arguments);return ''})
+",,{sdsfd},{abc}"
+
+*/
+//测试例子 参数转为数组
+function toArray(){
+	var args=Array.prototype.slice.call(arguments); 
+	return args;
+}
+n( toArray(1,2,3,4) );   //[1, 2, 3, 4]
+
+
+//“说出以下函数的作用是？空白区域应该填写什么？”
+// define    
+(function (window) {    
+    function fn(str) {    
+        this.str = str;    
+    }    
+    fn.prototype.format = function () {    
+        //var arg = Array.prototype.slice.call(arguments);    
+        var arg = arguments; // 确实不用call冒充也能取到值。   
+        return this.str.replace( /{(\d+)}/g , function (a, b) { 
+			//n('a:'+a +' ,b='+b +' .args='+arg)
+            return arg[b] || '';    
+        });    
+    }    
+    window.fn = fn;    
+})(window);    
+
+// use    
+(function(){    
+    var t = new fn('<p><a href="{0}">{1}</a><span>{2}</span></p>');  
+    console.log( t.format('http://www.alibaba.com', 'Alibaba', 'Welcome') );    
+})(); 
+
+// output
+//<p><a href="http://www.alibaba.com">Alibaba</a><span>Welcome</span></p>
+</script>
