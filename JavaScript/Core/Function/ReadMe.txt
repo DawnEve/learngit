@@ -24,3 +24,8 @@ function n(s){console.log(s)}
 0041-replace-jQuery.html
 0042-replace-test.html
 
+005-memoization.html
+
+
+
+

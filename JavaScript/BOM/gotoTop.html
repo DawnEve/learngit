@@ -1,0 +1,96 @@
+<meta charset='utf8'>
+<div style="text-align:center;padding:35px;">
+	<h1>返回顶部-缓动：</h1>
+	<span style='font-size:small'>先拖动滚动条，再查看右下角的回顶部，并点击试试</span>
+</div>
+
+<style>
+/* CSS Document */
+*{margin:0;padding:0;list-style:none;border:none;}
+body{height:2000px;background:#fafafa;}
+
+.totop{position:fixed;right:25px;bottom:25px;display:block;width:26px;height:62px;-webkit-transition: all 0.2s ease-in-out;}
+.totop:hover{ no-repeat 0 -62px;}
+
+.btn{
+
+    font: 14px/20px arial;
+    text-align: center;
+
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+
+    z-index: 5;
+
+	
+    color: #fff;
+    margin: 1px;
+    display: block;
+    background: #0096FF;
+    padding: 5px;
+    text-decoration: none;
+    border-radius: 5px;
+    opacity: 0.2;
+}
+.btn:hover{text-decoration:underline;opacity:0.9;}
+</style>
+
+<!-- 1.添加btn及click事件，必须！ -->
+<a class=btn href="javascript:void(0);" onclick="gotoTop();return false;" class="totop">gotoTop</a>
+
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+	<p>适用浏览器：IE8、360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗. </p>
+<script>
+for(i=0;i<100;i++){
+	document.write(i+'<br>');
+}
+</script>
+</div>
+
+
+<script>
+//2.添加js代码
+/**
+* JavaScript脚本实现回到页面顶部示例
+* @param acceleration 速度
+* @param stime 时间间隔 (毫秒)
+* 使用方法 onclick='gotoTop();return false;'
+**/
+function gotoTop(acceleration,stime) {
+	acceleration = acceleration || 0.1;
+	stime = stime || 10;
+	var x1 = 0;
+	var y1 = 0;
+	var x2 = 0;
+	var y2 = 0;
+	var x3 = 0;
+	var y3 = 0;
+	if (document.documentElement) {
+	   x1 = document.documentElement.scrollLeft || 0;
+	   y1 = document.documentElement.scrollTop || 0;
+	}
+	if (document.body) {
+	   x2 = document.body.scrollLeft || 0;
+	   y2 = document.body.scrollTop || 0;
+	}
+	var x3 = window.scrollX || 0;
+	var y3 = window.scrollY || 0;
+
+	// 滚动条到页面顶部的水平距离
+	var x = Math.max(x1, Math.max(x2, x3));
+	// 滚动条到页面顶部的垂直距离
+	var y = Math.max(y1, Math.max(y2, y3));
+	
+	// 滚动距离 = 目前距离 / 速度, 因为距离原来越小, 速度是大于 1 的数, 所以滚动距离会越来越小
+	var speeding = 1 + acceleration;
+	window.scrollTo(Math.floor(x / speeding), Math.floor(y / speeding));
+  
+   // 如果距离不为零, 继续调用函数
+	var timer=setTimeout(function(){
+		if(x > 0 || y > 0) {
+			gotoTop(acceleration,stime);
+		}		
+	}, stime);
+}
+</script>
