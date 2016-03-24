@@ -1,0 +1,91 @@
+<meta charset='utf8'>
+<h1>method方法</h1>
+<style>
+.red{color:red;}
+</style>
+<pre>
+//v2目的：为函数扩展原型方法，好处是省略prototype这个长单词。
+
+Function.prototype.<b class=red>method</b> = function(name,fn, isOverRide){
+	//防止修改原型的共有结构，保险的方法是确定没有时才添加
+	//如果强制覆盖，则需要指定第三个参数为true
+	if(!this.prototype[name] || isOverRide==true){
+		this.prototype[name]=fn;
+	}
+	//else{ throw 'Method Exists!'; } //怎么报错呢？
+	//不存在是否需要报错呢？感觉应该报错的
+	return this;
+}
+</pre>
+
+<script>
+//tools fn
+function n(s){console.log(s)}
+
+//v1目的：为函数扩展原型方法，好处是省略prototype这个长单词。
+/* 简易版
+Function.prototype.method=function(name,fn){
+	this.prototype[name]=fn;
+	return this;
+}
+*/
+
+//v2目的：为函数扩展原型方法，好处是省略prototype这个长单词。
+Function.prototype.method=function(name,fn, isOverRide){
+	//防止修改原型的共有结构，保险的方法是确定没有时才添加
+	//如果强制覆盖，则需要指定第三个参数为true
+	if(!this.prototype[name] || isOverRide==true){
+		this.prototype[name]=fn;
+	}
+	//else{ throw 'Method Exists!'; } //怎么报错呢？
+	//不存在是否需要报错呢？感觉应该报错的
+	return this;
+}
+
+/* ------------------ example 强制覆盖------------------ */
+/*
+	声明一个构造函数Person
+*/
+function Person(name){
+	this.name=name;
+}
+
+//给函数扩展了一个手册功能。
+Person.method('toString',function(){
+	return '[Object Person] name: '+this.name;
+},true);
+
+//测试 
+var p=new Person('Dawn');
+n( p.toString() ); //[Object Person] name: Dawn
+
+
+/* ------------------ another example ------------------ */
+//typeof Number   //"function"
+//因为Number构造函数也是函数，所以可以为其扩展方法。
+
+/*
+	数字取整
+*/
+Number.method('integer', function(){
+	return Math[this>0?'floor':'ceil'](this);
+});
+//测试
+n( (10/3).integer() ); //3
+n( (-10/3).integer() ); //3
+
+
+/* ------------------ another example ------------------ */
+/*
+	字符串移除首尾空行
+*/
+String.method('trim',function(){
+	return this.replace(/^\s+|\s+$/g, '');
+});
+
+//测试
+var str1=' this is a line.  '.trim();
+var str2='this is a line.';
+n(str1===str2); //true
+
+</script>

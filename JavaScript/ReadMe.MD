@@ -72,7 +72,7 @@ js prototype
 3.	isHtml5video.html  
 是否支持html5的video特性  
 
-
+4. gotoTop函数。
 
 	
 	
