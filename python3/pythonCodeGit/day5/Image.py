@@ -4,9 +4,13 @@
 #引入库
 from PIL import Image
 
-
 im = Image.open('test.jpg')
 print(im.format, im.size, im.mode)
 
-im.thumbnail((500, 1700))
+#缩小2倍
+im.thumbnail((im.size[0]/2, im.size[0]/2))
 im.save('thumb2.jpg', 'JPEG')
+
+#缩小4倍
+im.thumbnail((im.size[0]/4, im.size[0]/4))
+im.save('thumb4.jpg', 'JPEG')

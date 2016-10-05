@@ -9,10 +9,11 @@ myPrintDic(d);
 #按照字典传入多个参数
 def add(a,b):
 	print('按照字典传入多个参数:',a+b);
+	print('a=',a)
 
 #一般传参
 add(1,2);
-add(a=2,b=4);
+add(b=2,a=4);
 
 #先构建字典，再传入
 d2={'a':20, 'b':40}

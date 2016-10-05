@@ -13,12 +13,15 @@
 	for循环：for x in range(101):
 	dict字典元素（就是json）
 	set集合：不能重复
+	while循环
 
 第三天	
 	函数，默认参数
 	函数的默认参数必须指向固定值
 	函数：构建字典传入多个参数
 	迭代
+	函数嵌套
+	函数：全局变量与本地变量
 	
 第四天
 	切片：list和tuple
@@ -33,6 +36,7 @@
 	匿名函数lambda
 	装饰器decorator（不懂）
 	偏函数（Partial function）（不太懂）
+	
 第五天
 	模块与包  运行不了MHello.py //todo
 	常用的第三方库:#pip install Pillow
@@ -42,7 +46,7 @@
 	升级pip：（win7下升级会出错！如果没必要，还是别升级了）
 		- You are using pip version 6.0.8, however version 7.1.2 is available.
 You should consider upgrading via the 'pip install --upgrade pip' command.
-
+	导入 import random      from time import clock
 
 第六天
 	OOP
@@ -76,6 +80,7 @@ You should consider upgrading via the 'pip install --upgrade pip' command.
 	序列化：pickle
 		- Python语言特定的序列化模块是pickle，
 		- 但如果要把序列化搞得更通用、更符合Web标准，就可以使用json模块。
+		
 第十天
 	进程和线程(Python既支持多进程，又支持多线程)
 		- 对于操作系统来说，一个任务就是一个进程（Process）
