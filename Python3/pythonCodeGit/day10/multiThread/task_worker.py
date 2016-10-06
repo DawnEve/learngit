@@ -26,11 +26,16 @@ result = m.get_result_queue()
 # 从task队列取任务,并把结果写入result队列:
 for i in range(10):
     try:
+        # 获取参数n
         n = task.get(timeout=2)
-        print('run task %d * %d...' % (n, n))
+        
+        # 进行本机计算
+        print('run task with %d ...' % (n))
         r = '%d * %d = %d' % (n, n, n*n)
-        time.sleep(2)
-        result.put(r) #计算结果压入result中
+        time.sleep(1)        
+        
+        #计算结果压入result中
+        result.put('完成：'+r) 
     except Queue.Empty:
         print('task queue is empty.')
         
