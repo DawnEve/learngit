@@ -108,7 +108,23 @@ You should consider upgrading via the 'pip install --upgrade pip' command.
 		们以Queue为例，在父进程中创建两个子进程，一个往Queue里写数据，一个从Queue里读数据。
 		
 
+	Python的线程是真正的Posix Thread，而不是模拟出来的线程。
+	threading.Thread(target=loop, name='LoopThread')
+	多进程不共享变量，而多线程共享变量，有变量改乱的风险。
+	锁与死锁。
 	
+	
+	进程 vs. 线程
+	用异步IO编程模型来实现多任务是一个主要的趋势。
+	对应到Python语言，单进程的异步编程模型称为协程，有了协程的支持，就可以基于事件驱动编写高效的多任务程序。
+	
+	
+	分布式进程
+	(1)task_master.py 在Ubuntu上添加文件头，先运行。
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+	
+	(2)task_worker.py 在win7上接着运行。
 	
 
 #
