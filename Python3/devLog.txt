@@ -1,6 +1,47 @@
-开发笔记：
+Python3学习笔记：目录略详细版
 
-v0.1.0 IO：序列化和反序列化，pickle和json模块，前者编码更少，后者更通用，推荐用后者。
+>v0.1.0 IO：序列化和反序列化，pickle和json模块，前者编码更少，后者更通用，推荐用后者。
+
+>v0.1.1 多线程; 
+		fork()返回两次！
+		把当前进程复制一份，在父子进程中分别返回。
+		在父进程中返回子进程id，在子进程返回0.
+		子进程获取父进程id号可以通过getppid()获取。
+		
+import os
+
+print('Process (%s) start...' % os.getpid())
+# Only works on Unix/Linux/Mac:
+pid = os.fork()
+if pid == 0:
+    print('I am child process (%s) and my parent is %s.' % (os.getpid(), os.getppid()))
+else:
+    print('I (%s) just created a child process (%s).' % (os.getpid(), pid))
+
+
+运行结果如下：
+
+Process (876) start...
+I (876) just created a child process (877).
+I am child process (877) and my parent is 876.
+
+对Pool对象调用join()方法会等待所有子进程执行完毕，
+调用join()之前必须先调用close()，调用close()之后就不能继续添加新的Process了。
+
+
+请注意输出的结果，task 0，1，2，3是立刻执行的，而task 4要等待前面某个task完成后才执行，这是因为Pool的默认大小在我的电脑上是4，因此，最多同时执行4个进程。这是Pool有意设计的限制，并不是操作系统的限制。如果改成：
+
+p = Pool(5)就可以同时跑5个进程。
+由于Pool的默认大小是CPU的核数，如果你不幸拥有8核CPU，你要提交至少9个子进程才能看到上面的等待效果。
+
+小结：
+	在Unix/Linux下，可以使用fork()调用实现多进程。
+	要实现跨平台的多进程，可以使用multiprocessing模块。
+	进程间通信是通过Queue、Pipes等实现的。
+	
+	
+>
+
 
 
 
