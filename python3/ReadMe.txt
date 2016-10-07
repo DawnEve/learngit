@@ -127,17 +127,36 @@ You should consider upgrading via the 'pip install --upgrade pip' command.
 	(2)task_worker.py 在win7上接着运行。
 	
 
-#
 
-
-//TODO
 
 第十一天：正则表达式
+http://fhqdddddd.blog.163.com/blog/static/1869915420168283157719/?newFollowBlog
+	字符匹配：
+		#re.match(r'^\d{3}\-\d{3,8}$', '010-12345')
+	字符分割
+		#无论多少个空格都可以正常分割。	
+		r=re.split(r'\s+', 'a b   c')
+		print(r)
+		# ['a', 'b', 'c']
+	字符提取
+		import re
+		m = re.match(r'^(\d{3})-(\d{3,8})$', '010-12345')
+		print(m) #<_sre.SRE_Match object; span=(0, 9), match='010-12345'>
+		print(m.groups()) #('010', '12345')
+		#注意到group(0)永远是原始字符串，group(1)、group(2)……表示第1、2、……个子串。
+		print(m.group(0)) #010-12345
+		print(m.group(1)) #010
+		print(m.group(2)) #12345		
+	贪婪匹配
+		默认是贪婪匹配
+		非贪婪匹配就是量词后面加上?
+	编译
+		正则表达式默认是先编译，不出错后再匹配。
+		如果一个正则表达式使用次数频繁，就可以一次编译，多次使用。
+		
+		
 
-
-
-
-
+//TODO
 第十二天：常用内建模块
 	
 
