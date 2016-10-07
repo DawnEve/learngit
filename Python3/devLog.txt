@@ -111,6 +111,38 @@ http://blog.csdn.net/zfq642773391/article/details/5506618
 		+ {1,}
 	myreg=r'^(\w+[\w\.]*?\w+)@{1}(\w+[\w\.]+?\w+)$' #完美匹配email
 
+>v0.1.5 先回顾两个点：模块和包，map和reduce
+	(1)模块和包
+	注意：Mac或Linux上有可能并存Python 3.x和Python 2.x，因此对应的pip命令是pip3。
+	一个文件就是一个模块。很多文件就凑成一个包。模块和包能解决重名问题。
+	一个包内要有一个__init__.py文件，可以为空。
+	
+	模块与包  运行不了MHello.py:可以运行了，因为缩进异常
+	升级pip：（win7下升级会出错！如果没必要，还是别升级了）
+		- You are using pip version 6.0.8, however version 7.1.2 is available.
+		You should consider upgrading via the 'pip install --upgrade pip' command.
+		
+	模块搜索路径
+		默认情况下，Python解释器会搜索当前目录、所有已安装的内置模块和第三方模块，搜索路径存放在sys模块的path变量中. 	
+		>>> import sys
+		>>> sys.path
+			['', 
+			'C:\\Program Files (x86)\\Python35-32\\python35.zip', 
+			'C:\\Program Files (x86)\\Python35-32\\DLLs', 
+			'C:\\Program Files (x86)\\Python35-32\\lib', 
+			'C:\\Program Files (x86)\\Python35-32', 
+			'C:\\Program Files (x86)\\Python35-32\\lib\\site-packages']
+		如果我们要添加自己的搜索目录，有两种方法：
+			- sys.path.append('path/to/your/lib')，本次运行有效
+			- 设置环境变量PYTHONPATH
+	
 
 
 
+
+
+
+
+
+
+	v0.1.? 常用内建模块

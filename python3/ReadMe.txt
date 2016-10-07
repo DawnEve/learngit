@@ -2,6 +2,10 @@
 廖雪峰的示例：https://github.com/michaelliao/learn-python3/tree/master/samples
 我的示例：https://github.com/DawnEve/learngit/tree/master/python3/
 
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+
 第一天：运行模式、数据格式
 	基础知识。
 	测试中文是否支持；
@@ -39,16 +43,30 @@
 	装饰器decorator（不懂）
 	偏函数（Partial function）（不太懂）
 	
+	
+	
+	
+	
 第五天：模块、包和包管理器PIP
-	模块与包  运行不了MHello.py //todo
-	常用的第三方库:#pip install Pillow
+	在Python中，一个.py文件就称之为一个模块（Module）。
+	自己创建模块时要注意命名，不能和Python自带的模块名称冲突。
+	导入 import random      from time import clock
+
+	第三方库都会在Python官方的pypi.python.org网站注册。
+	pip是python包管理器。
+	pip搜索：(搜索PIL) pip search imaging-library
+	pip安装: pip install Pillow
+	常用的第三方库:
+		- Python Imaging Library, PIL，这是Python下非常强大的处理图像的工具库。
 		- MySQL的驱动：mysql-connector-python
 		- 用于科学计算的NumPy库：numpy
 		- 用于生成文本的模板工具Jinja2, 等等
-	升级pip：（win7下升级会出错！如果没必要，还是别升级了）
-		- You are using pip version 6.0.8, however version 7.1.2 is available.
-You should consider upgrading via the 'pip install --upgrade pip' command.
-	导入 import random      from time import clock
+	模块搜索路径
+
+
+
+
+
 
 第六天：面向对象
 	OOP
@@ -156,11 +174,17 @@ http://fhqdddddd.blog.163.com/blog/static/1869915420168283157719/?newFollowBlog
 		
 		
 
-//TODO
+
 第十二天：常用内建模块
-	
+	Python之所以自称“batteries included”，就是因为内置了许多非常有用的模块，无需额外安装和配置，即可直接使用。
+	datetime:获取当前日期
 
 
+
+
+
+
+//TODO
 第十三天：常用第三方模块
 
 
