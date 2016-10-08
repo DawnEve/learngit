@@ -10,4 +10,4 @@ def factor(n):
 	elif n>=0:
 		return 1;
 	
-print( factor(100) )
+print( factor(10) )

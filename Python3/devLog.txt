@@ -1,0 +1,161 @@
+Python3学习笔记：目录略详细版
+
+>v0.1.0 IO：序列化和反序列化，pickle和json模块，前者编码更少，后者更通用，推荐用后者。
+
+>v0.1.1 多进程; 
+		fork()返回两次！
+		把当前进程复制一份，在父子进程中分别返回。
+		在父进程中返回子进程id，在子进程返回0.
+		子进程获取父进程id号可以通过getppid()获取。
+		
+import os
+
+print('Process (%s) start...' % os.getpid())
+# Only works on Unix/Linux/Mac:
+pid = os.fork()
+if pid == 0:
+    print('I am child process (%s) and my parent is %s.' % (os.getpid(), os.getppid()))
+else:
+    print('I (%s) just created a child process (%s).' % (os.getpid(), pid))
+
+
+运行结果如下：
+
+Process (876) start...
+I (876) just created a child process (877).
+I am child process (877) and my parent is 876.
+
+对Pool对象调用join()方法会等待所有子进程执行完毕，
+调用join()之前必须先调用close()，调用close()之后就不能继续添加新的Process了。
+
+
+请注意输出的结果，task 0，1，2，3是立刻执行的，而task 4要等待前面某个task完成后才执行，这是因为Pool的默认大小在我的电脑上是4，因此，最多同时执行4个进程。这是Pool有意设计的限制，并不是操作系统的限制。如果改成：
+
+p = Pool(5)就可以同时跑5个进程。
+由于Pool的默认大小是CPU的核数，如果你不幸拥有8核CPU，你要提交至少9个子进程才能看到上面的等待效果。
+
+小结：
+	在Unix/Linux下，可以使用fork()调用实现多进程。
+	要实现跨平台的多进程，可以使用multiprocessing模块。
+	进程间通信是通过Queue、Pipes等实现的。
+	
+	
+>v0.1.2 多线程
+	threading.Thread(target=loop, name='LoopThread')
+	
+	锁的好处就是确保了某段关键代码只能由一个线程从头到尾完整地执行，
+	坏处当然也很多，
+		- 首先是阻止了多线程并发执行，包含锁的某段代码实际上只能以单线程模式执行，效率就大大地下降了。
+		- 其次，由于可以存在多个锁，不同的线程持有不同的锁，并试图获取对方持有的锁时，可能会造成死锁，
+			导致多个线程全部挂起，既不能执行，也无法结束，只能靠操作系统强制终止。
+	
+	小结
+	多线程编程，模型复杂，容易发生冲突，必须用锁加以隔离，同时，又要小心死锁的发生。
+	Python解释器由于设计时有GIL全局锁，导致了多线程无法利用多核。多线程的并发在Python中就是一个美丽的梦。
+	
+	多个线程，都利用 StringIO往内存中 存取 数据，会不会出现 数据混乱的现象？会。
+	
+	time在多进程中的应用
+
+	time.time()     返回当前时间戳，
+	start=time.time()表示现在开始；
+	end=time.time()指的是现在结束。（注意，两个现在指的不是同一时间）
+	
+	time.sleep(t)     t=推迟执行的秒数
+
+
+	#ThreadLocal最常用的地方就是为每个线程绑定一个数据库连接，HTTP请求，用户身份信息等，
+	#这样一个线程的所有调用到的处理函数都可以非常方便地访问这些资源。
+
+
+
+
+>v0.1.3 分布式计算
+	基本形态 
+	分布式进程
+	(1)day10/task_master.py 在Ubuntu上添加文件头，先运行。
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+	
+	(2)day10/task_worker.py 在win7上接着运行。
+
+
+	而Queue之所以能通过网络访问，就是通过QueueManager实现的。
+	由于QueueManager管理的不止一个Queue，所以，要给每个Queue的网络调用接口起个名字，比如get_task_queue。
+	
+	authkey有什么用？这是为了保证两台机器正常通信，不被其他机器恶意干扰。
+	如果task_worker.py的authkey和task_master.py的authkey不一致，肯定连接不上。
+	
+	小结
+	Python的分布式进程接口简单，封装良好，适合需要把繁重任务分布到多台机器的环境下。
+	注意Queue的作用是用来传递任务和接收结果，每个任务的描述数据量要尽量小。
+	比如发送一个处理日志文件的任务，就不要发送几百兆的日志文件本身，
+	而是发送日志文件存放的完整路径，由Worker进程再去共享的磁盘上读取文件。
+
+
+
+>v0.1.4 正则表达式
+http://blog.csdn.net/zfq642773391/article/details/5506618
+	a|b	a或b
+	^	开头
+	$	结尾
+	\d	数字
+	\s	空格、tab等
+	\w	字母
+	[a-z] 小写字母
+	[a-zA-Z0-9] 大小写字母、数字
+	
+	数量词
+		? {0,1}
+		* {0,}
+		+ {1,}
+	myreg=r'^(\w+[\w\.]*?\w+)@{1}(\w+[\w\.]+?\w+)$' #完美匹配email
+
+>v0.1.5 先回顾两个点：模块和包，map和reduce
+	(1)模块和包
+	注意：Mac或Linux上有可能并存Python 3.x和Python 2.x，因此对应的pip命令是pip3。
+	一个文件就是一个模块。很多文件就凑成一个包。模块和包能解决重名问题。
+	一个包内要有一个__init__.py文件，可以为空。
+	
+	模块与包  运行不了MHello.py:可以运行了，因为缩进异常
+	升级pip：（win7下升级会出错！如果没必要，还是别升级了）
+		- You are using pip version 6.0.8, however version 7.1.2 is available.
+		You should consider upgrading via the 'pip install --upgrade pip' command.
+		
+	模块搜索路径
+		默认情况下，Python解释器会搜索当前目录、所有已安装的内置模块和第三方模块，搜索路径存放在sys模块的path变量中. 	
+		>>> import sys
+		>>> sys.path
+			['', 
+			'C:\\Program Files (x86)\\Python35-32\\python35.zip', 
+			'C:\\Program Files (x86)\\Python35-32\\DLLs', 
+			'C:\\Program Files (x86)\\Python35-32\\lib', 
+			'C:\\Program Files (x86)\\Python35-32', 
+			'C:\\Program Files (x86)\\Python35-32\\lib\\site-packages']
+		如果我们要添加自己的搜索目录，有两种方法：
+			- sys.path.append('path/to/your/lib')，本次运行有效
+			- 设置环境变量PYTHONPATH
+			
+			
+>v0.1.5-2 回顾(2)map和reduce
+	纯粹的函数式编程语言编写的函数没有变量.
+	函数式编程的一个特点就是，允许把函数本身作为参数传入另一个函数，还允许返回一个函数！
+	
+	Python对函数式编程提供部分支持。由于Python允许使用变量，因此，Python不是纯函数式编程语言。
+
+	高阶函数英文叫Higher-order function。
+	把函数作为参数传入，这样的函数称为高阶函数，函数式编程就是指这种高度抽象的编程范式。
+	MapReduce: Simplified Data Processing on Large Clusters (Jeffrey Dean and Sanjay Ghemawat)
+	https://research.google.com/archive/mapreduce.html
+	http://agetouch.blog.163.com/blog/static/22853509020169795457740/
+
+	map()函数接收两个参数，一个是函数，一个是Iterable，
+	map将传入的函数依次作用到序列的每个元素，并把结果作为新的Iterator返回
+
+
+ 
+
+
+
+
+	v0.1.? 常用内建模块
