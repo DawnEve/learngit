@@ -178,6 +178,15 @@ http://fhqdddddd.blog.163.com/blog/static/1869915420168283157719/?newFollowBlog
 第十二天：常用内建模块
 	Python之所以自称“batteries included”，就是因为内置了许多非常有用的模块，无需额外安装和配置，即可直接使用。
 	datetime:获取当前日期
+	collections:内建的一个集合模块，提供了许多有用的集合类。
+	base64:
+
+
+
+
+
+
+
 
 
 
