@@ -8,3 +8,6 @@ def test2(n):
     #import abc
     abc.test(n)
     xyz.test(n)
+    
+def uniquefn(n):
+    print('unique fn',n)

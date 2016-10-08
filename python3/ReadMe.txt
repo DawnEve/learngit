@@ -61,7 +61,7 @@
 		- MySQL的驱动：mysql-connector-python
 		- 用于科学计算的NumPy库：numpy
 		- 用于生成文本的模板工具Jinja2, 等等
-	模块搜索路径
+	模块搜索路径：sys.path
 
 
 

@@ -10,3 +10,5 @@ mycompany.test(3)
 
 #包内调用两个
 mycompany.test2(4)
+ 
+mycompany.uniquefn(100) #为什么不能省略模块/包名？
