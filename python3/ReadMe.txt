@@ -191,7 +191,7 @@ http://fhqdddddd.blog.163.com/blog/static/1869915420168283157719/?newFollowBlog
 	hashlib模块: md5 sha1摘要计算
 	itertools：迭代器工具。 不懂
 
-	XML
+	XML：http://www.w3school.com.cn/xml/index.asp
 	HTMLParser
 	urllib提供了一系列用于操作URL的功能。很好用，可以用于爬虫抓取步骤！
 
@@ -202,6 +202,18 @@ http://fhqdddddd.blog.163.com/blog/static/1869915420168283157719/?newFollowBlog
 
 
 
+第十四天：图形界面
+
+
+
+第十五天：网络编程
+	TCP/IP
+		tcp: hello_server, hello_client
+		udp:
+	访问数据库:SQLite MySQL 
+		ORM(Object-Relational Mapping)框架： SQLAlchemy
+	Web开发：web框架
+	
 
 
 
@@ -209,16 +221,6 @@ http://fhqdddddd.blog.163.com/blog/static/1869915420168283157719/?newFollowBlog
 
 
 //TODO
-
-第十四天：图形界面
-
-
-第十五天：网络编程
-	TCP/IP
-	访问数据库:SQLite MySQL 
-		ORM(Object-Relational Mapping)框架： SQLAlchemy
-	Web开发：web框架
-	
 	
 第十六天：异步IO	
 		

@@ -232,6 +232,31 @@ v0.1.8 常用内建模块2(day12)
 	virtualenv:隔离的python版本环境
 		virtualenv为应用提供了隔离的Python运行环境，解决了不同应用间多版本的冲突问题。
 	
+>v0.1.9 图形界面(day14)
+Python支持多种图形界面的第三方库，包括： Tk、wxWidgets、Qt、GTK
+
+
+>v0.2.0 tcp/udp
+	为什么收到的数据都带着b，比如b'Mike'。
+		回头看“字符串和编码”
+		client发出的是utf-8编码的bytes 到了server以后用%s格式化的时候要先decode 然后加上hello以后再encode成utf-8，即
+		s.sendto(('Hello, %s!' % data.decode('utf-8')).encode('utf-8'), addr)
+
+	SMTP发送邮件
+		Python对SMTP支持有smtplib和email两个模块，email负责构造邮件，smtplib负责发送邮件。
+	
+	各种问题，验证通不过。删除密码后git commit
+
+
+
+
+	
+
+
+
+
+
+
 
 
 	
