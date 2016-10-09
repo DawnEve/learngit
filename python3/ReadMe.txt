@@ -203,7 +203,8 @@ http://fhqdddddd.blog.163.com/blog/static/1869915420168283157719/?newFollowBlog
 
 第十五天：网络编程
 	TCP/IP
-	访问数据库:SQLite MySQL
+	访问数据库:SQLite MySQL 
+		ORM(Object-Relational Mapping)框架： SQLAlchemy
 	Web开发：web框架
 	
 	

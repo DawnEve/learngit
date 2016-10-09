@@ -175,8 +175,28 @@ http://blog.csdn.net/zfq642773391/article/details/5506618
 'defaultdict', 'deque', 'namedtuple']
 	Base64是一种任意二进制到文本字符串的编码方法，常用于在URL、Cookie、网页中传输少量二进制数据。
 
+	未完待续//TODO
 
 
+
+v0.1.7 MySQL的连接(day15)
+	# ../Python35/Scripts> pip -V
+	# pip 8.1.2 from c:\program files (x86)\python35-32\lib\site-packages (python 3.5)
+	# ../Python35/Scripts> pip install --upgrade pip
+	# ../Python35/Scripts> pip install --upgrade wheel
+	# ../Python35/Scripts> pip install mysql-connector-python-rf
+
+	ORM框架： SQLAlchemy
+
+>pip install sqlalchemy
+
+Building wheels for collected packages: sqlalchemy
+  Running setup.py bdist_wheel for sqlalchemy ... done
+  Stored in directory: C:\Users\Administrator\AppData\Local\pip\Cache\wheels\62\
+e9\09\6ce98ed96af4a7a0856599e16f398486a04c1a205c72c243fe
+Successfully built sqlalchemy
+Installing collected packages: sqlalchemy
+Successfully installed sqlalchemy-1.1.1
 
 
 
