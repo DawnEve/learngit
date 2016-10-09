@@ -179,7 +179,7 @@ http://blog.csdn.net/zfq642773391/article/details/5506618
 
 
 
-v0.1.7 MySQL的连接(day15)
+>v0.1.7 MySQL的连接(day15)
 	# ../Python35/Scripts> pip -V
 	# pip 8.1.2 from c:\program files (x86)\python35-32\lib\site-packages (python 3.5)
 	# ../Python35/Scripts> pip install --upgrade pip
@@ -199,6 +199,33 @@ Installing collected packages: sqlalchemy
 Successfully installed sqlalchemy-1.1.1
 
 
+v0.1.8 常用内建模块2(day12)
+	struct模块: 来解决bytes和其他二进制数据类型的转换。
+	hashlib模块: 摘要计算
+			#MD5是最常见的摘要算法，速度很快，生成结果是固定的128 bit字节，通常用一个32位的16进制字符串表示。
+			def getmd5(str):
+			    import hashlib 
+			    md5 = hashlib.md5()
+			    md5.update(str.encode('utf-8'))
+			    return md5.hexdigest()
+			
+			#SHA1的结果是160 bit字节，通常用一个40位的16进制字符串表示。
+			def getsha1(str):
+			    import hashlib 
+			    sha1 = hashlib.sha1()
+			    sha1.update(str.encode('utf-8'))
+			    return sha1.hexdigest()
+			
+			str1='how to use md5 in python hashlib?'
+			rs=getmd5(str1)
+			print(getmd5(str1))
+			
+			print(getsha1(str1))
 
-
-
+	itertools：提供了非常有用的用于操作迭代对象的函数。
+		itertools模块提供的全部是处理迭代功能的函数，它们的返回值不是list，而是Iterator，
+		只有用for循环迭代的时候才真正计算。
+	urllib提供了一系列用于操作URL的功能。
+	
+	
+	

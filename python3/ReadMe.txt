@@ -2,9 +2,15 @@
 廖雪峰的示例：https://github.com/michaelliao/learn-python3/tree/master/samples
 我的示例：https://github.com/DawnEve/learngit/tree/master/python3/
 
+==========================================
+经验教训
+1.文件头部
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+2.命名文件的时候千万不要和import的文件重名！
+
+==========================================
 
 第一天：运行模式、数据格式
 	基础知识。
@@ -180,8 +186,17 @@ http://fhqdddddd.blog.163.com/blog/static/1869915420168283157719/?newFollowBlog
 	datetime:获取当前日期
 	collections:内建的一个集合模块，提供了许多有用的集合类。
 	base64:
+	struct模块: 来解决bytes和其他二进制数据类型的转换。 不懂
+	
+	hashlib模块: md5 sha1摘要计算
+	itertools：迭代器工具。 不懂
+
+	XML
+	HTMLParser
+	urllib提供了一系列用于操作URL的功能。很好用，可以用于爬虫抓取步骤！
 
 
+第十三天：常用第三方模块
 
 
 
@@ -194,9 +209,6 @@ http://fhqdddddd.blog.163.com/blog/static/1869915420168283157719/?newFollowBlog
 
 
 //TODO
-第十三天：常用第三方模块
-
-
 
 第十四天：图形界面
 
