@@ -197,8 +197,8 @@ http://fhqdddddd.blog.163.com/blog/static/1869915420168283157719/?newFollowBlog
 
 
 第十三天：常用第三方模块
-
-
+	基本上，所有的第三方模块都会在PyPI - the Python Package Index上注册，只要找到对应的模块名字，即可用pip安装。
+	virtualenv:隔离的python版本环境
 
 
 

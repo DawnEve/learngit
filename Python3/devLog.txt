@@ -227,5 +227,12 @@ v0.1.8 常用内建模块2(day12)
 		只有用for循环迭代的时候才真正计算。
 	urllib提供了一系列用于操作URL的功能。
 	
+>v0.1.8-2 常用第三方模块(day13)
+	PIL:图像处理库	https://pillow.readthedocs.io/en/3.4.x/
+	virtualenv:隔离的python版本环境
+		virtualenv为应用提供了隔离的Python运行环境，解决了不同应用间多版本的冲突问题。
+	
+
+
 	
 	
