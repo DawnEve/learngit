@@ -19,6 +19,8 @@
 	格式化和C语言类似。
 	list类型的append方法和pop方法
 	tuple类型：不可变所以安全，但是内嵌list时可变list内容；
+	
+	字符串截取 str2[n:m]
 
 第二天：控制结构	
 	if循环
@@ -108,7 +110,7 @@
 		- 但如果要把序列化搞得更通用、更符合Web标准，就可以使用json模块。
 			ss=json.dumps(s, default=stu2dict) #序列化
 			s2=json.loads(ss, object_hook=dict2stu) #反序列化
-		
+	某个字符出现的次数 str2.count('a')	
 		
 第十天：进程和线程
 	进程和线程(Python既支持多进程，又支持多线程)

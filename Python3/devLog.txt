@@ -199,7 +199,7 @@ Installing collected packages: sqlalchemy
 Successfully installed sqlalchemy-1.1.1
 
 
-v0.1.8 常用内建模块2(day12)
+>v0.1.8 常用内建模块2(day12)
 	struct模块: 来解决bytes和其他二进制数据类型的转换。
 	hashlib模块: 摘要计算
 			#MD5是最常见的摘要算法，速度很快，生成结果是固定的128 bit字节，通常用一个32位的16进制字符串表示。
@@ -248,9 +248,7 @@ Python支持多种图形界面的第三方库，包括： Tk、wxWidgets、Qt、
 	各种问题，验证通不过。删除密码后git commit
 
 
-
-
-	
+>v0.2.1 Web开发
 
 
 
