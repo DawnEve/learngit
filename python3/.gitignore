@@ -21,3 +21,6 @@ deploy_key_rsa
 
 # day5处理图片了
 */day5/*.jpg
+
+#eclipse
+.settings

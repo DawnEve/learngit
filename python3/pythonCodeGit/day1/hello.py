@@ -1,2 +1,2 @@
 #coding=utf-8
-print "hello worldÊÀ½ç";
+print "hello worldä¸–ç•Œ";

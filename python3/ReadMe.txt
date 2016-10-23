@@ -111,6 +111,8 @@
 			ss=json.dumps(s, default=stu2dict) #序列化
 			s2=json.loads(ss, object_hook=dict2stu) #反序列化
 	某个字符出现的次数 str2.count('a')	
+	
+	[推荐] 合并文件夹下所有文本文件的内容 mergeAllFileInOne/
 		
 第十天：进程和线程
 	进程和线程(Python既支持多进程，又支持多线程)
