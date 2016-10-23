@@ -68,6 +68,7 @@ def mergeAllFileIn(dirname,types=['py','txt']):
                 append2File(abspath,fw)
 
 dirname='F:\gitHub\learngit\Python3'
-mergeAllFileIn(dirname)
+#mergeAllFileIn(dirname)
 
 
+mergeAllFileIn(r'F:\xampp\htdocs\think\SeqManager',['php','html','css','js'])

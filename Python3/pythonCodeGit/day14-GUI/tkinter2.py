@@ -14,11 +14,11 @@ class Application(Frame):
         self.alertButton.pack()
 
     def hello(self):
-        name = self.nameInput.get() or 'world'
-        messagebox.showinfo('Message', 'Hello, %s' % name)
+        name = self.nameInput.get() or 'world3'
+        messagebox.showinfo('Message44', 'Hello1, %s' % name)
 
 app = Application()
 # 设置窗口标题:
-app.master.title('Hello World')
+app.master.title('Hello World22')
 # 主消息循环:
 app.mainloop()

@@ -1,5 +1,6 @@
 #我的程序日记本：
 廖雪峰的示例：https://github.com/michaelliao/learn-python3/tree/master/samples
+廖雪峰博客： http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000
 我的示例：https://github.com/DawnEve/learngit/tree/master/python3/
 
 ==========================================
@@ -207,7 +208,9 @@ http://fhqdddddd.blog.163.com/blog/static/1869915420168283157719/?newFollowBlog
 
 
 第十四天：图形界面
-
+	布局是个大话题，简单说就是我们没有指定任何布局时系统有个默认布局，
+	如果要自己控制位置和大小，需要指定布局和各种参数，要把GUI全部讲清楚可以写一本书了，
+	这里只能是入门GUI的Hello World
 
 
 第十五天：网络编程
@@ -217,8 +220,8 @@ http://fhqdddddd.blog.163.com/blog/static/1869915420168283157719/?newFollowBlog
 	访问数据库:SQLite MySQL 
 		ORM(Object-Relational Mapping)框架： SQLAlchemy
 	Web开发：web框架
-	
-
+	WSGI：Web Server Gateway Interface。
+	使用Web框架:比较流行的Web框架——Flask来使用。用Flask编写Web App比WSGI接口简单
 
 
 

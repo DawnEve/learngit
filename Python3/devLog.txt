@@ -250,23 +250,38 @@ Python支持多种图形界面的第三方库，包括： Tk、wxWidgets、Qt、
 >v0.2.0-2 合并文件夹内所有文件到一个文件，去掉空格。
 
 
-
-
 >v0.2.1 Web开发
+day15::Sqlite3小结
+	在Python中操作数据库时，要先导入数据库对应的驱动，然后，通过Connection对象和Cursor对象操作数据。
+	要确保打开的Connection对象和Cursor对象都正确地被关闭，否则，资源就会泄露。
+	如何才能确保出错的情况下也关闭掉Connection对象和Cursor对象呢？请回忆try:...except:...finally:...的用法。
+
+html-css-javascript
+讲解HTML、CSS和JavaScript就可以写3本书，对于优秀的Web开发人员来说，精通HTML、CSS和JavaScript是必须的，
+\这里推荐一个在线学习网站w3schools：http://www.w3schools.com/
+以及一个对应的中文版本：http://www.w3school.com.cn/
 
 
+需要一个统一的接口，让我们专心用Python编写Web业务。
+这个接口就是WSGI：Web Server Gateway Interface。
+	了解了HTTP协议和HTML文档，我们其实就明白了一个Web应用的本质就是：
+	浏览器发送一个HTTP请求；
+	服务器收到请求，生成一个HTML文档；
+	服务器把HTML文档作为HTTP响应的Body发送给浏览器；
+	浏览器收到HTTP响应，从HTTP Body取出HTML文档并显示。
+
+	day15/wsgi_demo/
+	小结
+	无论多么复杂的Web应用程序，入口都是一个WSGI处理函数。
+	HTTP请求的所有输入信息都可以通过environ获得，HTTP响应的输出都可以通过start_response()加上函数返回值作为Body。
+	
+	复杂的Web应用程序，光靠一个WSGI函数来处理还是太底层了，我们需要在WSGI之上再抽象出Web框架，进一步简化Web开发。
 
 
-
-
-
-
-
-
-
-
-
-
+使用Web框架
+	>pip install flask
+	Installing collected packages: click, MarkupSafe, Jinja2, Werkzeug, itsdangerous, flask
+	Successfully installed Jinja2-2.8 MarkupSafe-0.23 Werkzeug-0.11.11 click-6.6 flask-0.11.1 itsdangerous-0.24
 
 
 
