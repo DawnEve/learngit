@@ -250,7 +250,7 @@ Python支持多种图形界面的第三方库，包括： Tk、wxWidgets、Qt、
 >v0.2.0-2 合并文件夹内所有文件到一个文件，去掉空格。
 
 
->v0.2.1 Web开发
+>v0.2.1 Web开发-001
 day15::Sqlite3小结
 	在Python中操作数据库时，要先导入数据库对应的驱动，然后，通过Connection对象和Cursor对象操作数据。
 	要确保打开的Connection对象和Cursor对象都正确地被关闭，否则，资源就会泄露。
@@ -284,8 +284,27 @@ html-css-javascript
 	Successfully installed Jinja2-2.8 MarkupSafe-0.23 Werkzeug-0.11.11 click-6.6 flask-0.11.1 itsdangerous-0.24
 
 
+>v0.2.1-2 Web开发002 重新看装饰器后，接着看web框架
+	使用Python web框架。
 
+	有了Web框架，我们在编写Web应用时，注意力就从WSGI处理函数转移到URL+对应的处理函数，这样，编写Web App就更加简单了。
+	在编写URL处理函数时，除了配置URL外，从HTTP请求拿到用户数据也是非常重要的。
+	Web框架都提供了自己的API来实现这些功能。Flask通过request.form['name']来获取表单的内容。
 
+	Flask通过render_template()函数来实现模板的渲染。和Web框架类似，Python的模板也有很多种。
+	Flask默认支持的模板是jinja2，所以我们先直接安装jinja2：
+	
+	>pip install jinja2 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	
 	

@@ -50,6 +50,8 @@
 	闭包closure
 	匿名函数lambda
 	装饰器decorator（不懂）
+		day4/decorator/
+	
 	偏函数（Partial function）（不太懂）
 	
 	
@@ -222,6 +224,13 @@ http://fhqdddddd.blog.163.com/blog/static/1869915420168283157719/?newFollowBlog
 	Web开发：web框架
 	WSGI：Web Server Gateway Interface。
 	使用Web框架:比较流行的Web框架——Flask来使用。用Flask编写Web App比WSGI接口简单
+
+	除了Flask，常见的Python Web框架还有：
+	- Django：全能型Web框架； https://www.djangoproject.com/
+	- web.py：一个小巧的Web框架； http://webpy.org/
+	- Bottle：和Flask类似的Web框架； http://bottlepy.org/docs/dev/
+	- Tornado：Facebook的开源异步Web框架。http://www.tornadoweb.org/en/stable/
+	当然了，因为开发Python的Web框架也不是什么难事，我们后面也会讲到开发Web框架的内容。
 
 
 
