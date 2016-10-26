@@ -295,8 +295,12 @@ html-css-javascript
 	Flask默认支持的模板是jinja2，所以我们先直接安装jinja2：
 	
 	>pip install jinja2 
+	Requirement already satisfied (use --upgrade to upgrade): jinja2 in c:\program files (x86)\python35-32\lib\site-packages
+	Requirement already satisfied (use --upgrade to upgrade): MarkupSafe in c:\program files (x86)\python35-32\lib\site-packages (from jinja2)
 	
+	使用模板没有继续看...//TODO
 	
+>v0.2.1-3 	异步IO	
 	
 	
 	

@@ -232,13 +232,30 @@ http://fhqdddddd.blog.163.com/blog/static/1869915420168283157719/?newFollowBlog
 	- Tornado：Facebook的开源异步Web框架。http://www.tornadoweb.org/en/stable/
 	当然了，因为开发Python的Web框架也不是什么难事，我们后面也会讲到开发Web框架的内容。
 
+	使用模板jinja2
 
 
 
 
-//TODO
 	
 第十六天：异步IO	
+	协程的特点在于是一个线程执行，那和多线程比，协程有何优势？
+	- 最大的优势就是协程极高的执行效率。
+	- 第二大优势就是不需要多线程的锁机制。
+	因为协程是一个线程执行，那怎么利用多核CPU呢？最简单的方法是多进程+协程，
+		既充分利用多核，又充分发挥协程的高效率，可获得极高的性能。
+	
+	不懂yield表达式。//TODO
+	
+	
+	
+	
+	
+	
+	//TODO
+	
+	
+	
 		
 第十七天：实战python Web项目
 
