@@ -1,10 +1,17 @@
 #我的程序日记本：
 廖雪峰的示例：https://github.com/michaelliao/learn-python3/tree/master/samples
+廖雪峰博客： http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000
 我的示例：https://github.com/DawnEve/learngit/tree/master/python3/
 
+==========================================
+经验教训
+1.文件头部
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+2.命名文件的时候千万不要和import的文件重名！
+
+==========================================
 
 第一天：运行模式、数据格式
 	基础知识。
@@ -13,6 +20,8 @@
 	格式化和C语言类似。
 	list类型的append方法和pop方法
 	tuple类型：不可变所以安全，但是内嵌list时可变list内容；
+	
+	字符串截取 str2[n:m]
 
 第二天：控制结构	
 	if循环
@@ -41,6 +50,8 @@
 	闭包closure
 	匿名函数lambda
 	装饰器decorator（不懂）
+		day4/decorator/
+	
 	偏函数（Partial function）（不太懂）
 	
 	
@@ -102,7 +113,9 @@
 		- 但如果要把序列化搞得更通用、更符合Web标准，就可以使用json模块。
 			ss=json.dumps(s, default=stu2dict) #序列化
 			s2=json.loads(ss, object_hook=dict2stu) #反序列化
-		
+	某个字符出现的次数 str2.count('a')	
+	
+	[推荐] 合并文件夹下所有文本文件的内容 mergeAllFileInOne/
 		
 第十天：进程和线程
 	进程和线程(Python既支持多进程，又支持多线程)
@@ -178,27 +191,71 @@ http://fhqdddddd.blog.163.com/blog/static/1869915420168283157719/?newFollowBlog
 第十二天：常用内建模块
 	Python之所以自称“batteries included”，就是因为内置了许多非常有用的模块，无需额外安装和配置，即可直接使用。
 	datetime:获取当前日期
+	collections:内建的一个集合模块，提供了许多有用的集合类。
+	base64:
+	struct模块: 来解决bytes和其他二进制数据类型的转换。 不懂
+	
+	hashlib模块: md5 sha1摘要计算
+	itertools：迭代器工具。 不懂
+
+	XML：http://www.w3school.com.cn/xml/index.asp
+	HTMLParser
+	urllib提供了一系列用于操作URL的功能。很好用，可以用于爬虫抓取步骤！
 
 
-
-
-
-
-//TODO
 第十三天：常用第三方模块
+	基本上，所有的第三方模块都会在PyPI - the Python Package Index上注册，只要找到对应的模块名字，即可用pip安装。
+	virtualenv:隔离的python版本环境
 
 
 
 第十四天：图形界面
+	布局是个大话题，简单说就是我们没有指定任何布局时系统有个默认布局，
+	如果要自己控制位置和大小，需要指定布局和各种参数，要把GUI全部讲清楚可以写一本书了，
+	这里只能是入门GUI的Hello World
 
 
 第十五天：网络编程
 	TCP/IP
-	访问数据库:SQLite MySQL
+		tcp: hello_server, hello_client
+		udp:
+	访问数据库:SQLite MySQL 
+		ORM(Object-Relational Mapping)框架： SQLAlchemy
 	Web开发：web框架
-	
+	WSGI：Web Server Gateway Interface。
+	使用Web框架:比较流行的Web框架——Flask来使用。用Flask编写Web App比WSGI接口简单
+
+	除了Flask，常见的Python Web框架还有：
+	- Django：全能型Web框架； https://www.djangoproject.com/
+	- web.py：一个小巧的Web框架； http://webpy.org/
+	- Bottle：和Flask类似的Web框架； http://bottlepy.org/docs/dev/
+	- Tornado：Facebook的开源异步Web框架。http://www.tornadoweb.org/en/stable/
+	当然了，因为开发Python的Web框架也不是什么难事，我们后面也会讲到开发Web框架的内容。
+
+	使用模板jinja2
+
+
+
+
 	
 第十六天：异步IO	
+	协程的特点在于是一个线程执行，那和多线程比，协程有何优势？
+	- 最大的优势就是协程极高的执行效率。
+	- 第二大优势就是不需要多线程的锁机制。
+	因为协程是一个线程执行，那怎么利用多核CPU呢？最简单的方法是多进程+协程，
+		既充分利用多核，又充分发挥协程的高效率，可获得极高的性能。
+	
+	不懂yield表达式。//TODO
+	
+	
+	
+	
+	
+	
+	//TODO
+	
+	
+	
 		
 第十七天：实战python Web项目
 

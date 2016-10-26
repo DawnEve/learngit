@@ -4,7 +4,7 @@ Month = Enum('Month', ('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', '
 
 for name, member in Month.__members__.items():
     print(name, '=>', member, ',', member.value)
-	#valueÊôÐÔÔòÊÇ×Ô¶¯¸³¸ø³ÉÔ±µÄint³£Á¿£¬Ä¬ÈÏ´Ó1¿ªÊ¼¼ÆÊý¡£
+    #valueå±žæ€§åˆ™æ˜¯è‡ªåŠ¨èµ‹ç»™æˆå‘˜çš„intå¸¸é‡ï¼Œé»˜è®¤ä»Ž1å¼€å§‹è®¡æ•°ã€‚
 #
 
 
