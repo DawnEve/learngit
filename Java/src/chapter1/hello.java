@@ -1,7 +1,7 @@
 package chapter1;
 
-public class hello {
-	public static void main(String[] args) {
-    	System.out.println("Hello World2---!");
-    }
+public class Hello {
+	static public void main(String[] arg){
+		System.out.print("wj0l");
+	}
 }
