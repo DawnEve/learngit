@@ -4,9 +4,12 @@
 
 
 第一章：编程基础 3-11 
-                    变量、运算符、流程控制;
-                    
+            - 变量、运算符、流程控制;
 第二章：数组 11 -31
+            - 数组是按照地址传递的！
+            - 数组遍历、复制、求最值、冒泡法排序、二分法查找
+            - 排序可以自己实现，或者引用类 import java.util.Arrays;
+                    
 第三章：面向对象程序开发 31 -74
 第四章：异常机制 74 -89
 第五章：多线程技术 89 -122
@@ -42,4 +45,46 @@ Java语言
 
 (3)JDK 8的API Reference:  http://docs.oracle.com/javase/8/docs/api/index.html
 　用Java语言编程的时候，我们需要不断查阅的就是这份API Reference。我们平常一般是通过IDE来快速查看某个接口的文档说明。
+
+
+
+
+
+
+
+====================================================
+git常用用法
+
+1. 初步
+上来一开是就是注册一个邮箱，然后按照 https://help.github.com/articles/set-up-git 这上面的做，
+ 基本就是生成一个ssh key 然后balabala
+还有就是安装git - -， 没有用过的同学请自行百度
+
+2. 建repo
+github上的repo也基本上就是项目的意思， 建项目基本也没有几步，
+可以按照上面的做 https://help.github.com/articles/create-a-repo
+
+我简单的叙述一下， 在git的网站上弄一个新的repo， 然后就是选一下你的repo名字，你的描述， 你的语言，
+以及你选的licence， 推荐用宽松的gpl协议。 这样不会有人改你的代码，虽然我一直都用apache= =。
+
+都弄好了之后，你发现你的项目右面有一个url， 打git clone url ， 就会将项目clone下来， 然后你就可以搞了。
+在readme里面可以打个什么hello world之类的，然后传上去， 即 git push origin master
+
+3. 版本恢复，这个可以被认为是git最牛逼的功能。svn来回切版本的时间会特别长， 所以这时候git就显得比较牛逼。 
+如果你想回退到之前某个版本，打git log， 会看到一陀数， 那个应该就是你的commit的md5值， 
+然后打git reset --hard + 数， 就ok， 这时候就可以提交了。
+但是有问题会。
+
+4. git 提交
+基本上就是先git add 两遍， 然后commit ， 也可以直接commit -m 什么的。
+要是你reset之前的版本，会跟远程版本的不一直，这就难搞了， 
+一个比较正常的做法是 git pull origin，将远端的代码搞下来， 然后打git merge， 然后开冲突文件，
+ 你的文件基本上就会显示有冲突的地方， 你修改之后commit就可以了， 这是做比赛最需要的！ 
+为什么呢， 因为我们需要修改参数，有的时候太乱了，特别容易坑爹TT。 
+
+5. 打tag
+git tag 版本号
+git tag 版本号 -m "添加对该标签的评论"
+git push --tags
+git tag -d 版本号 #删除tag 
 

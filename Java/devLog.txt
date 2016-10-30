@@ -19,10 +19,39 @@ write in:http://zhengzhi2014.blog.163.com/blog/static/227196154201692984845865/
 
 ===========================================
 v0.0.2 Java变量、运算符、流程控制
-    12天学通Java(P1-P96)
+    《21天学通Java》(P1-P96)
+    for循环中循环数字在循环结束消失，而while循环则在循环结束后继续有效。
+    
+===========================================
+v0.0.3 Java数组  《21天学通Java》(P97-P111)
+(1)语法：for(int x:arr){///xxx}
+        报错：Syntax error, 'for each' statements are only available if source level is 1.5 or greater
+        
+        解决方法：
+        在eclipse中菜单Window----preferences----java-----compiler把右边中的Compiler
+        compliance level改为1.6
+        右击项目，修改properties，找到java
+        compiler修改compiler compliance level为1.6
+
+(2)数组遍历、复制、求最值、冒泡法排序、二分法查找
+    for(int x: arr2){//todo sth;}
+
+(3)排序可以自己实现，或者引用类 import java.util.Arrays;
+
+(4)二维数组
+int[][] arr=new int[3][2];//define
+    //set 3 one-d array, each has 2 element;
+    数组是按照地址传递的，
+    - 在栈中有一个地址，指向堆内存。
+    - 堆内有一个区域保存第一维度共3个数组的地址；
+    - 这三个地址又指向第二个堆内存，分别是是3个数组，每个数组2个元素。
 
 
 
 
 
+
+
+===========================================
+v0.0.4 
 
