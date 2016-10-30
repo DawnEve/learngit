@@ -247,7 +247,7 @@ http://fhqdddddd.blog.163.com/blog/static/1869915420168283157719/?newFollowBlog
 	
 	不懂yield表达式。//TODO
 	
-	
+	为了简化并更好地标识异步IO，从Python 3.5开始引入了新的语法async和await，可以让coroutine的代码更简洁易读。
 	
 	
 	
