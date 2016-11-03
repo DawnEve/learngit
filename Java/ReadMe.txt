@@ -18,6 +18,8 @@
     - 复写、重写、重载
     	- @override写不写有什么区别? http://zpointer.iteye.com/blog/1066992
     - 抽象类、抽象方法
+    - 枚举(DK1.5+)： 枚举的本质是类 http://www.jb51.net/article/83104.htm
+    
     
 
 第四章：异常机制 74 -89
