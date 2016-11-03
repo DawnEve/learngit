@@ -3,7 +3,7 @@ package chapter3;
 public class AbstractDemo {
 	public static void main(String[] args){
 		//抽象类和抽象方法
-		Cat c=new Cat("Tomcat");
+		Cat2 c=new Cat2("Tomcat");
 		c.say();
 		c.cry();
 	}
@@ -12,9 +12,9 @@ public class AbstractDemo {
 }
 
 //抽象动物
-abstract class Animal{
+abstract class Animal2{
 	String name;
-	public Animal(String name){
+	public Animal2(String name){
 		this.name=name;
 	}
 	
@@ -27,8 +27,8 @@ abstract class Animal{
 
 
 //实例化 猫 
-class Cat extends Animal{
-	public Cat(String name) {
+class Cat2 extends Animal2{
+	public Cat2(String name) {
 		super(name);
 	}
 
