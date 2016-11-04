@@ -280,21 +280,25 @@ Constructor 类：代表类的构造方法。
 Array类：提供了动态创建数组，以及访问数组的元素的静态方法。
 
 
+===========================================
+v0.0.4-5 OOP 反射机制2
+当你知道了java的反射机制后，以后当你接触到java的动态代理时就不会茫然了。
+
+http://www.cnblogs.com/hxsyl/archive/2013/03/23/2977593.html
+http://azrael6619.iteye.com/blog/429797
 
 
+方法的获取，执行：
+Method method = clazz.getMethod(methodName,argsClass);  
+method.invoke(owner, args);  
 
+执行静态方法：
+method.invoke(null, args);
+//invoke的一个参数是null，因为这是静态方法，不需要借助实例运行。
 
-
-
-
-
-
-
-
-
-
-
-
+获取实例：
+Constructor cons = newoneClass.getConstructor(argsClass);  
+return cons.newInstance(args); 
 
 
 

@@ -1,5 +1,6 @@
-package chapter3.reflect;
+package chapter3.reflect.bean;
 
+//军队
 abstract class Force{
 	public int number=100;
 	abstract public void fight();
@@ -7,6 +8,7 @@ abstract class Force{
 
 
 /**
+ * 人类力量
  * 测试类Person 
  * @author admin
  *

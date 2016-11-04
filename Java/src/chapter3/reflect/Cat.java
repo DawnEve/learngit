@@ -4,17 +4,27 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
+import chapter3.reflect.bean.Person;
+
 /**
  *  Class类中几个重要的方法:
 Class类是Reflection API 中的核心类，它有以下方法
 getName()：获得类的完整名字。
+
+1.isPrimitive(判断是否是基本类型的字节码)
+2.java中构造方法没有先后顺序，通过类型和参数个数区分。　
+getConstructors()：获得类的public类型的构造方法。
+getConstructor(Class[] parameterTypes)：获得类的特定构造方法，parameterTypes 参数指定构造方法的参数类型。
+
+3.Filed类代表某一类中的一个成员变量。
 getFields()：获得类的public类型的属性。
 getDeclaredFields()：获得类的所有属性。
+
 getMethods()：获得类的public类型的方法。
 getDeclaredMethods()：获得类的所有方法。
 getMethod(String name, Class[] parameterTypes)：获得类的特定方法，name参数指定方法的名字，parameterTypes 参数指定方法的参数类型。
-getConstructors()：获得类的public类型的构造方法。
-getConstructor(Class[] parameterTypes)：获得类的特定构造方法，parameterTypes 参数指定构造方法的参数类型。
+
+
 newInstance()：通过类的不带参数的构造方法创建这个类的一个对象。
  * @author admin
  *
@@ -25,13 +35,13 @@ public class Cat {
 	 * @param args
 	 */
 	public static void main(String[] args){
-		//showClass(new String(""));//class java.lang.String
+		showClass(new String(""));//class java.lang.String
 		//showClass(123);//class java.lang.Stringclass java.lang.Integer
 		//showClass(new String[]{""});//class [Ljava.lang.String;
 		//showMethod(new Person());
 		//showMethod(1.0);
 		//showConstructors(new Person());//共2个
-		showFields(new Person());
+		//showFields(new Person());
 	}
 	
 	/**
@@ -40,7 +50,8 @@ public class Cat {
 	static void showClass(Object obj){
 		//Class c=new String("").getClass();
 		Class c=obj.getClass();
-		System.out.print(c);//class java.lang.String
+		System.out.println(c);//class java.lang.String
+		System.out.println(c.getName());//获取类的完整名字。java.lang.String
 	}
 	
 	
