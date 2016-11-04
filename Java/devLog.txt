@@ -303,3 +303,62 @@ return cons.newInstance(args);
 
 
 
+
+
+
+
+
+
+===========================================
+v0.0.4-6 OOP 泛型(SDK1.5+) 《21天学通Java》(P200-P)
+官方：https://docs.oracle.com/javase/tutorial/java/generics/index.html
+
+在Java中，通过泛型可以给开发带来方便，通过参数的指定，可以改变其类型。
+Java 泛型的类型参数之实际类型在编译时会被消除。
+ 
+优点：
+ - 能使代码看起来灵活；容易管理，不容易产生错误。 
+ - 使用泛型能使代码量减少，能产生很多公共代码。
+ - 使用泛型在代码编译的时候能进行类型的检查并自动转换，使代码的运行效率得到提高。 
+ - 使用泛型在编译进行自动转换的时候出现了错误，会进行错误提示。 
+ - 使用泛型的时候参数只能是类的类型，不能是简单类型。
+ - 使用泛型的时候参数可以有多个。
+ - 使用泛型的时候参数也能继承别的类型。
+
+泛型类型就是List<T>和Map<T, T>.
+
+
+泛型有很多种，类泛型，接口泛型，方法泛型 http://swiftlet.net/archives/1964
+
+问题：JAVA泛型中的有界类型(extends super)， ? extends和? super的区别.
+//TODO http://blog.csdn.net/daniel_h1986/article/details/5708605
+	- List默认就是List<? entends Object>
+	- 小结一下就是：上界add方法受限，下界get方法受限。
+
+
+擦除也许泛型最具挑战性的方面是擦除（erasure），这是 Java 语言中泛型实现的底层技术。
+
+多重限制的语法是用“与”符号分隔限制：
+class C<T extends Comparable<? super T>&Serializable>
+
+
+
+
+
+Comparable 和 Serializable。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
