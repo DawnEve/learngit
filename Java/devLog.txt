@@ -310,7 +310,7 @@ return cons.newInstance(args);
 
 
 ===========================================
-v0.0.4-6 OOP 泛型(SDK1.5+) 《21天学通Java》(P200-P)
+v0.0.4-6 OOP 泛型(SDK1.5+) 《21天学通Java》(P200-P203)
 官方：https://docs.oracle.com/javase/tutorial/java/generics/index.html
 
 在Java中，通过泛型可以给开发带来方便，通过参数的指定，可以改变其类型。
@@ -345,6 +345,39 @@ class C<T extends Comparable<? super T>&Serializable>
 
 
 
+===========================================
+v0.0.4-7 OOP 接口和抽象类 《21天学通Java》(P204-P223)
+抽象类、多态特性；
+
+目标：
+•会定义接口和访问接口中的变量。 
+•熟练掌握接口的使用。 
+•了解接口和抽象类的区别。 
+•了解接口的多态问题。 
+•熟练掌握使用instanceof判断类型。
+
+
+接口内的变量都是public static final类型的，可以当做常量使用。
+接口里方法全为抽象。
+接口里的方法默认且必须是被修饰为public、abstract类型，不能是static、final类型。
+
+冲突处理：实现多个接口时，变量、方法重名怎么办？
+	变量当常量，著名接口.变量即可。
+	方法重名就不用管了？反正不报错。
+	
+抽象类与接口区别？	
+java 类型信息 instanceof 和 isInstance区别?
+
+为什么无关的类不能使用instanceof判断？
+
+面总结使用instanceof有哪些规则。
+	•instanceof关键字不能比较基本类型的数据。
+	•instanceof关键字可以对对象和接口使用。
+	•instanceof关键字的比较是基于多态的。
+	•不推荐使用instanceof关键字，要多多应用多态。
+	•instanceof关键字右边比较的类型只能为类和接口。
+
+可比较接口，序列化接口//TODO
 Comparable 和 Serializable。
 
 

@@ -43,6 +43,7 @@ public class GenericsMethodDemo {
 		//为什么是JavaBook也行？传入的JspBook更低级
 		
 		t.add(new JspBook("Jsp2"));//为什么没有超过JavaBook级别，依旧通过了呢？
+		//java多态在编译的时候会被移除，就固定了。
 		//因为能放入某一类的容器一定可以放入其子类，多态的概念。
 		
 		//JavaBook b=t.get(0);//编译失败
