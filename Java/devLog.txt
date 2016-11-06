@@ -565,6 +565,83 @@ v0.0.6 GUI  《21天学通Java》(P327-P413)
 
 
 
+===========================================
+v0.0.7 JDBC  《21天学通Java》(P414-P445)
+
+	数据库三个层：物理存储层、概念数据层、逻辑数据层
+	通用的数据库连接：JDBC,ODBC
+	
+	JDBC就是Java DataBase Connectivity，Java数据库连接。
+	与数据库建立一个连接。向数据库发送SQL语句。处理数据库返回的结果。
+	
+	。ODBC是指Open DataBase Connectivity，即开放数据库互连，它建立了一组规范，
+	并且提供了一组对数据库访问的标准API（应用程序编程接口），这些API利用SQL来完成其大部分任务
+	
+http://www.cnblogs.com/kunpengit/archive/2011/12/13/2285933.html
+	使用JDBC需要在工程中导入对应的jar包。
+	数据库与JDBC包的对应关系可以参考各种数据库对应的jar包、驱动类名和URL格式。
+	在Eclipse下的导入方法：
+
+
+驱动下载：
+http://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.40.zip
+各种数据库对应的jar包、驱动类名和URL格式
+http://dev.mysql.com/downloads/connector/j/
+安装方法：http://hzy3774.iteye.com/blog/1689525
+就是放到src/lib/下，然后 右击JRE system library->Build Path->configure build path
+
+
+在上述对数据库进行增删改查的过程中，可以发现其共性部分，即通用的流程：
+http://www.cnblogs.com/wuyuegb2312/p/3872607.html
+　　(1)创建Connection对象、SQL查询命令字符串；
+　　(2)对Connection对象传入SQL查询命令，获得PreparedStatement对象；
+　　(3)对PreparedStatement对象执行executeUpdate()或executeQurey()获得结果；
+　　(4)先后关闭PreparedStatement对象和Connection对象。
+　　可见，使用JDBC时，最常打交道的是Connection、PreparedStatement这两个类，以及select中的ResultSet类。
+	查阅Java API手册可以了解其具体的意义和方法。
+　　Java API:http://download.oracle.com/technetwork/java/javase/6/docs/zh/api/index.html。
+
+思考问题
+1.每次SQL操作都需要建立和关闭连接，这势必会消耗大量的资源开销，如何避免？
+分析：可以采用连接池，对连接进行统一维护，不必每次都建立和关闭。事实上这是很多对JDBC进行封装的工具所采用的。
+
+2.Java代码中，传入的数据格式与数据库定义不同怎么办？如把Java的String对象赋值给数据库的tinyint属性。
+分析：在执行SQL语句时，数据库会尝试进行转换。根据我的实验，如果用内容为纯字母的String对象传入tinyint的age属性时，会被转化成0。具体转化规则应该和数据库有关。
+
+
+
+
+事务处理
+一个事务逻辑工作单元必须具有以下四种属性，包括原子性、一致性、隔离性和永久性。
+进行事务操作主要使用Connection对象中的三个方法。setAutoCommit方法是指将此连接的自动提交模式设置为给定状态。
+commit方法是指提交当前的事务，并自动开始下一个事务。
+rollback方法是指回滚当前的事务，并自动开始下一个事务。
+
+
+
+
+
+1.简要说明JDBC编程步骤。
+【提示】由于JDBC的编程步骤比较多，有些读者是很难全部记下来的，经常会由于没有做其中一步而造成程序发生错误。 
+所以这里再来简单的说一下JDBC的编程步骤。
+（1）创建数据库 
+因为很多数据库操作都是指定某一个数据库来进行操作的，所以在进行数据库编程前要首先建立一个数据库。
+如何创建库是会因为数据库的不同而不同的。读者可以根据需求来相应的学习特定的一种数据库。 
+  
+（2）创建数据源 
+创建数据源是数据库操作中最容易丢的一步，也是最难发现的一步。
+很多读者发现程序发生错误会，都会首先去找程序中有什么错误，从而很难发现没有创建数据源的错误。
+创建数据源中将为数据源起一个名字，读者在进行该步操作时一定要起一个容易记住的名字，因为在程序中还要用到该名称。 
+
+（3）编写程序 
+JDBC数据库编程剩下的步骤都是在编写程序中的。在编写程序中也是不能丢掉必要步骤的。
+首先要加载驱动，根据数据库的不同而加载不同的驱动。
+ 然后就是建立数据库连接，
+ 接下来就是使用SQL语句进行数据库操作。
+ 最后就是获取信息。
+
+
+
 
 
 
