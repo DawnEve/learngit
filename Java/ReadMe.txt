@@ -37,7 +37,15 @@
 	
 
 第五章：多线程技术 89 -122
-
+	两种创建方式
+	运行多线程
+	线程的生命周期
+	sleep()
+	线程优先级 
+		yield让步
+		join让步
+	
+	
 
 第六章：常用类 API 122-139
 第七章：集合框架（容器） +其他类对象使用 139 -199
@@ -125,7 +133,7 @@ git tag -d 版本号 #删除tag
 ====================================================
 优秀博客推荐：csdn/cnblog/iteye/
 [1]http://swiftlet.net/archives/category/java-basic
-
+[2]http://www.weixueyuan.net/java/rumen/
 
 
 
