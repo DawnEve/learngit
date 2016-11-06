@@ -11,7 +11,7 @@ public class flowControl {
 	public static void main(String[] args){
 //		test1(80);
 //		test3();
-		test8();
+		test9();
 	}
 
 	//if
@@ -137,6 +137,18 @@ public class flowControl {
 			sum2 +=i;
 		}
 		System.out.println(sum2+", ");//2500
+	}
+	
+	
+	//按照行号终止循环
+	static void test9(){
+		xiaoqiang: for(int x=0;x<9;x++){
+			wangcai: for(int y=0;y<9;y++){
+				System.out.println("x="+x+", y="+y);
+				if(y==5 && x==2)
+					break xiaoqiang;
+			}
+		}
 	}
 
 }
