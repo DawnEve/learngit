@@ -47,6 +47,8 @@
 
 第六章：常用类 API 122-139
 第七章：集合框架（容器） +其他类对象使用 139 -199
+	
+
 第八章：IO 流 199 -280
 	字符流与字节流 x 输入与输出 = 4种IO基类
 	缓冲流：BufferedInputStream
@@ -57,9 +59,9 @@
 
 第九章：GUI编程 280 -284
 第十章：网络编程 284 -309
-
 第十一章：反射机制 310 -315
 第十二章：正则表达式 315 -322
+
 第十三章：HTML语言 322 -335
 第十四章：CSS语言 335-341
 第十五章：JavaScript 语言 341-375
@@ -71,6 +73,8 @@
 ====================================================
 doc path: D:\coding\Java
 
+Eclipse 快捷键
+http://www.cnblogs.com/iamfy/archive/2012/07/11/2586869.html
 	ctrl+/ : 添加和去掉行注释
 	
 	alt + / :快速补齐命令，比如for之后可以使用该快捷键
@@ -78,7 +82,10 @@ doc path: D:\coding\Java
 	
 	ctrl + enter: 在当前行的下一行加回车换行，无论光标是否在行尾
 	ctrl + enter+shift: 在当前行的上一行加回车换行，无论光标是否在行尾
-
+	
+	ctrl+m 大显示屏幕能够提高工作效率是大家都知道的。Ctrl+m是编辑器窗口最大化的快捷键。
+	
+	
 ====================================================
 2. 掌握核心 API
 
@@ -101,6 +108,8 @@ Java语言
 　这份文档，叫做《The Java? Language Specification》。是一份很典型的Spec，完备而规范。
 　任何讲Java语法的资料，包括各种书籍和前面提到的Tutorial，都只能涉及部分。
     而这份Spec，如果你能读通的话，那么与Java语言特性有关的所有一切，你就再也不用求人了。
+	
+	specs: http://docs.oracle.com/javase/specs/
 
 (3)JDK 8的API Reference:  http://docs.oracle.com/javase/8/docs/api/index.html
 　用Java语言编程的时候，我们需要不断查阅的就是这份API Reference。我们平常一般是通过IDE来快速查看某个接口的文档说明。

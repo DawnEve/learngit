@@ -723,11 +723,40 @@ buffer有什么用？
 	流操作的数据需要编码或解码时。
 
 
-eclipse自动生成注释，怎么修改@author
+eclipse自动生成注释，怎么修改@author? /TODO
+
+
+
+
+
 
 
 ===========================================
-v0.0.9 集合框架 《21天学通Java》(P469-P4)
+v0.0.9 集合框架 《21天学通Java》(P469-P499)
+
+集合框架主要包括列表、集合和映射,用于存储，检索，操纵和传递数据。
+集合框架提供用于管理对象集合的接口和类，它包括接口，实现和算法。
+主要包括	Collection接口中的：
+	set接口:HashSet、SortedSet(TreeSet是其唯一实现)
+	list接口: 有三种最为常用的实现类，Vector类、ArrayList类和LinkedList类。
+	map接口：HashMap类，TreeMap类
+	
+	
+
+TODO: 
+	Cloneable, Serializable
+	p.hashCode() 是怎么定义hash的呢？
+
+1.如何使用集合中的sort方法对集合中的元素进行排序？
+2.如何使用binarySearch方法搜索集合中的元素？
+
+
+
+
+
+
+
+
 
 
 
