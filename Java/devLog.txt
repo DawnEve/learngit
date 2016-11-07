@@ -643,12 +643,22 @@ JDBC数据库编程剩下的步骤都是在编写程序中的。在编写程序�
 
 
 
+Java 的 I/O 操作类在包 java.io 下，大概有将近 80 个类，但是这些类大概可以分成四组，分别是：
+	基于字节操作的 I/O 接口：InputStream 和 OutputStream
+	基于字符操作的 I/O 接口：Writer 和 Reader
+	基于磁盘操作的 I/O 接口：File
+	基于网络操作的 I/O 接口：Socket
+
+一个是操作数据的方式是可以组合使用的，如这样组合使用
+OutputStream out = new BufferedOutputStream(new ObjectOutputStream(new FileOutputStream("fileName"))；
+还有一点是流最终写到什么地方必须要指定，要么是写到磁盘要么是写到网络中
 
 
 
 ===========================================
 v0.0.8 IO  《21天学通Java》(P446-P468)
 http://www.2cto.com/kf/201312/262036.html
+http://www.ibm.com/developerworks/cn/java/j-lo-javaio/
 目标：
 •了解什么是IO流。 
 •掌握流的分类。 
@@ -715,6 +725,9 @@ buffer有什么用？
 
 eclipse自动生成注释，怎么修改@author
 
+
+===========================================
+v0.0.9 集合框架 《21天学通Java》(P469-P4)
 
 
 
