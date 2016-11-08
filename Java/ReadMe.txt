@@ -37,8 +37,11 @@
 	
 
 第五章：多线程技术 89 -122
-	两种创建方式
+	获取线程名字 Thread.currentThread().toString()
+	两种创建方式：继承Thread类，实现Runnable接口，
 	运行多线程
+		new Thread(new RunnableDemo1()).start();
+		new ThreadDemo1().start();
 	线程的生命周期
 	sleep()
 	线程优先级 
@@ -47,7 +50,9 @@
 
 第六章：常用类 API 122-139
 第七章：集合框架（容器） +其他类对象使用 139 -199
-	
+	set
+	list
+	map
 
 第八章：IO 流 199 -280
 	字符流与字节流 x 输入与输出 = 4种IO基类
@@ -59,6 +64,10 @@
 
 第九章：GUI编程 280 -284
 第十章：网络编程 284 -309
+	java.net包
+	DataInputStream对象的input.readUTF()方法可以直接输入utf8字符串
+	
+
 第十一章：反射机制 310 -315
 第十二章：正则表达式 315 -322
 
