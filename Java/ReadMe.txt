@@ -63,13 +63,21 @@
 	字符与字节流的转换
 
 第九章：GUI编程 280 -284
+	略
 第十章：网络编程 284 -309
 	java.net包
 	DataInputStream对象的input.readUTF()方法可以直接输入utf8字符串
 	
 
 第十一章：反射机制 310 -315
+	和第三章反射重复。
+	
 第十二章：正则表达式 315 -322
+	匹配
+	替换
+	查找
+	切割
+
 
 第十三章：HTML语言 322 -335
 第十四章：CSS语言 335-341
@@ -171,7 +179,7 @@ git tag -d 版本号 #删除tag
 [1]http://swiftlet.net/archives/category/java-basic
 [2]http://www.weixueyuan.net/java/rumen/
 [3]http://www.ibm.com/developerworks/cn/java/j-lo-javaio/
-
+[4]http://www.runoob.com/java/java-regular-expressions.html
 
 
 
