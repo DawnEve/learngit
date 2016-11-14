@@ -87,6 +87,31 @@
 第十七章：JDBC 
 	事务 
 
+第十八章：javaEE概述
+	1.JavaSE是基础，里面的很多东西会经常用到，IO流，Collection，Map等。
+	2.:javase就是java基本库，ee是javaweb 一般培训机构就是先教javase，
+		然后oracle数据库，
+		然后html css js jquery ajax；
+		然后servlet jsp struts hibernite spring。
+		最后做项目
+	3.顺序
+	- 1.html，css，javascript
+	- 2.servlet(重点) ，数据库（mysql,oracle等等） 【敲demo】
+	- 3.三大框架（struts2,spring,hibernate），【查看一下看源的程序当做demo学习】【敲demo】
+	- 4.然后开源项目学习，各种插件了解【跟着自己写】
+	4.
+	肯定先学se了 se是基础 se主要是桌面应用程序 但是你有见过java的桌面应用程序没??? 所以就剩下基础了
+ee分两部分jsp和ejb jsp就是做网站 我们常说的ee 其实就是jsp  ejb是java企业级组件这个用的很少只有真正的大型公司才会用到这个所以说基本没有不用学搜索
+现在学完se以后还可以去学安卓也不错
+
+
+
+
+
+
+
+
+
 ====================================================
 doc path: D:\coding\Java
 
@@ -101,6 +126,9 @@ http://www.cnblogs.com/iamfy/archive/2012/07/11/2586869.html
 	ctrl + enter+shift: 在当前行的上一行加回车换行，无论光标是否在行尾
 	
 	ctrl+m 大显示屏幕能够提高工作效率是大家都知道的。Ctrl+m是编辑器窗口最大化的快捷键。
+	
+	输入sysout后按下alt+/，即可自动补全成 System.out.println();
+	
 	
 	
 ====================================================

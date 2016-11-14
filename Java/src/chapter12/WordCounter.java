@@ -1,6 +1,9 @@
 package chapter12;
 
+
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
 
@@ -48,5 +51,19 @@ public class WordCounter {
 	    	System.out.println("count("+key+")="+map.get(key));
 		}
 	    
+	}
+	
+	
+	//去除数组中重复的记录  
+	//http://simplehumn.iteye.com/blog/812064
+	public static String[] array_unique(String[] a) {  
+	    // array_unique  
+	    List<String> list = new LinkedList<String>();  
+	    for(int i = 0; i < a.length; i++) {  
+	        if(!list.contains(a[i])) {  
+	            list.add(a[i]);  
+	        }  
+	    }  
+	    return (String[])list.toArray(new String[list.size()]);  
 	}
 }
