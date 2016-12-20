@@ -5,9 +5,7 @@ import javax.servlet.http.*;
 
 // 扩展 HttpServlet 类
 public class HelloServlet extends HttpServlet {
-	/**
-	 *  
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private String message;
 	

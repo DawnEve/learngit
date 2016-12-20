@@ -19,7 +19,7 @@ public class Hello6 extends HttpServlet {
 	public void init() throws ServletException
 	{
 		// 执行必需的初始化
-		System.out.println("Hello World, today");
+		System.out.println("Hello World, init~");
 	}
 	
 	
@@ -27,20 +27,9 @@ public class Hello6 extends HttpServlet {
 			throws ServletException, IOException
 	{
 		res.setContentType("text/html;charSet=utf8");
-		//关于session部分
-		HttpSession hs=req.getSession(true);
-		
-		//判断是否合格
-		String val=(String) hs.getAttribute("pass");
-		
-		if(val==null){
-			//非法登录
-			//res.sendRedirect("hello4?info=error");//重定向到某个url
-			//return;
-			System.out.println("invalide visit");
-			
-		}
-		
+		//get方式获取用户名和密码
+		String usr=req.getParameter("user");
+		String psw=req.getParameter("pass");
 
 		
 		try {
@@ -52,22 +41,42 @@ public class Hello6 extends HttpServlet {
 			//3.获取statement
 			Statement stmt=conn.createStatement();
 			stmt.executeQuery("use think;");
-			ResultSet rs = stmt.executeQuery("select * from think_user where user='Jim' limit 1;");//结果集
+			ResultSet rs = stmt.executeQuery("select * from think_user where user='"+usr+"' limit 1;");//结果集
 			
 			//4.输出结果
 			//获取输出流
 			PrintWriter out = res.getWriter();
 			
 			while(rs.next()){
-				String user = rs.getString(2) ; //此方法比较高效，第一列编号是1，不是0。
-				String psw=rs.getString(3); 
+				String psw_db=rs.getString(3); //此方法比较高效，第一列编号是1，不是0。
+				String usr_id=rs.getString(1); 
+				//System.out.println("psw_db="+psw_db);
+				//System.out.println("psw="+psw);
 				
-				String str=user + ": "+psw;
-				out.println(str + "<br />");
-				System.out.println(str+"\n");
+				//4.1.判断是否成功登录
+				if(psw.equals(psw_db)){
+					String str=usr + " 登录成功!";
+					out.println(str + "<br />");
+					System.out.println(str+"\n");
+					
+					//4.2登录成功则写入session
+					//获取session
+					HttpSession hs=req.getSession(true);
+					//设置session时间.默认是30min。
+					hs.setMaxInactiveInterval(10);//10s 
+					//设置session内容
+					hs.setAttribute("pass","ok");
+					hs.setAttribute("usr",usr);
+					hs.setAttribute("usr_id",usr_id);
+					
+					return;
+				}else{
+					String str="用户名或密码错误！";
+					System.out.println(str);
+					out.println(str);
+				}
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
