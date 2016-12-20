@@ -15,8 +15,8 @@ Hello3 输出到网页，获取get方式传递过来的变量
 Hello4 session操作
 Hello5 session操作 判断与跳转
 Hello6 session操作 db判断 (1)防止注入（先判断用户名，再判断密码）(2)注意及时关闭资源
-Hello7	db分页
-	
+Hello7	db分页，特别经典！
+
 ReadSession 遍历session
 
 Cookie1 cookie的读写: cookie时间总是不准确，超前24小时左右。但是时间5和10s还是有区别的。
