@@ -8,6 +8,8 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
 public class HelloServletDemo implements Servlet{
+	static public int counter=0;//访问计数器
+
 	// 用于得到servlet配置文件 与生命周期无关
 	@Override
 	public ServletConfig getServletConfig() {
@@ -36,9 +38,10 @@ public class HelloServletDemo implements Servlet{
 	// servelt jsp b/s
 	@Override
 	public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
-		System.out.println("Service start");
+		counter++;
+		System.out.println("Service start, visitor "+counter);
 		PrintWriter pw=res.getWriter();
-		pw.println("Hello world, Servlet");
+		pw.println("Hello world, Servlet. visitor "+counter);
 	}
 	
 	

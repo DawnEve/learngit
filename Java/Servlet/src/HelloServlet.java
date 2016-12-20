@@ -6,7 +6,7 @@ import javax.servlet.http.*;
 // 扩展 HttpServlet 类
 public class HelloServlet extends HttpServlet {
 	/**
-	 * 
+	 *  
 	 */
 	private static final long serialVersionUID = 1L;
 	private String message;
@@ -18,8 +18,7 @@ public class HelloServlet extends HttpServlet {
 	}
  
 	
-	public void doGet(HttpServletRequest request,
-			HttpServletResponse response)
+	public void doGet(HttpServletRequest request,HttpServletResponse response)
 					throws ServletException, IOException
 	{
 		// 设置响应内容类型
