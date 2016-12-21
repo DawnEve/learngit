@@ -49,7 +49,7 @@ public class Hello7 extends HttpServlet {
 			int currentPage=1;//get传过来
 			
 			//获取总页码
-			rs=stmt.executeQuery("select count(*) from think_user;");
+			rs=stmt.executeQuery("select count(*) from think_weibo;");
 			if(rs.next()){
 				totalRow=rs.getInt(1);
 			}
@@ -73,30 +73,31 @@ public class Hello7 extends HttpServlet {
 			}
 			
 			int start=(currentPage-1)*pageSize;
-			rs = stmt.executeQuery("select * from think_user limit "+start+","+pageSize);//结果集
+			rs = stmt.executeQuery("select * from think_weibo limit "+start+","+pageSize);//结果集
 			
 			//4.输出结果
 			//获取输出流
 			PrintWriter out = res.getWriter();
 			out.println("<table border='1'>");
-			out.println("<tr><td>id</td><td>name</td><td>pass</td></tr>");
+			out.println("<tr><td>id</td><td>uid</td><td>content</td></tr>");
 			while(rs.next()){
 				out.println("<tr><td>"+rs.getString(1)+"</td><td>"+rs.getString(2)+
 						"</td><td>"+rs.getString(3)+"</td></tr>");
 			}
 			out.println("</table>");
 			
-			//输出分页代码
+			//输出分页按钮
 			if(currentPage>1){
 				out.print(" <a href='?page="+(currentPage-1)+"'>上一页</a> ");
 			}
+			//如果太多，怎么显示分页按钮呢？模仿网易博客
 			for(int i=1;i<=totalPage;i++){
 				if(i!=currentPage){
 					out.print(" <a href='?page="+i+"'>"+i+"</a> ");
 				}else{
 					out.print(i);
 				}
-					
+
 			}
 			if(currentPage<totalPage){
 				out.print(" <a href='?page="+(currentPage+1)+"'>下一页</a> ");
