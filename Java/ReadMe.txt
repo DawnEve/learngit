@@ -5,6 +5,7 @@
 
 第一章：编程基础 3-11 
     - 变量、运算符、流程控制;
+    - md5加密
 第二章：数组 11 -31
     - 数组是按照地址传递的！
     - 数组遍历、复制、求最值、冒泡法排序、二分法查找
@@ -37,8 +38,11 @@
 	
 
 第五章：多线程技术 89 -122
-	两种创建方式
+	获取线程名字 Thread.currentThread().toString()
+	两种创建方式：继承Thread类，实现Runnable接口，
 	运行多线程
+		new Thread(new RunnableDemo1()).start();
+		new ThreadDemo1().start();
 	线程的生命周期
 	sleep()
 	线程优先级 
@@ -47,6 +51,10 @@
 
 第六章：常用类 API 122-139
 第七章：集合框架（容器） +其他类对象使用 139 -199
+	set
+	list
+	map
+
 第八章：IO 流 199 -280
 	字符流与字节流 x 输入与输出 = 4种IO基类
 	缓冲流：BufferedInputStream
@@ -56,10 +64,22 @@
 	字符与字节流的转换
 
 第九章：GUI编程 280 -284
+	略
 第十章：网络编程 284 -309
+	java.net包
+	DataInputStream对象的input.readUTF()方法可以直接输入utf8字符串
+	
 
 第十一章：反射机制 310 -315
+	和第三章反射重复。
+	
 第十二章：正则表达式 315 -322
+	匹配
+	替换
+	查找
+	切割
+
+
 第十三章：HTML语言 322 -335
 第十四章：CSS语言 335-341
 第十五章：JavaScript 语言 341-375
@@ -68,9 +88,36 @@
 第十七章：JDBC 
 	事务 
 
+第十八章：javaEE概述
+	1.JavaSE是基础，里面的很多东西会经常用到，IO流，Collection，Map等。
+	2.:javase就是java基本库，ee是javaweb 一般培训机构就是先教javase，
+		然后oracle数据库，
+		然后html css js jquery ajax；
+		然后servlet jsp struts hibernite spring。
+		最后做项目
+	3.顺序
+	- 1.html，css，javascript
+	- 2.servlet(重点) ，数据库（mysql,oracle等等） 【敲demo】
+	- 3.三大框架（struts2,spring,hibernate），【查看一下看源的程序当做demo学习】【敲demo】
+	- 4.然后开源项目学习，各种插件了解【跟着自己写】
+	4.
+	肯定先学se了 se是基础 se主要是桌面应用程序 但是你有见过java的桌面应用程序没??? 所以就剩下基础了
+ee分两部分jsp和ejb jsp就是做网站 我们常说的ee 其实就是jsp  ejb是java企业级组件这个用的很少只有真正的大型公司才会用到这个所以说基本没有不用学搜索
+现在学完se以后还可以去学安卓也不错
+
+
+
+
+
+
+
+
+
 ====================================================
 doc path: D:\coding\Java
 
+Eclipse 快捷键
+http://www.cnblogs.com/iamfy/archive/2012/07/11/2586869.html
 	ctrl+/ : 添加和去掉行注释
 	
 	alt + / :快速补齐命令，比如for之后可以使用该快捷键
@@ -78,7 +125,13 @@ doc path: D:\coding\Java
 	
 	ctrl + enter: 在当前行的下一行加回车换行，无论光标是否在行尾
 	ctrl + enter+shift: 在当前行的上一行加回车换行，无论光标是否在行尾
-
+	
+	ctrl+m 大显示屏幕能够提高工作效率是大家都知道的。Ctrl+m是编辑器窗口最大化的快捷键。
+	
+	输入sysout后按下alt+/，即可自动补全成 System.out.println();
+	
+	
+	
 ====================================================
 2. 掌握核心 API
 
@@ -101,6 +154,8 @@ Java语言
 　这份文档，叫做《The Java? Language Specification》。是一份很典型的Spec，完备而规范。
 　任何讲Java语法的资料，包括各种书籍和前面提到的Tutorial，都只能涉及部分。
     而这份Spec，如果你能读通的话，那么与Java语言特性有关的所有一切，你就再也不用求人了。
+	
+	specs: http://docs.oracle.com/javase/specs/
 
 (3)JDK 8的API Reference:  http://docs.oracle.com/javase/8/docs/api/index.html
 　用Java语言编程的时候，我们需要不断查阅的就是这份API Reference。我们平常一般是通过IDE来快速查看某个接口的文档说明。
@@ -152,8 +207,8 @@ git tag -d 版本号 #删除tag
 优秀博客推荐：csdn/cnblog/iteye/
 [1]http://swiftlet.net/archives/category/java-basic
 [2]http://www.weixueyuan.net/java/rumen/
-
-
+[3]http://www.ibm.com/developerworks/cn/java/j-lo-javaio/
+[4]http://www.runoob.com/java/java-regular-expressions.html
 
 
 

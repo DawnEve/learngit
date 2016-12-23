@@ -540,9 +540,10 @@ public static void yield(); •可以看出yield让步方法是一个静态方�
 太简单：没有讨论锁、死锁、共享变量、线程安全等话题。
 
 
-
-
-
+(ThreadDemo.java)的问题：
+	new Thread(new T1()).start();为什么运行的线程号不连续？
+	因为继承Thread后就不需要再运行Thread了，直接new后start就可以了！！
+	Runnable必须通过Thread类执行多线程，否则仅仅是主线程的一部分.
 
 
 
@@ -643,12 +644,22 @@ JDBC数据库编程剩下的步骤都是在编写程序中的。在编写程序�
 
 
 
+Java 的 I/O 操作类在包 java.io 下，大概有将近 80 个类，但是这些类大概可以分成四组，分别是：
+	基于字节操作的 I/O 接口：InputStream 和 OutputStream
+	基于字符操作的 I/O 接口：Writer 和 Reader
+	基于磁盘操作的 I/O 接口：File
+	基于网络操作的 I/O 接口：Socket
+
+一个是操作数据的方式是可以组合使用的，如这样组合使用
+OutputStream out = new BufferedOutputStream(new ObjectOutputStream(new FileOutputStream("fileName"))；
+还有一点是流最终写到什么地方必须要指定，要么是写到磁盘要么是写到网络中
 
 
 
 ===========================================
 v0.0.8 IO  《21天学通Java》(P446-P468)
 http://www.2cto.com/kf/201312/262036.html
+http://www.ibm.com/developerworks/cn/java/j-lo-javaio/
 目标：
 •了解什么是IO流。 
 •掌握流的分类。 
@@ -713,7 +724,162 @@ buffer有什么用？
 	流操作的数据需要编码或解码时。
 
 
-eclipse自动生成注释，怎么修改@author
+eclipse自动生成注释，怎么修改@author? /TODO
+
+
+
+
+
+
+
+===========================================
+v0.0.9 集合框架 《21天学通Java》(P469-P499)
+
+集合框架主要包括列表、集合和映射,用于存储，检索，操纵和传递数据。
+集合框架提供用于管理对象集合的接口和类，它包括接口，实现和算法。
+主要包括	Collection接口中的：
+	set接口:HashSet、SortedSet(TreeSet是其唯一实现)
+	list接口: 有三种最为常用的实现类，Vector类、ArrayList类和LinkedList类。
+	map接口：HashMap类，TreeMap类
+	
+	
+
+TODO: 
+	Cloneable, Serializable
+	p.hashCode() 是怎么定义hash的呢？
+
+1.如何使用集合中的sort方法对集合中的元素进行排序？
+2.如何使用binarySearch方法搜索集合中的元素？
+
+
+
+
+
+
+
+
+===========================================
+v0.1.0 网络编程 《21天学通Java》(P500-P521)
+
+目标：
+ •了解什么是协议，有哪些协议。
+ •了解网络编程的模型。 
+ •熟练掌握使用Socket进行网络编程。
+
+Java是如何实现数据传递的呢？答案是使用Socket的流对象进行数据传输，Sokcet类中有输入和输出流。
+使用Socket进行的通信都称为Socket通信
+
+两种Socket种类：
+ - socket操作就像人们打电话，必须先拨号码，建立一个连接，然后再对话。数据包在到达接收端时的顺序与它们出发时的顺序时一样.
+ - 无连接的socket操作就像是邮递员送信，邮递员只负责把信送出，至于何时发出，最后能不能到达收信人手中不能保证，
+无连接的socket操作也一样，负责发出，但不保证数据包的传输质量，数据包到达目的地的顺序可能与出发时的顺序不一样。
+
+
+通信过程：
+开始监听后，服务器就等待客户端连接请求，客户端连接后，会话开始；在完成会话后，关闭连接。
+
+端口号：
+1~1023是系统保留。只能使用1024之后的，1024~65535
+同一台主机上的同一端口号只能分配给一个特定的ServerSocket对象，不能两个ServerSocket对象监听同一个端口。
+
+
+
+两地的socket类：
+服务器端ServerSocket类，客户端的Socket类。
+
+1.服务器端：
+首先要讲的就是accept方法，使用该方法接收客户端的连接请求，并将与客户端的连接封装成一个Socket对象返回。
+
+注意：此方法为阻塞方法，在没有接收到任何连接请求前调用此方法的线程将一直阻塞等待，
+直到接收到连接请求后此方法才返回，调用此方法的线程才继续运行。
+
+除了accept方法外还有一个close方法来关闭ServerSocket对象。
+使用getLocalPort方法来获取设置的端口号。
+
+2.客户端：
+客户机创建了Socket对象后，将马上向指定的IP地址及端口发起请求且尝试连接。
+于是，服务器套接字就会创建新的套接字对象，使其与客户端套接字连接起来。
+一旦服务器套接字与客户端套接字成功连接后，就可以获取套接字的输入输出流，彼此进行数据交换。
+
+Socket类中同样具有一些方法。其中getPort方法和getLocalPort方法分别是获取连接的远程端口和使用的本地端口。
+getInputStream方法和getOutputStream方法分别是获取Socket对象的输入流和输出流，这两个方法是经常被使用到的。
+注意：close方法虽然是很简单的，表示关闭Socket对象。但是该方法在程序中是必须有的，这是一个非常好的网络编程习惯。
+
+
+怎么用cmd运行eclipse生成的class文件？
+	导航到bin目录下，使用包名.类名调用。比如：
+	F:\gitHub\learngit\Java\bin>java chapter10.ClientDemo
+	http://bbs.csdn.net/topics/390761379/
+
+小任务：
+1.开发一个web服务器；
+
+2.开发一个多线程的web服务器；
+多线程的程序：用java编写简单Webserver，理解webserver的功能。
+	// 通过线程的方式来处理客户的请求//TODO 线程是什么？我来个去。。。就是Thread！
+	new Processor(socket).start();
+	 /**
+	 * 处理一个HTTP用户请求的线程类。
+	 */
+	public class Processor extends Thread {}
+	
+	怎么维持状态？
+
+3.开发一个web聊天工具，客户端和服务端互相通信。
+//todo
+
+
+
+
+
+
+===========================================
+v0.1.1 正则表达式 
+事实上只要是字符处理，就没有正则做不到的事情存在。
+
+http://blog.csdn.net/allwefantasy/article/details/3136570/
+	匹配
+	替换
+	查找
+	切割
+
+Java正则表达式和Perl的是最为相似的。
+java.util.regex包主要包括以下三个类：
+(1)Pattern类：
+	pattern对象是一个正则表达式的编译表示。Pattern类没有公共构造方法。
+	要创建一个Pattern对象，你必须首先调用其公共静态编译方法，它返回一个Pattern对象。
+	该方法接受一个正则表达式作为它的第一个参数。
+(2)Matcher类：
+	Matcher对象是对输入字符串进行解释和匹配操作的引擎。
+	与Pattern类一样，Matcher也没有公共构造方法。你需要调用Pattern对象的matcher方法来获得一个Matcher对象。
+(3)PatternSyntaxException：
+	PatternSyntaxException是一个非强制异常类，它表示一个正则表达式模式中的语法错误。
+
+在regex包中，常用的包括了两个类，Pattern(模式类)和Matcher(匹配器类)。
+
+
+
+
+规则	正则表达式语法  
+	一个或多个汉字	^[\u0391-\uFFE5]+$ 
+	邮政编码	^[1-9]\d{5}$
+	QQ号码	^[1-9]\d{4,10}$ 
+	邮箱	^[a-zA-Z_]{1,}[0-9]{0,}@(([a-zA-z0-9]-*){1,}\.){1,3}[a-zA-z\-]{1,}$ 
+	用户名（字母开头 + 数字/字母/下划线）	^[A-Za-z][A-Za-z1-9_-]+$
+	手机号码	^1[3|4|5|8][0-9]\d{8}$ 
+	URL	^((http|https)://)?([\w-]+\.)+[\w-]+(/[\w-./?%&=]*)?$ 
+	18位身份证号	^(\d{6})(18|19|20)?(\d{2})([01]\d)([0123]\d)(\d{3})(\d|X|x)?$
+
+
+===========================================
+v0.1.2 练习
+Object对象
+
+
+
+
+
+
 
 
 

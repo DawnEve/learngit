@@ -31,14 +31,15 @@ public class JDBCDemo {
 	private void query(String sql){
 		JDBCDemo d=new JDBCDemo();
 		Connection conn=d.getConnection();
-		//String sql="show tables;";
+		sql="show tables;";
 		
 		//3.创建statement，并查询
 
 		try {
 			stmt = conn.createStatement();
 			//PreparedStatement pstmt = conn.prepareStatement(sql) ;   
-			//CallableStatement cstmt = conn.prepareCall("{CALL demoSp(? , ?)}") ;  
+			//CallableStatement cstmt = conn.prepareCall("{CALL demoSp(? , ?)}") ;
+			stmt.executeQuery("use phpcms;");
 			rs = stmt.executeQuery(sql);
 			//4.输出结果
 			while(rs.next()){   
@@ -59,27 +60,13 @@ public class JDBCDemo {
 			2)关闭声明   
 			3)关闭连接对象   
 		 */
-		if(rs != null){  // 关闭记录集   
-			try{   
-				rs.close() ;   
-			}catch(SQLException e){   
-				e.printStackTrace() ;   
-			}   
-		}   
-		if(stmt != null){   // 关闭声明   
-			try{   
-				stmt.close() ;   
-			}catch(SQLException e){   
-				e.printStackTrace() ;   
-			}   
-		}   
-		if(conn != null){  // 关闭连接对象   
-			try{   
-				conn.close() ;   
-			}catch(SQLException e){   
-				e.printStackTrace() ;   
-			}   
-		} 
+		try {
+			if(rs!=null){ rs.close(); }
+			if(stmt!=null){ stmt.close(); }
+			if(conn!=null){ conn.close(); }
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 
