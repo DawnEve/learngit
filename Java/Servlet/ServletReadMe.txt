@@ -28,7 +28,7 @@ Cookie1 cookie的读写: cookie时间总是不准确，超前24小时左右。�
 win7 chrome的cookie保存位置：C:\Users\Administrator\AppData\Local\Google\Chrome\User Data\Default\Cache
 
 -------------------------
-写了一个login Servlet模块
+Lesson 5.写了一个login Servlet模块
 1.一个6个class文件，
 
 界面： Login	LoginCl	Wel
@@ -75,4 +75,27 @@ http://localhost:8080/mywebsite/wel?page=2
 
 中间是一个快速跳转页面：
 http://localhost:8080/mywebsite/logincl
+
+
+-------------------------
+Lesson 6.ServletContext
+
+常用语句：
+res.setContentType("text/html;charSet=utf8");//设定输出编码
+
+(1)服务器端共享数据块： ServeletContextDemo.java
+(2)文件读写
+
+
+-------------------------
+Lesson 7.完善界面
+
+-------------------------
+Lesson 8.tomcat虚拟目录
+JSP（全称Java Server Pages）
+
+
+
+
+
 

@@ -14,8 +14,6 @@ public class Cookie1 extends HttpServlet{
 	 * http://localhost:8080/mywebsite/cookie1?option=get 获取cookie
 	 * http://localhost:8080/mywebsite/cookie1 删除cookie name
 	 * http://localhost:8080/mywebsite/cookie1?option=set 设置cookie name pass
-	 * 
-	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	static{
