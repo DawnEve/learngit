@@ -16,8 +16,8 @@ function check(){
 		}
 		return false;
 	}
-	
-	//如果不是数字也不行
+
+ 	//如果不是数字也不行
 	if(isNaN(num1) || isNaN(num2)){
 		alert("不是数字！请输入数字");
 		if(isNaN(num1)){
@@ -50,6 +50,7 @@ if(flag.equals("2")){n=n1-n2;}
 if(flag.equals("3")){n=n1*n2;}
 if(flag.equals("4")){n=n1/n2;}
 %>
+
 <h1>jsp版计算器</h1>
 <form action="" method="get">
 	第一个数字 <input type="text" name=num1 value="<%=n1 %>"><br>
