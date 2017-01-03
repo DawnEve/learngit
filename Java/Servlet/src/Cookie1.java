@@ -50,17 +50,17 @@ public class Cookie1 extends HttpServlet{
 			throws ServletException, IOException
 	{
 		//分别设定cookie，和生命周期
-		Cookie cookie=new Cookie("name","tomcat");
+		Cookie name=new Cookie("name","tomcat");
 		//如果设置为负值的话，则为浏览器进程Cookie(内存中保存)，关闭浏览器就失效
-		cookie.setMaxAge(5);//5s
-		res.addCookie(cookie);
+		name.setMaxAge(5);//5s
+		res.addCookie(name);
 
-		Cookie cookie2=new Cookie("pass","123");
-		cookie2.setMaxAge(10);//10s
+		Cookie pass=new Cookie("pass","123");
+		pass.setMaxAge(10);//10s
 		//设置路径，这个路径即该工程下都可以访问该cookie 
 		//如果不设置路径，那么只有设置该cookie路径及其子路径可以访问
-		cookie2.setPath("/");
-		res.addCookie(cookie2);
+		pass.setPath("/");
+		res.addCookie(pass);
 		
 //		Cookie c = new Cookie("lastAccessTime",System.currentTimeMillis()+"");
 		Cookie c = new Cookie("lastAccessTime", new Date().toString());

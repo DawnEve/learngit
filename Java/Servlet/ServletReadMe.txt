@@ -95,7 +95,49 @@ Lesson 8.tomcat虚拟目录
 JSP（全称Java Server Pages）
 
 -------------------------
+1.汉字转码
+注意：如果表单提交的数据中有中文数据则需要转码：
+String name =new String(request.getParameter("name").getBytes("ISO8859-1"),"UTF-8");
+
 http://localhost:8080/mywebsite/getDemo
+
+com.dawn.servlet.GetDemo.java 获取参数，获取汉字参数。
+http://localhost:8080/mywebsite/getDemo?token=sfd&keyword=baidu百度250
+
+
+2.获取header信息
+通过枚举，获取key，再通过循环，获取value。
+upgrade-insecure-requests: 1是什么意思？
+http://localhost:8080/mywebsite/getHeader
+	http://www.cnblogs.com/hustskyking/p/upgrade-insecure-requests.html
+	解释说是一项草案：
+	页面一旦发现存在http响应头，会在加载 http 资源时自动替换成 https 请求。
+
+3.设置header信息
+4.Servlet 过滤器是可用于 Servlet 编程的 Java 类，可以实现以下目的：
+	在客户端的请求访问后端资源之前，拦截这些请求。
+	在服务器的响应发送回客户端之前，处理这些响应。
+
+根据规范建议的各种类型的过滤器：
+	身份验证过滤器（Authentication Filters）。
+	数据压缩过滤器（Data compression Filters）。
+	加密过滤器（Encryption Filters）。
+	触发资源访问事件过滤器。
+	图像转换过滤器（Image Conversion Filters）。
+	日志记录和审核过滤器（Logging and Auditing Filters）。
+	MIME-TYPE 链过滤器（MIME-TYPE Chain Filters）。
+	标记化过滤器（Tokenizing Filters）。
+	XSL/T 过滤器（XSL/T Filters），转换 XML 内容。
+-
+
+
+
+
+
+
+
+
+
 
 
 

@@ -53,10 +53,8 @@ public class LoginCl extends HttpServlet {
 		}else{
 			//不合法用户
 			res.sendRedirect("login");//重定向到某个url
+			System.out.println("user or passwd error....");
 			return;
 		}
-		
-
 	}
-
 }

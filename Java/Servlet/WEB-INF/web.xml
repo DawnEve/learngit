@@ -21,9 +21,7 @@
 
 
 	<servlet>
-		<!--给servlet取个名字，任意的 -->
 		<servlet-name>hello</servlet-name>
-		<!--指定servlet的路径，就是（包名字+类名） -->
 		<servlet-class>HelloServletDemo</servlet-class>
 	</servlet>
 	<servlet-mapping>
@@ -34,9 +32,7 @@
 
 
 	<servlet>
-		<!--给servlet取个名字，任意的 -->
 		<servlet-name>hellos</servlet-name>
-		<!--指定servlet的路径，就是（包名字+类名） -->
 		<servlet-class>HelloServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
@@ -46,9 +42,7 @@
 
 
 	<servlet>
-		<!--给servlet取个名字，任意的 -->
 		<servlet-name>hello3</servlet-name>
-		<!--指定servlet的路径，就是（包名字+类名） -->
 		<servlet-class>Hello3</servlet-class>
 	</servlet>
 	<servlet-mapping>
@@ -60,9 +54,7 @@
 
 
 	<servlet>
-		<!--给servlet取个名字，任意的 -->
 		<servlet-name>hello4</servlet-name>
-		<!--指定servlet的路径，就是（包名字+类名） -->
 		<servlet-class>Hello4</servlet-class>
 	</servlet>
 	<servlet-mapping>
@@ -74,9 +66,7 @@
 
 
 	<servlet>
-		<!--给servlet取个名字，任意的 -->
 		<servlet-name>hello5</servlet-name>
-		<!--指定servlet的路径，就是（包名字+类名） -->
 		<servlet-class>Hello5</servlet-class>
 	</servlet>
 	<servlet-mapping>
@@ -86,9 +76,7 @@
 
 
 	<servlet>
-		<!--给servlet取个名字，任意的 -->
 		<servlet-name>hello6</servlet-name>
-		<!--指定servlet的路径，就是（包名字+类名） -->
 		<servlet-class>Hello6</servlet-class>
 	</servlet>
 	<servlet-mapping>
@@ -99,9 +87,7 @@
 
 
 	<servlet>
-		<!--给servlet取个名字，任意的 -->
 		<servlet-name>hello1</servlet-name>
-		<!--指定servlet的路径，就是（包名字+类名） -->
 		<servlet-class>ReadSession</servlet-class>
 	</servlet>
 	<servlet-mapping>
@@ -113,9 +99,7 @@
 
 
 	<servlet>
-		<!--给servlet取个名字，任意的 -->
 		<servlet-name>cookie1</servlet-name>
-		<!--指定servlet的路径，就是（包名字+类名） -->
 		<servlet-class>Cookie1</servlet-class>
 	</servlet>
 	<servlet-mapping>
@@ -126,9 +110,7 @@
 
 
 	<servlet>
-		<!--给servlet取个名字，任意的 -->
 		<servlet-name>hello7</servlet-name>
-		<!--指定servlet的路径，就是（包名字+类名） -->
 		<servlet-class>Hello7</servlet-class>
 	</servlet>
 	<servlet-mapping>
@@ -139,9 +121,7 @@
 
 
 	<servlet>
-		<!--给servlet取个名字，任意的 -->
 		<servlet-name>hello8</servlet-name>
-		<!--指定servlet的路径，就是（包名字+类名） -->
 		<servlet-class>Hello8</servlet-class>
 	</servlet>
 	<servlet-mapping>
@@ -152,9 +132,7 @@
 
 
 	<servlet>
-		<!--给servlet取个名字，任意的 -->
 		<servlet-name>login</servlet-name>
-		<!--指定servlet的路径，就是（包名字+类名） -->
 		<servlet-class>login.Login</servlet-class>
 	</servlet>
 	<servlet-mapping>
@@ -165,9 +143,7 @@
 
 
 	<servlet>
-		<!--给servlet取个名字，任意的 -->
 		<servlet-name>logincl</servlet-name>
-		<!--指定servlet的路径，就是（包名字+类名） -->
 		<servlet-class>login.LoginCl</servlet-class>
 	</servlet>
 	<servlet-mapping>
@@ -180,9 +156,7 @@
 
 
 	<servlet>
-		<!--给servlet取个名字，任意的 -->
 		<servlet-name>wel</servlet-name>
-		<!--指定servlet的路径，就是（包名字+类名） -->
 		<servlet-class>login.Wel</servlet-class>
 	</servlet>
 	<servlet-mapping>
@@ -193,9 +167,7 @@
 
 
 	<servlet>
-		<!--给servlet取个名字，任意的 -->
 		<servlet-name>context</servlet-name>
-		<!--指定servlet的路径，就是（包名字+类名） -->
 		<servlet-class>ServeletContextDemo</servlet-class>
 	</servlet>
 	<servlet-mapping>
@@ -208,30 +180,18 @@
 
 
 	<servlet>
-		<!--给servlet取个名字，任意的 -->
 		<servlet-name>readnum</servlet-name>
-		<!--指定servlet的路径，就是（包名字+类名） -->
 		<servlet-class>ReadNum</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>readnum</servlet-name>
 		<url-pattern>/readnum</url-pattern>
 	</servlet-mapping>
-
-
-
-
-	<servlet>
-		<servlet-name>getDemo2</servlet-name>
-		<servlet-class>GetDemo2</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>getDemo2</servlet-name>
-		<url-pattern>/getDemo2</url-pattern>
-	</servlet-mapping>
 	
 	
 	
+	
+
 
 	<servlet>
 		<servlet-name>getDemo</servlet-name>
@@ -242,4 +202,61 @@
 		<url-pattern>/getDemo</url-pattern>
 	</servlet-mapping>
 
+	
+	
+	<servlet>
+		<servlet-name>getHeader</servlet-name>
+		<servlet-class>com.dawn.servlet.GetHeader</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>getHeader</servlet-name>
+		<url-pattern>/getHeader</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>setHeader</servlet-name>
+		<servlet-class>com.dawn.servlet.SetHeader</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>setHeader</servlet-name>
+		<url-pattern>/setHeader</url-pattern>
+	</servlet-mapping>
+	
+	
+<!--s filter2 -->
+<filter>
+	<filter-name>AuthFilter</filter-name>
+	<filter-class>com.dawn.test.AuthFilter</filter-class>
+	<init-param>
+		<param-name>Site2</param-name>
+		<param-value>Servlet EXAMPLES22222222.</param-value>
+	</init-param>
+</filter>
+<filter-mapping>
+  <filter-name>AuthFilter</filter-name>
+  <url-pattern>/getHeader</url-pattern>
+</filter-mapping>	
+<!--e filter2 -->
+
+<!--s filter1 -->
+<filter>
+	<filter-name>LogFilter</filter-name>
+	<filter-class>com.dawn.test.LogFilter</filter-class>
+	<init-param>
+		<param-name>Site</param-name>
+		<param-value>Servlet EXAMPLES.鏁欑▼-涓枃涔辩爜鍚楋紵</param-value>
+	</init-param>
+</filter>
+<filter-mapping>
+  <filter-name>LogFilter</filter-name>
+  <url-pattern>/getHeader</url-pattern>
+</filter-mapping>
+
+<!--e filter1 -->
+	
+	
+	
+	
+	
+	
 </web-app>
