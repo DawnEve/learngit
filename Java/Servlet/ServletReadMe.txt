@@ -151,13 +151,33 @@ tomcat级别的所有项目都可用，而项目级别的只有该项目可用�
 
 
 
+6.日期时间
+		response.setContentType("text/html;charset=UTF-8");
+		
+		PrintWriter out=response.getWriter();
+		
+		//当前时间
+		Date date=new Date();
+		out.println("1.当前日期和时间："+date.toString());
+		
+		//java的时间戳
+		out.println("<br>2.java时间戳 （单位：ms）："+date.getTime()+", 需要缩小1000倍后和php一样:"+ date.getTime()/1000);
+		out.println("<br>(php[10位]:1482674513)<br>");
+		
+		//格式化显示
+		SimpleDateFormat ft = 
+				new SimpleDateFormat ("yyyy.MM.dd hh:mm:ss E a");
+		out.println("3.格式化后："+ft.format(date));
+
+广州网易计算机系统有限公司
+
+7.计数器
+网站计数器可以使用过滤器实现。
 
 
+8.自动刷新
 
+9.Servlet 发送电子邮件
+http://www.runoob.com/servlet/servlet-sending-email.html
 
-
-
-
-
-
-
+10.国际化。

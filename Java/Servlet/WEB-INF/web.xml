@@ -96,6 +96,17 @@
 	</servlet-mapping>
 
 
+	
+	<servlet>
+		<servlet-name>hello2</servlet-name>
+		<servlet-class>Hello2</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>hello2</servlet-name>
+		<url-pattern>/hello2</url-pattern>
+	</servlet-mapping>
+	
+	
 
 
 	<servlet>
@@ -268,4 +279,55 @@
     <url-pattern>/UploadServlet</url-pattern>
   </servlet-mapping>	
 	
+	
+	
+ <servlet>
+    <display-name>currentDate</display-name>
+    <servlet-name>currentDate</servlet-name>
+    <servlet-class>CurrentDate</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>currentDate</servlet-name>
+    <url-pattern>/currentDate</url-pattern>
+  </servlet-mapping>
+  
+  
+ <servlet>
+    <servlet-name>SRedirect</servlet-name>
+    <servlet-class>SRedirect</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SRedirect</servlet-name>
+    <url-pattern>/SRedirect</url-pattern>
+  </servlet-mapping>
+    
+ <servlet>
+    <servlet-name>PageHitCounter</servlet-name>
+    <servlet-class>com.dawn.servlet.PageHitCounter</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PageHitCounter</servlet-name>
+    <url-pattern>/pageHitCounter</url-pattern>
+  </servlet-mapping>
+  
+  
+ <servlet>
+    <servlet-name>Refresh</servlet-name>
+    <servlet-class>com.dawn.test.Refresh</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Refresh</servlet-name>
+    <url-pattern>/Refresh</url-pattern>
+  </servlet-mapping>
+  
+  
+ <servlet>
+    <servlet-name>getLocale</servlet-name>
+    <servlet-class>GetLocale</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>getLocale</servlet-name>
+    <url-pattern>/getLocale</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

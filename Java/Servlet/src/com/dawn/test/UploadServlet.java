@@ -66,11 +66,9 @@ public class UploadServlet extends HttpServlet {
         upload.setSizeMax(MAX_REQUEST_SIZE);
  
         // 构造临时路径来存储上传的文件
-        // 这个路径相对当前应用的目录
-        
-        System.out.println(request.getServletContext().getRealPath("./"));
-        
-        String uploadPath = request.getServletContext().getRealPath("./") + File.separator + UPLOAD_DIRECTORY;
+        // 这个路径相对当前应用的目录      
+//        String uploadPath = request.getServletContext().getRealPath("./") + File.separator + UPLOAD_DIRECTORY;
+        String uploadPath = getServletContext().getRealPath("./") + File.separator + UPLOAD_DIRECTORY;
        
          
         // 如果目录不存在则创建
