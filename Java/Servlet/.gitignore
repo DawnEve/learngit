@@ -6,4 +6,5 @@ servlet-api.jar
 
 
 
-/WEB-INF/
+/WEB-INF/classes/
+/build/

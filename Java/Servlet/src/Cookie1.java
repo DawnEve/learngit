@@ -6,9 +6,9 @@ import java.util.TimeZone;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 
-public class Cookie1 extends HttpServlet{
+public class Cookie1 extends HttpServlet{ 
 
-	/**
+	/** 
 	 * cookie封装： http://www.cnblogs.com/muzongyan/archive/2010/08/30/1812552.html
 	 * 
 	 * http://localhost:8080/mywebsite/cookie1?option=get 获取cookie

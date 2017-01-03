@@ -18,6 +18,7 @@ public class Wel extends HttpServlet{
 	{
 		res.setContentType("text/html;charSet=utf8");
 		
+		
 		//1.判断是否合法
 		HttpSession hs=req.getSession(true);
 		String val=(String) hs.getAttribute("uname");
