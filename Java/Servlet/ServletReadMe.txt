@@ -128,7 +128,26 @@ http://localhost:8080/mywebsite/getHeader
 	MIME-TYPE 链过滤器（MIME-TYPE Chain Filters）。
 	标记化过滤器（Tokenizing Filters）。
 	XSL/T 过滤器（XSL/T Filters），转换 XML 内容。
--
+	
+	
+	
+5.文件上传和jar包位置：
+问题：
+1).为什么这两个包需要存在2份？
+一份是Servlet/WebContent/WEB-INF/lib下，一份是Servlet/WEB-INF/lib/下。
+前者是eclipse生成用，后者是tomcat运行用。
+能否少一份，以便减少git文件体积。只能减少前者了。
+删除Servlet/WebContent/WEB-INF/lib/下的2个jar包，UploadServlet.java报错，右击该java文件，选择build path,
+configure build path, libraries, add JARs,选择Servlet/WEB-INF/lib/下的2个jar包确定即可。
+
+2).jar包存放的位置？
+jar包如果是项目运行必须的，则2个地方至少放一个。
+一个tomcat级别的lib文件夹：\tomcat\lib\
+一个是具体项目级别的lib文件夹：\项目名\WEB-INF\lib\
+tomcat级别的所有项目都可用，而项目级别的只有该项目可用该jar包。
+
+其他位置则可能是编辑器IDE的要求。可以简化。
+
 
 
 
