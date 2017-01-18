@@ -1,10 +1,8 @@
 # Servlet:
 
-.settings/*
 
 lib/
 /WEB-INF/classes/
-/build/
 *.class
 
 upload/
