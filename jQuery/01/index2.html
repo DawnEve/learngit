@@ -1,0 +1,65 @@
+<html>
+<head>
+<script src="http://127.0.0.1/js/jquery-1.10.2.min.js"></script>
+<script>
+
+
+$("document").ready(function(){
+	$('#btn1').click(function(){
+		//获取.sports之后的同辈元素中的li
+		$('.sports ~ li').css("background",'#FE7F17');
+	});	
+	
+	$('#btn2').click(function(){
+		//属性选择器
+		$('.button[value^="btn"]').css("background",'#f00');
+	});
+	
+	$('#button3').click(function(){
+		//过滤选择器
+		$('li:odd').css("color",'#0f0');
+		$('li:last').css("background",'#00f');
+	});
+	
+	$('#button4').click(function(){
+		//内容选择器
+		$('li:contains(3)').css("color",'#0f0');
+	});
+	
+	$('#button5').click(function(){
+		//空选择器
+		$(':empty').css({"background":"red",'width':'100px'});
+	});
+});
+</script>
+</head>
+
+<body>
+	<input type='button' class='button' id=btn1 value="btn1" />
+	<input type='button' class='button' id=btn2 value="btn2" /> 
+	<br>
+	<input type='button' class='button' id=button3 value="btn3" />
+	<input type='button' class='button' id=button4 value="btn4" />
+	<input type='button' class='button' id=button5 value="btn5" />
+
+
+	<li>01</li>
+	<ul>
+		<li>02</li>
+		<li>03</li>
+	</ul>
+		
+	<ul class=sports>
+		<li>11</li>
+		<li>12</li>
+		<li>13</li>
+	</ul>
+		
+<p></p>
+	<li>21</li>	
+	<li>22</li>	
+	<li></li>	
+	<li>23</li>	
+		
+</body>
+</html>

@@ -1,0 +1,49 @@
+<html>
+<head>
+<script src="http://127.0.0.1/js/jquery-1.10.2.min.js"></script>
+	<title>文字放大、缩小</title>
+<script>
+$(function(){
+	//文字大小缩放
+	$(".msg span").click(function(){
+		var sFontSize=$('#para').css('fontSize');
+		var iFontSize=parseInt(sFontSize,10);//字体大小
+		var unit=sFontSize.slice(-2);//取出来单位
+		var sClassName=$(this).attr('class');
+		if("bigger"==sClassName){
+			if(iFontSize<30){
+				iFontSize += 2;
+			}
+		}else if("smaller"==sClassName){
+			if(iFontSize>12){
+				iFontSize -= 2;
+			}
+		}
+
+		$("#para").css('fontSize',iFontSize+unit);//更新字体大小
+	}).dblclick(function(){
+		return false;//双击取消默认事件。
+	});
+});
+</script>
+<style type="text/css">
+.control span{border:1px solid black;margin:10px; padding:5px;border-radius:5px;cursor: pointer;}
+#para{margin:20px;}
+</style>
+</head>
+
+<body>
+	<div class="msg">
+		<div class="control">
+			<span class="bigger">放大</span>
+			<span class="smaller">缩小</span>
+		</div>
+		<div id="para">
+			some text here.some text here.some text here.
+			some text here.some text here.some text here.
+			some text here.some text here.some text here.
+		</div>
+	</div>
+	
+</body>
+</html>
