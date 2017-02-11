@@ -2,8 +2,9 @@
 
 .settings/*
 
-servlet-api.jar
+lib/
+/WEB-INF/classes/
+/build/
+*.class
 
-
-
-/WEB-INF/
+upload/

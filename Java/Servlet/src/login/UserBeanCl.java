@@ -103,8 +103,11 @@ public class UserBeanCl {
 				//第一步：将rs每一条记录封装到UserBean中
 				UserBean ub=new UserBean();
 				
-				ub.setId(rs.getInt(1));
-				ub.setUser(rs.getString(2));
+//				ub.setId(rs.getInt(1));
+				ub.setId(rs.getInt("id"));
+				//ub.setUser(rs.getString(2));
+				//ub.setUser("user");
+				ub.setUser(rs.getString("user"));
 				ub.setPasswd(rs.getString(3));
 				ub.setEmail(rs.getString(4));
 				ub.setAdd_time(rs.getInt(5));

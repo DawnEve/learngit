@@ -1,0 +1,8 @@
+# Servlet:
+
+
+lib/
+/WEB-INF/classes/
+*.class
+
+upload/

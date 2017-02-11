@@ -1,0 +1,28 @@
+<html>
+<head>
+<script src="http://127.0.0.1/js/jquery-1.10.2.min.js"></script>
+<script>
+
+
+$("document").ready(function(){
+	$('.button').each(function(index,obj){ //使用each遍历每个元素
+		$(this).click(function(){
+			console.log(index);
+			console.log(obj);
+			
+			$("#box").css("background","#"+index*222+111);
+		});
+	});	
+});
+</script>
+</head>
+
+<body>
+	<input type='button' class='button' value="test0" />
+	<input type='button' class='button' value="test1" />
+	<input type='button' class='button' value="test2" />
+	<input type='button' class='button' value="test3" />
+
+	<div id=box>box</div>
+</body>
+</html>

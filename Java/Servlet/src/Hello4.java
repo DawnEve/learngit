@@ -11,7 +11,7 @@ public class Hello4 extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 1L;
 	private String message="";
-	
+	 
 	public void init() throws ServletException
 	{
 		// 执行必需的初始化
