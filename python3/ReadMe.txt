@@ -16,12 +16,32 @@
 第一天：运行模式、数据格式
 	基础知识。
 	测试中文是否支持；
-	测试linux环境怎么直接运行python：失败  //todo
 	格式化和C语言类似。
-	list类型的append方法和pop方法
-	tuple类型：不可变所以安全，但是内嵌list时可变list内容；
+	测试linux环境怎么直接运行python：失败  //todo
+	使用jupyter notebook网页运行python命令：学习python利器
+		安装：pip install jupyter
+		使用：windows的cmd中输入 jupyter notebook
+		执行cell: shift+Enter
 	
-	字符串截取 str2[n:m]
+	Python3 的六个标准数据类型中：
+		不可变数据（四个）：Number（数字）、String（字符串）、Tuple（元组）、Sets（集合）；
+		可变数据（两个）：List（列表）、Dictionary（字典）。
+		
+		查询数据类型：type("good") #<class 'str'>
+		最重要的是列表、元组、字符串和字典。
+	list类型:[]
+		分片赋值 mylist=list("some")
+		是否在数组中 2 in number #True
+		list的方法：append(),pop(),count(),
+	tuple类型：()
+		不可变所以安全，但是内嵌list时可变list内容；
+	
+	字符串
+		截取 str2[n:m]
+		格式化：printf()
+		方法：replace,join,split,upper等。
+	字典：没有顺序的键值对。
+		常用的方法：keys,values,items等
 
 第二天：控制结构	
 	if循环

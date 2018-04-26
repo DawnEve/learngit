@@ -22,7 +22,7 @@ print(len(list))
 
 
 #列表
-strA='wjl'
-python3=" is hard"
+strA='py3'
+python3=" is easy"
 strB=strA+python3
-#print(strB)
+print(strB)
