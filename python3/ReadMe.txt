@@ -3,6 +3,9 @@
 廖雪峰博客： http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000
 我的示例：https://github.com/DawnEve/learngit/tree/master/python3/
 
+Python官方的pypi.python.org网站注册
+
+
 ==========================================
 经验教训
 1.文件头部
@@ -11,13 +14,15 @@
 
 2.命名文件的时候千万不要和import的文件重名！
 
+
 ==========================================
 
 第一天：运行模式、数据格式
-	基础知识。
-	测试中文是否支持；
-	格式化和C语言类似。
-	测试linux环境怎么直接运行python：失败  //todo
+	环境安装、两种运行模式(交互式和批量运行)
+	测试中文是否支持
+	格式化和C语言类似
+	测试linux环境怎么直接运行python：需要加+x权限，然后./xx.py执行
+	
 	使用jupyter notebook网页运行python命令：学习python利器
 		安装：pip install jupyter
 		使用：windows的cmd中输入 jupyter notebook
@@ -42,17 +47,26 @@
 		方法：replace,join,split,upper等。
 	字典：没有顺序的键值对。
 		常用的方法：keys,values,items等
+	题目：从长字符串中截取出一个单词。
 
 第二天：控制结构	
-	if循环
-	for循环：for x in range(101):
+	if判断：is运算符、布尔运算符
+		断言assert
+	循环：
+		while循环
+		for循环：for x in range(101):
+		打断： 终止循环 break; 跳过本次循环 continue;
+		空语句：pass;
 	dict字典元素（就是json）
 	set集合：不能重复
-	while循环
+	题目：1.猜数字游戏，只提示大和小，和猜的次数。
+		2.求a和b之间奇数的和。
 
 第三天：函数	
-	函数，默认参数
-	函数的默认参数必须指向固定值
+	函数，获得帮助help(abs)
+	参数：
+		默认参数, 函数的默认参数必须指向固定值
+		可变参数
 	函数：构建字典传入多个参数
 	迭代
 	函数嵌套
@@ -73,15 +87,18 @@
 		day4/decorator/
 	
 	偏函数（Partial function）（不太懂）
-	
-	
-	
-	
-	
+
+
+
+
+
+
 第五天：模块、包和包管理器PIP
 	在Python中，一个.py文件就称之为一个模块（Module）。
 	自己创建模块时要注意命名，不能和Python自带的模块名称冲突。
-	导入 import random      from time import clock
+	导入 
+		import random
+		from time import clock
 
 	第三方库都会在Python官方的pypi.python.org网站注册。
 	pip是python包管理器。
@@ -93,6 +110,7 @@
 		- 用于科学计算的NumPy库：numpy
 		- 用于生成文本的模板工具Jinja2, 等等
 	模块搜索路径：sys.path
+		添加自定义路径：sys.path.append("/path/to/my/package/")
 
 
 
@@ -134,6 +152,7 @@
 			ss=json.dumps(s, default=stu2dict) #序列化
 			s2=json.loads(ss, object_hook=dict2stu) #反序列化
 	某个字符出现的次数 str2.count('a')	
+	重置文件指针：file.seek(0, 0)
 	
 	[推荐] 合并文件夹下所有文本文件的内容 mergeAllFileInOne/
 	实例：day9/enTextAnalysis/ 分析英文文章中用词频率，和超出4/6级的词汇。该文件夹包含部分4-6级词汇list。

@@ -174,7 +174,6 @@ beach
 beam
 bean
 bear
-bear
 beard
 beast
 beat
@@ -270,7 +269,6 @@ boundary
 bow
 bowl
 box
-box
 boy
 brain
 brake
@@ -341,7 +339,6 @@ camp
 campaign
 campus
 can
-can
 Canadian
 canal
 cancel
@@ -368,7 +365,6 @@ carriage
 carrier
 carry
 cart
-case
 case
 cash
 cassette
@@ -609,7 +605,6 @@ container
 contemporary
 contempt
 content
-content
 contest
 continent
 continual
@@ -831,7 +826,6 @@ evaluate
 evaporate
 eve
 even
-even
 evening
 event
 eventually
@@ -923,7 +917,6 @@ fail
 failure
 faint
 fair
-fair
 fairly
 faith
 faithful
@@ -934,7 +927,6 @@ familiar
 family
 famine
 famous
-fan
 fan
 fancy
 far
@@ -998,7 +990,6 @@ financial
 find
 finding
 fine
-fine
 finger
 finish
 fire
@@ -1013,7 +1004,6 @@ fix
 flag
 flame
 flash
-flat
 flat
 flavour
 fleet
@@ -1469,6 +1459,7 @@ intense
 intensity
 intensive
 intention
+interact
 interaction
 interest
 interesting
@@ -1511,7 +1502,6 @@ its
 itself
 jacket
 jam
-jam
 January
 Japanese
 jar
@@ -1550,7 +1540,6 @@ kill
 kilogram
 kilometer
 kind
-kind
 kindness
 king
 kingdom
@@ -1582,7 +1571,6 @@ large
 largely
 laser
 last
-last
 late
 lately
 later
@@ -1600,7 +1588,6 @@ lay
 layer
 layout
 lazy
-lead
 lead
 leader
 leadership
@@ -1641,14 +1628,11 @@ library
 license
 lid
 lie
-lie
 life
 lifetime
 lift
 light
-light
 lightning
-like
 like
 likely
 likewise
@@ -1687,7 +1671,6 @@ log
 logic
 logical
 lonely
-long
 long
 look
 loop
@@ -1747,6 +1730,7 @@ march
 margin
 marine
 mark
+marker
 market
 marriage
 married
@@ -1757,7 +1741,6 @@ mask
 mass
 master
 mat
-match
 match
 mate
 material
@@ -1773,8 +1756,6 @@ maybe
 mayor
 me
 meal
-mean
-mean
 mean
 meaning
 means
@@ -1818,7 +1799,6 @@ microscope
 middle
 midnight
 might
-might
 mild
 mile
 military
@@ -1828,7 +1808,6 @@ millimetre
 million
 mind
 mine
-mine
 mineral
 minimum
 minister
@@ -1837,12 +1816,10 @@ minor
 minority
 minus
 minute
-minute
 miracle
 mirror
 miserable
 mislead
-miss
 miss
 missile
 missing
@@ -2000,7 +1977,6 @@ nut
 nylon
 obey
 object
-object
 objection
 objective
 oblige
@@ -2016,9 +1992,7 @@ occupation
 occupy
 occur
 occurrence
-ocean
-o'clock
-October
+ocean', "o'clock", 'October
 odd
 of
 off
@@ -2210,7 +2184,6 @@ physicist
 physics
 piano
 pick
-pick
 picnic
 picture
 pie
@@ -2231,7 +2204,6 @@ pint
 pioneer
 pipe
 pit
-pitch
 pitch
 pity
 place
@@ -2266,7 +2238,6 @@ point
 poison
 poisonous
 pole
-pole
 police
 policeman
 policy
@@ -2279,9 +2250,7 @@ pollute
 pollution
 pond
 pool
-pool
 poor
-pop
 pop
 popular
 population
@@ -2299,15 +2268,12 @@ possibility
 possible
 possibly
 post
-post
-post
 postage
 postman
 postpone
 pot
 potato
 potential
-pound
 pound
 pour
 poverty
@@ -2337,8 +2303,6 @@ prepare
 preposition
 prescribe
 presence
-present
-present
 present
 presently
 preserve
@@ -2423,10 +2387,8 @@ pull
 pulse
 pump
 punch
-punch
 punctual
 punish
-pupil
 pupil
 purchase
 pure
@@ -2453,9 +2415,7 @@ quotation
 quote
 rabbit
 race
-race
 racial
-rack
 rack
 radar
 radiation
@@ -2494,7 +2454,6 @@ reality
 realize
 really
 realm
-rear
 rear
 reason
 reasonable
@@ -2645,7 +2604,6 @@ rouse
 route
 routine
 row
-row
 royal
 rug
 rural
@@ -2664,7 +2622,6 @@ sausage
 saw
 say
 scale
-scale
 scan
 scarcely
 scatter
@@ -2679,7 +2636,6 @@ scout
 scrape
 scratch
 screw
-seal
 seal
 secondary
 secretary
@@ -2707,7 +2663,6 @@ sew
 shade
 shave
 shear
-shed
 shed
 sheet
 shelf
@@ -2759,7 +2714,6 @@ soak
 soil
 solar
 sole
-sole
 solemn
 solid
 soluble
@@ -2800,7 +2754,6 @@ spur
 square
 squeeze
 stability
-stable
 stable
 stack
 staff
@@ -2845,7 +2798,6 @@ string
 strip
 stripe
 stroke
-stroke
 structural
 stuff
 submarine
@@ -2882,7 +2834,6 @@ suspicion
 suspicious
 sustain
 swallow
-swallow
 sway
 swear
 sweater
@@ -2896,15 +2847,13 @@ symbol
 sympathetic
 sympathize
 synthetic
-systematic(al)
-tag
+systematic(al)', 'tag
 tailor
 tale
 talent
 talk
 tame
 tank
-tap
 tap
 taste
 technical
@@ -2917,10 +2866,8 @@ temporary
 tempt
 temptation
 tend
-tend
 tendency
 tender
-tense
 tense
 tension
 terminal
@@ -2950,7 +2897,6 @@ tin
 tip
 tire
 tissue
-toast
 toast
 toe
 toilet
@@ -3052,7 +2998,6 @@ utility
 utilize
 utmost
 utter
-utter
 vacant
 vacuum
 vague
@@ -3078,7 +3023,6 @@ vessel
 veteran
 via
 vibrate
-vice
 vice
 vigorous
 vinegar
@@ -3153,7 +3097,6 @@ wreck
 wrist
 X-ray
 yard
-yard
 yawn
 yearly
 yield
@@ -3161,7 +3104,7 @@ youth
 zone
 
 
-#######################
+#####################################################
 #02 easy word
 an
 and
@@ -3174,6 +3117,7 @@ to
 too
 dog
 is
+we
 are
 disk
 drama
@@ -3181,12 +3125,15 @@ with
 stop
 screen
 arrival
+whether
+develop
 the
 that
 they
 very
 sense
 suggestion
+statement
 which
 work
 ruler
@@ -3282,6 +3229,7 @@ around
 tech
 together
 then
+start
 still
 meaningful
 system
@@ -3353,12 +3301,19 @@ sure
 service
 allow
 themselves
+team
+already
+set
+aside
+action
+support
 
 
 
 # numbers
 two
 seven
+ten
 third
 three
 twenty
@@ -3366,9 +3321,10 @@ twelve
 fifties
 sixties
 
-#######
+#####################################################
 #03 变形
 #n
+details
 dogs
 parents
 terms
@@ -3382,27 +3338,39 @@ gestures
 characters
 functions
 ways
+orders
 reflects
 events
 films
 interests
 places
-
+values
+organizations
+systems
+days
+ideas
+lists
+numbers
+themes
+areas
+teams
+others
+changes
+results
 
 #adj 比较级
 earlier
-called
-
+easier
 
 # v-es, v-ing, v-ed
-re
+#es
 looks
 shows
 seems
 serves
 develops
+forces
 stands
-saying
 doing
 becomes
 driven
@@ -3411,26 +3379,41 @@ speaks
 makes
 does
 says
+grows
 has
 tells
+
+#ing
+challenging
 becoming
 displaying
-stealing
-forces
-orders
-killed
+fighting
+developing
+coming
+taking
+making
+hiring
+giving
+growing
+lasting
 receiving
-abandoned
-viewing
+realized
+stealing
 streaming
 watching
-fighting
-details
-realized
-translated
-giving
+saying
+viewing
+
+#ed
+abandoned
+called
+established
 surprised
+translated
 told
+killed
+
+
 
 #### 
 #04 人名 地名
@@ -3450,8 +3433,11 @@ los
 angeles
 
 
-#######################
+#####################################################
 #已经掌握
+restart
+deliver
+differently
 isle
 animation
 fantastic
@@ -3467,11 +3453,7 @@ instantly
 essentially
 meaningless
 ultimately
-
+demonstrate
 
 #变形
 victims
-
-differently
-restart
-

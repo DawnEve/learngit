@@ -4,21 +4,22 @@
 # 输出频数为指定数字的单词
 # 输出cet4外的单词
 # 输出cet6外的单词
+# v0.0.2 输出最长的句子
 
 import re
 
 
 # 英文时间格式
 import time
-from numpy.core.defchararray import isnumeric
-from idlelib.iomenu import encoding
+#from numpy.core.defchararray import isnumeric
+#from idlelib.iomenu import encoding
 mydate = time.strftime("%b. %d, %Y")
 
 
 # 打开文件
-f=open(r'F:\Temp\sample.txt', 'r', encoding='UTF-8') ;
+f=open(r'D:\Temp\sample.txt', 'r', encoding='UTF-8') ;
 txt=f.read()
-f.close()
+
 
 
 #定义字典
@@ -30,7 +31,7 @@ i=0
 #1.使用非字母分割成数组
 linearr=re.split(r'[^a-zA-Z]+', txt)
 
-print('原始',len(linearr),linearr)
+#print('原始',len(linearr),linearr)
 
 
 #################
@@ -97,7 +98,7 @@ mydict=getFreq(linearr2)
 values=list(mydict.values())
 #print('values',sorted(values))
 mydict2=getFreq(values)
-print('mydic2:',mydict2)
+#print('mydic2:',mydict2)
 
 #对dict进行排序
 mydict3=sorted(mydict2.items(), key=lambda item:item[0])
@@ -134,7 +135,6 @@ for w in wordlist:
 
 
 print()
-print()
 ###########################
 #输出cet4之外的单词
 ###########################
@@ -154,23 +154,31 @@ def getArrFromTxt(fpath):
 #list去重
 def getUniqList(mylist):
     ml=[]
+    #overlaps=[]
     for i in mylist:
         if i not in ml:
             ml.append(i)
         #else:
-        #    print(i)
+            #overlaps.append(i)
+    #print('overlaps>2:',len(overlaps),overlaps)
     return ml;
 
 
 #读入cet4单词列表
-fpath=r'F:\Temp\cet4-3.txt';
+fpath=r'G:\learngit\Python3\pythonCodeGit\day9-IO\enTextAnalysis\cet4-3.txt';
 cet4=getArrFromTxt(fpath)
-print('CET4: ', len(cet4), cet4)
-
+#print('CET4: ', len(cet4), cet4)
+cet4=getUniqList(cet4)
+#print('CET4 uniq: ', len(cet4), cet4)
 
 #读入cet6单词列表
-cet6=getArrFromTxt(r'F:\Temp\cet6C2.txt');
-print('CET6: ', len(cet6), cet6)
+cet6=getArrFromTxt(r'G:\learngit\Python3\pythonCodeGit\day9-IO\enTextAnalysis\cet6C2.txt');
+#print('CET6: ', len(cet6), cet6)
+cet6=getUniqList(cet6)
+#print('CET6 uniq: ', len(cet6), cet6)
+
+#描述cet4和cet6个数：
+print('cet4:',len(cet4), ' words, cet6:', len(cet6),' words.')
 
 
 # A - B
@@ -182,20 +190,31 @@ def ArrMinus(arr1,arr2):
     return tmp
 
 
+#唯一化
+linearrUniq=getUniqList(linearr2)
 
 # cet4之外的词汇
-outsideCET4=ArrMinus(linearr2,cet4)
-#唯一化
-outsideCET4=getUniqList(outsideCET4)
+outsideCET4=ArrMinus(linearrUniq,cet4)
 #输出
 print('超出cet4的词汇',len(outsideCET4),outsideCET4)
 
 
 # cet6之外的词汇
 outsideCET6=ArrMinus(outsideCET4,cet6)
-#唯一化
-outsideCET6=getUniqList(outsideCET6)
 #输出
 print('超出cet6的词汇',len(outsideCET6),outsideCET6);
 
-print("The end")
+
+##############
+#输出最长的句子
+sentences=re.split(r'[.|?|!|;]+',txt)
+tmp=""
+for s in sentences:
+    if len(s)>len(tmp):
+        tmp=s
+print('最长句子有 ',len(re.split(r'[^a-zA-Z0-9]+',tmp)),'words. \n',tmp)
+
+#关闭文件
+f.close()
+
+print("\nThe end")

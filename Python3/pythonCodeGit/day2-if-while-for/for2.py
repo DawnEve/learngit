@@ -22,6 +22,7 @@ else:
     print('the for -> else');
     pass # Do nothing
 
+
 #if
 if rangelist[1] == 2:
     print("The second item (lists are 0-based) is 2")
