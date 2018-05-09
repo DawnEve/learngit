@@ -6,6 +6,3 @@ def add3(a,b,c):
     return add2(add2(a,b),c)
 
 print(add3(1,2,3))
-
-
-#是否支持返回函数？

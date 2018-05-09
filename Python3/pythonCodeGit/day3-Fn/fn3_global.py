@@ -3,7 +3,9 @@ print('outer1',c);
 
 def fn1():
 	#不要和全局变量重名，可以直接使用全局变量；
-	print('fn1 inner:',c) 
+	#c = c + 100 #为什么不能增量呢？
+	c=100
+	print('fn1 inner:',c)
 	
 def fn2():
 	#如果接下来定义全局变量同名变量，则此处无法提前读取全局变量，提示本地变量定义之前使用
@@ -20,10 +22,10 @@ def fn10():
 	print('inner:', c)
 
 fn1()
-print('outer after fn1:',c);
+print('===outer after fn1:',c);
 
 fn2()
-print('outer after fn2:',c);
+print('===outer after fn2:',c);
 
 fn10()
-print('outer after fn10:',c);
+print('===outer after fn10:',c);

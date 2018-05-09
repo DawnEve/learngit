@@ -304,7 +304,7 @@ html-css-javascript
 >py0.2.2 英文文本分析工具:词频统计，超4-6级的词汇list
 >py0.2.3 review day1:list,dict
 >py0.2.4 review day2(if,while,for),part day3.
-
+>py0.2.5 add APA_symbol txt file. day3 fn.
 
 
 

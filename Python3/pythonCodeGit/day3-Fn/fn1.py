@@ -12,3 +12,12 @@ s3=areaOfCircle(3);
 print(s1)
 print(s2)
 print(s3)
+
+# 没有return语句则返回none
+def noReturn():
+	pass;
+
+#返回值可以判断 ==None
+print(noReturn())
+if None==noReturn():
+	print("1111")

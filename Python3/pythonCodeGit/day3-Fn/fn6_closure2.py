@@ -32,7 +32,7 @@ def count():
 
 	
 f1,f2,f3=count();
-print('返回f1：',f1);
+print('返回f1-2：',f1);
 print( f1() )
 print( f2() )
 print( f3() )
@@ -54,7 +54,7 @@ def pow_three():
         fs.append(f)
     return fs
 f21,f22,f23=pow_three();
-print('返回f21：',f21);	
+print('返回f21-3：',f21);	
 print( f21() )
 print( f22() )
 print( f23() )
@@ -71,7 +71,7 @@ def count():
     return fs
 	
 a1,a2,a3=count();
-print('返回a1：',a1);
+print('返回a1-4：',a1);
 print( a1() )
 print( a2() )
 print( a3() )

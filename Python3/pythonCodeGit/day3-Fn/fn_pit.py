@@ -1,3 +1,5 @@
+# 大坑1: 传入的空会累积多个END
+
 def addEnd(L=[]):
 	L.append('END')
 	return L

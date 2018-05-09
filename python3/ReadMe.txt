@@ -44,6 +44,7 @@ Python官方的pypi.python.org网站注册
 	字符串
 		截取 str2[n:m]
 		格式化：printf()
+		字符串的乘法表达式 "good"*3
 		方法：replace,join,split,upper等。
 	字典：没有顺序的键值对。
 		常用的方法：keys,values,items等
@@ -62,16 +63,21 @@ Python官方的pypi.python.org网站注册
 	题目：1.猜数字游戏，只提示大和小，和猜的次数。
 		2.求a和b之间奇数的和。
 
-第三天：函数	
-	函数，获得帮助help(abs)
+第三天：函数(减少重复代码、方便测试和复用)
+	函数，获得帮助 help(abs)
 	参数：
 		默认参数, 函数的默认参数必须指向固定值
-		可变参数
-	函数：构建字典传入多个参数
-	迭代
-	函数嵌套
-	函数：全局变量与本地变量
-	
+		可变参数: *para, **para 构建字典传入多个参数
+	作用域：全局变量与本地变量，除非使用globe para 否则不改写全局变量的值。
+	返回值：没有return则返回None。if xx is None:
+	迭代: 求阶乘
+	函数嵌套:
+	返回函数: 闭包closure
+	匿名函数lambda
+
+	题目: py函数的坑。求单词复数形式。快速排序算法[todo]。
+
+
 第四天：迭代器、生成器、过滤器、装饰器、偏函数
 	切片：list和tuple
 	迭代器
@@ -81,15 +87,10 @@ Python官方的pypi.python.org网站注册
 	map和reduce
 	filter:过滤器
 	sorted()
-	闭包closure
-	匿名函数lambda
 	装饰器decorator（不懂）
 		day4/decorator/
-	
-	偏函数（Partial function）（不太懂）
 
-
-
+	偏函数（Partial function）
 
 
 
