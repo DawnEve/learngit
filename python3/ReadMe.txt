@@ -14,7 +14,7 @@ Python官方的pypi.python.org网站注册
 
 2.命名文件的时候千万不要和import的文件重名！
 
-
+3. dir(str)查方法
 ==========================================
 
 第一天：运行模式、数据格式
@@ -118,25 +118,40 @@ Python官方的pypi.python.org网站注册
 
 
 
-第六天：面向对象
-	OOP
+第六天：面向对象OOP
+	构造函数：在init中初始化对象的全部属性是一个好习惯。
 	数据封装：封装的不彻底
+		私有属性: __name
+		私有方法: __fn()
 	继承和多态:也不严格，“鸭子类型”（JAVA的interface才是精华）
-	获取对象信息：dir(),hasattr(a,b)
-	实例属性和类属性
+		继承中的构造函数的执行
+		py允许多重继承：参见day7
+		类型判断: isinstance(dog, Dog) )
+		多态的真正威力：调用方只管调用(该方法存在)，不用关心细节。
+		实例属性和类属性
+	获取对象信息：type或isinstance判断会毁掉多态。要尽量保持多态。
+		type()基本类型的判断；
+		isinstance()不仅能判断基本类型，还能判断继承关系；
+		dir("str")获得一个对象的所有属性和方法。
+		hasattr(a,b)
 
-第七天【难！！！特别是元类】：面向对象高级
+第七天 OOP adv 面向对象高级：多重继承、定制类、元类【难！！！特别是元类】
+	多重继承:一个子类可以继承多个父类，同时获得多个父类所有的非私有功能。py允许mixin写法。
+	定制类(类的专有方法、魔术方法)：__len__, __str__, __repr__, 
+		Fib.py:__iter__, __next__, __getitem__,
+		__call__:可以对实例直接调用 instance(), callable()函数
+		slice, REST API(链式调用), 
 	OOP高级
 	__slots__变量，来限制该class实例能添加的属性
 	@property:对直接操作的属性做限制
-	多重继承
-	定制类：__len__, __str__, __repr__, slice, REST API(链式调用), 
 	使用枚举类
 	使用元类(太难了！为了不影响学习的积极性，还是暂且跳过这章吧)
-	
+
 第八天：异常
-	错误处理
-	debug:		
+	错误处理: try-except-else-finally
+		 捕获多个异常; else子句; BaseException基类
+	自定义异常，抛出异常: raise 抛出错误.
+	debug:
 		- 虽然用IDE调试起来比较方便，
 		但是最后你会发现，logging才是终极武器。
 	单元测试 class TestDict(unittest.TestCase):
@@ -232,7 +247,9 @@ http://fhqdddddd.blog.163.com/blog/static/1869915420168283157719/?newFollowBlog
 
 第十二天：常用内建模块
 	Python之所以自称“batteries included”，就是因为内置了许多非常有用的模块，无需额外安装和配置，即可直接使用。
-	datetime:获取当前日期
+	获取帮助：命令行模式下，import time; dir(time); dir(time.mktime); help(time.mktime)
+	日期和时间: time, datetime, calendar
+		datetime:获取当前日期
 	collections:内建的一个集合模块，提供了许多有用的集合类。
 	base64:
 	struct模块: 来解决bytes和其他二进制数据类型的转换。 不懂

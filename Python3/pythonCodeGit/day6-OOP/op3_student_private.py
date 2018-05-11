@@ -23,11 +23,14 @@ lisa = Student('Lisa Simpson', 87)
 print(bart.name)
 #print(bart.__score)
 print(bart.get_score())
-print(bart.set_score(100))
-print(bart.get_score())
+bart.set_score(100)
+
+print('\n',bart.get_score())
 print(lisa)
 #lisa.__priMethod() 私有方法
 lisa.priMethod()
 
 #总的来说就是，Python本身没有任何机制阻止你干坏事，一切全靠自觉。
-print('正在干坏事: 直接获取私有变量',bart._Student__score)
+print("\n",bart.__dict__)#查看
+bart._Student__score=200; #修改
+print('干坏事: 修改和直接获取私有变量',bart._Student__score)

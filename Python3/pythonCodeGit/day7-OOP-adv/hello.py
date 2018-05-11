@@ -6,7 +6,7 @@
 #=============================================
 #过type()函数创建的类和直接写class是完全一样的
 def fn(self, name='world'): # 先定义函数
-...    print('Hello, %s.' % name)
+    print('Hello, %s.' % name)
 
 Hello2 = type('Hello', (object,), dict(hello2=fn)) # 创建Hello class
 

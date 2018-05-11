@@ -23,6 +23,3 @@ main()
 
 # $ python3 -O err.py #字母O; 相当于去掉了assert输出，就等于pass了
 
-
-
-

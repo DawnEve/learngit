@@ -4,11 +4,11 @@ def some_function(n):
         # Division by zero raises an exception
         r=10 / n
         print('如果出错，该行不会被打印. 结果是',r);
-    #except ZeroDivisionError:
     except ZeroDivisionError as e:
         print("Oops, invalid.",e)
     else:
         # Exception didn't occur, we're good.
+        print("==没出错，则打印这一行==")
         pass
     finally:
         # This is executed after the code block is run

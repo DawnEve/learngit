@@ -1,4 +1,6 @@
-﻿class Demo:
+﻿# 模拟list，按下标返回元素。
+
+class Demo:
 	L=[1,2,3,4,5,6,7,8,9]
 	def __getitem__(self,para):
 		#return isinstance(para,slice)
@@ -10,4 +12,4 @@
 		
 		
 d=Demo()
-print( d[1:10:2] ) 
+print( d[1:10:3] ) 

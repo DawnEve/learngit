@@ -12,15 +12,11 @@ def foo(s):
     return 10 / n
 
 foo('0')
-
-# 只有在必要的时候才定义我们自己的错误类型。如果可以选择Python已有的内置的错误类型（比如ValueError，TypeError），尽量使用Python内置的错误类型。
-
+# 只有在必要的时候才定义我们自己的错误类型。
+#如果可以选择Python已有的内置的错误类型（比如ValueError，TypeError），尽量使用Python内置的错误类型。
 
 # 可以把一种类型的错误转化成另一种类型：
 try:
     10 / 0
 except ZeroDivisionError:
     raise ValueError('input error!')
-
-
-

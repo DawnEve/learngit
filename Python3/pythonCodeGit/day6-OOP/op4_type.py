@@ -29,11 +29,11 @@ b=isinstance([1, 2, 3], (list, tuple));p(b)#True
 
 #判断是否是函数？
 import types
-b=(type(p)==types.FunctionTypep); p(b) #<class 'type'>
+b=(type(p)==types.FunctionType); p(b) #<class 'type'>
 
 
 
-dir(obj) #获取所有方法
+print( dir("") ) #获取所有方法
 
 
 
@@ -42,4 +42,4 @@ def readImage(fp):
     if hasattr(fp, 'read'):
         return readData(fp)
     return None
-
+print('hasattr(obj, attr) :', readImage(""))

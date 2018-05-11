@@ -1,6 +1,5 @@
 ﻿#mydict.py代码如下：
 class Dict(dict):
-
     def __init__(self, **kw):
         super().__init__(**kw)
 
@@ -16,14 +15,9 @@ class Dict(dict):
 # 单元测试部分
 #
 import unittest
-
 #from mydict import Dict
 
-
-
-		
 class TestDict(unittest.TestCase):
-
 #setUp()和tearDown()方法在每个测试方法调用前后执行。
     def setUp(self):
         print('[setUp...start...')

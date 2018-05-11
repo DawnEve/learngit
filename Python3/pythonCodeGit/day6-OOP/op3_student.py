@@ -17,7 +17,6 @@ class Student(): #不写(object),直接(),也没有异常
         else:
             return 'C'
 
-
 #实例化对象： 实例（Instance）
 #创建实例是通过类名+()实现的：
 bart = Student('Bart Simpson', 59)
@@ -36,4 +35,4 @@ print( lisa.get_grade() )
 #给类绑定对象
 bart.age=25
 print(bart.age)
-print(lisa.age)#没定义就没有值
+#print(lisa.age)#没定义就没有值

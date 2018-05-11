@@ -12,7 +12,7 @@ except ValueError as e:
     print(e);
 except UnicodeError as e:
     print('UnicodeError')
-except BaseException as e:
+except BaseException as e:#捕获所有错误。
     print('BaseException')
     print(e);
 	

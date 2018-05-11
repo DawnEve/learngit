@@ -7,7 +7,7 @@ class Student():
 		return self.name 
 	def getName(self):
 		return self.name 
-		
+
 #定义班级类
 class Classes():
 	students=[];
@@ -24,16 +24,18 @@ class Classes():
 			n=s.getName()
 			str=str+n+', '
 		return self.name+'班 学生:' + str[0:-2];#去除最后的空格
-
-# 直接显示变量调用的不是__str__()，而是__repr__()，
-# 两者的区别是__str__()返回用户看到的字符串，
-# 而__repr__()返回程序开发者看到的字符串，
-# 也就是说，__repr__()是为调试服务的。
-		
+###########定义结束，开始实例化
 s=Student('Jim');
 s2=Student('Tom');
 s3=Student('LiLei');
 print(s)
+# 在交互模式下输入s回车，显示的是：
+# <__main__.Student object at 0x0000025C603CF550>
+#print(s)显示的是 Jim
+
+# 直接显示变量调用的不是__str__()，而是__repr__()，
+# 两者的区别是：__str__()返回用户看到的字符串，而__repr__()返回程序开发者看到的字符串， 也就是说，__repr__()是为调试服务的。
+# 解决的办法就是在这俩都定义。偷懒写法是在方法体上写  __repr__==__str__
 
 c=Classes('3(7)');
 print(c)
@@ -42,4 +44,3 @@ c.add(s2)
 c.add(s3)
 print(c)
 print(len(c))
-

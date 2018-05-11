@@ -305,7 +305,7 @@ html-css-javascript
 >py0.2.3 review day1:list,dict
 >py0.2.4 review day2(if,while,for),part day3.
 >py0.2.5 add APA_symbol txt file. day3 fn.
-
+>py0.2.6 review day7 oop adv; day8 exception
 
 
 
