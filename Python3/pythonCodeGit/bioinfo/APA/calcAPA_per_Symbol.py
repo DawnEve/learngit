@@ -56,19 +56,19 @@ for k,v in symbolDict.items():
 print('sum=',sum) #164895
 print(lens)
 
-print('超过50个APA位点的基因: ',len(tooManyAPA),tooManyAPA)
+print('超过50个APA位点的基因 ',len(tooManyAPA),'个: ',tooManyAPA)
 
 
 
 
 
 
+'''
 '''
 #可视化这些基因的APA位点个数图
 import matplotlib.pyplot as plt
 plt.hist(lens, 1000)   #####bins=30
 plt.show()
-'''
 
 
 

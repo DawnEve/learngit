@@ -5,6 +5,15 @@
 # 输出cet4外的单词
 # 输出cet6外的单词
 # v0.0.2 输出最长的句子
+# done: 扩充cet4-6复数词: plural() ving ved adjer
+# done: 支持单词写到一行，支持任意非字母分隔符。
+
+
+'''
+别人做的词形还原程序：
+https://blog.csdn.net/potato012345/article/details/78091939
+https://github.com/Zhangtd/MorTransformation
+'''
 
 import re
 
@@ -13,7 +22,7 @@ import re
 import time
 #from numpy.core.defchararray import isnumeric
 #from idlelib.iomenu import encoding
-mydate = time.strftime("%b. %d, %Y")
+mydate = time.strftime("%b %d, %Y")
 
 
 # 打开文件
@@ -21,7 +30,17 @@ f=open(r'D:\Temp\sample.txt', 'r', encoding='UTF-8') ;
 txt=f.read()
 
 
+##############
+#输出最长的句子
+sentences=re.split(r'[.|?|!|;\n]+',txt)
+tmp=""
+for s in sentences:
+    if len(s)>len(tmp):
+        tmp=s
+print('最长句子有 ',len(re.split(r'[^a-zA-Z0-9]+',tmp)),'words. \n',tmp)
 
+
+##############
 #定义字典
 mydict={}
 i=0
@@ -45,8 +64,8 @@ def cleanArr(arr):
         #全部小写
         arr[i]=arr[i].lower()
         
-        #去掉空格元素、等少于2个字符的元素
-        if(len(arr[i])<2):
+        #去掉空格元素、<=2个字符的元素
+        if(len(arr[i])<=2):
             #print(i,'=',arr[i])
             del arr[i]
         i-=1
@@ -54,10 +73,10 @@ def cleanArr(arr):
 
 linearr2=cleanArr(linearr)
 
-print('清理后：',len(linearr2),linearr2)
+#print('清理后：',len(linearr2),linearr2)
 
 #显示日期和单词数
-print(mydate, '|',len(linearr2), 'words') 
+print('\n',mydate, '|',len(linearr2), 'words') 
 #删除空格元素前 2000 words,清理后 1870 words
 
 
@@ -134,22 +153,129 @@ for w in wordlist:
 
 
 
+
+
+
 print()
 ###########################
 #输出cet4之外的单词
 ###########################
 
+#求单词复数形式:名词复数、动词三单。
+def plural(word):
+    if word[-2:] in ["ey", 'ay','an']: #journeys way pan
+        return word+'s'
+    if word.endswith('y'):  
+        return word[:-1]+'ies'  
+    elif word[-1] in 'sx' or word[-2:] in ['sh','ch']:  
+        return word+'es'  
+    elif word.endswith('an'):  
+        return word[:-2]+'en'  
+    else:  
+        return word+'s'
+
+# 动词进行时 ving https://wenku.baidu.com/view/c55f48bc26fff705cc170aef.html
+def ving(word):
+    #内函数，re.sub需要的
+    def fn(matched):
+        tmp=matched.groups()
+        return tmp[0]+tmp[1]+"ing"
+    #
+    #如果是元音+辅音结尾，则双写辅音加ing： cut cutting, overlapping, span spanning
+    if re.match(r'.*[aeiou]{1}(t|p|n)$', word):
+        return re.sub(r'(.*[aeiou]{1}(t|p|n)$)',fn,word)
+    '''
+    word="cut"
+    if word[-2:] in ('ut', 'ap'):
+        print( 'origin: ', word+word[-1]+"ing\n" )
+    #
+    if word.endswith('ut'):
+        return word+"ting"
+    if word.endswith('ap'):
+        return word+"ping"
+    #span spanning
+    if word.endswith('an'):
+        return word+"ning"
+    '''
+    if word.endswith('ee'):
+        return word+"ing"
+    if word.endswith('e'):
+        return word[:-1]+'ing';
+    else:
+        return word+'ing'
+
+# 动词过去式
+def ved(word):
+    #admit
+    if word[-2:] == 'it':
+        return word+'ted'
+    #drop dropped, map mapped, 
+    if word[-2:] in ['ap','op']:
+        return word+'ped'
+
+    #employ employed, play played
+    if word[-2:] in ['oy','ay']:
+        return word+'ed'
+    
+    if word.endswith('y'):
+        return word[:-1]+'ied'
+    elif word.endswith('e'):
+        return word+'d'
+    else:
+        return word+'ed'
+# 形容词比较级 adjer
+def adjer(word):
+    #easy easier
+    if word[-1:] =='y':
+        return word[:-1]+"ier"
+    elif word.endswith('e'):
+        return word+'r'
+    return word+"er"
+
 #从文本读入为数组，一行为一个元素，忽略空行和开头为#的行
+#支持一行写多个单词，可以用非字母隔开：空格 / ,等
 def getArrFromTxt(fpath):
+    import re;
     f=open(fpath,'r', encoding='UTF-8')
     word=[]
-    for w in f.readlines():
-        w=w.strip()
-        if w=='' or w[0]=='#':
+    for lineR in f.readlines():
+        line=lineR.strip()
+        if line=='' or line[0]=='#':
             continue
-        word.append(w)
+        arr=re.split(r'[^A-Za-z]+',line)
+        for eachword in arr:
+            if len(eachword)<=1: #1个字符级以下的单词过滤掉。go还是需要的
+                continue;
+            if eachword not in word:
+                word.append(eachword)
     f.close()
     return word;
+
+#扩充词汇表：名词复数； ving；
+def extendWords(wordlist):
+    newlist=[]
+    for w in wordlist:
+        #本身加入字典
+        if w not in newlist:
+            newlist.append(w);
+        #复数加入字典
+        ws=plural(w);
+        if ws not in newlist:
+            newlist.append(ws)
+        #ving加入字典
+        wing=ving(w);
+        if wing not in newlist:
+            newlist.append(wing)
+        #v-ed加入字典
+        wed=ved(w);
+        if wed not in newlist:
+            newlist.append(wed)
+        #adj er
+        wer=adjer(w);
+        if wer not in newlist:
+            newlist.append(wer)
+
+    return newlist;
 
 #list去重
 def getUniqList(mylist):
@@ -164,21 +290,34 @@ def getUniqList(mylist):
     return ml;
 
 
+###############################
 #读入cet4单词列表
 fpath=r'G:\learngit\Python3\pythonCodeGit\day9-IO\enTextAnalysis\cet4-3.txt';
-cet4=getArrFromTxt(fpath)
+cet4R=getArrFromTxt(fpath)
+cet4=extendWords(cet4R)
 #print('CET4: ', len(cet4), cet4)
 cet4=getUniqList(cet4)
 #print('CET4 uniq: ', len(cet4), cet4)
 
 #读入cet6单词列表
-cet6=getArrFromTxt(r'G:\learngit\Python3\pythonCodeGit\day9-IO\enTextAnalysis\cet6C2.txt');
+cet6R=getArrFromTxt(r'G:\learngit\Python3\pythonCodeGit\day9-IO\enTextAnalysis\cet6C2.txt');
 #print('CET6: ', len(cet6), cet6)
+cet6=extendWords(cet6R)
 cet6=getUniqList(cet6)
 #print('CET6 uniq: ', len(cet6), cet6)
 
+
+
+#读入cetOver单词列表
+cetOR=getArrFromTxt(r'G:\learngit\Python3\pythonCodeGit\day9-IO\enTextAnalysis\cetOver.txt')
+cetO=extendWords(cetOR)
+cetO=getUniqList(cetO)
+
+
+
 #描述cet4和cet6个数：
-print('cet4:',len(cet4), ' words, cet6:', len(cet6),' words.')
+print('原始词汇 cet4/6/O:',len(cet4R),  len(cet6R), len(cetOR),' words.')
+print('扩充后的 cet4/6/O:',len(cet4), len(cet6), len(cetO),' words.\n')
 
 
 # A - B
@@ -187,12 +326,15 @@ def ArrMinus(arr1,arr2):
     for i in arr1:
         if i not in arr2:
             tmp.append(i)
+    tmp.sort()#排序
     return tmp
 
 
 #唯一化
 linearrUniq=getUniqList(linearr2)
 
+
+####################################################
 # cet4之外的词汇
 outsideCET4=ArrMinus(linearrUniq,cet4)
 #输出
@@ -204,15 +346,11 @@ outsideCET6=ArrMinus(outsideCET4,cet6)
 #输出
 print('超出cet6的词汇',len(outsideCET6),outsideCET6);
 
+# cetO之外的词汇
+outsideCETO=ArrMinus(outsideCET6,cetO)
+#输出
+print('超出cetO的词汇',len(outsideCETO),outsideCETO);
 
-##############
-#输出最长的句子
-sentences=re.split(r'[.|?|!|;]+',txt)
-tmp=""
-for s in sentences:
-    if len(s)>len(tmp):
-        tmp=s
-print('最长句子有 ',len(re.split(r'[^a-zA-Z0-9]+',tmp)),'words. \n',tmp)
 
 #关闭文件
 f.close()

@@ -5,6 +5,8 @@
 
 Python官方的pypi.python.org网站注册
 
+独立应用：
+1.英语单词频率分析软件：day9/enTextAnalysis/wordFreq.py
 
 ==========================================
 经验教训
@@ -12,9 +14,11 @@ Python官方的pypi.python.org网站注册
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-2.命名文件的时候千万不要和import的文件重名！
+2.命名文件的时候千万不要和要import的文件重名！
 
 3. dir(str)查方法
+比如查找正则表达式帮助，在命令行输入：
+import re; help(re); dir(re); help(re.match) 
 ==========================================
 
 第一天：运行模式、数据格式
@@ -217,15 +221,17 @@ Python官方的pypi.python.org网站注册
 
 
 
-第十一天：正则表达式
-http://fhqdddddd.blog.163.com/blog/static/1869915420168283157719/?newFollowBlog
+第十一天：正则表达式RegExp:与Perl中的正则类似。
+http://www.runoob.com/python/python-reg-expressions.html
 	字符匹配：
-		#re.match(r'^\d{3}\-\d{3,8}$', '010-12345')
+		re.match(r'^\d{3}\-\d{3,8}$', '010-12345')
+		re.search(r'cat', 'this is a cat', re.I)
+		group(0)是字符串本身，group(1)是第一个匹配项；groups()返回匹配字符数组。
 	字符分割
 		#无论多少个空格都可以正常分割。	
-		r=re.split(r'\s+', 'a b   c')
-		print(r)
-		# ['a', 'b', 'c']
+		re.split(r'\s+', 'a b   c') # ['a', 'b', 'c']
+	字符替换
+		re.sub(r'\D', '', '010-123-456') #'010123456'
 	字符提取
 		import re
 		m = re.match(r'^(\d{3})-(\d{3,8})$', '010-12345')

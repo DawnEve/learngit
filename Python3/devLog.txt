@@ -301,12 +301,12 @@ html-css-javascript
 	使用模板没有继续看...//TODO
 	
 >v0.2.1-3 	异步IO	
->py0.2.2 英文文本分析工具:词频统计，超4-6级的词汇list
+>py0.2.2 day9/enTextAnalysis: 英文文本分析工具:词频统计，超4-6级的词汇list
 >py0.2.3 review day1:list,dict
 >py0.2.4 review day2(if,while,for),part day3.
 >py0.2.5 add APA_symbol txt file. day3 fn.
 >py0.2.6 review day7 oop adv; day8 exception
-
+>py0.2.7 review day11 regExp
 
 
 
