@@ -2948,6 +2948,7 @@ trim
 triumph
 troop
 tropical
+trouble
 troublesome
 trumpet
 trunk
@@ -3453,6 +3454,8 @@ your
 zoo
 
 
+
+target 
 appear arrange chinese dawn due duty rest safe seriously skill
 southwest southwestern special thank traveler window woman 
 halfway investigation partially sacred windshield
@@ -3589,7 +3592,7 @@ highest
 
 # v-es, v-ing, v-ed
 goes 
-meant 
+meant broke 
 
 #es
 does has
@@ -3615,7 +3618,7 @@ australia indian soviet
 beijing/shanghai sichuan chengdu chongqing chuanjian france york tibet spanish  michigan 
 washington/korea/korean/los/angeles/iran/russia/syria/asia/saudi/arabian/iraq/india
 moscow/london/england/wales/irish/britain british dublin ireland 
-africa asian columbia texas 
+africa asian columbia texas
 
 
 reuters thomson switzerland nasa boeing 
