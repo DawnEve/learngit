@@ -2948,6 +2948,7 @@ trim
 triumph
 troop
 tropical
+trouble
 troublesome
 trumpet
 trunk
@@ -3453,6 +3454,8 @@ your
 zoo
 
 
+
+target 
 appear arrange chinese dawn due duty rest safe seriously skill
 southwest southwestern special thank traveler window woman 
 halfway investigation partially sacred windshield
@@ -3517,6 +3520,10 @@ arrive
 dream
 easily
 extremely
+
+sea advisor african army hub maritime diplomacy neighborhood peacetime peacefully 
+unsafe worldwide 
+
 single table stay shadow why website young speech slowly unfair spell direction 
 breakthrough analyst unfairly 
 aid cosy cozy decide defense department dispute strongly victory
@@ -3585,7 +3592,7 @@ highest
 
 # v-es, v-ing, v-ed
 goes 
-meant 
+meant broke 
 
 #es
 does has
@@ -3603,12 +3610,15 @@ brought paid came
 mr/ms/ex
 anderson/john/ford/johansson/wes/jeff/bob/tony/obama/johnson/david/james/parkinson/william
 jinping pichai dennis trump tom robert peterson donald thomas 
+andrew
+
 
 #地名
+australia indian soviet 
 beijing/shanghai sichuan chengdu chongqing chuanjian france york tibet spanish  michigan 
 washington/korea/korean/los/angeles/iran/russia/syria/asia/saudi/arabian/iraq/india
 moscow/london/england/wales/irish/britain british dublin ireland 
-africa asian columbia texas 
+africa asian columbia texas
 
 
 reuters thomson switzerland nasa boeing 
@@ -3622,4 +3632,4 @@ renminbi yuan
 http/www/com/edu/alex
 co/uk/us/km/cm/th/hk/cc/nd/pm/
 aha min max 
-doesn cannot isn don pic shouldn mac wto org 
+doesn cannot isn don pic shouldn mac wto org anti 

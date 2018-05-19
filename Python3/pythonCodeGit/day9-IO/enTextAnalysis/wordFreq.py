@@ -7,7 +7,8 @@
 # v0.0.2 输出最长的句子
 # done: 扩充cet4-6复数词: plural() ving ved adjer
 # done: 支持单词写到一行，支持任意非字母分隔符。
-
+# doing: 使用缓存词库判断单词是否被修改了。hash判断文本是否修改，决定是否重新生成缓存
+from _sha1 import sha1
 
 '''
 别人做的词形还原程序：
@@ -23,7 +24,7 @@ import time
 #from numpy.core.defchararray import isnumeric
 #from idlelib.iomenu import encoding
 mydate = time.strftime("%b %d, %Y")
-
+time_start=time.time();
 
 # 打开文件
 f=open(r'D:\Temp\sample.txt', 'r', encoding='UTF-8') ;
@@ -153,8 +154,14 @@ for w in wordlist:
 
 
 
-
-
+#######################################################################
+# 耗时步骤：词语的遍历变换。
+# 在dustbin文件夹中保存缓存文件，
+#    如果不存在就创建缓存，
+#    如果存在，判断hash。
+#        如果没修改，则使用缓存，
+#        如果使用了，则重新生成缓存。
+#######################################################################
 
 print()
 ###########################
@@ -274,8 +281,8 @@ def extendWords(wordlist):
         wer=adjer(w);
         if wer not in newlist:
             newlist.append(wer)
-
-    return newlist;
+    #仅保留唯一值
+    return getUniqList(newlist);
 
 #list去重
 def getUniqList(mylist):
@@ -291,33 +298,108 @@ def getUniqList(mylist):
 
 
 ###############################
+# 对词库进行缓存
+###############################
+'''
+读词库是最耗时，99%的时间都是这里消耗的。
+而其中extendWords函数更是消耗了99%额时间。所以，需要对扩充词库这一步使用缓存优化。
+
+
+'''
+
 #读入cet4单词列表
-fpath=r'G:\learngit\Python3\pythonCodeGit\day9-IO\enTextAnalysis\cet4-3.txt';
-cet4R=getArrFromTxt(fpath)
-cet4=extendWords(cet4R)
-#print('CET4: ', len(cet4), cet4)
-cet4=getUniqList(cet4)
-#print('CET4 uniq: ', len(cet4), cet4)
+fpath4=r'G:\learngit\Python3\pythonCodeGit\day9-IO\enTextAnalysis\cet4-3.txt';
+cet4R=getArrFromTxt(fpath4)
+#cet4=extendWords(cet4R)
 
 #读入cet6单词列表
-cet6R=getArrFromTxt(r'G:\learngit\Python3\pythonCodeGit\day9-IO\enTextAnalysis\cet6C2.txt');
-#print('CET6: ', len(cet6), cet6)
-cet6=extendWords(cet6R)
-cet6=getUniqList(cet6)
-#print('CET6 uniq: ', len(cet6), cet6)
-
-
+fpath6=r'G:\learngit\Python3\pythonCodeGit\day9-IO\enTextAnalysis\cet6C2.txt'
+cet6R=getArrFromTxt(fpath6);
+#cet6=extendWords(cet6R)
 
 #读入cetOver单词列表
-cetOR=getArrFromTxt(r'G:\learngit\Python3\pythonCodeGit\day9-IO\enTextAnalysis\cetOver.txt')
-cetO=extendWords(cetOR)
-cetO=getUniqList(cetO)
+fpathO=r'G:\learngit\Python3\pythonCodeGit\day9-IO\enTextAnalysis\cetOver.txt'
+cetOR=getArrFromTxt(fpathO)
+#cetO=extendWords(cetOR)
+
+###################
+#这里求文件的hash值
+
+#求文件sha1的函数
+def getSha1(fpath):
+    import hashlib
+    txt=open(fpath,encoding="utf-8").read()
+    txtEncode=txt.encode('utf-8')
+    return hashlib.sha1(txtEncode).hexdigest()
+
+#如果文件不存在，
+fpath_index_cache=fpath4+".index.cache"
+fpath_cache_arr=[fpath_index_cache]
+
+for fp in [fpath4,fpath6,fpathO]:
+    fpath_cache_arr.append( fp+".cache")
+
+
+
+#如果 fpath_index_cache 不存在，则新建缓存文件
+#计算单词文件的sha1值
+sha1_4=getSha1(fpath4)
+sha1_6=getSha1(fpath6)
+sha1_O=getSha1(fpathO)
+sha1_arr=[sha1_4,sha1_6,sha1_O]
+
+import os
+not_modified=1
+if os.path.exists(fpath_index_cache):
+    #有缓存，则判断hash值是否修改过
+    sha1_cached_R = open(fpath_index_cache,encoding="utf-8").readlines()[0]
+    sha1_cached = re.split(r',', sha1_cached_R)
+    if(sha1_cached[0].strip() != sha1_4) or (sha1_cached[1].strip() != sha1_6) or \
+        (sha1_cached[2].strip() != sha1_O):
+        not_modified=0# 原始文件被修改过，也需要重建缓存
+else:
+    #没有缓存，则需要重建
+    not_modified=0 
+
+#更新词库缓存。一个四个文件，第一个是index，后三个是词库
+def refreshCache(wordArr,fileArr):
+    arrlen=len(wordArr)
+    for i in range(arrlen):
+        file=open(fileArr[i],'w',encoding="utf-8")
+        file.write(",".join(wordArr[i]))
+        file.close()
+
+
+
+
+#如果不需要重建缓存，则
+if not_modified:
+    print("直接读取单词库缓存-->")
+    cet4=getArrFromTxt(fpath_cache_arr[1])
+    cet6=getArrFromTxt(fpath_cache_arr[2])
+    cetO=getArrFromTxt(fpath_cache_arr[3])
+else:
+    print("要重建单词库并缓存......")
+    cet4=extendWords(cet4R)
+    cet6=extendWords(cet6R)
+    cetO=extendWords(cetOR)
+    #更新缓存
+    refreshCache([sha1_arr, cet4,cet6,cetO], fpath_cache_arr)
 
 
 
 #描述cet4和cet6个数：
 print('原始词汇 cet4/6/O:',len(cet4R),  len(cet6R), len(cetOR),' words.')
-print('扩充后的 cet4/6/O:',len(cet4), len(cet6), len(cetO),' words.\n')
+#print('扩充后的 cet4/6/O:',len(cet4), len(cet6), len(cetO),' words.\n')
+
+
+print(time.time()-time_start)#10.294344186782837
+#缓存后依旧很大 5.449877500534058
+#assert 0, "============//todo //stop here."
+###############################
+
+
+
 
 
 # A - B
@@ -355,4 +437,5 @@ print('超出cetO的词汇',len(outsideCETO),outsideCETO);
 #关闭文件
 f.close()
 
-print("\nThe end")
+print("\nThe end", time.time()-time_start,'seconds') #The end 10.206275939941406
+#使用缓存，节省5s。因为文件实在太大了。The end 5.373823165893555
