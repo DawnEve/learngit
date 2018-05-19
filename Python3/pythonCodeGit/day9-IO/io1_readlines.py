@@ -1,6 +1,6 @@
-#C:\Tools\array
+#C:\Tools\
 
-f=open(r'C:\Tools\array\raw_data_3_replicates.txt', 'r') ;
+f=open(r'C:\Tools\test.txt', 'r',encoding='utf-8') ;
 
 i=0;
 for line in f.readlines():
@@ -10,3 +10,5 @@ for line in f.readlines():
     i+=1
     
 print(i)
+
+f.close()

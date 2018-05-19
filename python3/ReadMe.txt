@@ -162,7 +162,7 @@ import re; help(re); dir(re); help(re.match)
 	文档测试:docTest(没懂)
 
 第九天：IO
-	文件读写
+	文件读写:内存为核心，流进内存的叫input,从内存写到硬盘或发到网络的叫output。
 	read、write:使用with语句操作文件IO是个好习惯。
 	StringIO和BytesIO:就是内存的读写
 	操作文件和目录:环境变量； 路径操作汇总http://www.jb51.net/article/59901.htm
@@ -174,8 +174,11 @@ import re; help(re); dir(re); help(re.match)
 	某个字符出现的次数 str2.count('a')	
 	重置文件指针：file.seek(0, 0)
 	
-	[推荐] 合并文件夹下所有文本文件的内容 mergeAllFileInOne/
-	实例：day9/enTextAnalysis/ 分析英文文章中用词频率，和超出4/6级的词汇。该文件夹包含部分4-6级词汇list。
+	求中文文本文件的md5值：
+	
+	[实例]
+	1.合并文件夹下所有文本文件的内容 day9/mergeAllFileInOne/
+	2. day9/enTextAnalysis/ 分析英文文章中用词频率，和超出4/6级的词汇。该文件夹包含部分4-6级词汇list。
 	
 		
 第十天：进程和线程
