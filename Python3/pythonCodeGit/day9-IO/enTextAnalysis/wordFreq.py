@@ -7,7 +7,7 @@
 # v0.0.2 输出最长的句子
 # done: 扩充cet4-6复数词: plural() ving ved adjer
 # done: 支持单词写到一行，支持任意非字母分隔符。
-
+# doing: 使用缓存词库判断单词是否被修改了。hash判断文本是否修改，决定是否重新生成缓存
 
 '''
 别人做的词形还原程序：
@@ -23,7 +23,7 @@ import time
 #from numpy.core.defchararray import isnumeric
 #from idlelib.iomenu import encoding
 mydate = time.strftime("%b %d, %Y")
-
+time_start=time.time();
 
 # 打开文件
 f=open(r'D:\Temp\sample.txt', 'r', encoding='UTF-8') ;
@@ -153,8 +153,14 @@ for w in wordlist:
 
 
 
-
-
+#######################################################################
+# 耗时步骤：词语的遍历变换。
+# 在dustbin文件夹中保存缓存文件，
+#    如果不存在就创建缓存，
+#    如果存在，判断hash。
+#        如果没修改，则使用缓存，
+#        如果使用了，则重新生成缓存。
+#######################################################################
 
 print()
 ###########################
@@ -274,8 +280,8 @@ def extendWords(wordlist):
         wer=adjer(w);
         if wer not in newlist:
             newlist.append(wer)
-
-    return newlist;
+    #仅保留唯一值
+    return getUniqList(newlist);
 
 #list去重
 def getUniqList(mylist):
@@ -292,26 +298,21 @@ def getUniqList(mylist):
 
 ###############################
 #读入cet4单词列表
-fpath=r'G:\learngit\Python3\pythonCodeGit\day9-IO\enTextAnalysis\cet4-3.txt';
-cet4R=getArrFromTxt(fpath)
+fpath4=r'G:\learngit\Python3\pythonCodeGit\day9-IO\enTextAnalysis\cet4-3.txt';
+cet4R=getArrFromTxt(fpath4)
 cet4=extendWords(cet4R)
-#print('CET4: ', len(cet4), cet4)
-cet4=getUniqList(cet4)
-#print('CET4 uniq: ', len(cet4), cet4)
+
 
 #读入cet6单词列表
-cet6R=getArrFromTxt(r'G:\learngit\Python3\pythonCodeGit\day9-IO\enTextAnalysis\cet6C2.txt');
-#print('CET6: ', len(cet6), cet6)
+fpath6=r'G:\learngit\Python3\pythonCodeGit\day9-IO\enTextAnalysis\cet6C2.txt'
+cet6R=getArrFromTxt(fpath6);
 cet6=extendWords(cet6R)
-cet6=getUniqList(cet6)
-#print('CET6 uniq: ', len(cet6), cet6)
-
-
 
 #读入cetOver单词列表
-cetOR=getArrFromTxt(r'G:\learngit\Python3\pythonCodeGit\day9-IO\enTextAnalysis\cetOver.txt')
+fpathO=r'G:\learngit\Python3\pythonCodeGit\day9-IO\enTextAnalysis\cetOver.txt'
+cetOR=getArrFromTxt(fpathO)
 cetO=extendWords(cetOR)
-cetO=getUniqList(cetO)
+
 
 
 
@@ -355,4 +356,4 @@ print('超出cetO的词汇',len(outsideCETO),outsideCETO);
 #关闭文件
 f.close()
 
-print("\nThe end")
+print("\nThe end", time.time()-time_start) #The end 10.206275939941406
