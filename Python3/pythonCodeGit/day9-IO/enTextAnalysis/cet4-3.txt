@@ -1,5 +1,9 @@
 #01 basic word
 
+son applicant children sister sleepy trip wealthy wood 
+
+
+
 abandon
 aboard
 absolute
@@ -3454,6 +3458,8 @@ your
 zoo
 
 
+angry  domestically dynasty imbalance investor monetary weekend
+zero usual setup sharp happily salesman anyway disagree enjoy globalization wall win
 
 target 
 appear arrange chinese dawn due duty rest safe seriously skill
@@ -3462,8 +3468,8 @@ halfway investigation partially sacred windshield
 ceo api data provider rapidly wealth smartphone
 startup valley doubt innovate incubator closely
 digital heath plan sell social week act
-
-wait size 
+agree adviser alone death heavily secret sentence smooth soybean substantially telecommunications 
+writer wait size 
 
 accept awareness arrest center design desirable despite device devise discovery harbor 
 adaptation advancement curricula curriculum definition diligence directly imperfectly
@@ -3539,7 +3545,7 @@ deny heroe excitement
 
 
 importer internationally multinational round supply trillion
-
+labor 
 
 
 # numbers
@@ -3562,7 +3568,7 @@ tuesday
 wednesday
 thursday
 friday
-
+saturday
 sunday
 
 
@@ -3584,43 +3590,43 @@ december
 #n
 women men
 mice
-feet 
+feet teeth 
 
 #adj 比较级
 worse
 highest
 
-# v-es, v-ing, v-ed
-goes 
-meant broke 
-
 #es
+goes 
 does has
 
 #ing
 
-
 #ed
+meant broke 
 heard sought wrote felt thought spoke took led been seen did done became had 
 said told bought driven began kept went proven blown  
-brought paid came  
-
+brought paid came sold understood known built won 
+shown written 
 #####################################################
 #04 人名 地名
 mr/ms/ex
 anderson/john/ford/johansson/wes/jeff/bob/tony/obama/johnson/david/james/parkinson/william
 jinping pichai dennis trump tom robert peterson donald thomas 
-andrew
-
+andrew steven 
+kate getty gillian 
 
 #地名
 australia indian soviet 
-beijing/shanghai sichuan chengdu chongqing chuanjian france york tibet spanish  michigan 
+beijing/shanghai sichuan chengdu chongqing chuanjian shenzhen tibet
+france york spanish michigan 
 washington/korea/korean/los/angeles/iran/russia/syria/asia/saudi/arabian/iraq/india
 moscow/london/england/wales/irish/britain british dublin ireland 
 africa asian columbia texas
+trans 
 
 
+tweet abc abcnews cnn zte
 reuters thomson switzerland nasa boeing 
 twitter weibo airbus nbc nbcnews facebook bbc spotify coldplay 
 deepmind demo google keynote theverge

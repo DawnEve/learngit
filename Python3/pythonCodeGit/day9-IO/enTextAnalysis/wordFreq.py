@@ -2,13 +2,13 @@
 #功能：
 # 统计单词频数
 # 输出频数为指定数字的单词
-# 输出cet4外的单词
-# 输出cet6外的单词
+# 输出cet4外的单词, 输出cet6外的单词
 # v0.0.2 输出最长的句子
 # done: 扩充cet4-6复数词: plural() ving ved adjer
 # done: 支持单词写到一行，支持任意非字母分隔符。
-# doing: 使用缓存词库判断单词是否被修改了。hash判断文本是否修改，决定是否重新生成缓存
-from _sha1 import sha1
+# done20180519: 使用缓存词库判断单词是否被修改了。hash判断文本是否修改，决定是否重新生成缓存。缓存文件.cache不被git跟踪。
+# todo 部分修改时，部分重构缓存。
+
 
 '''
 别人做的词形还原程序：
@@ -31,15 +31,18 @@ f=open(r'D:\Temp\sample.txt', 'r', encoding='UTF-8') ;
 txt=f.read()
 
 
-##############
+########################################################
 #输出最长的句子
-sentences=re.split(r'[.|?|!|;\n]+',txt)
+########################################################
+#sentences=re.split(r'[.?!;\n]+\s{1}',txt)
+sentences=re.split(r'[.?!;\n]+',txt)
+
 tmp=""
 for s in sentences:
     if len(s)>len(tmp):
         tmp=s
-print('最长句子有 ',len(re.split(r'[^a-zA-Z0-9]+',tmp)),'words. \n',tmp)
-
+print('最长句子有 ',len(re.split(r'[^a-zA-Z0-9]+',tmp)),'words.')
+print(tmp.strip())
 
 ##############
 #定义字典
@@ -170,7 +173,7 @@ print()
 
 #求单词复数形式:名词复数、动词三单。
 def plural(word):
-    if word[-2:] in ["ey", 'ay','an']: #journeys way pan
+    if word[-2:] in ["ey", 'ay','an','oy']: #journeys way pan enjoy
         return word+'s'
     if word.endswith('y'):  
         return word[:-1]+'ies'  
@@ -374,7 +377,7 @@ def refreshCache(wordArr,fileArr):
 
 #如果不需要重建缓存，则
 if not_modified:
-    print("直接读取单词库缓存-->")
+    print("直接加载单词库缓存-->")
     cet4=getArrFromTxt(fpath_cache_arr[1])
     cet6=getArrFromTxt(fpath_cache_arr[2])
     cetO=getArrFromTxt(fpath_cache_arr[3])
@@ -387,13 +390,12 @@ else:
     refreshCache([sha1_arr, cet4,cet6,cetO], fpath_cache_arr)
 
 
-
 #描述cet4和cet6个数：
 print('原始词汇 cet4/6/O:',len(cet4R),  len(cet6R), len(cetOR),' words.')
-#print('扩充后的 cet4/6/O:',len(cet4), len(cet6), len(cetO),' words.\n')
+print('扩充后的 cet4/6/O:',len(cet4), len(cet6), len(cetO),' words.\n')
 
 
-print(time.time()-time_start)#10.294344186782837
+#print(time.time()-time_start)#10.294344186782837
 #缓存后依旧很大 5.449877500534058
 #assert 0, "============//todo //stop here."
 ###############################
@@ -402,7 +404,7 @@ print(time.time()-time_start)#10.294344186782837
 
 
 
-# A - B
+# 求集合的差集： A - B
 def ArrMinus(arr1,arr2):
     tmp=[]
     for i in arr1:
@@ -437,5 +439,5 @@ print('超出cetO的词汇',len(outsideCETO),outsideCETO);
 #关闭文件
 f.close()
 
-print("\nThe end", time.time()-time_start,'seconds') #The end 10.206275939941406
+print("\nThe end. elapsed =", time.time()-time_start,'seconds') #The end 10.206275939941406
 #使用缓存，节省5s。因为文件实在太大了。The end 5.373823165893555
