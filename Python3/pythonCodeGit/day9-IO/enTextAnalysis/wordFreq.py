@@ -7,7 +7,7 @@
 # done: 扩充cet4-6复数词: plural() ving ved adjer
 # done: 支持单词写到一行，支持任意非字母分隔符。
 # done20180519: 使用缓存词库判断单词是否被修改了。hash判断文本是否修改，决定是否重新生成缓存。缓存文件.cache不被git跟踪。
-# todo 部分修改时，部分重构缓存。
+# done20180524: 部分修改时，部分重构缓存。不用三个缓存一起更新了。
 
 
 '''
@@ -353,6 +353,7 @@ sha1_arr=[sha1_4,sha1_6,sha1_O]
 
 import os
 not_modified=1
+sha1_cached=['','','','']
 if os.path.exists(fpath_index_cache):
     #有缓存，则判断hash值是否修改过
     sha1_cached_R = open(fpath_index_cache,encoding="utf-8").readlines()[0]
@@ -365,9 +366,11 @@ else:
     not_modified=0 
 
 #更新词库缓存。一个四个文件，第一个是index，后三个是词库
-def refreshCache(wordArr,fileArr):
+def refreshCache(wordArr,fileArr,isChanged):
     arrlen=len(wordArr)
     for i in range(arrlen):
+        if(isChanged[i]==0):
+            continue;
         file=open(fileArr[i],'w',encoding="utf-8")
         file.write(",".join(wordArr[i]))
         file.close()
@@ -382,12 +385,28 @@ if not_modified:
     cet6=getArrFromTxt(fpath_cache_arr[2])
     cetO=getArrFromTxt(fpath_cache_arr[3])
 else:
-    print("要重建单词库并缓存......")
-    cet4=extendWords(cet4R)
-    cet6=extendWords(cet6R)
-    cetO=extendWords(cetOR)
+    print("要重建/部分重建单词库并缓存......")
+    #根据sha1决定是否从缓存读取词库
+    isChanged=[1,0,0,0]
+    #4
+    if(sha1_cached[0].strip() != sha1_4):
+        print("reconstructing cet4...");cet4=extendWords(cet4R);isChanged[1]=1;
+    else:
+        cet4=getArrFromTxt(fpath_cache_arr[1])
+    #6
+    if(sha1_cached[1].strip() != sha1_6):
+        print("reconstructing cet6...");cet6=extendWords(cet6R);isChanged[2]=1;
+    else:
+        cet6=getArrFromTxt(fpath_cache_arr[2])  
+    #O
+    if(sha1_cached[2].strip() != sha1_O):
+       print("reconstructing cetO..."); cetO=extendWords(cetOR);isChanged[3]=1;
+    else:
+        cetO=getArrFromTxt(fpath_cache_arr[3])
+    #cet6=extendWords(cet6R)
+    #cetO=extendWords(cetOR)
     #更新缓存
-    refreshCache([sha1_arr, cet4,cet6,cetO], fpath_cache_arr)
+    refreshCache([sha1_arr, cet4,cet6,cetO], fpath_cache_arr,isChanged)
 
 
 #描述cet4和cet6个数：
