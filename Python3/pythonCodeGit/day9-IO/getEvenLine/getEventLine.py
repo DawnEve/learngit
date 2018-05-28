@@ -1,7 +1,7 @@
 #get the even line of a file
 
 fr=open('input.txt','r')
-fw=open('output.txt','a')
+fw=open('output.txt.cache','a')
 i=1
 for line in fr:
     if i%2==0: 

@@ -3,41 +3,86 @@
 廖雪峰博客： http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000
 我的示例：https://github.com/DawnEve/learngit/tree/master/python3/
 
+Python官方的pypi.python.org网站注册
+
+独立应用：
+1.英语单词频率分析软件：day9/enTextAnalysis/wordFreq.py
+	优化20180519：使用缓存提速。
+
 ==========================================
 经验教训
 1.文件头部
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-2.命名文件的时候千万不要和import的文件重名！
+2.命名文件的时候千万不要和要import的文件重名！
 
+3. dir(str)查方法
+比如查找正则表达式帮助，在命令行输入：
+import re; help(re); dir(re); help(re.match) 
 ==========================================
 
 第一天：运行模式、数据格式
-	基础知识。
-	测试中文是否支持；
-	测试linux环境怎么直接运行python：失败  //todo
-	格式化和C语言类似。
-	list类型的append方法和pop方法
-	tuple类型：不可变所以安全，但是内嵌list时可变list内容；
+	环境安装、两种运行模式(交互式和批量运行)
+	测试中文是否支持
+	格式化和C语言类似
+	测试linux环境怎么直接运行python：需要加+x权限，然后./xx.py执行
 	
-	字符串截取 str2[n:m]
+	使用jupyter notebook网页运行python命令：学习python利器
+		安装：pip install jupyter
+		使用：windows的cmd中输入 jupyter notebook
+		执行cell: shift+Enter
+	
+	Python3 的六个标准数据类型中：
+		不可变数据（四个）：Number（数字）、String（字符串）、Tuple（元组）、Sets（集合）；
+		可变数据（两个）：List（列表）、Dictionary（字典）。
+		
+		查询数据类型：type("good") #<class 'str'>
+		最重要的是列表、元组、字符串和字典。
+	list类型:[]
+		分片赋值 mylist=list("some")
+		是否在数组中 2 in number #True
+		list的方法：append(),pop(),count(),
+	tuple类型：()
+		不可变所以安全，但是内嵌list时可变list内容；
+	
+	字符串
+		截取 str2[n:m]
+		格式化：printf()
+		字符串的乘法表达式 "good"*3
+		方法：replace,join,split,upper等。
+	字典：没有顺序的键值对。
+		常用的方法：keys,values,items等
+	题目：从长字符串中截取出一个单词。
 
 第二天：控制结构	
-	if循环
-	for循环：for x in range(101):
+	if判断：is运算符、布尔运算符
+		断言assert
+	循环：
+		while循环
+		for循环：for x in range(101):
+		打断： 终止循环 break; 跳过本次循环 continue;
+		空语句：pass;
 	dict字典元素（就是json）
 	set集合：不能重复
-	while循环
+	题目：1.猜数字游戏，只提示大和小，和猜的次数。
+		2.求a和b之间奇数的和。
 
-第三天：函数	
-	函数，默认参数
-	函数的默认参数必须指向固定值
-	函数：构建字典传入多个参数
-	迭代
-	函数嵌套
-	函数：全局变量与本地变量
-	
+第三天：函数(减少重复代码、方便测试和复用)
+	函数，获得帮助 help(abs)
+	参数：
+		默认参数, 函数的默认参数必须指向固定值
+		可变参数: *para, **para 构建字典传入多个参数
+	作用域：全局变量与本地变量，除非使用globe para 否则不改写全局变量的值。
+	返回值：没有return则返回None。if xx is None:
+	迭代: 求阶乘
+	函数嵌套:
+	返回函数: 闭包closure
+	匿名函数lambda
+
+	题目: py函数的坑。求单词复数形式。快速排序算法[todo]。
+
+
 第四天：迭代器、生成器、过滤器、装饰器、偏函数
 	切片：list和tuple
 	迭代器
@@ -47,21 +92,19 @@
 	map和reduce
 	filter:过滤器
 	sorted()
-	闭包closure
-	匿名函数lambda
 	装饰器decorator（不懂）
 		day4/decorator/
-	
-	偏函数（Partial function）（不太懂）
-	
-	
-	
-	
-	
+
+	偏函数（Partial function）
+
+
+
 第五天：模块、包和包管理器PIP
 	在Python中，一个.py文件就称之为一个模块（Module）。
 	自己创建模块时要注意命名，不能和Python自带的模块名称冲突。
-	导入 import random      from time import clock
+	导入 
+		import random
+		from time import clock
 
 	第三方库都会在Python官方的pypi.python.org网站注册。
 	pip是python包管理器。
@@ -73,38 +116,54 @@
 		- 用于科学计算的NumPy库：numpy
 		- 用于生成文本的模板工具Jinja2, 等等
 	模块搜索路径：sys.path
+		添加自定义路径：sys.path.append("/path/to/my/package/")
 
 
 
 
 
 
-第六天：面向对象
-	OOP
+第六天：面向对象OOP
+	构造函数：在init中初始化对象的全部属性是一个好习惯。
 	数据封装：封装的不彻底
+		私有属性: __name
+		私有方法: __fn()
 	继承和多态:也不严格，“鸭子类型”（JAVA的interface才是精华）
-	获取对象信息：dir(),hasattr(a,b)
-	实例属性和类属性
-	
-第七天【难！！！特别是元类】：面向对象高级
+		继承中的构造函数的执行
+		py允许多重继承：参见day7
+		类型判断: isinstance(dog, Dog) )
+		多态的真正威力：调用方只管调用(该方法存在)，不用关心细节。
+		实例属性和类属性
+	获取对象信息：type或isinstance判断会毁掉多态。要尽量保持多态。
+		type()基本类型的判断；
+		isinstance()不仅能判断基本类型，还能判断继承关系；
+		dir("str")获得一个对象的所有属性和方法。
+		hasattr(a,b)
+
+第七天 OOP adv 面向对象高级：多重继承、定制类、元类【难！！！特别是元类】
+	多重继承:一个子类可以继承多个父类，同时获得多个父类所有的非私有功能。py允许mixin写法。
+	定制类(类的专有方法、魔术方法)：__len__, __str__, __repr__, 
+		Fib.py:__iter__, __next__, __getitem__,
+		__call__:可以对实例直接调用 instance(), callable()函数
+		slice, REST API(链式调用), 
 	OOP高级
 	__slots__变量，来限制该class实例能添加的属性
 	@property:对直接操作的属性做限制
-	多重继承
-	定制类：__len__, __str__, __repr__, slice, REST API(链式调用), 
 	使用枚举类
 	使用元类(太难了！为了不影响学习的积极性，还是暂且跳过这章吧)
-	
+
 第八天：异常
-	错误处理
-	debug:		
+	错误处理: try-except-else-finally
+		 捕获多个异常; else子句; BaseException基类
+	自定义异常，抛出异常: raise 抛出错误.
+	debug:
 		- 虽然用IDE调试起来比较方便，
 		但是最后你会发现，logging才是终极武器。
 	单元测试 class TestDict(unittest.TestCase):
 	文档测试:docTest(没懂)
 
 第九天：IO
-	文件读写
+	文件读写:内存为核心，流进内存的叫input,从内存写到硬盘或发到网络的叫output。
 	read、write:使用with语句操作文件IO是个好习惯。
 	StringIO和BytesIO:就是内存的读写
 	操作文件和目录:环境变量； 路径操作汇总http://www.jb51.net/article/59901.htm
@@ -114,8 +173,14 @@
 			ss=json.dumps(s, default=stu2dict) #序列化
 			s2=json.loads(ss, object_hook=dict2stu) #反序列化
 	某个字符出现的次数 str2.count('a')	
+	重置文件指针：file.seek(0, 0)
 	
-	[推荐] 合并文件夹下所有文本文件的内容 mergeAllFileInOne/
+	求中文文本文件的md5值：
+	
+	[实例]
+	1.合并文件夹下所有文本文件的内容 day9/mergeAllFileInOne/
+	2. day9/enTextAnalysis/ 分析英文文章中用词频率，和超出4/6级的词汇。该文件夹包含部分4-6级词汇list。
+	
 		
 第十天：进程和线程
 	进程和线程(Python既支持多进程，又支持多线程)
@@ -160,15 +225,17 @@
 
 
 
-第十一天：正则表达式
-http://fhqdddddd.blog.163.com/blog/static/1869915420168283157719/?newFollowBlog
+第十一天：正则表达式RegExp:与Perl中的正则类似。
+http://www.runoob.com/python/python-reg-expressions.html
 	字符匹配：
-		#re.match(r'^\d{3}\-\d{3,8}$', '010-12345')
+		re.match(r'^\d{3}\-\d{3,8}$', '010-12345')
+		re.search(r'cat', 'this is a cat', re.I)
+		group(0)是字符串本身，group(1)是第一个匹配项；groups()返回匹配字符数组。
 	字符分割
 		#无论多少个空格都可以正常分割。	
-		r=re.split(r'\s+', 'a b   c')
-		print(r)
-		# ['a', 'b', 'c']
+		re.split(r'\s+', 'a b   c') # ['a', 'b', 'c']
+	字符替换
+		re.sub(r'\D', '', '010-123-456') #'010123456'
 	字符提取
 		import re
 		m = re.match(r'^(\d{3})-(\d{3,8})$', '010-12345')
@@ -190,7 +257,9 @@ http://fhqdddddd.blog.163.com/blog/static/1869915420168283157719/?newFollowBlog
 
 第十二天：常用内建模块
 	Python之所以自称“batteries included”，就是因为内置了许多非常有用的模块，无需额外安装和配置，即可直接使用。
-	datetime:获取当前日期
+	获取帮助：命令行模式下，import time; dir(time); dir(time.mktime); help(time.mktime)
+	日期和时间: time, datetime, calendar
+		datetime:获取当前日期
 	collections:内建的一个集合模块，提供了许多有用的集合类。
 	base64:
 	struct模块: 来解决bytes和其他二进制数据类型的转换。 不懂
