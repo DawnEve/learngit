@@ -1,6 +1,15 @@
 #01 basic word
 
 son applicant children sister sleepy trip wealthy wood existent district
+achievement active advertisement apology celebrity censorship devote directive unhealthy
+door dialogue entirely greatly reconsider sadly unclear wonderful amid 
+announcement anywhere appearance communication dependent dependent forcefully 
+
+tree tree rope sing arrow wise yes surface atmosphere bible universe 
+carve carving waste title wife wherever resource 
+creator cooperation description diamond dimension distance
+
+restaurant 
 
 abandon
 aboard
@@ -3459,7 +3468,7 @@ zoo
 angry  domestically dynasty imbalance investor monetary weekend
 zero usual setup sharp happily salesman anyway disagree enjoy globalization wall win
 
-target 
+target stamp
 appear arrange chinese dawn due duty rest safe seriously skill
 southwest southwestern special thank traveler window woman 
 halfway investigation partially sacred windshield
@@ -3468,6 +3477,7 @@ startup valley doubt innovate incubator closely
 digital heath plan sell social week act
 agree adviser alone death heavily secret sentence smooth soybean substantially telecommunications 
 writer wait size 
+
 
 accept awareness arrest center design desirable despite device devise discovery harbor 
 adaptation advancement curricula curriculum definition diligence directly imperfectly
@@ -3559,6 +3569,8 @@ twelve
 fifties
 sixties
 
+sixth seventh tenth
+
 
 #星期、月份
 monday
@@ -3601,22 +3613,25 @@ does has
 #ing
 
 #ed
-meant broke 
+meant broke hidden 
 heard sought wrote felt thought spoke took led been seen did done became had 
 said told bought driven began kept went proven blown  
 brought paid came sold understood known built won 
 shown written 
+grew grown withdrew
+
 #####################################################
 #04 人名 地名
 mr/ms/ex
 anderson/john/ford/johansson/wes/jeff/bob/tony/obama/johnson/david/james/parkinson/william
 jinping pichai dennis trump tom robert peterson donald thomas 
 andrew steven 
-kate getty gillian 
+kate getty gillian kim 
+
 
 #地名
-australia indian soviet 
-beijing/shanghai sichuan chengdu chongqing chuanjian shenzhen tibet
+australia indian soviet whitehouse pyongyang singapore 
+beijing/shanghai sichuan chengdu chongqing chuanjian shenzhen tibet hong kong 
 france york spanish michigan 
 washington/korea/korean/los/angeles/iran/russia/syria/asia/saudi/arabian/iraq/india
 moscow/london/england/wales/irish/britain british dublin ireland 
@@ -3624,7 +3639,7 @@ africa asian columbia texas
 trans 
 
 
-tweet abc abcnews cnn zte
+tweet abc abcnews cnn zte app microblog 
 reuters thomson switzerland nasa boeing 
 twitter weibo airbus nbc nbcnews facebook bbc spotify coldplay 
 deepmind demo google keynote theverge
@@ -3633,7 +3648,7 @@ renminbi yuan
 
 #####################################################
 #05 网址、单位等垃圾符号
-http/www/com/edu/alex
+http/www/com/edu/alex gov 
 co/uk/us/km/cm/th/hk/cc/nd/pm/
 aha min max 
 doesn cannot isn don pic shouldn mac wto org anti 

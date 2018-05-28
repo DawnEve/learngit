@@ -186,11 +186,16 @@ def plural(word):
 
 # 动词进行时 ving https://wenku.baidu.com/view/c55f48bc26fff705cc170aef.html
 def ving(word):
+    # wait
+    if word.endswith("ait"):
+        return word+"ing"
+    if word in ['target']:
+        return word+"ing"
+    #
     #内函数，re.sub需要的
     def fn(matched):
         tmp=matched.groups()
         return tmp[0]+tmp[1]+"ing"
-    #
     #如果是元音+辅音结尾，则双写辅音加ing： cut cutting, overlapping, span spanning
     if re.match(r'.*[aeiou]{1}(t|p|n)$', word):
         return re.sub(r'(.*[aeiou]{1}(t|p|n)$)',fn,word)
@@ -215,7 +220,7 @@ def ving(word):
         return word+'ing'
 
 # 动词过去式
-def ved(word):
+def ved(word): 
     #admit
     if word[-2:] == 'it':
         return word+'ted'
