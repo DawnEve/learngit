@@ -10,12 +10,18 @@ true/false    True/False
 null    None
 """
 import json
+#json.dumps() #对数据进行编码
+#json.loads() #对数据进行 解 码
+#处理文件，则不要s： json.dump(data,f); json.load(f)
 
-d=dict(name='Jim',age=12,country='中国')
+#d=dict(name='Jim',age=12,country='中国')
+d={'name':"jim", 'age':12, 'country':'中国'} #定义方式和json类似，但是key必须加引号
 print('d=', d)
+
 #序列化字典
 ds=json.dumps(d)
 print('ds=', ds)
+
 
 #定义类
 class Student(object):
@@ -49,4 +55,21 @@ print('ss的类型：',type(ss)) #<class 'str'>
 s2=json.loads(ss, object_hook=dict2stu) #反序列化
 print('\n反序列化对象:',s2)
 print(type(s2)) # <class '__main__.Student'>
-    
+print('s2.country =', s2.country)
+
+
+
+#
+#读写文件
+import os
+os.chdir('c:/Tools/') #定义临时文件地点
+print("\nbefore: ", d)
+#写入
+with open('json.txt','w') as f:
+    json.dump(d,f) #dict按编码过的json写入文件
+    #{"name": "jim", "age": 12, "country": "\u4e2d\u56fd"}
+
+#读取
+with open('json.txt','r') as f:
+    data2=json.load(f)
+print("after: ", data2)

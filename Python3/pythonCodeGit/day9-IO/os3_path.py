@@ -1,4 +1,5 @@
 import os
+#文件夹，列举文件。
 #dirName = os.path.join("F:\gitHub\learngit\Python3","pythonCodeGit",'day9')
 #dirName=os.path.join('C://')
 

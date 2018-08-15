@@ -178,11 +178,9 @@ import re; help(re); dir(re); help(re.match)
 			s2=json.loads(ss, object_hook=dict2stu) #反序列化
 	某个字符出现的次数 str2.count('a')	
 	重置文件指针：file.seek(0, 0)
-	
 	图片进行base64编码
-	
 	求中文文本文件的md5值：
-	
+
 	[实例]
 	1.合并文件夹下所有文本文件的内容 day9/mergeAllFileInOne/
 	2. day9/enTextAnalysis/ 分析英文文章中用词频率，和超出4/6级的词汇。该文件夹包含部分4-6级词汇list。
