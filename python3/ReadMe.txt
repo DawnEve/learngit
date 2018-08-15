@@ -167,6 +167,10 @@ import re; help(re); dir(re); help(re.match)
 	read、write:使用with语句操作文件IO是个好习惯。
 	StringIO和BytesIO:就是内存的读写
 	操作文件和目录:环境变量； 路径操作汇总http://www.jb51.net/article/59901.htm
+		文件重命名 os.rename(oldName, newName) 没有返回值;
+		删除文件 os.remove(path)
+		文件是否存在 os.path.isfile("001.cache")
+		文件夹是否存在 os.path.exists(dirName)
 	序列化：pickle
 		- Python语言特定的序列化模块是pickle，
 		- 但如果要把序列化搞得更通用、更符合Web标准，就可以使用json模块。
@@ -174,6 +178,8 @@ import re; help(re); dir(re); help(re.match)
 			s2=json.loads(ss, object_hook=dict2stu) #反序列化
 	某个字符出现的次数 str2.count('a')	
 	重置文件指针：file.seek(0, 0)
+	
+	图片进行base64编码
 	
 	求中文文本文件的md5值：
 	

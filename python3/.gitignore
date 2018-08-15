@@ -27,3 +27,5 @@ deploy_key_rsa
 
 #缓存文件
 *.cache
+*.cache.jpg
+*.cache.png
