@@ -40,5 +40,6 @@ for i in range(10):
     
     
 # 关闭:
+time.sleep(5)
 manager.shutdown()
 print('master exit.')

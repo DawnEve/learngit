@@ -4,7 +4,8 @@
 import time, threading, os
 
 # 新线程执行的代码:
-def loop():
+def loop(x):
+    print("pass %s into function loop(x)" % x)
     print('thread %s is running...' % threading.current_thread().name)
     n = 0
     while n < 5:
@@ -16,7 +17,8 @@ def loop():
 
 print('thread %s is running...' % threading.current_thread().name)
 # t = threading.Thread(target=loop, name='LoopThread')
-t = threading.Thread(target=loop)
+#t = threading.Thread(target=loop)
+t = threading.Thread(target=loop, args=(100,)) #为什么参数后面要加逗号
 t.start()
 t.join()
 print('thread %s ended.' % threading.current_thread().name)

@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+
 from multiprocessing import Process
 import os
 
@@ -8,7 +11,7 @@ def run_proc(name):
 if __name__=='__main__':
     print('Parent process %s.' % os.getpid())
     # 1.传入一个执行函数和函数的参数
-    p = Process(target=run_proc, args=('test1',))
+    p = Process(target=run_proc, args=('test1',)) #multiprocessing模块提供了一个Process类来代表一个进程对象
     print('------Child process will start.')
     p.start() #2.用start()方法启动子进程
     p.join() #3.join()方法可以等待子进程结束后再继续往下运行，通常用于进程间的同步。

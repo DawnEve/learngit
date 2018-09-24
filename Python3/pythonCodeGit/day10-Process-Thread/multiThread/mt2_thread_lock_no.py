@@ -5,6 +5,8 @@
 #来看看多个线程同时操作一个变量怎么把内容给改乱了：
 import time, threading
 
+start=time.time() #计时
+
 # 假定这是你的银行存款:
 balance = 0
 
@@ -16,7 +18,7 @@ def change_it(n):
     #print("balance = %s (after Thread %s)" % (balance, threading.current_thread().name))
 
 def run_thread(n):
-    for i in range(100000):
+    for i in range(300000):
         change_it(n)
 
 t1 = threading.Thread(target=run_thread, args=(5,),name='t1')
@@ -29,3 +31,5 @@ t2.join()
 #多run几次（~10-20次）就会出现非零值
 print(balance) #8 -5 5
 
+#因为修改balance需要多条语句，而执行这几条语句时，线程可能中断，从而导致多个线程把同一个对象的内容改乱了。
+print("Time: %0.2fs" % (time.time()-start) )

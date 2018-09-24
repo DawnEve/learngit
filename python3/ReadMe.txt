@@ -184,9 +184,11 @@ import re; help(re); dir(re); help(re.match)
 	[实例]
 	1.合并文件夹下所有文本文件的内容 day9/mergeAllFileInOne/
 	2. day9/enTextAnalysis/ 分析英文文章中用词频率，和超出4/6级的词汇。该文件夹包含部分4-6级词汇list。
-	
-		
-第十天：进程和线程
+
+
+
+
+第十天：进程和线程(难点，需要反复练习和研究)
 	进程和线程(Python既支持多进程，又支持多线程)
 		- 对于操作系统来说，一个任务就是一个进程（Process）
 		- 有些进程还不止同时干一件事，比如Word，它可以同时进行打字、拼写检查、打印等事情。
@@ -203,20 +205,24 @@ import re; help(re); dir(re); help(re.match)
 		启动大量的子进程,可以用进程池的方式Pool.
 	子进程：subprocess模块非常方便地启动一个子进程，然后控制其输入和输出。
 		- linux下是封装的fork()
-		- windows下是用pickle模拟的,失败要先虑是不是pickle失败了。
+		- windows下是用pickle模拟的,失败要先考虑是不是pickle失败了。
 	进程间通信：Python的multiprocessing模块包装了底层的机制，提供了Queue、Pipes等多种方式来交换数据。
-		们以Queue为例，在父进程中创建两个子进程，一个往Queue里写数据，一个从Queue里读数据。
+		我们以Queue为例，在父进程中创建两个子进程，一个往Queue里写数据，一个从Queue里读数据。
 		
 
 	Python的线程是真正的Posix Thread，而不是模拟出来的线程。
 	threading.Thread(target=loop, name='LoopThread')
 	多进程不共享变量，而多线程共享变量，有变量改乱的风险。
 	锁与死锁。
-	
+	ThreadLocal:
+		一个ThreadLocal变量虽然是全局变量，但每个线程都只能读写自己线程的独立副本，互不干扰。
+		ThreadLocal解决了参数在一个线程中各个函数之间互相传递的问题。
 	
 	进程 vs. 线程
 	用异步IO编程模型来实现多任务是一个主要的趋势。
-	对应到Python语言，单进程的异步编程模型称为协程，有了协程的支持，就可以基于事件驱动编写高效的多任务程序。
+	协程:
+		对应到Python语言，单进程的异步编程模型称为协程
+		有了协程的支持，就可以基于事件驱动编写高效的多任务程序。
 	
 	
 	分布式进程
