@@ -188,7 +188,7 @@ import re; help(re); dir(re); help(re.match)
 
 
 
-第十天：进程和线程(难点，需要反复练习和研究)
+第十天：进程和线程(难点，需要反复练习和研究) py的多进程Process才有意义。py多线程是鸡肋。
 	进程和线程(Python既支持多进程，又支持多线程)
 		- 对于操作系统来说，一个任务就是一个进程（Process）
 		- 有些进程还不止同时干一件事，比如Word，它可以同时进行打字、拼写检查、打印等事情。
@@ -208,7 +208,7 @@ import re; help(re); dir(re); help(re.match)
 		- windows下是用pickle模拟的,失败要先考虑是不是pickle失败了。
 	进程间通信：Python的multiprocessing模块包装了底层的机制，提供了Queue、Pipes等多种方式来交换数据。
 		我们以Queue为例，在父进程中创建两个子进程，一个往Queue里写数据，一个从Queue里读数据。
-		
+		进程之间的通信：https://blog.csdn.net/tanzuozhev/article/details/77090119
 
 	Python的线程是真正的Posix Thread，而不是模拟出来的线程。
 	threading.Thread(target=loop, name='LoopThread')
@@ -232,8 +232,6 @@ import re; help(re); dir(re); help(re.match)
 	
 	(2)task_worker.py 在win7上接着运行。
 	
-
-
 
 第十一天：正则表达式RegExp:与Perl中的正则类似。
 http://www.runoob.com/python/python-reg-expressions.html
@@ -281,6 +279,7 @@ http://www.runoob.com/python/python-reg-expressions.html
 	HTMLParser
 	urllib提供了一系列用于操作URL的功能。很好用，可以用于爬虫抓取步骤！
 
+	smtplib 发送邮件
 
 第十三天：常用第三方模块
 	基本上，所有的第三方模块都会在PyPI - the Python Package Index上注册，只要找到对应的模块名字，即可用pip安装。
