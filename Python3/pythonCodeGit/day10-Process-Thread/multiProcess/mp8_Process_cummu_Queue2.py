@@ -1,7 +1,8 @@
-## 从文件（1-20，每行一个数字）读取一行，作为参数传给进程们，进程之间用queue通信。
-## 一个进程写，众多线程读。
+## py多进程实例 v0.1
+## 任务：从文件（1-20，每行一个数字）读取一行，作为参数传给处理进程们。
+## 一个进程池 众多线程读和处理数据，一个进程写数据，读、写进程之间用queue通信。
 
-# on linux only.
+# run on linux only.
 
 import time,multiprocessing,os,random
 from multiprocessing import Queue
@@ -13,6 +14,7 @@ print('='*10, "Begin of main process", os.getpid(), "[child pid by parent ppid]"
 # 这里需要并发执行的任务
 def worker(txt):
     print('    =====>>',txt,"-start. [pid=", os.getpid(), ']', sep="")
+    
     #一个很耗时的计算
     time.sleep(1+random.random() * 1)
     rs=int(txt)+10000
@@ -36,7 +38,7 @@ def worker_out():
 # 主进程
 if __name__ == '__main__':
     q=Queue(6) #会超标，但是不会超出太多
-    q.put(-200)
+    #q.put(-200)
 
     # 声明进程池对象
     pool = multiprocessing.Pool(processes = 5)
