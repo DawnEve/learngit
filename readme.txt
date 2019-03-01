@@ -1,3 +1,4 @@
+################
 # Git 常用命令
 http://git-scm.com/book/zh/v1
 ---
@@ -15,6 +16,15 @@ git commit -m "first commit"
 git remote add origin git@github.com:DawnEve/DawnPHPTools.git
 git push -u origin master
 …or push an existing repository from the command line
+
+
+--------------------------
+https://segmentfault.com/q/1010000009012888
+git默认对于文件名大小写是不敏感的.
+1,配置git 使其对文件名大小写敏感
+git config core.ignorecase false
+2,然后你修改名字,add,commit提交就可以了.。
+
 
 --------------------------
 在本地增加远程版本库信息
