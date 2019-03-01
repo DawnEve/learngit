@@ -297,6 +297,10 @@ http://www.runoob.com/python/python-reg-expressions.html
 	TCP/IP
 		tcp: hello_server, hello_client
 		udp:
+			UDP的使用与TCP类似，但是不需要建立连接。
+			此外，服务器绑定UDP端口和TCP端口互不冲突，也就是说，UDP的9999端口与TCP的9999端口可以各自绑定。
+	get和post请求：https://www.cnblogs.com/goldd/p/5457229.html
+	
 	访问数据库:SQLite MySQL 
 		ORM(Object-Relational Mapping)框架： SQLAlchemy
 		

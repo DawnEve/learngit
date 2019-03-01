@@ -8,5 +8,3 @@ for data in [b'Michael', b'Tracy', b'Sarah']:
     # 接收数据:
     print(s.recv(1024).decode('utf-8')) #从服务器接收数据仍然调用recv()方法。
 s.close()
-
-
