@@ -320,6 +320,21 @@ html-css-javascript
 >py0.2.12 多进程案例：一百个加减法，由分进程完成后返回给出进程，并带上进程编号。multiProcess: mp8_Process_cummu_Queue2.py
 >py0.2.13 多进程案例：mp8_Process_cummu_Queue3.py
 >py0.2.14 small fix.
+############
+发现重大问题：github上python3下缺少很多文件夹，只要带-号的文件夹都不显示。
+############
+>py0.2.14-2 test 其中一个文件夹名字中的-改为_
+	看来不是这个问题，是因为以前文件夹名字是python3，后来改写成Python3，然后github中就同时显示两个文件夹了。
+	至于里面的内容怎么分到两个文件夹内的？好像是改名时是否更新过。
+	怎么合并github中的同名（大小写不同）文件夹呢？因为他们在window下本就是一个文件。
+
+	https://segmentfault.com/q/1010000009012888
+	git默认对于文件名大小写是不敏感的.
+	1,配置git 使其对文件名大小写敏感
+	git config core.ignorecase false
+	2,然后你修改名字,add,commit提交就可以了.。
+>py0.2.14-3 改回来_变-。把以上操作放到项目首页readme中
+
 --------------
 >py0.2.14 day15 web
 

@@ -72,7 +72,6 @@ def worker_out():
 
 
 
-
 # 主进程
 if __name__ == '__main__':
     q=Queue(60) #会超标，但是不会超出太多
