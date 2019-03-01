@@ -7,7 +7,7 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 # 监听端口:
 s.bind(('127.0.0.1', 9999))
 
-s.listen(5)
+s.listen(5) #指定等待连接的最大数量
 print('Waiting for connection...')
 
 def tcplink(sock, addr):

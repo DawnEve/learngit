@@ -5,6 +5,8 @@
 #来看看多个线程同时操作一个变量怎么把内容给改乱了：
 import time, threading
 
+start=time.time() #计时
+
 # 假定这是你的银行存款:
 balance = 0
 lock = threading.Lock()
@@ -17,7 +19,7 @@ def change_it(n):
     #print("balance = %s (after Thread %s)" % (balance, threading.current_thread().name))
 
 def run_thread(n):
-    for i in range(100000):
+    for i in range(300000):
         # 先要获取锁:
         lock.acquire()
         try:
@@ -33,4 +35,6 @@ t1.start()
 t2.start()
 t1.join()
 t2.join()
-print(balance)
+print(balance) 
+
+print("Time: %0.2fs" % (time.time()-start) ) #明显变慢了，三倍的时间

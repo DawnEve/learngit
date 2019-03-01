@@ -167,6 +167,10 @@ import re; help(re); dir(re); help(re.match)
 	read、write:使用with语句操作文件IO是个好习惯。
 	StringIO和BytesIO:就是内存的读写
 	操作文件和目录:环境变量； 路径操作汇总http://www.jb51.net/article/59901.htm
+		文件重命名 os.rename(oldName, newName) 没有返回值;
+		删除文件 os.remove(path)
+		文件是否存在 os.path.isfile("001.cache")
+		文件夹是否存在 os.path.exists(dirName)
 	序列化：pickle
 		- Python语言特定的序列化模块是pickle，
 		- 但如果要把序列化搞得更通用、更符合Web标准，就可以使用json模块。
@@ -174,15 +178,17 @@ import re; help(re); dir(re); help(re.match)
 			s2=json.loads(ss, object_hook=dict2stu) #反序列化
 	某个字符出现的次数 str2.count('a')	
 	重置文件指针：file.seek(0, 0)
-	
+	图片进行base64编码
 	求中文文本文件的md5值：
-	
+
 	[实例]
 	1.合并文件夹下所有文本文件的内容 day9/mergeAllFileInOne/
 	2. day9/enTextAnalysis/ 分析英文文章中用词频率，和超出4/6级的词汇。该文件夹包含部分4-6级词汇list。
-	
-		
-第十天：进程和线程
+
+
+
+
+第十天：进程和线程(难点，需要反复练习和研究) py的多进程Process才有意义。py多线程是鸡肋。
 	进程和线程(Python既支持多进程，又支持多线程)
 		- 对于操作系统来说，一个任务就是一个进程（Process）
 		- 有些进程还不止同时干一件事，比如Word，它可以同时进行打字、拼写检查、打印等事情。
@@ -199,20 +205,24 @@ import re; help(re); dir(re); help(re.match)
 		启动大量的子进程,可以用进程池的方式Pool.
 	子进程：subprocess模块非常方便地启动一个子进程，然后控制其输入和输出。
 		- linux下是封装的fork()
-		- windows下是用pickle模拟的,失败要先虑是不是pickle失败了。
+		- windows下是用pickle模拟的,失败要先考虑是不是pickle失败了。
 	进程间通信：Python的multiprocessing模块包装了底层的机制，提供了Queue、Pipes等多种方式来交换数据。
-		们以Queue为例，在父进程中创建两个子进程，一个往Queue里写数据，一个从Queue里读数据。
-		
+		我们以Queue为例，在父进程中创建两个子进程，一个往Queue里写数据，一个从Queue里读数据。
+		进程之间的通信：https://blog.csdn.net/tanzuozhev/article/details/77090119
 
 	Python的线程是真正的Posix Thread，而不是模拟出来的线程。
 	threading.Thread(target=loop, name='LoopThread')
 	多进程不共享变量，而多线程共享变量，有变量改乱的风险。
 	锁与死锁。
-	
+	ThreadLocal:
+		一个ThreadLocal变量虽然是全局变量，但每个线程都只能读写自己线程的独立副本，互不干扰。
+		ThreadLocal解决了参数在一个线程中各个函数之间互相传递的问题。
 	
 	进程 vs. 线程
 	用异步IO编程模型来实现多任务是一个主要的趋势。
-	对应到Python语言，单进程的异步编程模型称为协程，有了协程的支持，就可以基于事件驱动编写高效的多任务程序。
+	协程:
+		对应到Python语言，单进程的异步编程模型称为协程
+		有了协程的支持，就可以基于事件驱动编写高效的多任务程序。
 	
 	
 	分布式进程
@@ -222,8 +232,6 @@ import re; help(re); dir(re); help(re.match)
 	
 	(2)task_worker.py 在win7上接着运行。
 	
-
-
 
 第十一天：正则表达式RegExp:与Perl中的正则类似。
 http://www.runoob.com/python/python-reg-expressions.html
@@ -271,6 +279,7 @@ http://www.runoob.com/python/python-reg-expressions.html
 	HTMLParser
 	urllib提供了一系列用于操作URL的功能。很好用，可以用于爬虫抓取步骤！
 
+	smtplib 发送邮件
 
 第十三天：常用第三方模块
 	基本上，所有的第三方模块都会在PyPI - the Python Package Index上注册，只要找到对应的模块名字，即可用pip安装。
@@ -290,6 +299,10 @@ http://www.runoob.com/python/python-reg-expressions.html
 		udp:
 	访问数据库:SQLite MySQL 
 		ORM(Object-Relational Mapping)框架： SQLAlchemy
+		
+	Python内置了一个WSGI服务器，这个模块叫wsgiref
+		因为我们不希望接触到TCP连接、HTTP原始请求和响应格式，所以，需要一个统一的接口，让我们专心用Python编写Web业务。
+		这个接口就是WSGI：Web Server Gateway Interface。
 	Web开发：web框架
 	WSGI：Web Server Gateway Interface。
 	使用Web框架:比较流行的Web框架——Flask来使用。用Flask编写Web App比WSGI接口简单
@@ -303,7 +316,7 @@ http://www.runoob.com/python/python-reg-expressions.html
 
 	使用模板jinja2
 
-
+	
 
 
 	
