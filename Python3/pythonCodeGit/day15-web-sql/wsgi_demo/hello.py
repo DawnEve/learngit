@@ -12,8 +12,6 @@ start_response('200 OK', [('Content-Type', 'text/html')])
 有了WSGI，我们关心的就是如何从environ这个dict对象拿到HTTP请求信息，
 然后构造HTML，
 通过start_response()发送Header，最后返回Body。
-
-
 '''
 
 def application(environ, start_response):

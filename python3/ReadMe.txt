@@ -299,6 +299,10 @@ http://www.runoob.com/python/python-reg-expressions.html
 		udp:
 	访问数据库:SQLite MySQL 
 		ORM(Object-Relational Mapping)框架： SQLAlchemy
+		
+	Python内置了一个WSGI服务器，这个模块叫wsgiref
+		因为我们不希望接触到TCP连接、HTTP原始请求和响应格式，所以，需要一个统一的接口，让我们专心用Python编写Web业务。
+		这个接口就是WSGI：Web Server Gateway Interface。
 	Web开发：web框架
 	WSGI：Web Server Gateway Interface。
 	使用Web框架:比较流行的Web框架——Flask来使用。用Flask编写Web App比WSGI接口简单
@@ -312,7 +316,7 @@ http://www.runoob.com/python/python-reg-expressions.html
 
 	使用模板jinja2
 
-
+	
 
 
 	

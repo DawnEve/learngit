@@ -27,7 +27,7 @@ def worker(txt):
 
 
 
-#保存的线程1个
+#保存到文件的线程1个
 def worker_out():
     while True:
         time.sleep(0.5+random.random() * 0.5) #保存需要花时间
@@ -38,19 +38,19 @@ def worker_out():
 # 主进程
 if __name__ == '__main__':
     q=Queue(6) #会超标，但是不会超出太多
-    #q.put(-200)
+    #q.put(-200) #这里可以输入初始化数据
 
     # 声明进程池对象
     pool = multiprocessing.Pool(processes = 5)
 
-    #文件读取，分配任务给进程
+    #文件读取，分配任务给进程：每行一个id号
     fr=open("/home/wangjl/num.txt",'r')
 
     # 向进程池中提交任务
     for lineR in fr.readlines():
         line=lineR.strip()
         #print("start new process", line) #任务是一次发送完的
-        pool.apply_async( worker,args=(line,) )
+        pool.apply_async( worker,args=(line,) ) #带参数，调用多进程
     fr.close() #关闭文件
 
     #分完任务，开始启动保存进程

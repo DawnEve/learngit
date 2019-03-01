@@ -61,7 +61,7 @@ def worker_out():
             i+=1
             if i%1000==0:
                 pass 
-                #print(i)
+                #print(i) #调试用
             
             rs=q.get() #waite while q is empty
             #print(rs)
