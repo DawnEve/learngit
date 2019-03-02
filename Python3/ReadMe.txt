@@ -3,6 +3,8 @@
 廖雪峰博客： http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000
 我的示例：https://github.com/DawnEve/learngit/tree/master/python3/
 
+python3练习：https://www.cnblogs.com/cjsblog/p/9427157.html
+
 Python官方的pypi.python.org网站注册
 
 独立应用：

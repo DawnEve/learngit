@@ -16,8 +16,12 @@ start_response('200 OK', [('Content-Type', 'text/html')])
 
 def application(environ, start_response):
     start_response('200 OK', [('Content-Type', 'text/html')])
+    
+    #输出到控制台
     print(environ['REQUEST_METHOD'])
     print(environ['PATH_INFO'])
+    
+    #输出到网页
     body = '<h1>Hello, %s!</h1>' % (environ['PATH_INFO'][1:] or 'web')
     return [body.encode('utf-8')]
 
