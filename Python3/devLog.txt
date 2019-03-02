@@ -339,6 +339,8 @@ html-css-javascript
 	$ git mv -f python3/ReadMe.txt Python3/ReadMe.txt 相当于删除了文件。
 	$ git mv python3/.gitignore Python3/.gitignore -f
 	而小写文件夹python3还是无法删除
+>py0.2.14-5 改名可以解决问题day4改为day4-Fn-adv
+
 
 --------------
 >py0.2.14 day15 web
