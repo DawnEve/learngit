@@ -334,8 +334,15 @@ html-css-javascript
 	git config core.ignorecase false
 	2,然后你修改名字,add,commit提交就可以了.。
 >py0.2.14-3 改回来_变-。把以上操作放到项目首页readme中
-
+>py0.2.14-4	使用了强制改名 git mv -f old new
+	https://blog.csdn.net/dliteng163com/article/details/52312277
+	$ git mv -f python3/ReadMe.txt Python3/ReadMe.txt 相当于删除了文件。
+	$ git mv python3/.gitignore Python3/.gitignore -f
+	而小写文件夹python3还是无法删除
+>py0.2.14-5 改名可以解决问题day4改为day4-Fn-adv
 --------------
->py0.2.14 day15 web
+>py0.2.15 day15 学习web-sql, WSGI
+--------------
+
 
 

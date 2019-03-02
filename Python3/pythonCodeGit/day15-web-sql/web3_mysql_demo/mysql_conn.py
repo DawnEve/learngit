@@ -18,12 +18,14 @@
 import mysql.connector
 
 # 创建连接
-conn = mysql.connector.connect(user='root', password='', database='test')
+#conn = mysql.connector.connect(host="localhost",user='root', password='', database='think')
+conn = mysql.connector.connect(host="y.biomooc.com",port="7070",user='root', password='123456', database='wang')
 
 # 后面的忽略吧
 # 本文件仅用作创建连接===============在另一个文件内使用
 
-print(dir(conn)) #很多方法名
+#print(dir(conn)) #很多方法名
+print("conn is ok.")
 
 
 """

@@ -2,6 +2,8 @@
 
 # 导入socket库:
 import socket,threading,time
+
+#首先，创建一个基于IPv4和TCP协议的Socket：
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # 监听端口:

@@ -3,6 +3,8 @@
 廖雪峰博客： http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000
 我的示例：https://github.com/DawnEve/learngit/tree/master/python3/
 
+python3练习：https://www.cnblogs.com/cjsblog/p/9427157.html
+
 Python官方的pypi.python.org网站注册
 
 独立应用：
@@ -297,6 +299,10 @@ http://www.runoob.com/python/python-reg-expressions.html
 	TCP/IP
 		tcp: hello_server, hello_client
 		udp:
+			UDP的使用与TCP类似，但是不需要建立连接。
+			此外，服务器绑定UDP端口和TCP端口互不冲突，也就是说，UDP的9999端口与TCP的9999端口可以各自绑定。
+	get和post请求：https://www.cnblogs.com/goldd/p/5457229.html
+	
 	访问数据库:SQLite MySQL 
 		ORM(Object-Relational Mapping)框架： SQLAlchemy
 		
