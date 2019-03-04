@@ -309,9 +309,9 @@ http://www.runoob.com/python/python-reg-expressions.html
 	Python内置了一个WSGI服务器，这个模块叫wsgiref
 		因为我们不希望接触到TCP连接、HTTP原始请求和响应格式，所以，需要一个统一的接口，让我们专心用Python编写Web业务。
 		这个接口就是WSGI：Web Server Gateway Interface。
-	Web开发：web框架
-	WSGI：Web Server Gateway Interface。
+	Web开发：web框架,把我们从WSGI中拯救出来了。
 	使用Web框架:比较流行的Web框架——Flask来使用。用Flask编写Web App比WSGI接口简单
+	Flask: http://flask.pocoo.org/
 
 	除了Flask，常见的Python Web框架还有：
 	- Django：全能型Web框架； https://www.djangoproject.com/
@@ -320,7 +320,11 @@ http://www.runoob.com/python/python-reg-expressions.html
 	- Tornado：Facebook的开源异步Web框架。http://www.tornadoweb.org/en/stable/
 	当然了，因为开发Python的Web框架也不是什么难事，我们后面也会讲到开发Web框架的内容。
 
+	有了MVC，我们就分离了Python代码和HTML代码。HTML代码全部放到模板里，写起来更有效率。
+	Flask默认支持的模板是jinja2:  pip install jinja2
 	使用模板jinja2
+		"不懂前端的Python工程师不是好的产品经理",Web App最复杂的部分就在HTML页面。
+		http://jinja.pocoo.org/
 
 	
 

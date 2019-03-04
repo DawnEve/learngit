@@ -1,5 +1,9 @@
+# pip install flask
 from flask import Flask
 from flask import request
+
+#Flask通过Python的装饰器在内部自动地把URL和函数给关联起来
+#装饰器见day4
 
 app = Flask(__name__)
 
@@ -10,8 +14,8 @@ def home():
 @app.route('/signin', methods=['GET'])
 def signin_form():
     return '''<form action="/signin" method="post">
-              <p><input name="username"></p>
-              <p><input name="password" type="password"></p>
+              <p>用户名: <input name="username"></p>
+              <p>密码: <input name="password" type="password"></p>
               <p><button type="submit">Sign In</button></p>
               </form>'''
 
