@@ -13,4 +13,4 @@ class Dog(object):
 dog=Dog('Wangcai')
 print("dict:", dog.__dict__)
 dog.say()
-#dog.__foo() #'Dog' object has no attribute '__foo'c
+#dog.__foo() #'Dog' object has no attribute '__foo'

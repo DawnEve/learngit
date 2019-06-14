@@ -1,6 +1,6 @@
 #我的程序日记本：
 廖雪峰的示例：https://github.com/michaelliao/learn-python3/tree/master/samples
-廖雪峰博客： http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000
+廖雪峰博客： https://www.liaoxuefeng.com/wiki/1016959663602400
 我的示例：https://github.com/DawnEve/learngit/tree/master/python3/
 
 python3练习：https://www.cnblogs.com/cjsblog/p/9427157.html
@@ -340,18 +340,20 @@ http://www.runoob.com/python/python-reg-expressions.html
 	不懂yield表达式。//TODO
 	
 	为了简化并更好地标识异步IO，从Python 3.5开始引入了新的语法async和await，可以让coroutine的代码更简洁易读。
-	
-	
-	
-	
 	//TODO
-	
-	
-	
-		
-第十七天：实战python Web项目
 
 
 
+第十七天：实战python爬虫
+	爬取小说的最佳策略是：从目录页获取章节链接，然后下载每个章节-> a04_getNovel_fromMenu.py
+	遇到的坑：
+		 如果原文有/n则需要加上re.S参数：  re.findall(reg,chapt_html, re.S)
+		chapt_html = tempt.decode('GB2312',errors='ignore') #指定编码, 忽略错误 
+	希望爬取现实主义题材的小说：
+		萧东楼： 《广州的一场春梦》、《猎头局中局》、《猎头局中局II》、《进退·猎头局中局前传》等
+			http://book.jrj.com.cn/book/book/bookinfo_424.shtml
 
-		
+第十八天：实战python Web项目
+
+
+
