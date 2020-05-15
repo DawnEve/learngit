@@ -1,5 +1,5 @@
 ﻿<pre>
-JS拖动技术--- 关于setCapture
+JS拖动技术--- 关于 setCapture
 http://www.cnblogs.com/yuteng/articles/1977196.html
 v1.0 原始拖动
 v2.0 面向对象拖动
@@ -13,6 +13,7 @@ window.onload=function(){
 };
 
 function Drag(obj){
+	var e=e||""
 	this.obj=obj;
 	this.onmousedown=this.init(e);
 }

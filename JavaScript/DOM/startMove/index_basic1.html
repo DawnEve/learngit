@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>获取样式</title>
+<style>
+#div1{
+	width: 200px;
+	height: 200px;
+	background-color: #f00;
+	border: 1px solid black;
+	font-size: 10px;
+}
+</style>
+</head>
+<body>
+	<div id="div1">111</div>
+</body>
+<script>
+//<script type="text/javascript" src="js.js">< /script>
+//<link rel="stylesheet" type="text/css" href="style.css">
+window.onload = function(){
+	startMove();
+}
+function startMove(){
+	var timer1=setInterval(function(){
+		var oDiv = document.getElementById('div1');
+		//字体过大时，清除该定时器
+		if( parseInt(getStyle(oDiv,'fontSize') )>500){ clearInterval(timer1); }
+		//
+		oDiv.style.width = parseInt(getStyle(oDiv,'width'))-1+'px';
+		oDiv.style.fontSize = parseInt(getStyle(oDiv,'fontSize'))+1+'px';
+	},30)
+}
+function getStyle(obj,attr){
+	if (obj.currentStyle) {
+		return obj.currentStyle[attr];
+	}
+	else{
+		return getComputedStyle(obj,false)[attr];
+	}
+}
+</script>
+</html>

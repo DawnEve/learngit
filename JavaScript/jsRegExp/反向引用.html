@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+  <TITLE> New Document </TITLE>
+  <META NAME="Generator" CONTENT="EditPlus">
+  <META NAME="Author" CONTENT="">
+  <META NAME="Keywords" CONTENT="">
+  <META NAME="Description" CONTENT="">
+ </HEAD>
+
+ <BODY>
+  <script language="JavaScript">
+  <!--
+	/*正则表达式  反向引用*/
+
+    var sToMatch = "#123456789";
+	var reNumbers = /#(\d+)/;
+	reNumbers.test(sToMatch);
+	alert(RegExp.$1);
+
+	/* 
+	  这个例子尝试匹配后面跟着几个或多个数字的镑符合，并对数字进行分组
+	  以存储他们。在调用 test 方法后，所有的反向引用都保存到了 RegExp 构造函数中
+	  从 RegExp.$1(它保存了第一个反向引用）开始，如果还有第二个反向引用，就是
+	  RegExp.$2，如果还有第三个反向引用存在，就是 RegExp.$3.依此类推。因为该组
+	  匹配了 “123456780”，所以 RegExp.$1 中就存储了这个字符串。
+
+	*/
+
+
+    var sToChange = "1234 5678";
+	var reMatch = /(\d{4}) (\d{4})/;
+	var sNew = sToChange.replace(reMatch,"$2 $1");
+	alert(sNew);
+
+    /*
+	  在这个例子中，正则表达式有两个分组，每一个分组有四个数字。在 replace() 方法的第二个参数
+	  中，$2 等同于 “5678” ，而 $1 等同于 “1234”，对应于它们在表达式中的出现顺序。
+	*/
+
+  //-->
+  </script>
+ </BODY>
+</HTML>

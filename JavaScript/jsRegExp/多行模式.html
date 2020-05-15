@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+  <TITLE> New Document </TITLE>
+  <META NAME="Generator" CONTENT="EditPlus">
+  <META NAME="Author" CONTENT="">
+  <META NAME="Keywords" CONTENT="">
+  <META NAME="Description" CONTENT="">
+ </HEAD>
+
+ <BODY>
+    <script language="JavaScript">
+  <!--
+	/*正则表达式  多行模式
+   
+      要制定多行模式，只要在正则表达式想要匹配的行末的一个单词
+	*/  
+	
+	var data = " First second\n thind fourth\n fifth sixth";  
+	var reCat = /(\w+)$/g;   
+	var arrdata = data.match(reCat);
+
+	for (var i = 0; i < arrdata.length; i++)
+	{
+		alert(arrdata[i]);
+	}  
+	
+	/*
+      上面只返回一个单词 sixth，因为换行符阻挡了匹配，只能匹配行末的一个单词，
+	当然也可以使用 split() 方法将字符串分割成数组，但就得对每一行进行单独匹配。
+
+	以前不好好看书经常半吊子，看一半就仍了，导致用了好多 split， 其实很简单如下面
+	例子 只需要 m 参数进行多行匹配。
+
+	*/  
+    var data = " First second\n thind fourth\n fifth sixth";  
+	var reCat = /(\w+)$/gm;   
+	var arrdata = data.match(reCat);
+
+	for (var i = 0; i < arrdata.length; i++)
+	{
+		alert(arrdata[i]);
+	}  
+	
+
+  //-->
+  </script>
+ </BODY>
+</HTML>

@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+  <TITLE> New Document </TITLE>
+  <META NAME="Generator" CONTENT="EditPlus">
+  <META NAME="Author" CONTENT="">
+  <META NAME="Keywords" CONTENT="">
+  <META NAME="Description" CONTENT="">
+ </HEAD>
+
+ <BODY>
+  <script language="JavaScript">
+  <!--
+	/*正则表达式  前瞻
+	前瞻 就和它名字一样，它告诉正则表达式运算器向前看一些字符而不是移动位置
+	*/
+
+
+      var sToMatch1 = "bedroom";
+	  var sToMatch2 = "bedding";
+      var reBed = /bed(?=room)/; 
+	  alert(reBed.test(sToMatch1));  //true
+	  alert(reBed.test(sToMatch2));  //false
+   
+    //负向前瞻
+	
+	  var sToMatch1 = "bedroom";
+	  var sToMatch2 = "bedding";
+      var reBed = /bed(?!room)/; 
+	  alert(reBed.test(sToMatch1)); //false
+	  alert(reBed.test(sToMatch2)); //true
+  //-->
+  </script>
+ </BODY>
+</HTML>
