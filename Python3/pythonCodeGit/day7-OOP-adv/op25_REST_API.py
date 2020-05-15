@@ -37,8 +37,8 @@ class Chain2(object):
         return Chain2("%s/%s" % (self._path, name))
 
     __repr__ = __str__
-	
-	
-	
+
+
+
 url2=Chain2().users('michael').repos
-print(url2)
+print(url2) #/users/michael/repos

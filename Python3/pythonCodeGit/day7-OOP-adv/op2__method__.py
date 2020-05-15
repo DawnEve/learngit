@@ -28,7 +28,7 @@ class Classes():
 s=Student('Jim');
 s2=Student('Tom');
 s3=Student('LiLei');
-print(s)
+print('1> ',s)
 # 在交互模式下输入s回车，显示的是：
 # <__main__.Student object at 0x0000025C603CF550>
 #print(s)显示的是 Jim
@@ -38,9 +38,9 @@ print(s)
 # 解决的办法就是在这俩都定义。偷懒写法是在方法体上写  __repr__==__str__
 
 c=Classes('3(7)');
-print(c)
+print('2> ',c)
 c.add(s)
 c.add(s2)
 c.add(s3)
-print(c)
+print('3> ',c)
 print(len(c))

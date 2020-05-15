@@ -295,7 +295,7 @@ http://www.runoob.com/python/python-reg-expressions.html
 	这里只能是入门GUI的Hello World
 
 
-第十五天：网络编程
+第十五天：网络编程, DB, 框架
 	TCP/IP
 		tcp: hello_server, hello_client
 		udp:
@@ -354,6 +354,7 @@ http://www.runoob.com/python/python-reg-expressions.html
 			http://book.jrj.com.cn/book/book/bookinfo_424.shtml
 
 第十八天：实战python Web项目
+	先学好flask框架、异步再继续。
 
 
 
