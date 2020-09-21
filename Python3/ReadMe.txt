@@ -127,6 +127,7 @@ import re; help(re); dir(re); help(re.match)
 
 第六天：面向对象OOP
 	构造函数：在init中初始化对象的全部属性是一个好习惯。
+		先__new__出来一个对象，然后__init__内进行初始化赋值；
 	数据封装：封装的不彻底
 		私有属性: __name
 		私有方法: __fn()
@@ -144,6 +145,10 @@ import re; help(re); dir(re); help(re.match)
 
 第七天 OOP adv 面向对象高级：多重继承、定制类、元类【难！！！特别是元类】
 	多重继承:一个子类可以继承多个父类，同时获得多个父类所有的非私有功能。py允许mixin写法。
+		MRO是一个元祖，记录继承顺序。
+		super(Type, CurrentClass)返回CurrentClass的MRO中Type的下一个类的代理
+		子类引用父类内容，使用super关键字
+		或者直接 Animal.foo(self)  #注意别漏掉了self参数。
 	定制类(类的专有方法、魔术方法)：__len__, __str__, __repr__, 
 		Fib.py:__iter__, __next__, __getitem__,
 		__call__:可以对实例直接调用 instance(), callable()函数
@@ -152,7 +157,13 @@ import re; help(re); dir(re); help(re.match)
 	__slots__变量，来限制该class实例能添加的属性
 	@property:对直接操作的属性做限制
 	使用枚举类
-	使用元类(太难了！为了不影响学习的积极性，还是暂且跳过这章吧)
+	
+	使用元类(太难了！为了不影响学习的积极性，还是暂且跳过这章吧):
+		(metaclass是Python面向对象里最难理解，也是最难使用的魔术代码。)
+		metaclass允许你创建类或者修改类。换句话说，你可以把类看成是metaclass创建出来的“实例”。
+		用法：type(classname,object,sttr_dict)
+		
+		
 
 第八天：异常
 	错误处理: try-except-else-finally
@@ -357,4 +368,6 @@ http://www.runoob.com/python/python-reg-expressions.html
 	先学好flask框架、异步再继续。
 
 
-
+第十九天: 3D绘图
+	倒立桶形表面
+	马鞍形表面

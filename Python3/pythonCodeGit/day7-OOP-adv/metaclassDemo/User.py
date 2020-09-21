@@ -1,8 +1,9 @@
 ﻿#metaclass
 #我们来尝试编写一个ORM框架。
-#编写底层模块的第一步，就是先把调用接口写出来。比如，使用者如果使用这个ORM框架，想定义一个User类来操作对应的数据库表User，我们期待他写出这样的代码：
+#编写底层模块的第一步，就是先把调用接口写出来。比如，使用者如果使用这个ORM框架，
+# 想定义一个User类来操作对应的数据库表User，我们期待他写出这样的代码：
 
-
+"""
 class User(Model):
     # 定义类的属性到列的映射：
     id = IntegerField('id')
@@ -14,9 +15,12 @@ class User(Model):
 u = User(id=12345, name='Michael', email='test@orm.org', password='my-pwd')
 # 保存到数据库：
 u.save()
+"""
 
 #========================================================
-#其中，父类Model和属性类型StringField、IntegerField是由ORM框架提供的，剩下的魔术方法比如save()全部由metaclass自动完成。虽然metaclass的编写会比较复杂，但ORM的使用者用起来却异常简单。
+#其中，父类Model和属性类型StringField、IntegerField是由ORM框架提供的，
+# 剩下的魔术方法比如save()全部由metaclass自动完成。
+# 虽然metaclass的编写会比较复杂，但ORM的使用者用起来却异常简单。
 
 
 #现在，我们就按上面的接口来实现该ORM。
@@ -41,6 +45,7 @@ class IntegerField(Field):
 
     def __init__(self, name):
         super(IntegerField, self).__init__(name, 'bigint')
+
 # 下一步，就是编写最复杂的ModelMetaclass了：
 class ModelMetaclass(type):
 
@@ -58,6 +63,10 @@ class ModelMetaclass(type):
         attrs['__mappings__'] = mappings # 保存属性和列的映射关系
         attrs['__table__'] = name # 假设表名和类名一致
         return type.__new__(cls, name, bases, attrs)
+
+
+
+
 
 #以及基类Model：
 class Model(dict, metaclass=ModelMetaclass):
@@ -86,5 +95,29 @@ class Model(dict, metaclass=ModelMetaclass):
         print('SQL: %s' % sql)
         print('ARGS: %s' % str(args))
 
+#
+class User(Model):
+    # 定义类的属性到列的映射：
+    id = IntegerField('id')
+    name = StringField('username')
+    email = StringField('email')
+    password = StringField('password')
+# 创建一个实例：
+u = User(id=12345, name='Michael', email='test@orm.org', password='my-pwd')
+# 保存到数据库：
+u.save()
+
+#当用户定义一个class User(Model)时，Python解释器首先在当前类User的定义中查找metaclass，
+# 如果没有找到，就继续在父类Model中查找metaclass，找到了，就使用Model中定义的metaclass的
+# ModelMetaclass来创建User类，也就是说，metaclass可以隐式地继承到子类，但子类自己却感觉不到。
 
 
+
+
+print()
+class Blog(Model):
+    # 定义类的属性到列的映射：
+    id = IntegerField('id')
+    title = StringField('blogtitle')
+b=Blog(id=1, title="how to learn python3")
+b.save()

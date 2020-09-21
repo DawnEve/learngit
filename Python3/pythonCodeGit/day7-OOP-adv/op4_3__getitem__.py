@@ -12,4 +12,5 @@ class Demo:
 		
 		
 d=Demo()
+print(d[3])
 print( d[1:10:3] ) 

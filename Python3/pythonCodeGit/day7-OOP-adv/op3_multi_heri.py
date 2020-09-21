@@ -29,6 +29,8 @@ class Flyable(object):
 class Dog(Mammal, Runnable):
 	def __init__(self):
 		print('Dog');
+	def eat(self):
+		print('Dog likes eating bones')
 
 class Bat(Mammal,Flyable):
 	def __init__(self):
@@ -49,3 +51,15 @@ print(isinstance(o, Flyable)) #False
 
 #由于Python允许使用多重继承，因此，MixIn就是一种常见的设计。
 #只允许单一继承的语言（如Java）不能使用MixIn的设计。
+
+
+## MRO是一个元祖，记录继承顺序。
+print('\n',Dog.__mro__)
+
+# super(Type, CurrentClass)返回CurrentClass的MRO中Type的下一个类的代理
+class SmallDog(Dog):
+	def bar(self):
+		super(SmallDog, self).ww()
+		
+sd=SmallDog() #
+sd.eat() #Dog likes eating bones
