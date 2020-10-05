@@ -94,8 +94,11 @@ import re; help(re); dir(re); help(re.match)
 	map和reduce
 	filter:过滤器
 	sorted()
-	装饰器decorator（不懂）
+	
+	装饰器decorator: 装饰器让你在一个函数的前后去执行代码。
 		day4/decorator/
+		
+		
 
 	偏函数（Partial function）
 
