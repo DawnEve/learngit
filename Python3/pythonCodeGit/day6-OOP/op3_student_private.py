@@ -1,6 +1,7 @@
 ﻿#双下划线表示的是private,私有属性和私有方法
 #但是私有的不彻底
 class Student(): 
+    __nickname="小强"
     def __init__(self, name, score):
         self.name = name
         self.__score = score #变量前加__就表示访问控制
@@ -31,6 +32,8 @@ print(lisa)
 lisa.priMethod()
 
 #总的来说就是，Python本身没有任何机制阻止你干坏事，一切全靠自觉。
-print("\n",bart.__dict__)#查看
+print()
+print(Student.__dict__) #不实例化就有的变量
+print(bart.__dict__)#实例化后才有的变量
 bart._Student__score=200; #修改
 print('干坏事: 修改和直接获取私有变量',bart._Student__score)

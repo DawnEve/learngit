@@ -28,6 +28,8 @@ class User(Base):
     name = Column(String(30))
 
 # 初始化数据库连接: '数据库类型+数据库驱动名称://用户名:口令@机器地址:端口号/数据库名'
+#engine = create_engine('mysql+mysqlconnector://root:password@localhost:3306/test')
+#engine = create_engine('mysql+mysqlconnector://root:@localhost:3306/test')
 engine = create_engine('mysql+mysqlconnector://root:''@localhost:3306/test')
 # 创建DBSession类型:
 DBSession = sessionmaker(bind=engine)

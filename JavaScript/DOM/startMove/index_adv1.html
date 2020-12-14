@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>链式动画</title>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+#li1{
+	width: 200px;
+	height: 100px;
+	background:yellow;
+	margin-bottom: 20px;
+	border: 4px solid black;
+	filter: alpha(opacity:30);
+	opacity: 0.3; 
+}
+</style>
+</head>
+<body>
+	<ul><li id="li1"></li></ul>
+</body>
+<script>
+window.onload = function(){
+	var Li1 = document.getElementById('li1');
+	li1.onmouseover = function(){
+		startMove(Li1,'width',400,function(){
+			startMove(Li1,'height',200);
+		});
+	}
+	li1.onmouseout = function(){
+		startMove(Li1,'height',100,function(){
+			startMove(Li1,'width',200);
+		})
+	}
+}
+function getStyle(obj,attr){
+	if (obj.currentStyle) {
+		return obj.currentStyle[attr];
+	}
+	else{
+		return getComputedStyle(obj,false)[attr];
+	}
+}
+
+function startMove(obj,attr,iTarget,fn){
+	clearInterval(obj.timer);
+	obj.timer = setInterval(function(){
+		var icur = 0;
+		if (attr == 'opacity') {
+			icur = Math.round(parseFloat(getStyle(obj,attr))*100);
+		}else{
+			icur = parseInt(getStyle(obj,attr));
+		}
+		var speed = (iTarget - icur)/8;
+		speed = speed > 0?Math.ceil(speed):Math.floor(speed);
+		if (icur == iTarget) {
+			clearInterval(obj.timer);
+			if (fn) {
+				fn();
+			}
+		}else{
+			if (attr == 'opacity') {
+				obj.style.filter = 'alpha(opacity:'+(icur + speed)+')';
+				obj.style.opacity = (icur + speed)/100;
+			}
+			else{
+				obj.style[attr] = icur + speed +'px';
+			}
+		}
+	},30)
+}
+</script>
+</html>

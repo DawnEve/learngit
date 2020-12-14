@@ -17,9 +17,10 @@
 ![example](images/DOM001.png "悬浮提示框")  
 
 
-----------------------
 
-## 002-  JsPrinter.html
+
+
+## 002-JsPrinter.html
 描述：JS字幕**打字效果**  
 需求：  
 
@@ -30,12 +31,51 @@
 
 ![Printer](images/JsPrinter.png "JsPrinter") 
 
-
-
 js prototype
 
 ![Printer](images/javascript_object_layout.jpg "js prototypes") 
 
+
+
+
+
+## 003-scrollBar.html
+描述：js可拖动竖直滚动条
+需求：
+
+1. 可拖动事件
+
+
+
+
+
+## 004-cornerMenu.html
+描述： 角落的菜单，可伸缩，伸缩三种效果
+需求：
+
+1. 完美运动框架 startMove.js 和其OOP版本 startMove_OOP.js 
+2. 可以实现物体的运动：px像素的改变、透明度的变化。
+3. 详细过程看 startMove/ 文件夹中的html。
+
+
+
+
+## 005-keyboardEvent.html
+描述： 响应键盘上下左右键
+需求： 
+
+1. 鼠标实现小说翻页、图片切换；
+
+
+
+
+
+## 006-dragBox.html
+描述： 鼠标自由拖动的盒子，有拖动区和非拖动区
+需求： 
+
+1. 认识浏览器内各种width的差异；
+2. 详细看 move_drag/ 文件夹中的html。
 
 
 

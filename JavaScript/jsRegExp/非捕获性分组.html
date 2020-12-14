@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+  <TITLE> New Document </TITLE>
+  <META NAME="Generator" CONTENT="EditPlus">
+  <META NAME="Author" CONTENT="">
+  <META NAME="Keywords" CONTENT="">
+  <META NAME="Description" CONTENT="">
+ </HEAD>
+
+ <BODY>
+  <script language="JavaScript">
+  <!--
+	/*正则表达式  非捕获性分组
+	
+	如果要创建一个非捕获性分组，只要在左括号的后面加上一个问号和一个紧跟的冒号：
+	*/
+
+    var sToMatch = "#123456789";
+	var reNumbers = /#(?:\d+)/;
+	reNumbers.test(sToMatch);
+	alert(RegExp.$1);
+
+    /*
+    这个例子的最后一行代码输出一个空字符串，因为该组是非捕获性的，
+	*/
+
+    var sToMatch = "#123456789";
+	var reNumbers = /#(?:\d+)/;
+	alert(sToMatch.replace(reNumbers,"abcd$1"));
+
+	/*
+    正因如此，replace()方法就不能通过 RegExp.$x 变量来使用任何反向引用，这段代码
+	输出的“abcd$1”而不是abcd123456789, 因为$1 在这里并不被看成是一个反向引用。
+	*/
+  //-->
+  </script>
+ </BODY>
+</HTML>

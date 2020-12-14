@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+  <TITLE> New Document </TITLE>
+  <META NAME="Generator" CONTENT="EditPlus">
+  <META NAME="Author" CONTENT="">
+  <META NAME="Keywords" CONTENT="">
+  <META NAME="Description" CONTENT="">
+ </HEAD>
+
+ <BODY>
+   <script language="JavaScript">
+  <!--
+	/*正则表达式  边界
+	^     行开头
+	$     行结尾
+	\b    单词的边界
+	\B    非单词的边界
+	*/
+
+      var sToMatch = "Important word is the last one.";
+      var reLastWord = /(\w+)\.$/; 
+	  reLastWord.test(sToMatch);
+	  alert(RegExp.$1);  //one
+
+    /*
+    假如想查找一个单词，但要它只出现在行尾，则可以使用美元符号 ($)来表示它：
+	*/
+
+
+
+      var sToMatch = "Important word is the last one.";
+      var reLastWord = /^(\w+)/; 
+	  reLastWord.test(sToMatch);
+	  alert(RegExp.$1);  //Important
+
+    /*
+    在这个例子中，正则表达式查找行起始位置后的一个或多个单词字符。如果遇到非单词字符
+	匹配停止，返回 Important。 这个例子也可以用单词边界实现。
+	*/
+   
+      var sToMatch = "Important word is the last one.";
+      var reLastWord = /^(.+?)\b/; 
+	  reLastWord.test(sToMatch);
+	  alert(RegExp.$1);  //Important
+    
+    /*
+    这里，正则表达式用惰性量词来制定在单词边界之前可以出现任何字符，且可以出现一次或
+	多次（如果使用贪婪性量词，表达式就匹配整个字符串）。
+	*/
+
+    var data = " First second third fourth fifth sixth ";  
+	var reCat = /\b(\S+?)\b/g;   
+	var arrdata = data.match(reCat);
+
+	for (var i = 0; i < arrdata.length; i++)
+	{
+		alert(arrdata[i]);
+	}   
+
+	/*
+    使用单词边界可以方便地从字符串中抽取单词。
+	*/
+  //-->
+  </script>
+ </BODY>
+</HTML>

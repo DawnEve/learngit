@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>js透明度动画</title>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+}
+#div1{
+	width: 200px;
+	height: 200px;
+	background-color: red;
+	filter: alpha(opacity:30);
+	opacity: 0.3;
+}
+</style>
+</head>
+<body>
+	<div id="div1">
+	</div>
+</body>
+<script>
+window.onload = function(){
+	var oDiv = document.getElementById('div1');
+	oDiv.onmouseover = function(){
+		startMove(100);
+	}
+	oDiv.onmouseout = function(){
+		startMove(30);
+	}
+	var timer = null;
+	var alpha = 30;
+	
+	function startMove(iTarget){
+		var oDiv = document.getElementById('div1');
+		clearInterval(timer);
+		timer = setInterval(function(){
+			//确定速度
+			var speed = 0;
+			if (alpha > iTarget) {
+				speed = -10;
+			}else{
+				speed = 10;
+			}
+			//运动或停止
+			if (alpha == iTarget) {
+				clearInterval(timer);
+			}else{
+				alpha+=speed;
+				oDiv.style.filter = 'alpha(opacity:'+alpha+')';
+				oDiv.style.opacity = alpha/100;
+			}
+		},30)
+	}
+}
+</script>
+</html>

@@ -1,0 +1,8 @@
+<p>Hello, {{ name }}, from template home.html</p>
+
+
+<!-- 循环 -->
+page: 
+{% for i in page_list %}
+    <a target="_blank" href="/page/{{ i }}">{{ i }}</a>
+{% endfor %}

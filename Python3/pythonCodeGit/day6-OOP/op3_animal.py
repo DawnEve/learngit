@@ -47,7 +47,7 @@ class SmallCat(Cat):
         print("==small cat eat: ")
         Animal.eat(self);
         #Animal.__private_eat(self);#type object 'Animal' has no attribute '_SmallCat__private_eat'
-
+        Animal._Animal__private_eat(self) # py OOP不严格，非要调用也行，不过不规范
 ################################
 # 类定义结束
 ################################
@@ -88,3 +88,7 @@ run_twice(w)
 print()
 sc=SmallCat()
 sc.animalEat()
+
+print("\n找到私有方法的名字，'_Animal__private_eat':", "并调用")
+print(Animal.__dict__) 
+sc._Animal__private_eat()

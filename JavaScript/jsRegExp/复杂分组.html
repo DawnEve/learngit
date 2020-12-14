@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+  <TITLE> New Document </TITLE>
+  <META NAME="Generator" CONTENT="EditPlus">
+  <META NAME="Author" CONTENT="">
+  <META NAME="Keywords" CONTENT="">
+  <META NAME="Description" CONTENT="">
+ </HEAD>
+
+ <BODY>
+  <script language="JavaScript">
+  <!--
+	/*正则表达式  复杂的分组
+    ?   零次 或 一次
+	*   零次 或 多次
+	+   最少一次 或 多次
+	*/  
+	
+	var data = "bb ba da bad dad aa ";  
+	var reCat = /([bd]ad?)/gi;   // 匹配出 ba da bad  dad
+	var arrdata = data.match(reCat);
+
+	for (var i = 0; i < arrdata.length; i++)
+	{
+		alert(arrdata[i]);
+	}    
+	
+
+    // 同时 也不介意将分组放在分组中间
+	// var re = /(mom( and dad)?)/;    匹配出 mom  或  mon and daa
+  //-->
+  </script>
+ </BODY>
+</HTML>

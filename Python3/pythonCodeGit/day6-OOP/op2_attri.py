@@ -44,6 +44,6 @@ t.age=30
 print('dict2: ',t.__dict__)
 t.say()
 #如果我非要改呢？还是可以改的。所以说py的封装不彻底。
-t._Teacher__name="XiaoZhang"
+t._Teacher__name="XiaoZhang2"
 print('dict3: ',t.__dict__)
 t.say()

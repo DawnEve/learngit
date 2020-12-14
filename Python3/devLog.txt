@@ -342,7 +342,16 @@ html-css-javascript
 >py0.2.14-5 改名可以解决问题day4改为day4-Fn-adv
 --------------
 >py0.2.15 day15 学习web-sql, WSGI
---------------
+>py0.2.15-2 学习Flask
+>py0.2.15-3 day17 添加爬虫章节
+>py0.2.15-4 重学Python OOP
+	day15 web sql: DB
+>py0.2.15-5 JS添加 DOM/部分; jsRegExp/正则表达式
+dev py0.3.0-0 调整OOP结构；新增day19-3D
+dev py0.3.0-1 再看装饰器 day4/; RESTful API day15/
+dev py0.3.0-2 day15/ Flask blueprint
+# --> commit
+# -------------->push origin
 
 
 

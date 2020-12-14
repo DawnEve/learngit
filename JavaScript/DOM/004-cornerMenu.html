@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>带缓冲效果的网页右侧固定伸缩窗口</title>
+
+<style type="text/css">
+#common_box{
+	width:300px;
+	position:fixed;
+	height:90%;
+	right:0;
+	bottom:0%;
+	/*
+	border:1px solid #eee;
+	box-shadow: 0px -1px 2px 0px #000000;
+	*/
+	box-shadow: 0px -1px 2px 0px #000000, 
+		0px 1px 3px 0px #FFFFFF;
+	background:#fff;
+	border-radius:5px;
+	z-index:88
+}
+#cli_title{
+	width:300px;
+	height:30px;
+	line-height:30px;
+	float:left;
+	background:#E3E3E3; /*ac8932*/
+	text-align:left;
+	color:#6a737d;
+	border-radius:5px;
+}
+#cli_title b{padding: 8px 10px; 
+	cursor:pointer;
+}
+</style>
+</head>
+<body>
+<pre>
+带缓冲效果的网页(右下角)伸缩窗口，依赖于 startMove/startMove.js
+1.初始化自动缩回去，
+2.单击右上角可以弹出和缩回.
+</pre>
+
+<div style="width:100%;height:2024px;background:#fff"></div>
+
+<div id="common_box">
+ <div id="cli_title"> <b id="cli_on">-</b> Menu</div>
+ <div>
+  这里放置菜单内容
+ </div>
+</div>
+<script type="text/javascript" src="startMove/startMove.js"></script>
+
+<script type="text/javascript">
+window.onload = function() {
+	var combox = document.getElementById("common_box");
+	var cli_title = document.getElementById("cli_title");
+	var cli_on = document.getElementById("cli_on");//cli_title.getElementsByTagName("b")[0];
+	var flag = true, initime = null, r_len = 0;
+	var height90=parseInt(getStyle(combox,"height"));
+	
+	cli_on.onclick = function () {
+		console.log(height90)
+		/*如果不需要动态效果，这两句足矣
+		combox.style.right = flag?'-270px':0;
+		flag = !flag;
+		*/
+		var px_right=flag?-270:0;
+		var px_height=flag?30:height90;
+		startMove(combox, {"right": px_right, 'height':px_height})
+		cli_on.innerHTML=flag?"+":"-";
+		//
+		flag = !flag;
+	}
+	//加载后3秒页面自动收缩
+	initime = setTimeout("cli_on.click()", 1000);
+}
+</script>
+</body>
+</html>
