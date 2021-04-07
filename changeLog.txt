@@ -1,2 +1,6 @@
 # changeLog
 v0.1 add css2目录; css3 blur效果 [2020.12.14]
+##--------> master
+v0.2 add Python3/ day20 设计模式 [2021.4.7]
+#
+##--> dev

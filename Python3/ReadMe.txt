@@ -355,7 +355,8 @@ http://www.runoob.com/python/python-reg-expressions.html
 	
 	为了简化并更好地标识异步IO，从Python 3.5开始引入了新的语法async和await，可以让coroutine的代码更简洁易读。
 	//TODO
-
+	
+	在Python3.6+之后，在Python的异步彻底崛起。
 
 
 第十七天：实战python爬虫
@@ -374,3 +375,9 @@ http://www.runoob.com/python/python-reg-expressions.html
 第十九天: 3D绘图
 	倒立桶形表面
 	马鞍形表面
+
+第二十天：设计模式 day20-design-pattern
+	http://www.pythontip.com/python-patterns/detail/factory_method
+	创建型模式(5): 工厂方法/单例/原型/抽象工厂/建造者
+	
+	
