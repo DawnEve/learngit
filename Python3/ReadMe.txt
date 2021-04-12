@@ -299,8 +299,9 @@ http://www.runoob.com/python/python-reg-expressions.html
 
 第十三天：常用第三方模块
 	基本上，所有的第三方模块都会在PyPI - the Python Package Index上注册，只要找到对应的模块名字，即可用pip安装。
+	PIL 白色变透明png图
 	virtualenv:隔离的python版本环境
-
+	
 
 
 第十四天：图形界面
