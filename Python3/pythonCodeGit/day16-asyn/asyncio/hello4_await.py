@@ -12,7 +12,7 @@ import asyncio
 async def hello(n):
     print("Hello world!",n)
     r = await asyncio.sleep(1)
-    print("Hello again!",n)
+    print("Hello again!",n, "; r=", r)
     
 # 获取EventLoop:
 loop = asyncio.get_event_loop()

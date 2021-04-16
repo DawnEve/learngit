@@ -218,6 +218,8 @@ import re; help(re); dir(re); help(re.match)
 	但是类似电影必须多线程：一个播放画面，一个播放声音。
 	多进程：fork() 在linux下建立子进程。
 		Process()实例可以跨系统开启多线程。
+			Process()直接开新进程
+			继承Process的子类，开新进程
 		启动大量的子进程,可以用进程池的方式Pool.
 	子进程：subprocess模块非常方便地启动一个子进程，然后控制其输入和输出。
 		- linux下是封装的fork()
@@ -347,7 +349,7 @@ http://www.runoob.com/python/python-reg-expressions.html
 	
 第十六天：异步IO	
 	协程的特点在于是一个线程执行，那和多线程比，协程有何优势？
-	- 最大的优势就是协程极高的执行效率。
+	- 最大的优势就是协程极高的执行效率。特别适合IO密集型任务，不适合CPU密集型任务。
 	- 第二大优势就是不需要多线程的锁机制。
 	因为协程是一个线程执行，那怎么利用多核CPU呢？最简单的方法是多进程+协程，
 		既充分利用多核，又充分发挥协程的高效率，可获得极高的性能。
@@ -355,9 +357,10 @@ http://www.runoob.com/python/python-reg-expressions.html
 	不懂yield表达式。//TODO
 	
 	为了简化并更好地标识异步IO，从Python 3.5开始引入了新的语法async和await，可以让coroutine的代码更简洁易读。
-	//TODO
 	
 	在Python3.6+之后，在Python的异步彻底崛起。
+	很多不解是 yield from 导致的，虽然后来3.5版本换成了await，但底层实现还是生成器那些东西。
+
 
 
 第十七天：实战python爬虫
