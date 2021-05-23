@@ -166,6 +166,7 @@ import re; help(re); dir(re); help(re.match)
 		metaclass允许你创建类或者修改类。换句话说，你可以把类看成是metaclass创建出来的“实例”。
 		用法：type(classname,object,sttr_dict)
 		
+	types.MethodType: 运行过程中添加类
 		
 
 第八天：异常
@@ -376,12 +377,12 @@ http://www.runoob.com/python/python-reg-expressions.html
 	先学好flask框架、异步再继续。
 
 
-第十九天: 3D绘图
+第十九天: 3D绘图(积累案例，总结规律，到灵活运用)
 	倒立桶形表面
 	马鞍形表面
 
 第二十天：设计模式 day20-design-pattern
 	http://www.pythontip.com/python-patterns/detail/factory_method
 	创建型模式(5): 工厂方法/单例/原型/抽象工厂/建造者
-	
+	行为型模式(11): 策略模式/模板方法模式/
 	
