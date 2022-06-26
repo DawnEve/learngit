@@ -166,6 +166,7 @@ import re; help(re); dir(re); help(re.match)
 		metaclass允许你创建类或者修改类。换句话说，你可以把类看成是metaclass创建出来的“实例”。
 		用法：type(classname,object,sttr_dict)
 		
+	types.MethodType: 运行过程中添加类
 		
 
 第八天：异常
@@ -218,6 +219,8 @@ import re; help(re); dir(re); help(re.match)
 	但是类似电影必须多线程：一个播放画面，一个播放声音。
 	多进程：fork() 在linux下建立子进程。
 		Process()实例可以跨系统开启多线程。
+			Process()直接开新进程
+			继承Process的子类，开新进程
 		启动大量的子进程,可以用进程池的方式Pool.
 	子进程：subprocess模块非常方便地启动一个子进程，然后控制其输入和输出。
 		- linux下是封装的fork()
@@ -299,8 +302,9 @@ http://www.runoob.com/python/python-reg-expressions.html
 
 第十三天：常用第三方模块
 	基本上，所有的第三方模块都会在PyPI - the Python Package Index上注册，只要找到对应的模块名字，即可用pip安装。
+	PIL 白色变透明png图
 	virtualenv:隔离的python版本环境
-
+	
 
 
 第十四天：图形界面
@@ -346,7 +350,7 @@ http://www.runoob.com/python/python-reg-expressions.html
 	
 第十六天：异步IO	
 	协程的特点在于是一个线程执行，那和多线程比，协程有何优势？
-	- 最大的优势就是协程极高的执行效率。
+	- 最大的优势就是协程极高的执行效率。特别适合IO密集型任务，不适合CPU密集型任务。
 	- 第二大优势就是不需要多线程的锁机制。
 	因为协程是一个线程执行，那怎么利用多核CPU呢？最简单的方法是多进程+协程，
 		既充分利用多核，又充分发挥协程的高效率，可获得极高的性能。
@@ -354,7 +358,9 @@ http://www.runoob.com/python/python-reg-expressions.html
 	不懂yield表达式。//TODO
 	
 	为了简化并更好地标识异步IO，从Python 3.5开始引入了新的语法async和await，可以让coroutine的代码更简洁易读。
-	//TODO
+	
+	在Python3.6+之后，在Python的异步彻底崛起。
+	很多不解是 yield from 导致的，虽然后来3.5版本换成了await，但底层实现还是生成器那些东西。
 
 
 
@@ -371,6 +377,24 @@ http://www.runoob.com/python/python-reg-expressions.html
 	先学好flask框架、异步再继续。
 
 
-第十九天: 3D绘图
+第十九天: 3D绘图(积累案例，总结规律，到灵活运用)
 	倒立桶形表面
 	马鞍形表面
+
+第二十天：设计模式 day20-design-pattern
+	http://www.pythontip.com/python-patterns/detail/factory_method
+	创建型模式(5): 工厂方法/单例/原型/抽象工厂/建造者
+	行为型模式(11): 策略模式/模板方法模式/
+
+第二十一天: 算法
+	《图解算法》
+	a1 二分法
+	a2 选择排序法： 数组的 pop 元素能按下标移除数组中的该元素，并返回该值。
+	a3 递归: 可以在纸上画一下递归调用过程的 调用栈； //todo 尾递归
+	a4 分而治之: 数组求和，递归法; 快速排序; 
+	a5 广度优先算法：
+	a6 迪克斯特拉算法
+	a7 贪婪算法: 集合覆盖问题 //todo 旅行商问题
+
+第二十二天: 数学
+	a1_组合数求和

@@ -11,3 +11,5 @@ deploy_key_rsa
 backup
 dustbin
 
+
+*.exe

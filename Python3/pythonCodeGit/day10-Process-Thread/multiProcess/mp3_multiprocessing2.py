@@ -1,32 +1,27 @@
-#!/usr/bin/python3
-# -*- coding: utf-8 -*-
+from multiprocessing import  Process
+import time,random
 
-from multiprocessing import Process
-import os
+class MyProcess(Process): #继承Process类
+    def __init__(self,name,i):
+        super(MyProcess,self).__init__()
+        self.name = name
+        self.i=i
 
-# 子进程要执行的代码
-def run_proc(name):
-    print('Run child process %s (%s)...' % (name, os.getpid()))
+    def run(self):
+        x=random.random()*3 #一个耗时任务
+        time.sleep(x)
+        print('test %d: 测试%s多进程，本进程耗时 %3.2f s' % (self.i, self.name, x ) )
 
-if __name__=='__main__':
-    print('Parent process %s.' % os.getpid())
-    # 1.传入一个执行函数和函数的参数
-    p = Process(target=run_proc, args=('test1',)) #multiprocessing模块提供了一个Process类来代表一个进程对象
-    print('------Child process will start.')
-    p.start() #2.用start()方法启动子进程
-    p.join() #3.join()方法可以等待子进程结束后再继续往下运行，通常用于进程间的同步。
-    print('------Child process end.')
 
-print('I am always here:pid =',os.getpid())
-print('I am always here:ppid =',os.getppid())
+if __name__ == '__main__':
+    process_list = []
+    start=time.time()
+    for i in range(5):  #开启5个子进程执行fun1函数
+        p = MyProcess('Python', i) #实例化进程对象
+        p.start()
+        process_list.append(p)
 
-"""
-Parent process 11424.
-------Child process will start.
-I am always here:pid = 16108
-I am always here:ppid = 11424
-Run child process test1 (16108)...
-------Child process end.
-I am always here:pid = 11424
-I am always here:ppid = 16820
-"""
+    for pr in process_list:
+        pr.join()
+
+    print('结束测试', time.time()-start)

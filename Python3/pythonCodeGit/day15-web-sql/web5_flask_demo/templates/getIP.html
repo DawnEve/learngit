@@ -1,0 +1,23 @@
+    <h3 class="text-muted">How To Get The IP Address Of The User</h3>
+   <hr/>
+
+    <p>You IP address is: {{user_ip}}</p>
+    <h3 class="text-muted">Code to retrieve the IP</h3>
+
+   <hr/>  
+<pre>
+from flask import Flask, render_template, request
+
+# Initialize the Flask application
+app = Flask(__name__)
+# Default route, print user's IP
+@app.route('/')
+def index():
+    ip = request.remote_addr
+    return render_template('getIP.html', user_ip=ip)
+if __name__ == '__main__':
+    app.run(
+        host="0.0.0.0",
+        port=int("81")
+    )
+</pre>
