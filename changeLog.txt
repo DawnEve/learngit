@@ -2,5 +2,7 @@
 v0.1 add css2目录; css3 blur效果 [2020.12.14]
 ##--------> master
 v0.2 add Python3/ day20 设计模式 [2021.4.7]
-#
-##--> dev
+v0.2.0-1@sust change dir [2022.6.26]
+v0.2.0-2@sust add py/ algorithm:二分法/选择排序/递归/分而治之/广度优先算法/迪克斯特拉算法/贪婪算法 [2022.6.26]
+# commit
+##-------> push dev

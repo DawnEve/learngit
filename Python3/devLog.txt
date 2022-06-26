@@ -354,6 +354,8 @@ dev py0.3.0-3 day20/ design pattern
 dev py0.3.0-4 day13/ PIL 图片白色变透明png
 dev py0.3.0-5 day16/ 协程; day10/ 多进程
 dev py0.3.0-6 day20/ 设计模式
+dev py0.3.0-7 day21/ 算法
+dev py0.3.0-8 day22/ 数学-排列组合
 # --> commit
 # -------------->push origin
 

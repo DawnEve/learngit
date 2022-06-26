@@ -385,4 +385,16 @@ http://www.runoob.com/python/python-reg-expressions.html
 	http://www.pythontip.com/python-patterns/detail/factory_method
 	创建型模式(5): 工厂方法/单例/原型/抽象工厂/建造者
 	行为型模式(11): 策略模式/模板方法模式/
-	
+
+第二十一天: 算法
+	《图解算法》
+	a1 二分法
+	a2 选择排序法： 数组的 pop 元素能按下标移除数组中的该元素，并返回该值。
+	a3 递归: 可以在纸上画一下递归调用过程的 调用栈； //todo 尾递归
+	a4 分而治之: 数组求和，递归法; 快速排序; 
+	a5 广度优先算法：
+	a6 迪克斯特拉算法
+	a7 贪婪算法: 集合覆盖问题 //todo 旅行商问题
+
+第二十二天: 数学
+	a1_组合数求和
