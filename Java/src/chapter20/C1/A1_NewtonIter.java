@@ -1,13 +1,13 @@
-package chapter20;
+package chapter20.C1;
 /**
  * 牛顿迭代法求平方根
  * @author admin
  *
  */
-public class C1_NewtonIter{
+public class A1_NewtonIter{
 	public static void main(String[] args) {
 		//System.out.println("test");
-		double x=3;
+		double x=-3;
 		System.out.printf("sqrt(%.3f)=%.10f\n", x, sqrt2(x));
 	}
 	
