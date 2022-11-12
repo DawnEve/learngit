@@ -395,6 +395,8 @@ http://www.runoob.com/python/python-reg-expressions.html
 	a5 广度优先算法：
 	a6 迪克斯特拉算法
 	a7 贪婪算法: 集合覆盖问题 //todo 旅行商问题
+	a8 动态规划: 背包问题, v2 给出最优组合
+	
 
 第二十二天: 数学
 	a1_组合数求和

@@ -1,8 +1,28 @@
+# 细节记录到各自的文件中
+
 # changeLog
 v0.1 add css2目录; css3 blur效果 [2020.12.14]
 ##--------> master
 v0.2 add Python3/ day20 设计模式 [2021.4.7]
 v0.2.0-1@sust change dir [2022.6.26]
 v0.2.0-2@sust add py/ algorithm:二分法/选择排序/递归/分而治之/广度优先算法/迪克斯特拉算法/贪婪算法 [2022.6.26]
+##--------> master [2022.6.26]
+v0.2.0-3@sust py/ 算法 动态规划 [2022.7.5]
+v0.2.0-4@sust add Java/ 算法 牛顿迭代法求平方根 [2022.7.6]
+v0.2.0-4@sust add Java/ 算法 二分法/ 命令行参数/ [2022.11.10]
+v0.2.0-5@sust mv JavaScript/, jQuery/, html, css/ to jsLecture [2022.11.12]
 # commit
 ##-------> push dev
+## This repo only: git, Java, Python3
+
+
+
+
+## 几个动词
+add 增加内容
+del 删除内容
+fix 修复错误
+change 调整目录结构
+mv 移动到其他repo中
+
+
