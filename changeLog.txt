@@ -10,8 +10,10 @@ v0.2.0-2@sust add py/ algorithm:二分法/选择排序/递归/分而治之/广�
 v0.2.0-3@sust py/ 算法 动态规划 [2022.7.5]
 v0.2.0-4@sust add Java/ 算法 牛顿迭代法求平方根 [2022.7.6]
 v0.2.0-4@sust add Java/ 算法 二分法/ 命令行参数/ [2022.11.10]
+v0.2.0-5@sust mv JavaScript/, jQuery/, html, css/ to jsLecture [2022.11.12]
 # commit
 ##-------> push dev
+## This repo only: git, Java, Python3
 
 
 
@@ -21,5 +23,6 @@ add 增加内容
 del 删除内容
 fix 修复错误
 change 调整目录结构
+mv 移动到其他repo中
 
 
