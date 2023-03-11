@@ -69,14 +69,10 @@ public class Operator_demo {
 	//位运算符
 	private static void test7() {
 		int i=1;
-		System.out.println(i<<6);//左移是放大，相当于*2^6
+		System.out.println(i<<6); //左移是放大，相当于*2^6
 		
 		int j=1024;
-		System.out.println(j>>10);//右移是缩小，相当于/2^10
+		System.out.println(j>>10); //右移是缩小，相当于/2^10
 	}
-	
-	
-	
-	
-	
+
 }
