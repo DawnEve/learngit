@@ -7,7 +7,7 @@ public class ImportGood {
 		Dog d=new Dog();
 		System.out.println(d.getName());
 		
-		Dog d2=new Dog();
+		Dog d2=new Dog("Facai");
 		System.out.println(d2.getName());
 		
 		System.out.println(Dog.count);

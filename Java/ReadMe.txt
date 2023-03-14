@@ -13,12 +13,8 @@ Java 入门到精通
     - 数组遍历、复制、求最值、冒泡法排序、二分法查找
     	for( int x: arrName ){} //foreach 遍历数组
     - 排序可以自己实现，或者引用类 import java.util.Arrays;
-
+	- 枚举
 第三章：面向对象程序开发 31 -74
-
-
-
-
 
 
 
@@ -61,6 +57,9 @@ Java 入门到精通
 		join让步
 
 第六章：常用类 API 122-139
+	Math, Number
+	String
+	
 第七章：集合框架（容器） +其他类对象使用 139 -199
 	set
 	list

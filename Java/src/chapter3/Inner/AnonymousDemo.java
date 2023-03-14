@@ -5,9 +5,9 @@ package chapter3.Inner;
  */
 public class AnonymousDemo {
 	public static void main(String[] args) {
-//		demo1();
+		demo1();
 //		demo2();
-		demo3();
+//		demo3();
 		//ReadInner
 	}
 
