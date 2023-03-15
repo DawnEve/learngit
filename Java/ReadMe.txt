@@ -13,6 +13,7 @@ Java 入门到精通
     - 数组遍历、复制、求最值、冒泡法排序、二分法查找
     	for( int x: arrName ){} //foreach 遍历数组
     - 排序可以自己实现，或者引用类 import java.util.Arrays;
+    - 数组作为函数的参数，返回数组的函数，Arrays 类
 	- 枚举
 第三章：面向对象程序开发 31 -74
 
@@ -58,7 +59,9 @@ Java 入门到精通
 
 第六章：常用类 API 122-139
 	Math, Number
-	String
+	String, StringBuilder, StringBuffer(线程安全的)
+	日期时间，
+	
 	
 第七章：集合框架（容器） +其他类对象使用 139 -199
 	set
@@ -84,10 +87,12 @@ Java 入门到精通
 	和第三章反射重复。
 	
 第十二章：正则表达式 315 -322
-	匹配
+	Java 正则表达式和  Perl 的是最为相似的。
+	Java中需要使用双反斜线 \\d 表示数字;
+	匹配: 全文，从开头匹配
 	替换
-	查找
-	切割
+	查找: 借助捕获组，就是带()的正则
+	切割 : reg.split(str); str.split(reg);
 
 
 第十三章：HTML语言 322 -335
