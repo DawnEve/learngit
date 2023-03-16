@@ -880,7 +880,7 @@ dev0.1.5@Java 数组作为函数的参数、返回值; Arrays 类; Date/String/�
 dev0.1.6@Java ch8/ IO 流
 	ch1/ 命令行参数; 可变参数; 
 	ch3/ finalizedMethod
-
+dev0.1.7@Java ch4/ 异常, try...catch...resource
 
 
 

@@ -1,5 +1,7 @@
 package chapter8;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class ScannerDemo {
@@ -7,7 +9,20 @@ public class ScannerDemo {
 //		demo1();
 //		demo2();
 //		demo3();
-		demo4();
+//		demo4();
+		demo5();
+	}
+
+	// 从文件读
+	private static void demo5() {
+		try(Scanner scanner = new Scanner(new File("src/dustbin/file1.txt"))) {
+			while(scanner.hasNextLine()){
+				System.out.print( scanner.nextLine()+"\n" );
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		System.out.println("Done");		
 	}
 
 	//输入多个数，求总和和平均值
