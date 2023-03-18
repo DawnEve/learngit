@@ -24,7 +24,7 @@ public class SplitDemo {
 	    	System.out.print(ele+" | ");
 	    System.out.println();
 	    
-	    //方案2 调用编译后的正则的split方法
+	    // 方案2 调用编译后的正则的split方法
 	    Pattern pattern = Pattern.compile(regex);
 	    String[] arr2=pattern.split(str);
 	    for(int i=0; i<arr.length; i++) {

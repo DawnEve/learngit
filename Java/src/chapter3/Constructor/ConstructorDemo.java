@@ -8,12 +8,16 @@ public class ConstructorDemo {
 		demo2();
 	}
 
+	
+	
 	//父类构造函数会不会被调用？
 	private static void demo2() {
 		//Dog dog=new Dog();
 		Dog dog=new Dog("wangcai");
 	}
 
+	
+	
 	private static void demo1() {
 		Bike b=Bike.getInstance();
 		Bike b2=Bike.getInstance();
