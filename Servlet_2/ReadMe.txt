@@ -23,6 +23,22 @@ com.mio.param.
 	GetServletContext: req.getServletContext() 获取上下文，有啥用？
 
 
-3. 
+3. http 响应
+com.mio.response.
+	ResponseDemo1.java;
+	ResponseDemo2.java; //重定向到 demo1; 发送错误信息
+
+
+4. Cookie & Session 会话机制
+com.mio.session.
+	CookieDemo.java
+
+
+5. 实现一个过滤器
+com.mio.filter.
+	LogFilterDemo.java 记录日志的拦截器
+	Demo1.java //测试地址
+	Demo2.java //测试地址
+	LogFilterDemo2.java 使用注解设置 init 参数，并读取
 
 
