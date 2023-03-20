@@ -18,7 +18,6 @@ import javax.servlet.annotation.WebInitParam;
 		@WebInitParam(name="username", value="admin"),
 		@WebInitParam(name="passwd", value="123"),
 }, dispatcherTypes = DispatcherType.REQUEST)
-
 public class LogFilterDemo2 implements Filter {
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
@@ -26,7 +25,7 @@ public class LogFilterDemo2 implements Filter {
 		
 		String name=filterConfig.getInitParameter("username");
 		String passwd=filterConfig.getInitParameter("passwd");
-		System.out.println("init: "+name+" "+passwd);
+		System.out.println("init: "+name+" "+passwd); //启动时执行，不符合这个过滤器也执行？
 	}
 	
 	@Override

@@ -10,14 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/GetPara")
+@WebServlet("/getPara")
 public class GetPara extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		System.out.println(req);
+		System.out.println(req); //org.apache.catalina.connector.RequestFacade@6cea9668
 		
-		res.setContentType("Text/html"); //设置内容类型
+		//设置内容类型
+		res.setContentType("text/html"); 
 		//获取变量
 		String usr=req.getParameter("username");
 		String pass=req.getParameter("password");
