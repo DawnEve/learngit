@@ -51,9 +51,9 @@ com.mio.session.
 		win7 chrome的cookie保存位置：C:\Users\admin\AppData\Local\Google\Chrome\User Data\Default\Cache\Cache_Data
 	SessionDemo1.java //session操作 创建、增、删、查
 	SessionDemo2.java //session操作 判断与跳转
-	SessionDemo3.java //session操作 遍历
+	SessionDemo3.java //session操作 遍历 当前的 session
 	
-	ServletContextDemo.java // 4种初始化方法；2个主要用途
+	ServletContextDemo1.java // 4种初始化方法；2个主要用途
 	ServletContextDemo2.java // 测试获取值，配合demo1
 	ServletContextDemo3.java // 获取配置的初始化参数 getInitParameter()
 	ServletContextDemo4.java //请求转发
@@ -79,5 +79,17 @@ com.mio.io.
 	VisitNumber.java //访问计数器，记录到文件中
 
 
+7. 数据库 MySql
+com.mio.mysql.
+	DBDemo1.java // session操作 db判断 (1)防止注入（先判断用户名，再判断密码）(2)注意及时关闭资源
 
 
+
+
+
+
+10. 其他
+com.mio.other.
+	LocaleDemo.java //国际化，获取本地和语言
+
+	

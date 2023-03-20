@@ -21,12 +21,18 @@ public class SessionDemo3 extends HttpServlet {
 		//设置session时间.默认是30min。
 		//hs.setMaxInactiveInterval(10);//10s
 		
-		//设置 session 键值对
-		hs.setAttribute("user_id", "123");
-		hs.setAttribute("user_name", "wangcai");
-		hs.setAttribute("user_role", "admin");
-		System.out.println("session set: done!");
-		
+		//通过url设置动作
+		//http://localhost:8080/Servlet_2/sessionDemo3?action=set
+		String action=req.getParameter("action");
+		System.out.println("action:" +action);
+		if(null!=action && action.equals("set")) {
+			System.out.println(">> set sessions:");
+			//设置 session 键值对
+			hs.setAttribute("user_id", "123");
+			hs.setAttribute("user_name", "wangcai");
+			hs.setAttribute("user_role", "admin");
+			System.out.println("session set: done!");
+		}
 		
 		//Part II 输出到网页
 		//设置输出内容的类型

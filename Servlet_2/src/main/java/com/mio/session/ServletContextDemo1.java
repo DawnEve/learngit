@@ -59,6 +59,8 @@ public class ServletContextDemo1 extends HttpServlet {
 		String uname2=(String) hs.getAttribute("uname2");
 		System.out.println("Session: uname2="+uname2);
 		
+		//输出到网页
+		resp.setContentType("text/html;charset=UTF-8");
 		resp.getWriter().append("Set ServletContext & Session. <br>换电脑/浏览器 访问 demo2");
 	}
 
