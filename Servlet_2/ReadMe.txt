@@ -15,13 +15,14 @@ com.mio.hi.
 	CurrentDate.java 当前时间戳
 	ServletDemo.java 实现 Servlet 接口，实现访问计数器 //比较繁琐，用的不多
 	Hello1.java //网页输出 html； 扩展 HttpServlet 类，常用
-
+	
 
 
 
 2. 参数传递 req, resp
 com.mio.param.
 	GetPara.java //输出到网页，获取get方式传递过来的变量
+		res.setCharacterEncoding("UTF-8"); //这一句保证输出中文不乱码
 	GetRequestLine.java 获取请求行(第一行)
 	GetHeader.java 请求头(键值对)
 	GetRequestBody.java 请求体（只有post提交时才有）

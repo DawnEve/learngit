@@ -1,6 +1,8 @@
 package com.mio.response;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -26,6 +28,7 @@ public class ResponseDemo1 extends HttpServlet {
 		resp.getWriter().
 			append("ResponseDemo1 10秒刷新<br> Served at: ").
 			append(req.getRequestURI()).append("<h2>"+now+"</h2>");
+		resp.getWriter().append(getDateTime());
 		
 		//设置404状态
 		//resp.setStatus(404, "not found now..."); //2参数的已被废除
@@ -33,5 +36,18 @@ public class ResponseDemo1 extends HttpServlet {
 		
 		//设置头信息
 		resp.addHeader("author", "Tom");
+	}
+	
+	//获取当前 时间格式 2023-03-27 20:32:59
+	static String getDateTime() {
+		//使用默认时区和语言环境获得一个日历
+		Calendar cale=Calendar.getInstance();
+		//将Calendar类型转换成Date类型  
+		Date tasktime=cale.getTime();
+		//设置日期输出的格式 
+		SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		//格式化输出
+		String nowTime=df.format(tasktime);
+		return nowTime;
 	}
 }
