@@ -1,0 +1,18 @@
+Quoters Incorporated is a service used to support other https://spring.io/guides[Spring Guides].
+
+Instead of relying on someone else's REST service to supply us with data for consumption, we run our own,
+filled with real life Spring Boot quotes.
+
+The app is very simple, but can also serve as a reference point for building your own Spring MVC app.
+
+Technologies used:
+
+* Spring MVC
+* Spring Data JPA
+* H2 embedded database
+
+The app is hosted on https://console.run.pivotal.io/[PWS (_p-dubs_)] at https://gturnquist-quoters.cfapps.io.
+
+* http://localhost:8080/api - see ALL the quotations
+* http://localhost:8080/api/1 - see the first quotation
+* http://localhost:8080/api/random - see a random quotation
