@@ -25,6 +25,6 @@ dev0.2.7@Java Spring REST demo1
 	https://spring.io/guides/gs/rest-service/
 dev0.2.8@Java Spring REST demo2: REST client; quoter 实例;
 	https://spring.io/guides/gs/consuming-rest/
-
+dev0.2.9@Java 使用 maven 构建项目
 
 
