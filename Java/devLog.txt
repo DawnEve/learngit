@@ -21,5 +21,7 @@ dev0.2.5@Java ch3 反射，动态代理，切面
 dev0.2.6@Java 书本摘要 独立成文件 Java/BookLog.txt 
 dev0.2.6@Java ch19 JUnit 单元测试；SpringBoot 2.*,3.*
 
+dev0.2.7@Java Spring REST demo1
+	https://spring.io/guides/gs/rest-service/
 
 
