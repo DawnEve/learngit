@@ -6,5 +6,6 @@
 	<classpathentry kind="lib" path="src/lib/servlet-api.jar"/>
 	<classpathentry kind="lib" path="G:/xampp/tomcat/webapps/examples/WEB-INF/lib/jstl.jar"/>
 	<classpathentry kind="lib" path="G:/xampp/tomcat/webapps/examples/WEB-INF/lib/standard.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
