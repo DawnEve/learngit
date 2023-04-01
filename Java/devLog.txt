@@ -26,5 +26,7 @@ dev0.2.7@Java Spring REST demo1
 dev0.2.8@Java Spring REST demo2: REST client; quoter 实例;
 	https://spring.io/guides/gs/consuming-rest/
 dev0.2.9@Java 使用 maven 构建项目
+//--- above done
+dev0.3.0@Java Spring 定时任务: scheduling-tasks/
 
 

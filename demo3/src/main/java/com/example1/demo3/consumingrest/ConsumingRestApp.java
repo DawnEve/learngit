@@ -1,3 +1,4 @@
+/*
 package com.example1.demo3.consumingrest;
 
 import org.slf4j.Logger;
@@ -31,3 +32,4 @@ public class ConsumingRestApp {
 		};
 	}
 }
+*/
