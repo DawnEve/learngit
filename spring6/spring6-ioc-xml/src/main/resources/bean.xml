@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="user" class="com.mio.spring6.iocxml.User"></bean>
+	<bean id="user2" class="com.mio.spring6.iocxml.User"></bean>
+	
+	<!-- 一个接口多个实现类 -->
+	<bean id="userDaoImpl" class="com.mio.spring6.iocxml.bean.UserDaoImpl"></bean>
+	<bean id="personDaoImpl" class="com.mio.spring6.iocxml.bean.PersonDaoImpl"></bean>
+</beans>
