@@ -8,7 +8,17 @@ public class TestInjectObj {
 	public static void main(String[] args) {
 //		demo1();
 //		demo2();
-		demo3();
+//		demo3();
+		demo4();
+	}
+
+	private static void demo4() {
+		ApplicationContext context=
+				new ClassPathXmlApplicationContext("bean-di-array.xml");
+		//获取员工对象
+		Employer worker1=context.getBean("emp1", Employer.class);
+		//调用员工方法
+		worker1.work();
 	}
 
 	private static void demo3() {

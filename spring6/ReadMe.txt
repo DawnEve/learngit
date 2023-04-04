@@ -6,6 +6,7 @@ leanr Spring 6
 	v0.1.1@spring log4j2 记录日志
 	v0.1.2@spring 依赖注入IoC和DI
 	v0.1.3@spring 注入对象类型
+	v0.1.4@spring 注入数组类型
 
 
 
