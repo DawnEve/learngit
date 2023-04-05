@@ -16,7 +16,7 @@ public class TestInjectObj {
 		ApplicationContext context=
 				new ClassPathXmlApplicationContext("bean-di-array.xml");
 		//获取员工对象
-		Employer worker1=context.getBean("emp1", Employer.class);
+		Employee worker1=context.getBean("emp1", Employee.class);
 		//调用员工方法
 		worker1.work();
 	}
@@ -25,7 +25,7 @@ public class TestInjectObj {
 		ApplicationContext context=
 				new ClassPathXmlApplicationContext("bean-inject-obj.xml");
 		//获取员工对象
-		Employer worker1=context.getBean("emp1c", Employer.class);
+		Employee worker1=context.getBean("emp1c", Employee.class);
 		//调用员工方法
 		worker1.work();			
 	}
@@ -36,7 +36,7 @@ public class TestInjectObj {
 		ApplicationContext context=
 				new ClassPathXmlApplicationContext("bean-inject-obj.xml");
 		//获取员工对象
-		Employer worker1=context.getBean("emp1b", Employer.class);
+		Employee worker1=context.getBean("emp1b", Employee.class);
 		//调用员工方法
 		worker1.work();	
 	}
@@ -45,7 +45,7 @@ public class TestInjectObj {
 		ApplicationContext context=
 				new ClassPathXmlApplicationContext("bean-inject-obj.xml");
 		//获取员工对象
-		Employer worker1=context.getBean("emp1", Employer.class);
+		Employee worker1=context.getBean("emp1", Employee.class);
 		//调用员工方法
 		worker1.work();		
 	}

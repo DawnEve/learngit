@@ -14,7 +14,7 @@
 	<bean id="dept2" class="com.mio.spring6.iocxml.injectobj.Department">
 		<property name="dname" value="财务部"></property>
 	</bean>
-	<bean id="emp1" class="com.mio.spring6.iocxml.injectobj.Employer">
+	<bean id="emp1" class="com.mio.spring6.iocxml.injectobj.Employee">
 		<!-- 注入普通属性 -->
 		<property name="ename" value="张三"></property>
 		<property name="age" value="20"></property>
@@ -28,7 +28,7 @@
 
 
 	<!-- 方式2：内部 bean 方式 	-->
-	<bean id="emp1b" class="com.mio.spring6.iocxml.injectobj.Employer">
+	<bean id="emp1b" class="com.mio.spring6.iocxml.injectobj.Employee">
 		<property name="ename" value="李四"></property>
 		<property name="age" value="50"></property>
 		<!-- 注入对象类型属性 
@@ -48,7 +48,7 @@
 	<bean id="dept2c" class="com.mio.spring6.iocxml.injectobj.Department">
 		<property name="dname" value="研发部"></property>
 	</bean>
-	<bean id="emp1c" class="com.mio.spring6.iocxml.injectobj.Employer">
+	<bean id="emp1c" class="com.mio.spring6.iocxml.injectobj.Employee">
 		<!-- 注入普通属性 -->
 		<property name="ename" value="王二"></property>
 		<property name="age" value="40"></property>

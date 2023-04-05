@@ -10,7 +10,7 @@
 	<bean id="dept2" class="com.mio.spring6.iocxml.injectobj.Department">
 		<property name="dname" value="财务部"></property>
 	</bean>
-	<bean id="emp1" class="com.mio.spring6.iocxml.injectobj.Employer">
+	<bean id="emp1" class="com.mio.spring6.iocxml.injectobj.Employee">
 		<!-- 注入普通属性 -->
 		<property name="ename" value="张三"></property>
 		<property name="age" value="22"></property>

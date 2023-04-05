@@ -2,7 +2,7 @@ package com.mio.spring6.iocxml.injectobj;
 
 import java.util.Arrays;
 
-public class Employer {
+public class Employee {
 	//该员工属于哪个部门
 	private Department dept;
 	
@@ -13,7 +13,7 @@ public class Employer {
 	private String[] hobbies;
 	
 	public void work() {
-		System.out.println(ename + " Employer work... "+ "age: "+age);
+		System.out.println(ename + " Employee work... "+ "age: "+age);
 		dept.info();
 		System.out.println(Arrays.toString(hobbies));
 	}
