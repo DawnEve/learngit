@@ -8,6 +8,7 @@ leanr Spring 6
 	v0.1.3@spring 注入对象类型
 	v0.1.4@spring 注入数组类型
 	v0.1.5@spring fix: employee
+	v0.1.6@spring 注入List类型
 
 
 

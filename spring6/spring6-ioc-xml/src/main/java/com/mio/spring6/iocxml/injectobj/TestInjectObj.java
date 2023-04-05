@@ -9,7 +9,17 @@ public class TestInjectObj {
 //		demo1();
 //		demo2();
 //		demo3();
-		demo4();
+//		demo4();
+		demo5();
+	}
+
+	private static void demo5() {
+		ApplicationContext context=
+				new ClassPathXmlApplicationContext("bean-di-list.xml");
+		//获取对象
+		Department dept=context.getBean("dept2", Department.class);
+		//调用方法
+		dept.info();
 	}
 
 	private static void demo4() {

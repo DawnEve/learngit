@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+    
+    <!-- 注入 List 类型 -->
+	<bean id="emp1" class="com.mio.spring6.iocxml.injectobj.Employee">
+		<property name="ename" value="张三1"></property>
+		<property name="age" value="21"></property>
+	</bean>
+	<bean id="emp2" class="com.mio.spring6.iocxml.injectobj.Employee">
+		<property name="ename" value="张三2"></property>
+		<property name="age" value="22"></property>
+	</bean>
+    
+	<bean id="dept2" class="com.mio.spring6.iocxml.injectobj.Department">
+		<property name="dname" value="维修部"></property>
+		<!-- 注入集合类型 -->
+		<property name="empList">
+			<list>
+				<ref bean="emp1"></ref>
+				<ref bean="emp2"></ref>
+			</list>
+		</property>
+	</bean>
+</beans>
