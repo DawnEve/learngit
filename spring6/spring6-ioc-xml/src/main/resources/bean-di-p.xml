@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    
+    xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util.xsd
+        
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+    
+    <!-- p 命名空间注入 -->
+    <bean id="student2" class="com.mio.spring6.iocxml.injectmap.Student" 
+    p:sid="1002" p:sname="Jim" 
+    p:lessonList-ref="lessonList_a1" 
+    p:teacherMap-ref="teacherMap_b2">
+	</bean>
+	   
+    <!-- 引用注入集合类型
+    1 创建3个对象
+    2 注入普通类型属性
+    3 使用 util:类型 定义
+    4 在学生bean引入 util:类型定义，完成list，map类型属性的注入->最后一步不同
+    -->
+    <bean id="lesson1" class="com.mio.spring6.iocxml.injectmap.Lesson">
+		<property name="lname" value="Java高级课程"></property>
+	</bean>
+	<bean id="lesson2" class="com.mio.spring6.iocxml.injectmap.Lesson">
+		<property name="lname" value="Java框架课程"></property>
+	</bean>
+	
+	<bean id="teacher1" class="com.mio.spring6.iocxml.injectmap.Teacher">
+		<property name="tid" value="21"></property>
+		<property name="tname" value="张三老师"></property>
+	</bean>
+	<bean id="teacher2" class="com.mio.spring6.iocxml.injectmap.Teacher">
+		<property name="tid" value="22"></property>
+		<property name="tname" value="李四老师"></property>
+	</bean>
+    
+    
+    <util:list id="lessonList_a1">
+    	<ref bean="lesson1"></ref>
+    	<ref bean="lesson2"></ref>
+    </util:list>
+    
+    
+    <util:map id="teacherMap_b2">
+    	<entry>
+    		<key>
+    			<value>化学</value>
+    		</key>
+    		<ref bean="teacher1"></ref>
+    	</entry>
+    	
+    	<entry>
+    		<key>
+    			<value>物理</value>
+    		</key>
+    		<ref bean="teacher2"></ref>
+    	</entry>
+    </util:map>
+    
+    
+	<bean id="student" class="com.mio.spring6.iocxml.injectmap.Student">
+		<property name="sid" value="12345"></property>
+		<property name="sname" value="大宝"></property>
+		<!-- 注入List和Map类型的属性 -->
+		<property name="lessonList" ref="lessonList_a1"></property>
+		<property name="teacherMap" ref="teacherMap_b2"></property>
+	</bean>
+</beans>

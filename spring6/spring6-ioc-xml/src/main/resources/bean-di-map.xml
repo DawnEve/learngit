@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+    
+    <!-- 注入 Map 类型 -->
+	<bean id="teacher1" class="com.mio.spring6.iocxml.injectmap.Teacher">
+		<property name="tid" value="21"></property>
+		<property name="tname" value="张三老师"></property>
+	</bean>
+	<bean id="teacher2" class="com.mio.spring6.iocxml.injectmap.Teacher">
+		<property name="tid" value="22"></property>
+		<property name="tname" value="李四老师"></property>
+	</bean>
+    
+	<bean id="student" class="com.mio.spring6.iocxml.injectmap.Student">
+		<property name="sid" value="12345"></property>
+		<property name="sname" value="大宝"></property>
+		<!-- 注入Map类型 -->
+		<property name="teacherMap">
+			<map>
+				<entry>
+					<key>
+						<value>语文</value>
+					</key>
+					<ref bean="teacher1"></ref>
+				</entry>
+				
+				<entry>
+					<key>
+						<value>英语</value>
+					</key>
+					<ref bean="teacher2"></ref>
+				</entry>
+			</map>
+		</property>
+	</bean>
+</beans>
