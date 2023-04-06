@@ -10,6 +10,7 @@ leanr Spring 6
 	v0.1.5@spring fix: employee
 	v0.1.6@spring 注入List类型
 	v0.1.7@spring 注入Map类型; 引用注入，p命名空间
+	v0.1.8@spring 引入外部属性文件，完成value的值注入
 
 
 
