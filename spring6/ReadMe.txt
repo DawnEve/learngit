@@ -13,6 +13,7 @@ leanr Spring 6
 	v0.1.8@spring 引入外部属性文件，完成value的值注入
 	v0.1.9@spring bean 作用域
 	v0.2.0@spring bean 生命周期
+	v0.2.1@spring FactoryBean: 常用于整合第三方框架
 
 
 
