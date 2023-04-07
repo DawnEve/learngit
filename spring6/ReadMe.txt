@@ -12,6 +12,7 @@ leanr Spring 6
 	v0.1.7@spring 注入Map类型; 引用注入，p命名空间
 	v0.1.8@spring 引入外部属性文件，完成value的值注入
 	v0.1.9@spring bean 作用域
+	v0.2.0@spring bean 生命周期
 
 
 

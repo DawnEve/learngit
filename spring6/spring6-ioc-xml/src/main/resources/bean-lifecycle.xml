@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+    xsi:schemaLocation="        
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- bean 生命周期 -->
+	<bean id="user" class="com.mio.spring6.iocxml.lifecycle.User" 
+		init-method="initMethod" destroy-method="destroy">
+		<property name="name" value="Tom"></property>
+	</bean>
+	
+	<!-- bean 的后置处理器要放入IoC容器才能生效 -->
+	<bean id="myBeanPost" class="com.mio.spring6.iocxml.lifecycle.MyBeanPost"></bean>
+</beans>
