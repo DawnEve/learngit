@@ -14,6 +14,7 @@ leanr Spring 6
 	v0.1.9@spring bean 作用域
 	v0.2.0@spring bean 生命周期
 	v0.2.1@spring FactoryBean: 常用于整合第三方框架
+	v0.2.2@spring 基于xml自动装配，autowire="byType"
 
 
 
