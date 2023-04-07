@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+    xsi:schemaLocation="        
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 使用 scope 设置：单实例(默认) singleton 、多实例 prototype -->
+	<bean id="orders" class="com.mio.spring6.iocxml.scope.Orders" 
+		scope="singleton">
+	</bean>
+</beans>
