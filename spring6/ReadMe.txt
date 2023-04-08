@@ -2,6 +2,7 @@ leanr Spring 6
 ======================
 
 子模块1 spring-first
+子模块2 spring6-ioc-xml
 	v0.1.0@spring eclipse下的maven项目，引入spring6; 手动在xml中配置bean信息
 	v0.1.1@spring log4j2 记录日志
 	v0.1.2@spring 依赖注入IoC和DI
@@ -15,7 +16,9 @@ leanr Spring 6
 	v0.2.0@spring bean 生命周期
 	v0.2.1@spring FactoryBean: 常用于整合第三方框架
 	v0.2.2@spring 基于xml自动装配，autowire="byType"
-
+子模块3 spring6-ioc-anno
+		每新增一个子模块，最外层的 pom.xml 就自动增加一行 <module>spring6-ioc-annotation</module>
+	v0.2.3@spring 基于注解的自动装配、属性注入
 
 
 

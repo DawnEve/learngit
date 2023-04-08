@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<loggers>
+		<root level="DEBUG">
+			<!-- 定义三种输出方式，具体定义见下文  -->
+			<appender-ref ref="spring6log" />
+			<appender-ref ref="RollingFile" />
+			<appender-ref ref="log" />
+		</root>
+	</loggers>
+
+	
+	<!-- 更详细的设置: https://www.cnblogs.com/LLL0617/p/16864480.html -->
+	<appenders>
+		<!-- 输出日志信息到控制台 -->
+		<console name="spring6log" target="SYSTEM OUT">
+			<!-- 控制日志输出的格式 -->
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss SSS} [%t] %-3level %logger{1024} - %msg%n" />
+		</console>
+		
+		
+		<!-- 输出到文件，每次log都自动清空，由append属性控制 -->
+		<File name="log" fileName="G:/learngit/spring6/dustbin/test.log" append="false">
+			<PatternLayout pattern="%d{HH:mm:ss SSS} %-5level %class{35} %L %M - %msg%xEx%n" />
+		</File>
+		
+		
+	    <RollingFile name="RollingFile" fileName="G:/learngit/spring6/dustbin/app.log" 
+	    	filePattern="log/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
+            <PatternLayout pattern="%d{yyyy-MM-dd 'at' HH:mm:ss z} %-5level %class{35} %L %M - %msg%xEx%n"/>
+            <SizeBasedTriggeringPolicy size="50MB" />
+            <!-- 设置同类型日志,同一文件夹下可以存放的数量,如果不设置此属性则默认存放7个文件 -->
+            <DefaultRolloverStrategy max="20" />
+        </RollingFile>
+	</appenders>
+
+</configuration>
