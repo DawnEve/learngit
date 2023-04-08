@@ -19,6 +19,7 @@ leanr Spring 6
 子模块3 spring6-ioc-anno
 		每新增一个子模块，最外层的 pom.xml 就自动增加一行 <module>spring6-ioc-annotation</module>
 	v0.2.3@spring 基于注解的自动装配、属性注入
+	v0.2.4@spring 注入方法：6种方式
 
 
 
