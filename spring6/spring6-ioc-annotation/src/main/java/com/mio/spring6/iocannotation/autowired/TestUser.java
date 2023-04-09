@@ -11,6 +11,7 @@ import com.mio.spring6.iocannotation.autowired.controller.UserController;
 public class TestUser {
 	@Test
 	public void test1() {
+		//加载xml配置文件
 		ApplicationContext context=
 				new ClassPathXmlApplicationContext("bean-ioc-anno-autowired.xml");
 		UserController userController = context.getBean(UserController.class);
@@ -19,6 +20,7 @@ public class TestUser {
 	
 	@Test
 	public void test2() {
+		//加载配置类
 		ApplicationContext context=
 				new AnnotationConfigApplicationContext(SpringConfig.class);
 		UserController userController = context.getBean(UserController.class);

@@ -22,6 +22,7 @@ leanr Spring 6
 	v0.2.4@spring @Autowired 注入方法：6种方式
 	v0.2.5@spring @Resource 注入
 	v0.2.6@spring 全注解开发：使用注解类
+	v0.2.6-2@spring fix
 
 
 
