@@ -24,6 +24,9 @@ leanr Spring 6
 	v0.2.6@spring 全注解开发：使用注解类
 	v0.2.6-2@spring fix
 	v0.2.6-3@spring fix
+子模块4 spring6-reflect
+	v0.2.7@spring 手写IoC：回顾反射
+
 
 
 
