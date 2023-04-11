@@ -2,13 +2,17 @@ package com.mio.bean;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import mio.com.anno.Bean;
+import mio.com.anno.Di;
 
 public class AnnotationApplicationContext implements ApplicationContext {
 	//1.创建map集合，放bean对象
@@ -51,8 +55,12 @@ public class AnnotationApplicationContext implements ApplicationContext {
 			e.printStackTrace();
 		}
 		
+		//属性注入
+		loadDi();
 	}
 	
+
+
 	//扫描包的过程，实例化
 	private void loadBean(File file) throws Exception {
 		//1 判断当前内容是否是文件夹
@@ -112,6 +120,44 @@ public class AnnotationApplicationContext implements ApplicationContext {
 		}
 	}
 
+	
+	//实现属性注入
+	private void loadDi() {
+		//实例化的对象，都在 beanFactory 的Map结合中
+		//1 遍历 beanFactory 的 map 集合
+		Set<Entry<Class, Object>> entries = beanFactory.entrySet();
+		for(Entry<Class, Object> entry: entries) {
+			//2 获取 map 集合每个对象(value)
+			Object obj = entry.getValue();
+			
+			//获取对象 Class
+			Class<? extends Object> clazz = obj.getClass();
+			//获取属性
+			Field[] declaredFields = clazz.getDeclaredFields();
+			//3 遍历每个属性数组，得到每个属性
+			for(Field field: declaredFields) {
+				//4 检查属性上是否有@ Di 注解
+				Di annotation=field.getAnnotation(Di.class);
+				if(annotation != null) {
+					// 如果有私有属性，设置可设置
+					field.setAccessible(true);
+					//5 有注解的，设置对象（注入）
+					try {
+						//要注入的对象：2种获取方式
+						//System.out.println("\t"+ this.getBean(field.getType() ) );
+						//System.out.println("\t"+ beanFactory.get(field.getType()) );
+						// 第二个参数是注入的对象
+						field.set(obj, beanFactory.get(field.getType()));
+					} catch (IllegalArgumentException | IllegalAccessException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+	}
+	
+	
+	
 	//测试: 写代码时测试
 	public static void main2(String[] args) throws Exception {
 //		ApplicationContext context=

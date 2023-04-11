@@ -15,5 +15,4 @@ public class TestUser {
 		userService.add();
 		System.out.println(userService);
 	}
-
 }

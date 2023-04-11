@@ -28,6 +28,7 @@ leanr Spring 6
 	v0.2.7@spring 手写IoC：回顾反射
 子模块5 mio-ioc
 	v0.2.8@spring 手写IoC: 注解+反射 创建对象，放到IoC容器中
+	v0.2.9@spring 手写IoC: 实现属性注入
 
 
 
