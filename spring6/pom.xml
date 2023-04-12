@@ -65,6 +65,20 @@
 		  <artifactId>jakarta.annotation-api</artifactId>
 		  <version>2.1.1</version>
 	  </dependency>
+	  
+	  
+	  <!-- spring aop 的依赖 -->
+	  <dependency>
+		  <groupId>org.springframework</groupId>
+		  <artifactId>spring-aop</artifactId>
+		  <version>6.0.7</version>
+	  </dependency>
+	  <!-- spring aspects 的依赖 -->
+	  <dependency>
+		  <groupId>org.springframework</groupId>
+		  <artifactId>spring-aspects</artifactId>
+		  <version>6.0.7</version>
+	  </dependency>
 
   </dependencies>
 </project>
