@@ -34,6 +34,7 @@ leanr Spring 6
 	v0.3.1@spring 基于注解的AOP
 	v0.3.2@spring 切入点表达式 重用; 基于xml的AOP
 	v0.3.3@spring spring 整合 JUnit5
+	v0.3.4@spring spring 整合 JUnit4: 运行失败：不报错，不输出
 
 
 
