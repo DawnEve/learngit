@@ -50,6 +50,7 @@ create table `t_emp`(
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 ```
 	v0.3.5@spring JdbcTemplate 实现新增数据
+	v0.3.6@spring JdbcTemplate 增删改查
 
 
 
