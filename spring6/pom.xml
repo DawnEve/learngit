@@ -16,6 +16,7 @@
   	<module>spring6-ioc-annotation</module>
   	<module>spring6-reflect</module>
   	<module>mio-ioc</module>
+  	<module>spring6-aop</module>
   </modules>
   
   
