@@ -32,6 +32,7 @@ leanr Spring 6
 子模块6 spring6-aop
 	v0.3.0@spring 静态代理，动态代理
 	v0.3.1@spring 基于注解的AOP
+	v0.3.2@spring 切入点表达式 重用; 基于xml的AOP
 
 
 
