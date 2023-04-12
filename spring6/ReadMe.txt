@@ -35,6 +35,21 @@ leanr Spring 6
 	v0.3.2@spring 切入点表达式 重用; 基于xml的AOP
 	v0.3.3@spring spring 整合 JUnit5
 	v0.3.4@spring spring 整合 JUnit4: 运行失败：不报错，不输出
+子模块7 spring6-jdbc-tx  事务
+```
+create database spring;
+
+use spring;
+
+create table `t_emp`(
+	`id` int(11) NOT NULL AUTO_INCREMENT,
+	`name` varchar(20) DEFAULT NULL COMMENT '姓名',
+	`age` int(11) DEFAULT NULL COMMENT '年龄',
+	`gender` varchar(2) DEFAULT NULL COMMENT '性别',
+	PRIMARY KEY(`id`) 
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+```
+	v0.3.5@spring JdbcTemplate 实现新增数据
 
 
 
