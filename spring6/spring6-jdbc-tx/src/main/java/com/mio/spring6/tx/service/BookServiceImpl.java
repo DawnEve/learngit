@@ -2,9 +2,11 @@ package com.mio.spring6.tx.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.mio.spring6.tx.dao.BookDao;
 
+@Transactional  //事务支持
 @Service
 public class BookServiceImpl implements BookService {
 	

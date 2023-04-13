@@ -3,6 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:context="http://www.springframework.org/schema/context"
     xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
     xsi:schemaLocation="
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -11,7 +12,10 @@
         http://www.springframework.org/schema/context/spring-context.xsd
         
         http://www.springframework.org/schema/aop
-        http://www.springframework.org/schema/aop/spring-aop.xsd">
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
         
         <!-- 开启组件扫描 -->
         <context:component-scan base-package="com.mio.spring6.tx"></context:component-scan>
@@ -34,5 +38,20 @@
 			<!-- 构造器传入 druidDataSource 对象 -->
 			<constructor-arg name="dataSource" ref="druidDataSource"></constructor-arg>
 		</bean>
+		
+		
+		
+		
+		<!-- 事务管理器 bean: 对数据源 添加事务支持 -->
+		<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+			<property name="dataSource" ref="druidDataSource"></property>
+		</bean>
+		
+		<!-- 开启事务的注解驱动
+			通过注解@Transactional所标记的方法或标识的类中所有的方法，都会被事务管理器管理事务
+			transaction-manager属性的默认值是transactionManager，
+				如果事务管理器bean的id正好就是这个默认值，则可省略该属性
+		-->
+		<tx:annotation-driven transaction-manager="transactionManager"/>
 
 </beans>
