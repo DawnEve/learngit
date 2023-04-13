@@ -51,6 +51,7 @@ create table `t_emp`(
 ```
 	v0.3.5@spring JdbcTemplate 实现新增数据
 	v0.3.6@spring JdbcTemplate 增删改查
+	v0.3.7@spring 买书程序，余额不够时可能出错: 库存-1，用户余额不变
 
 
 
