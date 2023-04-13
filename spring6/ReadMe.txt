@@ -53,6 +53,7 @@ create table `t_emp`(
 	v0.3.6@spring JdbcTemplate 增删改查
 	v0.3.7@spring 买书程序，余额不够时可能出错: 库存-1，用户余额不变
 	v0.3.8@spring 买书程序，余额不够时可能出错: 加事务后，库存不变，用户余额不变
+	v0.3.9@spring @Transactional的参数：Spring 事务的只读、超时、隔离级别、传播行为
 
 
 
