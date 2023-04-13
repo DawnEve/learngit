@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+        
+        <!--1 开启组件扫描 -->
+        <context:component-scan base-package="com.mio.spring6.xmltx"></context:component-scan>
+
+		<!--2.1 引入外部属性文件，创建数据源对象 -->
+		<context:property-placeholder location="classpath:jdbc.properties" />
+		
+		<!--2.2 连接池对象 
+			注意: value="${jdbc.url}" ，其中引号内不能漏掉$字符。这里耽误两个小时！！
+		-->
+		<bean id="druidDataSource" class="com.alibaba.druid.pool.DruidDataSource" >
+			<property name="url" value="${jdbc.url}"></property>
+			<property name="driverClassName" value="${jdbc.driver}"></property>
+			<property name="username" value="${jdbc.user}"></property>
+			<property name="password" value="${jdbc.password}"></property>
+		</bean>
+		
+		<!--3 创建 jdbcTemplate 对象，注入数据源 -->
+		<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+			<!-- 构造器传入 druidDataSource 对象: 构造器注入，或set注入。
+			<constructor-arg name="dataSource" ref="druidDataSource"></constructor-arg>
+			-->
+			<property name="dataSource" ref="druidDataSource"></property>
+		</bean>
+
+		
+		<!--4 事务管理器 bean: 对数据源 添加事务支持 -->
+		<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+			<property name="dataSource" ref="druidDataSource"></property>
+		</bean>
+		
+		<!-- 5 配置事务增强(通知) -->
+		<tx:advice id="txAdvice" transaction-manager="transactionManager">
+			<tx:attributes>
+				<!-- name="get*" 是给get开头的方法制定规则： 
+				这几个不起作用，因为下文配置的是 service.下的类的方法，而get和update开头的方法是dao中的 -->
+				<tx:method name="get*" read-only="true"/>
+				<tx:method name="update*" read-only="false" propagation="REQUIRED" />
+				<!-- 定义 service.中的方法的规则 -->
+				<tx:method name="buy*" read-only="false" propagation="REQUIRED" />
+			</tx:attributes>
+		</tx:advice>
+		
+		<!-- 6 配置切入点表达式 -->
+		<aop:config>
+			<aop:pointcut expression="execution(* com.mio.spring6.xmltx.service.*.*(..))"
+				 id="pt2"/>
+				 <!-- 把通知 txAdvise，应用到 切入点表达是 pt2 匹配到的方法  -->
+			<aop:advisor advice-ref="txAdvice" pointcut-ref="pt2" />
+		</aop:config>
+		
+</beans>

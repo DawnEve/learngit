@@ -55,6 +55,7 @@ create table `t_emp`(
 	v0.3.8@spring 买书程序，余额不够时可能出错: 加事务后，库存不变，用户余额不变
 	v0.3.9@spring @Transactional的参数：Spring 事务的只读、超时、隔离级别、传播行为
 	v0.4.0@spring 全注解配置事务
+	v0.4.1@spring 基于 xml 的声明式事务管理
 
 
 
