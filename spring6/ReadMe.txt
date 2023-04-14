@@ -64,7 +64,8 @@ create table `t_emp`(
 子模块9 spring6-i18n
 	v0.4.6@spring java 国际化
 	v0.4.7@spring Spring6 的国际化
-
+子模块10 spring6-validator
+	v0.4.8@spring Spring6 数据校验: 基于 Validator 接口的校验; 基于 Validation 注解
 
 
 

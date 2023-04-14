@@ -21,6 +21,7 @@
   	<module>spring6-jdbc-tx</module>
   	<module>spring6-resources</module>
   	<module>spring6-i18n</module>
+  	<module>spring6-validator</module>
   </modules>
   
   
