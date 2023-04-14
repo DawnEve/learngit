@@ -60,6 +60,7 @@ create table `t_emp`(
 	v0.4.2@spring Resource 接口及其实现类
 	v0.4.3@spring ResourceLoader 接口及其实现类
 	v0.4.4@spring 资源作为属性注入
+	v0.4.5@spring 应用程序上下文和资源路径：资源通配符
 
 
 
