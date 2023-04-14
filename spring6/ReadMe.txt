@@ -63,6 +63,7 @@ create table `t_emp`(
 	v0.4.5@spring 应用程序上下文和资源路径：资源通配符
 子模块9 spring6-i18n
 	v0.4.6@spring java 国际化
+	v0.4.7@spring Spring6 的国际化
 
 
 

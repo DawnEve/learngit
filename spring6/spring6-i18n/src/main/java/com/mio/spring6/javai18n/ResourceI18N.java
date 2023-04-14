@@ -22,11 +22,21 @@ public class ResourceI18N {
 				new Locale("en", "GB"));
 		String value2 = bundle2.getString("test");
 		System.out.println(value2);
+		
+		//不存在呢
+		System.out.println("\t"+ new Locale("zh2", "CN"));
+		ResourceBundle bundle3 = ResourceBundle.getBundle("messages", 
+				new Locale("fr", "GV"));
+		System.out.println("\t"+bundle3.getLocale());
+		String value3 = bundle3.getString("test");
+		System.out.println(value3);
 	}
 
 	//messages
 	private static void demo1() {
 		Locale locale = new Locale("zh", "CN");
 		System.out.println(locale); //zh_CN
+		
+		System.out.println(Locale.getDefault()); //zh_CN
 	}
 }
