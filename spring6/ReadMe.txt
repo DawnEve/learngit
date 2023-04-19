@@ -67,6 +67,7 @@ create table `t_emp`(
 子模块10 spring6-validator
 	v0.4.8@spring Spring6 数据校验: 基于 Validator 接口的校验; 基于 Validation 注解
 	v0.4.9@spring Spring6 数据校验: 基于方法的校验
+	v0.5.0@spring Spring6 数据校验: 自定义校验方法
 
 
 
