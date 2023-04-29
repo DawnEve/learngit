@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+    
+    <!-- 注入数组类型 -->
+	<bean id="dept2" class="com.mio.spring6.iocxml.injectobj.Department">
+		<property name="dname" value="财务部"></property>
+	</bean>
+	<bean id="emp1" class="com.mio.spring6.iocxml.injectobj.Employee">
+		<!-- 注入普通属性 -->
+		<property name="ename" value="张三"></property>
+		<property name="age" value="22"></property>
+		<!-- 注入对象类型属性 -->
+		<property name="dept" ref="dept2"></property>
+		<!-- 注入数组 -->
+		<property name="hobbies">
+			<array>
+				<value>吃饭</value>
+				<value>睡觉</value>
+				<value>打游戏</value>
+			</array>
+		</property>
+	</bean>
+</beans>

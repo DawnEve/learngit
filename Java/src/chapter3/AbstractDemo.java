@@ -3,7 +3,7 @@ package chapter3;
 public class AbstractDemo {
 	public static void main(String[] args){
 		//抽象类和抽象方法
-		Cat2 c=new Cat2("Tomcat");
+		Animal2 c=new Cat2("Tomcat");
 		c.say();
 		c.cry();
 	}

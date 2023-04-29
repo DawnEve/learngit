@@ -4,6 +4,21 @@ package chapter3.Constructor;
 
 public class ConstructorDemo {
 	public static void main(String[] args){
+//		demo1();
+		demo2();
+	}
+
+	
+	
+	//父类构造函数会不会被调用？
+	private static void demo2() {
+		//Dog dog=new Dog();
+		Dog dog=new Dog("wangcai");
+	}
+
+	
+	
+	private static void demo1() {
 		Bike b=Bike.getInstance();
 		Bike b2=Bike.getInstance();
 		
@@ -14,6 +29,31 @@ public class ConstructorDemo {
 	}
 }
 
+class Animal{
+	private String name;
+	public Animal() {
+		System.out.println("Animal()");
+	}
+	public Animal(String name) {
+		this.name=name;
+		System.out.println("Animal(String)");
+	}
+};
+
+class Dog extends Animal{
+	public Dog() {
+		super(); //调用父类构造器必须在最前面
+		System.out.println("Dog()");
+	} //自动调用父类的构造函数
+	public Dog(String name) {
+		super("Dog_"+name); //如果不写，默认调用父类的无参构造器
+		System.out.println("Dog(String)");
+	}
+}
+
+
+
+//=============
 
 class Machine{
 	{

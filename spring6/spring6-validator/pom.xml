@@ -1,0 +1,24 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.mio</groupId>
+    <artifactId>spring6</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>spring6-validator</artifactId>
+  
+  <dependencies>
+	  <!-- 引入 Spirng validator 的依赖 -->
+	  <dependency>
+		  <groupId>org.hibernate.validator</groupId>
+		  <artifactId>hibernate-validator</artifactId>
+		  <version>8.0.0.Final</version>
+	  </dependency>
+	  <dependency>
+		  <groupId>org.glassfish</groupId>
+		  <artifactId>jakarta.el</artifactId>
+		  <version>5.0.0-M1</version>
+	  </dependency>
+  </dependencies>
+  
+</project>

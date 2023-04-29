@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 注入对象的三种方式	-->
+	<!-- 方式1：外部 bean 方式 
+		1 创建2个对象
+		2 在emp的bean标签中，使用 property 引入dept的bean: 
+			name=类的属性名，ref=待注入的bean的id
+	-->
+	<bean id="dept2" class="com.mio.spring6.iocxml.injectobj.Department">
+		<property name="dname" value="财务部"></property>
+	</bean>
+	<bean id="emp1" class="com.mio.spring6.iocxml.injectobj.Employee">
+		<!-- 注入普通属性 -->
+		<property name="ename" value="张三"></property>
+		<property name="age" value="20"></property>
+		<!-- 注入对象类型属性 
+			private Department dept;
+			name 就是类的属性名字; ref指代上文出现过的bean的id
+		-->
+		<property name="dept" ref="dept2"></property>
+	</bean>
+
+
+
+	<!-- 方式2：内部 bean 方式 	-->
+	<bean id="emp1b" class="com.mio.spring6.iocxml.injectobj.Employee">
+		<property name="ename" value="李四"></property>
+		<property name="age" value="50"></property>
+		<!-- 注入对象类型属性 
+			private Department dept;
+			name 就是类的属性名字; 需要的bean直接嵌套写
+		-->
+		<property name="dept">
+			<bean id="dept2b" class="com.mio.spring6.iocxml.injectobj.Department">
+				<property name="dname" value="人事部"></property>
+			</bean>
+		</property>
+	</bean>
+
+
+
+	<!-- 方式3：级联赋值 -->
+	<bean id="dept2c" class="com.mio.spring6.iocxml.injectobj.Department">
+		<property name="dname" value="研发部"></property>
+	</bean>
+	<bean id="emp1c" class="com.mio.spring6.iocxml.injectobj.Employee">
+		<!-- 注入普通属性 -->
+		<property name="ename" value="王二"></property>
+		<property name="age" value="40"></property>
+		<!-- 注入对象类型属性: 在方式1的基础上，对要注入对象的属性值 dept.dname，重新赋值 -->
+		<property name="dept" ref="dept2c"></property>
+		<property name="dept.dname" value="广告部"></property>
+	</bean>
+	
+	
+</beans>
+

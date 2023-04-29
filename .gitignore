@@ -13,3 +13,6 @@ dustbin
 
 
 *.exe
+*.class
+.mvn
+test

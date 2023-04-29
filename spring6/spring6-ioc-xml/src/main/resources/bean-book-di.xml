@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 依赖注入1：set注入，name就是属性的小写 -->
+	<bean id="book1" class="com.mio.spring6.iocxml.di.Book">
+		<property name="bname" value="js"></property>
+		<property name="author" value="王二"></property>
+	</bean>
+
+	<!-- 依赖注入2：构造器注入 -->
+	<bean id="book2" class="com.mio.spring6.iocxml.di.Book">
+		<constructor-arg name="bname" value="c++"></constructor-arg>
+		<constructor-arg name="author" value="麻子"></constructor-arg>
+	</bean>
+	
+	<!-- 特殊值的写法 -->
+	<bean id="book3" class="com.mio.spring6.iocxml.di.Book">
+		<property name="bname">
+			<value><![CDATA[a < b]]></value>
+		</property>
+		<property name="author" value="王二"></property>
+	</bean>
+</beans>

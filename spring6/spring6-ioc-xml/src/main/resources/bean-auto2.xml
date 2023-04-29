@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="        
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- bean 自动装配 
+	1 先创建三个对象，要用其实现类
+	2 添加bean属性 autowire="byType"，还有一个值 "byName"
+	-->
+	<bean id="userController" class="com.mio.spring6.iocxml.auto.controller.UserController" autowire="byName">
+	</bean>
+	<bean id="userService" class="com.mio.spring6.iocxml.auto.service.UserServiceImpl"
+		autowire="byName"></bean>
+	<bean id="userDao" class="com.mio.spring6.iocxml.auto.dao.UserDaoImpl"></bean>
+	
+</beans>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="53f542bf-bffe-4320-8c73-f6f0cc231ad1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../demo3/bin/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../demo3/bin/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../demo3/bin/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../demo3/bin/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../demo3/bin/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../demo3/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../demo3/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../demo3/src/main/java/com/example1/demo2/Demo3Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../demo3/src/main/java/com/example1/demo3/Demo3Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../demo3/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../demo3/src/main/resources/application.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="2NYWxAkfHazfYbkXWJ3QbFsYcDX" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="53f542bf-bffe-4320-8c73-f6f0cc231ad1" name="Changes" comment="" />
+      <created>1679841748772</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1679841748772</updated>
+    </task>
+    <servers />
+  </component>
+</project>

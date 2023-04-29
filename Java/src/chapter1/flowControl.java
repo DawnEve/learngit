@@ -1,91 +1,87 @@
 package chapter1;
 
 public class flowControl {
-	/**
-	 * if
-	 * switch
-	 * while, do...while
-	 * for
-	 * @param args
-	 */
-	public static void main(String[] args){
-//		test1(80);
-//		test3();
-		test9();
+	public static void main(String[] args) {
+//		test1(500);//if
+//		test2(8); //switch
+//		test3(); //while
+//		test4(); //do...while
+//		test5(); //for
+//		test6(); //for example
+//		test7(); // break, continue
+//		test8(); //求奇数的和
+		test9(); //行号
 	}
+	
+
 
 	//if
-	static void test1(int score){
-		if(score>=60){
+	static void test1(int score) {
+		if(score>=60) {
 			System.out.print("ok");
-		}else{
+		}else {
 			System.out.print("Not ok");
 		}
 	}
 	
 	//switch
-	static void test2(){
-		int i=60;
-		switch(i){
+	private static void test2(int i) {
+		switch(i) {
 			case 1:
-				System.out.print("周一");
+				System.out.print("Monday");
 				break;
 			case 2:
-				System.out.print("周二");
+				System.out.print("Tuesday");
 				break;
 			case 3:
 			case 4:
 			case 5:
-				System.out.print("后半周"+i);
+				System.out.print("后半周");
 				break;
 			case 6:
 			case 7:
-				System.out.print("周末"+i);
+				System.out.print("周末");
 				break;
 			default:
-				System.out.print("非法数据");
+				System.out.print("非法数字");
 		}
 	}
 	
 	//while
-	static void test3(){
-		//计算从1-100的和
-		int i=1;
-		int sum=0;
-		while(i<=100){
-			sum += i;
+	private static void test3() {
+		int i=1, sum=0;
+		while(i<=100) {
+			sum+=i;
 			i++;
 		}
-		System.out.println(sum);
+		System.out.print("sum="+sum);
 	}
 	
-	//do...while
-	static void test4(){
-		//计算从1-100的和
-		int i=1;
-		int sum=0;
+	//do while
+	private static void test4() {
+		int i=1, sum=0;
 		do{
-			sum += i;
+			sum+=i;
 			i++;
-		}while(i<=100);//先循环，再判断，即至少走一遍循环体！
-		System.out.println(sum);
+		}while(i<=100); //先循环，再执行判断；至少执行一次
+		System.out.print("sum="+sum);
 	}
-
+	
 	//for
-	static void test5(){
+	private static void test5() {
 		int sum=0;
-		for(int i=1;i<=100;i++){
-			sum += i;
+		for(int i=0; i<=100; i++) {
+			sum+=i;
 		}
-		System.out.println(sum);
+		System.out.print("for: sum="+sum);
 	}
-
-	//for例子： 数字金字塔
+	
+	//输出杨辉三角: 最顶上1，下一行两边是1，最中间是递增数字
 	static void test6(){
 		int num=9;
-		for(int i=0;i<num;i++){
+		for(int i=0;i<=num;i++){
 			//输出空格
-			for(int temp=0;temp<num-i;temp++){
+			for(int j=0;j<num-i;j++){
 				System.out.print(" ");
 			}
 			
@@ -104,51 +100,49 @@ public class flowControl {
 		}
 	}
 	
-	
 	//break,continue
 	static void test7(){
-		for(int i=0;i<10;i++){
-			if(i==7) break;//结束for循环
+		for(int i=0; i<10; i++) {
+			if(i==7) break; //结束for循环
 			System.out.print(i+", ");
 		}
-		
 		System.out.println();
 		
-		//continue是跳过本次循环
-		for(int i=0;i<10;i++){
-			if(i==7) continue;//结束本次循环
-			System.out.print(i+", ");
+		for(int i=0; i<10; i++) {
+			if(i==7) continue; //结束本轮循环，下一个循环之继续
+			System.out.print(i+", ");			
 		}
 	}
 	
-	//continue例子：求1-100之间奇数和
-	static void test8(){
-		//方法1
+	//奇数的和:[1, 100]之间
+	static void test8() {
+		// method1
 		int sum=0;
-		for(int i=1;i<100;i += 2){//从for循环保证是奇数
-			sum +=i;
+		for(int i=1; i<=100; i=i+2) {
+			sum+=i;
 		}
-		System.out.println(sum+", ");//2500
+		System.out.println("sum=1+3+...+99="+sum);
 		
-		//方法2
+		// method2
 		int sum2=0;
-		for(int i=1;i<100;i++){
-			if(0==i%2)continue; //如果是2的倍数，则跳过去，只累加奇数
-			sum2 +=i;
+		for(int i=1; i<100; i++) {
+			if(0 == i%2) continue; //如果是偶数，跳过
+			sum2+=i;
 		}
-		System.out.println(sum2+", ");//2500
+		System.out.print("sum2=1+3+...+99="+sum2);
 	}
 	
-	
-	//按照行号终止循环
-	static void test9(){
-		xiaoqiang: for(int x=0;x<9;x++){
-			wangcai: for(int y=0;y<9;y++){
-				System.out.println("x="+x+", y="+y);
-				if(y==5 && x==2)
+	//按行号终止循环
+	static void test9() {
+		xiaoqiang: for(int i=1; i<=9; i++) {
+			wangcai: for(int j=1; j<=i; j++) {
+				System.out.print(i+"*"+j+"="+i*j+"\t");
+				if(i==7 && j==2)
 					break xiaoqiang;
 			}
+			System.out.println();
 		}
 	}
-
+	
+	
 }

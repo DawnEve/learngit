@@ -1,0 +1,97 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.mio</groupId>
+  <artifactId>spring6</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  
+  <properties>
+	  <maven.compiler.source>17</maven.compiler.source>
+	  <maven.compiler.target>17</maven.compiler.target>
+  </properties>
+  
+  <modules>
+  	<module>spring-first</module>
+  	<module>spring6-ioc-xml</module>
+  	<module>spring6-ioc-annotation</module>
+  	<module>spring6-reflect</module>
+  	<module>mio-ioc</module>
+  	<module>spring6-aop</module>
+  	<module>spring6-junit</module>
+  	<module>spring6-jdbc-tx</module>
+  	<module>spring6-resources</module>
+  	<module>spring6-i18n</module>
+  	<module>spring6-validator</module>
+  </modules>
+  
+  
+   <dependencies>
+	  <!-- 引入Spring context依赖，表示将Spring的基础依赖引入了 -->
+	  <dependency>
+		  <groupId>org.springframework</groupId>
+		  <artifactId>spring-context</artifactId>
+		  <version>6.0.7</version>
+	  </dependency>
+	  
+	  <!-- JUnit5 -->
+	  <dependency>
+		  <groupId>org.junit.jupiter</groupId>
+		  <artifactId>junit-jupiter-engine</artifactId>
+		  <version>5.6.3</version>
+	  </dependency>
+      
+      <!-- JUnit4  
+		  <scope>test</scope>
+      -->
+      <dependency>
+		  <groupId>junit</groupId>
+		  <artifactId>junit</artifactId>
+		  <version>4.12</version>
+	  </dependency>
+	  
+	  
+	  <!-- log4j2的2个依赖-->
+	  <dependency>
+		  <groupId>org.apache.logging.log4j</groupId>
+		  <artifactId>log4j-core</artifactId>
+		  <version>2.20.0</version>
+	  </dependency>
+      
+      <dependency>
+		  <groupId>org.apache.logging.log4j</groupId>
+		  <artifactId>log4j-slf4j-impl</artifactId>
+		  <version>2.20.0</version>
+	  </dependency>
+
+
+	  <!-- @Resource 注解的依赖 -->
+	  <dependency>
+		  <groupId>jakarta.annotation</groupId>
+		  <artifactId>jakarta.annotation-api</artifactId>
+		  <version>2.1.1</version>
+	  </dependency>
+	  
+	  
+	  <!-- spring aop 的依赖 -->
+	  <dependency>
+		  <groupId>org.springframework</groupId>
+		  <artifactId>spring-aop</artifactId>
+		  <version>6.0.7</version>
+	  </dependency>
+	  <!-- spring aspects 的依赖 -->
+	  <dependency>
+		  <groupId>org.springframework</groupId>
+		  <artifactId>spring-aspects</artifactId>
+		  <version>6.0.7</version>
+	  </dependency>
+	  
+	  
+	  <!-- sping 整合 junit 相关依赖 -->
+	  <dependency>
+		  <groupId>org.springframework</groupId>
+		  <artifactId>spring-test</artifactId>
+		  <version>6.0.7</version>
+	  </dependency>
+
+  </dependencies>
+</project>

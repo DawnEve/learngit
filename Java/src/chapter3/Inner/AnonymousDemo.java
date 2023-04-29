@@ -1,80 +1,51 @@
 package chapter3.Inner;
-/**
- * 匿名类
- * @author admin
- */
+
 public class AnonymousDemo {
 	public static void main(String[] args) {
 //		demo1();
-//		demo2();
-		demo3();
-		//ReadInner
+		demo2();
 	}
 
-	
-	private static void demo3() {
-		Read r=new Read();
-		Read.ReadInner ri=r.new ReadInner();
-		
-	}
-
-
-	private static void demo1() {
-		//测试内部类
-		Read read=new Read();
-		Book book=read.getOneBook();
-		book.run();
-		book.say();
-	}
-
-
+	// 匿名类：实现一个接口
 	private static void demo2() {
-		//直接实例化一个匿名类（是Book类的子类），并调用其方法
-		new Book(){
-			@Override
-			void run(){ System.out.println("New run---"); };
-		}.run();
-		
-		//判断确实是Book的子类的实例
-		Boolean isSub=new Book(){
-			void run(){};
-		} instanceof Book;
-		System.out.println("是否是Book的子类呢？"+isSub);
-	}
-}
-
-
-
-
-class Study{}
-
-abstract class Book{
-	public void say() {
-		System.out.println("Book say.");
-	}
-	abstract void run();
-}
-
-class Read extends Study{
-	//定义内部类
-	class ReadInner{
-		ReadInner(){
-			System.out.println("ReadInner init ==========");
-		}
-	}
-	
-	//获取匿名类
-	public Book getOneBook(){
-		return new Book(){
-			@Override
-			public void say(){
-				System.out.println("say: I am in Read->Book");
-			}
-
-			@Override
-			void run() {
-				System.out.println("Book in Read is running...");
+		// 方法1
+		Flyable f1=new Flyable() {
+			public void fly() {
+				System.out.println("匿名内部类-实现接口 Flyable");
 			}
 		};
+		f1.fly();
+		// 方法2：直接不要名字
+		new Flyable() {
+			public void fly() {
+				System.out.println("匿名内部类2");
+			}
+		}.fly();
+	}
+
+	// 匿名类：继承一个父类
+	private static void demo1() {
+		//正常调用
+		Person p1=new Person();
+		p1.say();
+		
+		//创建匿名子列，改写方法后调用
+		Person p2=new Person() {
+			public void say() {
+				System.out.println("重写父类方法");
+			}
+		};
+		p2.say();
+	}
+
+}
+
+interface Flyable{
+	void fly();
+}
+
+class Person{
+	public void say() {
+		System.out.println("父类方法");
 	}
 }
