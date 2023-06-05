@@ -4,9 +4,9 @@ import java.io.File;
 
 public class FileAndDir {
 	public static void main(String[] args) {
-//		demo1();
+		demo1();
 //		demo2();
-		demo3();
+//		demo3();
 	}
 
 	// 删除文件或目录，目录必须空
@@ -54,8 +54,8 @@ public class FileAndDir {
 		}else {
 			System.out.println(dirname+"不是一个目录");
 		}
-		
 	}
+	
 
 	//创建目录
 	private static void demo1() {

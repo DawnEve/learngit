@@ -6,3 +6,4 @@ lib/
 *.class
 
 upload/
+/WEB-INF/
