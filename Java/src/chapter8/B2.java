@@ -2,18 +2,102 @@ package chapter8;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.stream.Stream;
 
 public class B2 {
 	public static void main(String[] args) throws IOException {
 //		demo1(); //copy dir
 //		demo2(); //异或
 //		demo3_encode(); //加密图片文件，使用异或
-		demo4_decode(); //解密图片文件，使用异或
+//		demo4_decode(); //解密图片文件，使用异或
+//		demo5_order(); //排序文件中的数字
+		demo5_order2(); //使用流
 	}
 
-	
+	// 排序文件中的-分割的数字: 1-5-3-6-2-0-80-8
+	// 使用流实现分割、排序，使用替换转为字符串并保存
+	private static void demo5_order2() throws IOException {
+		//1.读取文件
+		FileReader fr=new FileReader("src//dustbin//temp//B//B3.txt");
+		StringBuilder sb=new StringBuilder();
+		char[] chars=new char[5];
+		int len;
+		while((len=fr.read(chars)) != -1) {
+			sb.append(new String(chars, 0, len));
+		}
+		fr.close();
+		System.out.println(sb.toString());
+		
+		//2. 使用流实现 排序
+		Integer[] arr = Arrays.stream(sb.toString().split("-"))
+				.map(Integer::parseInt)
+				.sorted()
+				.toArray(Integer[]::new);
+		System.out.println(Arrays.toString(arr));
+		//3. 保存结果
+		String s = Arrays.toString(arr).replace(", ", "-");
+		String result = s.substring(1, s.length()-1);
+		FileWriter fw=new FileWriter("src//dustbin//temp//B//B3-sort2.txt");
+		fw.write(result);
+		fw.close();		
+	}
+
+	// 排序文件中的-分割的数字: 1-5-3-6-2-0-80-8
+	private static void demo5_order() throws IOException {
+		//1.读取文件
+		FileReader fr=new FileReader("src//dustbin//temp//B//B3.txt");
+		StringBuilder sb=new StringBuilder();
+		char[] chars=new char[5];
+		int len;
+		while((len=fr.read(chars)) != -1) {
+			sb.append(new String(chars, 0, len));
+		}
+		fr.close();
+		System.out.println(sb.toString());
+		
+		//2. 排序
+		String[] arrStr = sb.toString().split("-"); //按照-切分
+		//转为数字
+		int[] arrInt=new int[arrStr.length];
+		for(int i=0; i<arrStr.length; i++) {
+			arrInt[i] = Integer.parseInt(arrStr[i]);
+		}
+		//排序
+		Arrays.sort(arrInt);
+		//sort(arrInt);
+		System.out.println(Arrays.toString(arrInt));
+		
+		//3. 写出数据
+		FileWriter fw = new FileWriter("src//dustbin//temp//B//B3-sort.txt");
+		for(int i=0; i<arrInt.length; i++) {
+			if(i != arrInt.length-1) {
+				fw.write(""+arrInt[i] + "-");
+			}else {
+				fw.write(""+arrInt[i] + "");
+			}
+		}
+		fw.close();
+	}
+
+	//对整数数组排序
+	private static void sort(int[] arr) {
+		for(int i=0; i<arr.length; i++) {
+			for(int j=i; j<arr.length; j++) {
+				if(arr[i]>arr[j]) {
+					int tmp=arr[i];
+					arr[i] = arr[j];
+					arr[j]=tmp;
+				}
+			}
+		}
+	}
+
 	//解密文件，和加密一样，再次逐字节和某个整数取异或。除了文件名，和demo3没有任何变化。
 	private static void demo4_decode() throws IOException {
 		FileInputStream fis=new FileInputStream("src//dustbin//secret.png");
